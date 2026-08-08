@@ -57,7 +57,11 @@ export default async function handler(req, res) {
           },
           body: JSON.stringify({ textQuery: `${v.name}, ${v.address || ''} Kraków`, languageCode: 'pl' })
         });
-        const found = sResp.ok ? (await sResp.json()).places : null;
+        if (!sResp.ok) {
+          results.push({ slug: v.slug, ok: false, error: 'searchText nieudany.', status: sResp.status, detail: (await sResp.text()).slice(0, 300) });
+          continue;
+        }
+        const found = (await sResp.json()).places;
         if (!found || !found.length) {
           results.push({ slug: v.slug, ok: false, error: 'Nie znaleziono place_id.' });
           continue;
