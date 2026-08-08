@@ -15,8 +15,11 @@ const PLACE_FIELDS = 'rating,userRatingCount,googleMapsUri,reviews,photos';
 export default async function handler(req, res) {
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
 
-  const { SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, GOOGLE_MAPS_API_KEY, SYNC_SECRET } = process.env;
-  if (!SYNC_SECRET || req.query.secret !== SYNC_SECRET) {
+  const { SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, GOOGLE_MAPS_API_KEY, SYNC_SECRET, CRON_SECRET } = process.env;
+  // Dwie drogi wejścia: ręcznie z ?secret= albo cron Vercela z nagłówkiem
+  // Authorization: Bearer CRON_SECRET (Vercel dokleja go sam, gdy env istnieje).
+  const fromCron = CRON_SECRET && (req.headers.authorization === `Bearer ${CRON_SECRET}`);
+  if (!fromCron && (!SYNC_SECRET || req.query.secret !== SYNC_SECRET)) {
     return res.status(401).json({ error: 'Zły albo brakujący secret.' });
   }
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY || !GOOGLE_MAPS_API_KEY) {

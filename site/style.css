@@ -485,3 +485,92 @@ section h2 + p.section-lead { color: var(--ink-soft); max-width: 620px; margin-t
 .article-body .prose { max-width: 760px; margin-left: auto; margin-right: auto; }
 .article-body .prose p { margin: 14px 0; }
 .article-body .prose h2 { margin-top: 44px; }
+
+/* ================= PASS WIZUALNY: precyzja + charakter ================= */
+
+/* Cyfry w kółkach: Playfair ma przesunięty baseline, wyrównujemy optycznie */
+.venue-h .vnum, .venue-head .num {
+  line-height: 1;
+  padding-top: 2px;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+.menu-pick .score { line-height: 1; display: flex; align-items: baseline; gap: 3px; }
+.menu-pick .score small { margin-top: 0; }
+
+/* Akcent w hero: jedno słowo kursywą i złotem */
+.hero h1 em {
+  font-style: italic;
+  color: var(--green);
+  position: relative;
+  white-space: nowrap;
+}
+.hero h1 em::after {
+  content: "";
+  position: absolute; left: 2%; right: 2%; bottom: 0.04em;
+  height: 0.12em;
+  background: linear-gradient(90deg, var(--gold), #e6cc8a);
+  border-radius: 2px;
+  z-index: -1;
+  opacity: 0.65;
+}
+
+/* Nagłówki sekcji: eyebrow + złota kreska */
+.eyebrow {
+  display: block;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+h2.deco { position: relative; padding-bottom: 12px; }
+h2.deco::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 52px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* Karty przewodników: złoty akcent na hover, strzałka czytania */
+.guide-card { position: relative; overflow: hidden; }
+.guide-card::after {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
+a.guide-card:hover::after { transform: scaleX(1); }
+a.guide-card h3 { transition: color 0.15s ease; }
+a.guide-card:hover h3 { color: var(--green); }
+
+/* Przyciski: głębia */
+.btn-primary { box-shadow: 0 2px 8px rgba(46, 84, 74, 0.25); }
+.btn-primary:hover { box-shadow: 0 4px 14px rgba(46, 84, 74, 0.35); }
+
+/* Delikatne wejścia przy scrollu (tylko nowoczesne przeglądarki, bez JS) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .venue-card, .guide-card, .teaser, .values .wrap > div {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+  }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Dostępność: wyraźny focus */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Stopka: złoty logotyp span */
+.site-footer .logo span { color: var(--gold); }
+
+/* FAQ: plus idealnie w pionie */
+.faq summary::after { line-height: 1; margin-top: -0.05em; }
