@@ -14,8 +14,11 @@ JavaScript tylko wzbogaca je o żywe dane z Google.
 
 ## Wdrożenie
 
-1. **Vercel**: nowy projekt, Root Directory = `bitekrakow/site`, bez build stepu.
-   Domena: bitekrakow.com.
+Źródło prawdy: to repo (`~/Desktop/bitekrakow`), poza `notaslop`, jak przy
+bruk.cafe. Push na `main` = wdrożenie na produkcję przez Vercela.
+
+1. **Vercel**: nowy projekt z repo GitHub, Root Directory = `site`, bez build
+   stepu. Domena: bitekrakow.com.
 2. **Supabase**: nowy projekt, wklej `supabase/schema.sql` w SQL Editor.
 3. **Zmienne środowiskowe w Vercelu**:
    - `SUPABASE_URL` — Project URL
@@ -26,6 +29,12 @@ JavaScript tylko wzbogaca je o żywe dane z Google.
 4. **Synchronizacja ocen**: `GET /api/refresh-places?secret=SYNC_SECRET`
    odświeża lokale starsze niż 7 dni. Można podpiąć pod cron Vercela
    (`vercel.json` → crons) albo wywoływać ręcznie.
+5. **IndexNow (Bing)**: po publikacji albo aktualizacji wpisu
+   `GET /api/ping-indexnow?secret=SYNC_SECRET&url=https://bitekrakow.com/sciezka/`.
+   Klucz IndexNow jest publiczny i leży w `site/<klucz>.txt`, nie ruszać.
+   ChatGPT przy wyszukiwaniu używa indeksu Binga, więc to skraca drogę do
+   odpowiedzi AI. Google IndexNow nie wspiera: tam działa sitemap.xml i
+   Search Console.
 
 ## Dodawanie lokalu
 
