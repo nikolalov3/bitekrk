@@ -43,3 +43,9 @@ create policy "public read venues" on venues
 
 create policy "public read article_venues" on article_venues
   for select using (true);
+
+-- Uprawnienia dla ról API Supabase (RLS i tak filtruje odczyt publiczny,
+-- ale role muszą mieć bazowy GRANT, inaczej PostgREST zwraca 42501).
+grant usage on schema public to anon, authenticated, service_role;
+grant select on public.venues, public.article_venues to anon, authenticated;
+grant all on public.venues, public.article_venues to service_role;
