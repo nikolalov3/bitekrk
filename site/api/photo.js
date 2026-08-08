@@ -1,5 +1,5 @@
 // Oddaje zdjęcie lokalu z Google Places bez ujawniania klucza API.
-// Użycie w karcie: <img src="/api/photo?slug=tociekawa">
+// Użycie w karcie: <img src="/api/photo?slug=szklarnia">
 // Endpoint znajduje w bazie nazwę zasobu zdjęcia (google_photo, zapisuje ją
 // /api/refresh-places) i przekierowuje do medialnego URL-a Places API.
 // Lokale z własnym zdjęciem w /img/ nie korzystają z tego endpointu.
