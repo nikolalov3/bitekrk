@@ -21,11 +21,8 @@ select a.slug_art, v.id, a.pos
 from (values
   ('where-to-work-krakow', 'bruk-cafe', 1),
   ('where-to-work-krakow', 'ilovecoffee', 2),
-  ('where-to-work-krakow', 'bussola', 3),
+  ('where-to-work-krakow', 'fitagain', 3),
   ('where-to-work-krakow', 'wesola-immersive', 4),
-  ('where-to-work-krakow', 'massolit', 5),
-  ('where-to-work-krakow', 'fitagain', 6),
-  ('where-to-work-krakow', 'urban-coffee', 7),
   ('kleparz-guide', 'bruk-cafe', 1),
   ('kleparz-guide', 'szklarnia', 2),
   ('kleparz-guide', 'fornir', 3),

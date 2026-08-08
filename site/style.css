@@ -203,3 +203,107 @@ img { max-width: 100%; display: block; }
 }
 .site-footer a { color: #fff; }
 .site-footer .logo { color: #fff; display: inline-block; margin-bottom: 10px; }
+
+/* ---------- Polecajka z menu (vlogowy blok w karcie) ---------- */
+
+.menu-pick {
+  background: linear-gradient(135deg, #fdf8ec 0%, #f7efdd 100%);
+  border: 1px solid #eadfc6;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.menu-pick .score {
+  flex: none;
+  background: var(--green);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 1.05rem; font-weight: 700;
+  border-radius: 10px;
+  padding: 8px 10px;
+  line-height: 1;
+}
+.menu-pick .score small { display: block; font-family: var(--font-sans); font-size: 0.6rem; font-weight: 600; opacity: 0.85; margin-top: 3px; letter-spacing: 0.06em; }
+.menu-pick .what {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #9a7c33; font-weight: 700; margin-bottom: 3px;
+}
+.menu-pick .dish { font-weight: 600; color: var(--ink); }
+.menu-pick .verdict { color: var(--ink-soft); font-size: 0.95rem; margin-top: 2px; }
+
+/* ---------- Fancy karty ---------- */
+
+.venue-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+.venue-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(34, 48, 43, 0.08), 0 18px 44px rgba(34, 48, 43, 0.10);
+}
+.venue-card::before {
+  content: "";
+  position: absolute; inset: 0 auto 0 0; width: 4px;
+  background: linear-gradient(180deg, var(--gold), var(--green));
+  opacity: 0; transition: opacity 0.2s ease;
+}
+.venue-card:hover::before { opacity: 1; }
+.venue-head .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  font-size: 0.95rem;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.venue-photo { position: relative; overflow: hidden; }
+.venue-photo img { transition: transform 0.4s ease; }
+.venue-card:hover .venue-photo img { transform: scale(1.04); }
+
+/* ---------- Nawigacja: aktywna zakładka ---------- */
+
+.site-nav a { position: relative; padding-bottom: 4px; }
+.site-nav a[aria-current="page"] { color: var(--green); }
+.site-nav a[aria-current="page"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 2px; border-radius: 2px; background: var(--gold);
+}
+
+/* ---------- Eyebrow nad H1 ---------- */
+
+.article-header .pill { margin-bottom: 14px; display: inline-block; }
+
+/* ---------- FAQ (details/summary, bez JS) ---------- */
+
+.faq { margin-top: 40px; }
+.faq details {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 18px;
+  font-weight: 600;
+  position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  color: var(--gold); font-family: var(--font-serif); font-size: 1.3rem;
+}
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding: 0 18px 14px; color: var(--ink-soft); }
+
+/* ---------- Drobny szlif ---------- */
+
+.btn { transition: background 0.15s ease, transform 0.15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.hero h1 { letter-spacing: -0.01em; }
+::selection { background: var(--green-tint); }
