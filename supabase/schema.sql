@@ -16,6 +16,7 @@ create table if not exists venues (
   maps_url text,                          -- link do wizytówki Google
   website_url text,
   hours_short text,                       -- "Mon-Fri 8-18, Sat-Sun 9-17"
+  google_photo text,                      -- nazwa zasobu zdjęcia z Places API
   rating numeric(2,1),                    -- z Google, synchronizowane
   reviews_count int,                      -- z Google, synchronizowane
   reviews jsonb default '[]',             -- [{author, rating, text, time}] z Google

@@ -10,7 +10,7 @@
 // Zasady Google: ocena i opinie mogą być cache'owane do 30 dni, opinie
 // pokazujemy z autorem i dopiskiem "Reviews from Google". Odświeżamy co 7 dni.
 
-const PLACE_FIELDS = 'rating,userRatingCount,googleMapsUri,reviews';
+const PLACE_FIELDS = 'rating,userRatingCount,googleMapsUri,reviews,photos';
 
 export default async function handler(req, res) {
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
@@ -33,10 +33,11 @@ export default async function handler(req, res) {
     }
   });
 
-  // Lokale z place_id, których nie odświeżaliśmy przez ostatnie 7 dni.
+  // Lokale nieodświeżane przez ostatnie 7 dni. Brakujące place_id
+  // uzupełniamy sami wyszukiwaniem po nazwie i adresie.
   const cutoff = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
   const listResp = await sb(
-    `venues?select=id,slug,place_id,rating_synced_at&place_id=not.is.null&or=(rating_synced_at.is.null,rating_synced_at.lt.${cutoff})`
+    `venues?select=id,slug,name,address,place_id,rating_synced_at&active=eq.true&or=(rating_synced_at.is.null,rating_synced_at.lt.${cutoff})`
   );
   if (!listResp.ok) {
     return res.status(502).json({ error: 'Supabase nie oddał listy lokali.', detail: await listResp.text() });
@@ -46,6 +47,28 @@ export default async function handler(req, res) {
   const results = [];
   for (const v of venues) {
     try {
+      if (!v.place_id) {
+        const sResp = await fetch('https://places.googleapis.com/v1/places:searchText', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY,
+            'X-Goog-FieldMask': 'places.id,places.displayName'
+          },
+          body: JSON.stringify({ textQuery: `${v.name}, ${v.address || ''} Kraków`, languageCode: 'pl' })
+        });
+        const found = sResp.ok ? (await sResp.json()).places : null;
+        if (!found || !found.length) {
+          results.push({ slug: v.slug, ok: false, error: 'Nie znaleziono place_id.' });
+          continue;
+        }
+        v.place_id = found[0].id;
+        await sb(`venues?id=eq.${v.id}`, {
+          method: 'PATCH',
+          headers: { Prefer: 'return=minimal' },
+          body: JSON.stringify({ place_id: v.place_id })
+        });
+      }
       const gResp = await fetch(
         `https://places.googleapis.com/v1/places/${encodeURIComponent(v.place_id)}`,
         {
@@ -76,6 +99,7 @@ export default async function handler(req, res) {
         method: 'PATCH',
         headers: { Prefer: 'return=minimal' },
         body: JSON.stringify({
+          google_photo: (place.photos && place.photos[0] && place.photos[0].name) || null,
           rating: place.rating ?? null,
           reviews_count: place.userRatingCount ?? null,
           maps_url: place.googleMapsUri ?? undefined,
