@@ -430,3 +430,58 @@ img { max-width: 100%; display: block; }
 /* ---------- Sekcje: rytm ---------- */
 
 section h2 + p.section-lead { color: var(--ink-soft); max-width: 620px; margin-top: 8px; }
+
+/* ================= KARTY KOMPAKTOWE + NARRACJA ================= */
+
+/* Nagłówek lokalu w tekście artykułu */
+.venue-h {
+  display: flex; align-items: center; gap: 12px;
+  margin: 44px 0 10px;
+}
+.venue-h .vnum {
+  font-family: var(--font-serif); color: var(--gold);
+  font-size: 1rem; font-weight: 700;
+  border: 1.5px solid var(--gold); border-radius: 50%;
+  width: 32px; height: 32px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* Karta: mniejsza, spokojniejsza */
+.article-body .venue-card {
+  grid-template-columns: 220px 1fr;
+  max-width: 760px;
+  margin: 18px auto 26px;
+  box-shadow: 0 1px 6px rgba(34,48,43,0.05);
+}
+.article-body .venue-card:hover { transform: none; box-shadow: var(--shadow); }
+.article-body .venue-photo { max-height: 240px; }
+.article-body .venue-body { padding: 16px 20px; }
+.article-body .venue-head { gap: 10px; }
+.article-body .venue-head h3 { font-size: 1.05rem; }
+.article-body .venue-head .num { display: none; }
+.article-body .venue-rating { font-size: 0.88rem; min-height: 20px; }
+.article-body .venue-meta { font-size: 0.85rem; margin: 6px 0 10px; gap: 6px 14px; }
+.article-body .menu-pick { padding: 10px 14px; margin-bottom: 10px; gap: 10px; }
+.article-body .menu-pick .score { font-size: 0.95rem; padding: 6px 8px; border-radius: 8px; }
+.article-body .menu-pick .what { font-size: 0.68rem; margin-bottom: 1px; }
+.article-body .menu-pick .dish { font-size: 0.93rem; }
+.article-body .menu-pick .verdict { font-size: 0.85rem; }
+.article-body .venue-tags { gap: 6px; margin-bottom: 10px; }
+.article-body .venue-tags .pill { font-size: 0.72rem; padding: 3px 10px; }
+.article-body .venue-reviews { padding-top: 10px; }
+.article-body .venue-reviews .review { font-size: 0.85rem; margin-bottom: 8px; }
+.article-body .venue-reviews .src { font-size: 0.68rem; margin-bottom: 6px; }
+.article-body .venue-actions { margin-top: 10px; gap: 8px; }
+.article-body .venue-actions .btn { font-size: 0.83rem; padding: 8px 16px; }
+.article-body .venue-note { font-size: 0.88rem; margin-bottom: 10px; }
+
+@media (max-width: 720px) {
+  .article-body .venue-card { grid-template-columns: 1fr; }
+  .article-body .venue-photo { height: 170px; max-height: 170px; }
+  .article-body .venue-actions .btn { width: auto; flex: 1; }
+}
+
+/* Proza artykułu: równy rytm */
+.article-body .prose { max-width: 760px; margin-left: auto; margin-right: auto; }
+.article-body .prose p { margin: 14px 0; }
+.article-body .prose h2 { margin-top: 44px; }
