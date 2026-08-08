@@ -17,7 +17,8 @@
     "name": "BiteKrakow",
     "url": "https://bitekrakow.com/",
     "description": "Independent local guides to Krakow's cafes, restaurants and bars.",
-    "inLanguage": "en"
+    "inLanguage": "en",
+    "publisher": { "@type": "Organization", "name": "BiteKrakow", "url": "https://bitekrakow.com" }
   }
   </script>
 </head>
@@ -34,29 +35,61 @@
   </div>
 </header>
 
+<!-- Grafika tła od Mikołaja: wrzuć site/img/hero.jpg i zamień
+     class="hero" na class="hero hero-photo" w linii niżej. -->
 <section class="hero">
   <div class="wrap">
     <h1>Where locals actually<br>eat and drink in Krakow.</h1>
-    <p class="lead">No tourist traps, no sponsored rankings. Every place on this site has been visited, photographed and described by people who live here.</p>
+    <p class="lead">No tourist traps, no sponsored rankings. Every cafe, bakery and bar on this site has been visited, eaten at and argued about by people who live here.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="/where-to-work-krakow/">Best cafes to work from</a>
+      <a class="btn btn-ghost" href="/kleparz-guide/">Explore Kleparz</a>
+    </div>
     <div class="hero-stats">
+      <div class="stat"><b>11</b><span>Places reviewed</span></div>
       <div class="stat"><b>6</b><span>Neighborhoods</span></div>
-      <div class="stat"><b>40+</b><span>Places visited</span></div>
       <div class="stat"><b>2026</b><span>Updated for</span></div>
     </div>
   </div>
 </section>
 
-<section class="wrap">
+<section class="values">
+  <div class="wrap">
+    <div>
+      <span class="val-num">01</span>
+      <h3>Visited in person</h3>
+      <p>Every place on this site got a real visit, a real order and a real bill. If we recommend the cheesecake, it is because the plate did not survive ten minutes.</p>
+    </div>
+    <div>
+      <span class="val-num">02</span>
+      <h3>Nobody pays to be here</h3>
+      <p>No sponsored rankings, no pay-to-play lists. One bar once asked to be removed from a draft. That was the easiest edit of the year.</p>
+    </div>
+    <div>
+      <span class="val-num">03</span>
+      <h3>Dated and updated</h3>
+      <p>Every guide says when it was last verified. When a place closes or slides, we edit or delete. Stale recommendations are worse than none.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap teasers">
   <h2>Guides</h2>
+  <p class="section-lead">Long, specific and opinionated. Addresses, opening hours, prices, what to order and what to skip.</p>
   <div class="guide-grid">
     <a class="guide-card" href="/where-to-work-krakow/">
       <h3>Best Cafes to Work From a Laptop</h3>
-      <p>Tested Wi-Fi, counted sockets, checked laptop policies. The honest list.</p>
+      <p>Four cafes tested a full working day each: sockets, Wi-Fi, food and how long you can actually sit.</p>
     </a>
     <a class="guide-card" href="/kleparz-guide/">
       <h3>Kleparz Food and Coffee Guide</h3>
-      <p>Krakow's oldest market district, minutes from the main station.</p>
+      <p>Krakow's oldest market district, five minutes from the main station and still wonderfully overlooked.</p>
     </a>
+    <div class="guide-card">
+      <h3>Coffee Near the Main Station</h3>
+      <p>Where to drink well when you have a suitcase and forty minutes.</p>
+      <p style="margin-top:10px;"><span class="pill">Coming soon</span></p>
+    </div>
     <div class="guide-card">
       <h3>Breakfast in Krakow Before 9 AM</h3>
       <p>Spots that actually open early, with full menus and prices.</p>
@@ -72,17 +105,52 @@
       <p>A local's map of Krakow's coffee scene, district by district.</p>
       <p style="margin-top:10px;"><span class="pill">Coming soon</span></p>
     </div>
-    <div class="guide-card">
-      <h3>Kazimierz Coffee and Brunch Guide</h3>
-      <p>The good places between the crowds of Plac Nowy.</p>
-      <p style="margin-top:10px;"><span class="pill">Coming soon</span></p>
-    </div>
+  </div>
+</section>
+
+<section class="wrap teasers" style="padding-top:8px;">
+  <h2>Straight from the guides</h2>
+  <div class="teaser-grid">
+    <a class="teaser" href="/where-to-work-krakow/">
+      <div class="t-what">What we ordered · 9.5/10</div>
+      <blockquote>"Burnt on top, almost liquid in the middle, impossibly delicate. The plate did not survive ten minutes."</blockquote>
+      <p class="t-src">Basque cheesecake at <b>Bruk Cafe</b>, Kleparz</p>
+    </a>
+    <a class="teaser" href="/kleparz-guide/">
+      <div class="t-what">What we ordered · 9/10</div>
+      <blockquote>"Crunchy kadayif, thick pistachio cream, chocolate that snaps. The hype for once undersells it."</blockquote>
+      <p class="t-src">Dubai chocolate at <b>Cukiernia BiBułka</b>, Karmelicka</p>
+    </a>
+    <a class="teaser" href="/kleparz-guide/">
+      <div class="t-what">What we ordered · 8.5/10</div>
+      <blockquote>"Little Venetian bites that taste like a holiday you did not have to book. At market prices, dangerously repeatable."</blockquote>
+      <p class="t-src">Spritz and cicchetti at <b>Baqaro</b>, Stary Kleparz</p>
+    </a>
+  </div>
+</section>
+
+<section class="wrap districts">
+  <h2>Neighborhoods we cover</h2>
+  <p class="section-lead">Krakow eats differently every few hundred meters. We write district by district, starting where the food is best and the guides are worst.</p>
+  <div class="district-chips">
+    <a href="/kleparz-guide/">Kleparz</a>
+    <span>Kazimierz <small>· soon</small></span>
+    <span>Old Town <small>· soon</small></span>
+    <span>Podgórze <small>· soon</small></span>
+    <span>Krowodrza <small>· soon</small></span>
+    <span>Wesoła <small>· soon</small></span>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="wrap">
     <a class="logo" href="/">Bite<span>Krakow</span></a>
+    <nav class="foot-nav">
+      <a href="/where-to-work-krakow/">Work-friendly cafes</a>
+      <a href="/kleparz-guide/">Kleparz guide</a>
+      <a href="/about/">About</a>
+      <a href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>
+    </nav>
     <p>Independent guides to Krakow's food and coffee scene. Written by locals, updated year-round.</p>
     <p>Ratings and review quotes shown on venue cards come from Google.</p>
   </div>
