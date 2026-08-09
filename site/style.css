@@ -542,3 +542,111 @@ div.guide-card { opacity: 0.65; }
   .article-body .venue-actions { gap: 18px; }
   .article-body .venue-actions .btn { flex: none; width: auto; text-align: left; }
 }
+
+/* ================= KARTA 4.0: atramentowy panel-nagroda ================= */
+
+.article-body .venue-card {
+  background: var(--ink);
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 720px;
+  margin: 26px auto 48px;
+  box-shadow: 0 10px 30px rgba(27, 27, 24, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.article-body .venue-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(27, 27, 24, 0.18);
+}
+
+/* Zdjęcie wtapia się w panel */
+.article-body .venue-photo {
+  position: relative;
+  height: 300px;
+  border-radius: 0;
+  background: #2a2a26;
+}
+.article-body .venue-photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, var(--ink) 100%);
+  pointer-events: none;
+}
+
+.article-body .venue-body { padding: 6px 26px 26px; color: #c9c7bd; }
+
+.article-body .venue-rating { color: var(--paper); font-size: 0.88rem; margin-bottom: 6px; }
+.article-body .venue-rating .stars .stars-bg { color: rgba(255,255,255,0.22); }
+.article-body .venue-rating .count { color: #8f8d84; }
+
+.article-body .venue-meta {
+  color: #8f8d84;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 14px; margin-bottom: 16px;
+}
+
+/* Polecajka: podświetlony blok nagrody */
+.article-body .menu-pick {
+  background: rgba(255,255,255,0.055);
+  border: none; border-left: none; border-radius: 12px;
+  padding: 14px 16px; margin-bottom: 14px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.article-body .menu-pick .score {
+  background: var(--accent); color: #fff;
+  border-radius: 9px; padding: 7px 10px;
+  font-size: 0.9rem; display: flex; align-items: baseline; gap: 3px;
+}
+.article-body .menu-pick .score::after { display: none; }
+.article-body .menu-pick .what {
+  display: block;
+  color: var(--accent); font-size: 0.62rem;
+  letter-spacing: 0.16em; margin-bottom: 3px;
+}
+.article-body .menu-pick .dish {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1.12rem; font-weight: 600; color: var(--paper);
+}
+.article-body .menu-pick .verdict { color: #a5a399; font-size: 0.88rem; }
+
+.article-body .venue-note {
+  border-left: 2px solid var(--gold);
+  color: #a5a399;
+}
+
+.article-body .venue-tags { margin-bottom: 14px; }
+.article-body .venue-tags .pill { color: #8f8d84; }
+.article-body .venue-tags .pill:not(:first-child)::before { color: #514f48; }
+
+/* Opinie: wyraźna sekcja */
+.article-body .venue-reviews {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 14px; margin-top: 4px;
+}
+.article-body .venue-reviews .src { color: var(--gold); }
+.article-body .review { color: #a5a399; }
+.article-body .review b { color: var(--paper); }
+
+/* Akcje: przyciski wracają, odwrócone */
+.article-body .venue-actions { gap: 10px; margin-top: 18px; }
+.article-body .venue-actions .btn {
+  border-radius: 10px; padding: 11px 20px;
+  font-size: 0.78rem; text-decoration: none;
+}
+.article-body .venue-actions .btn-primary {
+  background: var(--paper); color: var(--ink);
+}
+.article-body .venue-actions .btn-primary:hover { background: var(--accent); color: #fff; }
+.article-body .venue-actions .btn-primary::after { content: " ↗"; color: var(--accent); }
+.article-body .venue-actions .btn-primary:hover::after { color: #fff; }
+.article-body .venue-actions .btn-ghost {
+  border: 1px solid rgba(255,255,255,0.25); color: var(--paper);
+}
+.article-body .venue-actions .btn-ghost:hover { border-color: var(--paper); }
+
+@media (max-width: 640px) {
+  .article-body .venue-photo { height: 210px; }
+  .article-body .venue-body { padding: 4px 18px 20px; }
+  .article-body .menu-pick { flex-direction: column; gap: 8px; }
+  .article-body .venue-actions .btn { flex: 1; text-align: center; }
+}
