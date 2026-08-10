@@ -650,3 +650,64 @@ div.guide-card { opacity: 0.65; }
   .article-body .menu-pick { flex-direction: column; gap: 8px; }
   .article-body .venue-actions .btn { flex: 1; text-align: center; }
 }
+
+/* ================= TYPOGRAFIA 2026: proza, która oddycha ================= */
+
+/* Rytm czytania: większy stopień, luźniejszy wiersz, cieplejszy atrament */
+.article-body .prose p {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  margin: 24px 0;
+  color: #33322c;
+  text-wrap: pretty;
+}
+.article-body .prose a {
+  text-decoration-color: var(--line-dark);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.article-body .prose a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+/* Lead: pierwszy akapit artykułu jako powiększony standfirst */
+.article-body > .prose:first-child > p:first-child {
+  font-size: 1.32rem;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+/* Nagłówki: przestrzeń i balans */
+h1, h2, .venue-title { text-wrap: balance; }
+.article-header { padding: 92px 0 16px; }
+.article-header h1 { line-height: 1.06; }
+.article-header .meta { margin-top: 26px; line-height: 1.8; }
+.article-body .prose h2 { margin-top: 72px; margin-bottom: 16px; line-height: 1.15; }
+.article-body .prose h2.venue-title { margin-top: 0; margin-bottom: 14px; scroll-margin-top: 90px; }
+.venue-h { margin: 76px 0 10px; }
+
+/* Karty i FAQ: więcej powietrza wokół */
+.article-body .venue-card { margin: 30px auto 56px; }
+.faq { margin-top: 64px; }
+.faq summary { padding: 18px 44px 18px 0; line-height: 1.5; }
+.faq details p { padding: 0 0 22px; line-height: 1.75; }
+
+/* Strona główna i sekcje: ten sam oddech */
+.hero p.lead { line-height: 1.75; }
+section h2 + p.section-lead { line-height: 1.75; }
+.guide-card p { line-height: 1.7; }
+.values p { line-height: 1.75; }
+
+/* ---------- Mobile: koniec ściśnięcia ---------- */
+@media (max-width: 640px) {
+  .wrap, .wrap-narrow { padding: 0 22px; }
+  .article-header { padding: 56px 0 8px; }
+  .article-header h1 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
+  .article-body .prose p { font-size: 1.05rem; line-height: 1.8; margin: 20px 0; }
+  .article-body > .prose:first-child > p:first-child { font-size: 1.18rem; line-height: 1.62; }
+  .article-body .prose h2 { margin-top: 56px; }
+  .venue-h { margin: 60px 0 8px; }
+  .article-body .venue-card { margin: 24px auto 44px; }
+  .faq { margin-top: 48px; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 2.9rem); }
+}
