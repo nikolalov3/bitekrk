@@ -60,7 +60,8 @@ for (const page of pages) {
   const article = blocks.find(b => b['@type'] === 'Article');
   const cards = [...html.matchAll(/data-venue-slug="([^"]+)"/g)].map(m => m[1]);
 
-  if (page && !['about'].includes(page)) {
+  const isIndexPage = types.includes('CollectionPage');
+  if (page && !['about'].includes(page) && !isIndexPage) {
     if (!article) problems.push(`${label} brak schema Article`);
     else {
       if (!article.author || !article.author.name) problems.push(`${label} Article bez autora`);
@@ -81,6 +82,13 @@ for (const page of pages) {
       problems.push(`${label} brak widocznej daty weryfikacji treści`);
     }
   }
+
+  // 3b. Social/SEO meta na każdej stronie
+  if (!/property="og:title"/.test(html)) problems.push(`${label} brak og:title`);
+  if (!/property="og:description"/.test(html)) problems.push(`${label} brak og:description`);
+  if (!/property="og:image"/.test(html)) problems.push(`${label} brak og:image`);
+  if (!/rel="icon"/.test(html)) problems.push(`${label} brak favicon`);
+  if (!/name="twitter:card"/.test(html)) problems.push(`${label} brak twitter:card`);
 
   // 4. Karty kompletne
   for (const slug of cards) {
