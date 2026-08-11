@@ -47,44 +47,53 @@
   </div>
 </header>
 
-<!-- Grafika tła od Mikołaja: wrzuć site/img/hero.jpg i zamień
-     class="hero" na class="hero hero-photo" w linii niżej. -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-slider" aria-label="Featured stories">
-      <div class="slides" id="heroSlides">
-        <a class="slide slide-accent" href="/news/slonce-polish-restaurant-opens/">
+<section class="hero hero-split">
+  <div class="hero-left">
+    <div class="hero-left-inner">
+      <h1>Where locals <em>actually</em> eat and drink in Krakow.</h1>
+      <p class="lead">No tourist traps, no sponsored rankings. Every cafe, bakery and bar on this site has been visited, eaten at and argued about by people who live here.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/guides/">Browse the guides</a>
+        <a class="btn btn-ghost" href="/news/">Latest news</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slider" aria-label="Featured stories">
+    <div class="slides" id="heroSlides">
+      <a class="slide" href="/news/slonce-polish-restaurant-opens/">
+        <img class="bg" src="/api/photo?slug=slonce" alt="" onerror="this.remove()">
+        <div class="slide-chip chip-accent">
           <span class="s-tag">Just opened · 11 Aug</span>
           <h3>Słońce: new Polish table on św. Tomasza</h3>
-          <p>Hand-made pierogi in open view, six-hour broth, two minutes from the Square.</p>
           <span class="s-more">Read the news ↗</span>
-        </a>
-        <a class="slide" href="/ice-cream-krakow/">
+        </div>
+      </a>
+      <a class="slide" href="/ice-cream-krakow/">
+        <img class="bg" src="/api/photo?slug=lody-starowislna" alt="" loading="lazy" onerror="this.remove()">
+        <div class="slide-chip">
           <span class="s-tag">Season's pick</span>
-          <h3>Family-run ice cream, no chains</h3>
-          <p>The legendary Starowiślna queue and Nowa Huta's one-flavor-a-day classics.</p>
+          <h3>Family-run ice cream, no chains allowed</h3>
           <span class="s-more">Read the guide ↗</span>
-        </a>
-        <a class="slide" href="/kazimierz-guide/">
+        </div>
+      </a>
+      <a class="slide" href="/kazimierz-guide/">
+        <img class="bg" src="/api/photo?slug=hevre" alt="" loading="lazy" onerror="this.remove()">
+        <div class="slide-chip">
           <span class="s-tag">Neighborhood guide</span>
           <h3>Kazimierz between the crowds</h3>
-          <p>Coffee in former prayer houses and the calm end of the loudest district.</p>
           <span class="s-more">Read the guide ↗</span>
-        </a>
-      </div>
-      <div class="slide-dots" id="heroDots" role="tablist" aria-label="Slides"></div>
+        </div>
+      </a>
     </div>
-    <h1>Where locals <em>actually</em><br>eat and drink in Krakow.</h1>
-    <p class="lead">No tourist traps, no sponsored rankings. Every cafe, bakery and bar on this site has been visited, eaten at and argued about by people who live here.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="/where-to-work-krakow/">Best cafes to work from</a>
-      <a class="btn btn-ghost" href="/kleparz-guide/">Explore Kleparz</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><b>33</b><span>Places reviewed</span></div>
-      <div class="stat"><b>10</b><span>Neighborhoods</span></div>
-      <div class="stat"><b>2026</b><span>Updated for</span></div>
-    </div>
+    <div class="slide-dots" id="heroDots" role="tablist" aria-label="Slides"></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="hero-stats">
+    <div class="stat"><b>33</b><span>Places reviewed</span></div>
+    <div class="stat"><b>10</b><span>Neighborhoods</span></div>
+    <div class="stat"><b>2026</b><span>Updated for</span></div>
   </div>
 </section>
 
