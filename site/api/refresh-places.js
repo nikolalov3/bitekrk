@@ -36,6 +36,53 @@ export default async function handler(req, res) {
     }
   });
 
+  // Tryb audytu: ?audit=1 porównuje nazwę w bazie z nazwą wizytówki Google,
+  // żeby wyłapać błędne dopasowania place_id. Nic nie zapisuje.
+  if (req.query.audit) {
+    const aResp = await sb(`venues?select=slug,name,address,place_id&place_id=not.is.null&order=slug`);
+    const rows = await aResp.json();
+    const audit = [];
+    for (const v of rows) {
+      const g = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(v.place_id)}`, {
+        headers: { 'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY, 'X-Goog-FieldMask': 'displayName,formattedAddress' }
+      });
+      const place = g.ok ? await g.json() : null;
+      audit.push({
+        slug: v.slug,
+        nasza_nazwa: v.name,
+        google_nazwa: place && place.displayName ? place.displayName.text : `BŁĄD ${g.status}`,
+        google_adres: place ? place.formattedAddress : null
+      });
+    }
+    return res.status(200).json({ audit });
+  }
+
+  // Tryb naprawy: ?fix=<slug>&q=<własne zapytanie> wyszukuje wizytówkę od
+  // nowa po podanej frazie, nadpisuje place_id i czyści datę syncu.
+  if (req.query.fix && req.query.q) {
+    const sResp = await fetch('https://places.googleapis.com/v1/places:searchText', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY,
+        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress'
+      },
+      body: JSON.stringify({ textQuery: String(req.query.q), languageCode: 'pl' })
+    });
+    const found = sResp.ok ? (await sResp.json()).places : null;
+    if (!found || !found.length) return res.status(404).json({ error: 'Nic nie znaleziono dla tej frazy.' });
+    const upd = await sb(`venues?slug=eq.${encodeURIComponent(String(req.query.fix))}`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=minimal' },
+      body: JSON.stringify({ place_id: found[0].id, rating_synced_at: null })
+    });
+    return res.status(200).json({
+      fixed: req.query.fix, ok: upd.ok,
+      nowa_wizytowka: found[0].displayName ? found[0].displayName.text : null,
+      adres: found[0].formattedAddress
+    });
+  }
+
   // Lokale nieodświeżane przez ostatnie 7 dni. Brakujące place_id
   // uzupełniamy sami wyszukiwaniem po nazwie i adresie.
   const cutoff = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
