@@ -162,6 +162,35 @@
   </div>
 </section>
 
+
+<!-- Rysowane grafiki: zestaw losowany przy każdym wejściu (czysto dekoracyjne) -->
+<div class="doodle-band" aria-hidden="true">
+  <div class="doodle-set" id="set-coffee">
+    <svg class="dood" viewBox="0 0 40 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="20" cy="22" rx="12" ry="17" transform="rotate(18 20 22)"/><path d="M14 9 C24 16 16 28 26 35"/></svg>
+    <svg class="dood" viewBox="0 0 52 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 18 h28 v12 a10 10 0 0 1 -10 10 h-8 a10 10 0 0 1 -10 -10 z"/><path d="M36 20 c8 0 8 10 0 10"/><path d="M17 4 c-2 3 2 5 0 9 M25 3 c-2 3 2 5 0 9"/></svg>
+    <svg class="dood" viewBox="0 0 40 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 h16 l3 14 h-22 z"/><path d="M9 30 l3 -12 h16 l3 12 z"/><path d="M9 30 h22 l-3 14 h-16 z"/><path d="M31 20 c6 1 6 8 0 9"/></svg>
+    <svg class="dood" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 12 h30 l-9 14 v9 l-12 5 v-14 z"/><path d="M14 12 c0 -6 18 -6 18 0"/></svg>
+    <svg class="dood" viewBox="0 0 56 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6 c6 -4 12 0 10 6 c8 -2 14 4 10 10 c6 4 2 12 -6 12 h-20 c-10 0 -14 -10 -6 -15 c-6 -7 4 -16 12 -13z"/><path d="M16 34 c4 -6 20 -6 24 0"/></svg>
+    <svg class="dood" viewBox="0 0 40 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="20" cy="22" rx="12" ry="17" transform="rotate(-14 20 22)"/><path d="M26 9 C16 16 24 28 14 35"/></svg>
+  </div>
+  <div class="doodle-set" id="set-kitchen" hidden>
+    <svg class="dood" viewBox="0 0 36 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 4 v14"/><path d="M10 18 c-4 10 -2 20 8 26 c10 -6 12 -16 8 -26 c-5 -3 -11 -3 -16 0z"/><path d="M18 18 v26 M12 22 c2 8 2 14 6 20 M24 22 c-2 8 -2 14 -6 20"/></svg>
+    <svg class="dood" viewBox="0 0 44 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M30 8 c6 2 8 8 6 13 c-3 9 -12 20 -24 21 c-3 0 -5 -2 -4 -5 c3 -12 12 -24 22 -29z"/><path d="M30 8 c-1 -3 1 -5 4 -5 c0 3 -1 4 -4 5z"/></svg>
+    <svg class="dood" viewBox="0 0 34 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="17" cy="14" rx="10" ry="12"/><path d="M17 26 v16 M13 42 h8"/></svg>
+    <svg class="dood" viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 4 c-8 6 -12 14 -8 24 c3 8 13 8 16 0 c4 -10 0 -18 -8 -24z"/><path d="M20 10 v30"/><path d="M20 16 c-4 2 -6 6 -6 10 M20 16 c4 2 6 6 6 10"/></svg>
+    <svg class="dood" viewBox="0 0 56 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="12" y="10" width="32" height="14" rx="7"/><path d="M4 17 h8 M44 17 h8"/></svg>
+    <svg class="dood" viewBox="0 0 40 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 44 c-8 -8 -12 -18 -6 -26 c4 -6 12 -6 14 2 c2 8 -2 18 -8 24z"/><path d="M20 12 c0 -4 2 -7 6 -8"/></svg>
+  </div>
+</div>
+<script>
+  (function () {
+    if (Math.random() < 0.5) {
+      document.getElementById('set-coffee').hidden = true;
+      document.getElementById('set-kitchen').hidden = false;
+    }
+  })();
+</script>
+
 <footer class="site-footer">
   <div class="wrap">
     <a class="logo" href="/">Bite<span>Krakow</span></a>

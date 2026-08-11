@@ -733,3 +733,84 @@ section h2 + p.section-lead { line-height: 1.75; }
   .site-nav { gap: 20px; }
   .site-nav a[aria-current="page"]::after { bottom: -5px; }
 }
+
+/* ================= KARTA 4.1: niebieski CTA + dopamina ================= */
+
+/* Przycisk map: pełna szerokość, niebieski gradient, na dole panelu */
+.article-body .venue-actions {
+  flex-direction: column; align-items: stretch;
+  gap: 10px; margin-top: 18px;
+}
+.article-body .venue-actions .btn-primary {
+  background: linear-gradient(135deg, #5b9bff 0%, #2f6fe4 55%, #1f57c4 100%);
+  color: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  font-size: 0.84rem; font-weight: 600; letter-spacing: 0.04em;
+  border-radius: 13px;
+  box-shadow: 0 6px 18px rgba(47, 111, 228, 0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.article-body .venue-actions .btn-primary:hover {
+  background: linear-gradient(135deg, #6ba6ff 0%, #3a7af0 55%, #2560d0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(47, 111, 228, 0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.article-body .venue-actions .btn-primary::after { content: "  ↗"; color: rgba(255,255,255,0.85); }
+.article-body .venue-actions .btn-primary:hover::after { color: #fff; }
+
+/* Drugi link: dyskretny tekst pod przyciskiem */
+.article-body .venue-actions .btn-ghost {
+  border: none; padding: 4px 0;
+  text-align: center;
+  color: #8f8d84; font-size: 0.74rem;
+  text-decoration: underline; text-underline-offset: 4px;
+  text-decoration-color: rgba(255,255,255,0.2);
+}
+.article-body .venue-actions .btn-ghost:hover { color: var(--paper); }
+
+/* Dopamina w detalach panelu */
+.article-body .venue-rating { font-size: 0.95rem; margin-bottom: 8px; }
+.article-body .venue-rating .stars { font-size: 1.05rem; }
+.article-body .menu-pick .score {
+  background: linear-gradient(135deg, var(--accent) 0%, #d97b3f 100%);
+  box-shadow: 0 3px 10px rgba(188, 90, 52, 0.4);
+}
+
+/* ================= MOBILE 3.0: jakość czytania ================= */
+
+@media (max-width: 640px) {
+  .article-body .venue-photo { height: 230px; }
+  .article-body .venue-body { padding: 8px 20px 22px; }
+  .article-body .venue-meta { display: block; }
+  .article-body .venue-meta span { display: block; padding: 2px 0; }
+  .article-body .menu-pick { padding: 14px 16px; }
+  .article-body .menu-pick .dish { font-size: 1.05rem; }
+  .article-body .venue-actions .btn-primary { padding: 16px 20px; font-size: 0.88rem; }
+  .article-body .prose h2.venue-title { font-size: 1.55rem; }
+  .faq summary { font-size: 0.95rem; }
+  .site-footer { padding: 40px 0; }
+}
+
+/* ================= DOODLES: rysowane grafiki ================= */
+
+.doodle-band {
+  display: flex; justify-content: center; align-items: flex-end;
+  gap: clamp(18px, 5vw, 46px);
+  padding: 20px 24px 64px;
+  color: var(--ink-soft);
+  opacity: 0.5;
+}
+.doodle-band svg { height: 44px; width: auto; flex: none; }
+.doodle-band .dood:nth-child(2n) { transform: rotate(-6deg); }
+.doodle-band .dood:nth-child(3n) { transform: rotate(5deg); }
+.doodle-band .dood:nth-child(4n) { transform: translateY(-6px); }
+@media (max-width: 640px) {
+  .doodle-band { gap: 18px; padding-bottom: 44px; }
+  .doodle-band svg { height: 34px; }
+  .doodle-band .dood:nth-child(n+6) { display: none; }
+}
+
+/* Zestawy doodli: flex w pasku */
+.doodle-set { display: flex; align-items: flex-end; gap: clamp(18px, 5vw, 46px); }
+.doodle-set[hidden] { display: none; }
