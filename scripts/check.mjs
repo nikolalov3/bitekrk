@@ -31,9 +31,16 @@ function jsonLdBlocks(html) {
   return out;
 }
 
-const pages = ['', ...readdirSync(SITE, { withFileTypes: true })
-  .filter(d => d.isDirectory() && !['api', 'img'].includes(d.name))
-  .map(d => d.name)];
+function collectPages(dir, prefix) {
+  const out = [];
+  for (const d of readdirSync(dir, { withFileTypes: true })) {
+    if (!d.isDirectory() || ['api', 'img'].includes(d.name)) continue;
+    const rel = prefix ? `${prefix}/${d.name}` : d.name;
+    out.push(rel, ...collectPages(join(dir, d.name), rel));
+  }
+  return out;
+}
+const pages = ['', ...collectPages(SITE, '')];
 
 for (const page of pages) {
   const file = join(SITE, page, 'index.html');
@@ -57,7 +64,7 @@ for (const page of pages) {
     if (b.__parseError) problems.push(`${label} JSON-LD nie parsuje się: ${b.__parseError}`);
   }
   const types = blocks.map(b => b['@type']);
-  const article = blocks.find(b => b['@type'] === 'Article');
+  const article = blocks.find(b => b['@type'] === 'Article' || b['@type'] === 'NewsArticle');
   const cards = [...html.matchAll(/data-venue-slug="([^"]+)"/g)].map(m => m[1]);
 
   const isIndexPage = types.includes('CollectionPage');
