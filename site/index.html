@@ -51,6 +51,29 @@
      class="hero" na class="hero hero-photo" w linii niżej. -->
 <section class="hero">
   <div class="wrap">
+    <div class="hero-slider" aria-label="Featured stories">
+      <div class="slides" id="heroSlides">
+        <a class="slide slide-accent" href="/news/slonce-polish-restaurant-opens/">
+          <span class="s-tag">Just opened · 11 Aug</span>
+          <h3>Słońce: new Polish table on św. Tomasza</h3>
+          <p>Hand-made pierogi in open view, six-hour broth, two minutes from the Square.</p>
+          <span class="s-more">Read the news ↗</span>
+        </a>
+        <a class="slide" href="/ice-cream-krakow/">
+          <span class="s-tag">Season's pick</span>
+          <h3>Family-run ice cream, no chains</h3>
+          <p>The legendary Starowiślna queue and Nowa Huta's one-flavor-a-day classics.</p>
+          <span class="s-more">Read the guide ↗</span>
+        </a>
+        <a class="slide" href="/kazimierz-guide/">
+          <span class="s-tag">Neighborhood guide</span>
+          <h3>Kazimierz between the crowds</h3>
+          <p>Coffee in former prayer houses and the calm end of the loudest district.</p>
+          <span class="s-more">Read the guide ↗</span>
+        </a>
+      </div>
+      <div class="slide-dots" id="heroDots" role="tablist" aria-label="Slides"></div>
+    </div>
     <h1>Where locals <em>actually</em><br>eat and drink in Krakow.</h1>
     <p class="lead">No tourist traps, no sponsored rankings. Every cafe, bakery and bar on this site has been visited, eaten at and argued about by people who live here.</p>
     <div class="hero-cta">
@@ -205,5 +228,38 @@
   </div>
 </footer>
 
+<script>
+  (function () {
+    var box = document.getElementById('heroSlides');
+    var dotsBox = document.getElementById('heroDots');
+    if (!box || !dotsBox) return;
+    var slides = box.children.length, i = 0, paused = false;
+    for (var k = 0; k < slides; k++) {
+      var d = document.createElement('button');
+      d.setAttribute('aria-label', 'Slide ' + (k + 1));
+      d.dataset.i = k;
+      d.addEventListener('click', function () { go(+this.dataset.i); });
+      dotsBox.appendChild(d);
+    }
+    function go(n) {
+      i = (n + slides) % slides;
+      box.scrollTo({ left: box.clientWidth * i, behavior: 'smooth' });
+      mark();
+    }
+    function mark() {
+      [].forEach.call(dotsBox.children, function (d, k) {
+        d.classList.toggle('on', k === i);
+      });
+    }
+    box.addEventListener('scroll', function () {
+      var n = Math.round(box.scrollLeft / box.clientWidth);
+      if (n !== i) { i = n; mark(); }
+    }, { passive: true });
+    ['mouseenter', 'touchstart', 'focusin'].forEach(function (e) { box.addEventListener(e, function () { paused = true; }); });
+    ['mouseleave', 'focusout'].forEach(function (e) { box.addEventListener(e, function () { paused = false; }); });
+    setInterval(function () { if (!paused && !document.hidden) go(i + 1); }, 5200);
+    mark();
+  })();
+</script>
 </body>
 </html>
