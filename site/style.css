@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap');
+
 /* BiteKrakow — design system v2 "Paper & Ink".
    Papierowa biel, atrament, terakota jako jedyny akcent.
    Wielka typografia magazynowa, hairline'y zamiast kafelków. */
@@ -910,4 +912,235 @@ section h2 + p.section-lead { line-height: 1.75; }
   .hero-stats .stat { padding: 14px 0; border-bottom: 1px solid var(--line); }
   .hero-stats .stat + .stat { padding-left: 0; border-left: none; }
   .hero-stats .stat:last-child { border-bottom: none; }
+}
+
+/* ================= KARTA 5.0: chip oceny na zdjęciu + karuzela opinii ================= */
+
+.article-body .venue-card { position: relative; }
+
+/* Ocena Google jako szklany chip w rogu zdjęcia (jak w mapach) */
+.article-body .venue-rating {
+  position: absolute; top: 14px; left: 14px; z-index: 3;
+  margin: 0; padding: 7px 13px;
+  font-size: 0.85rem; line-height: 1;
+  background: rgba(18, 18, 16, 0.5);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+.article-body .venue-rating:empty { display: none; }
+.article-body .venue-rating .stars { font-size: 0.9rem; }
+.article-body .venue-rating .count { display: none; }
+
+/* Sekcja opinii */
+.article-body .venue-reviews {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 16px; margin-top: 18px;
+}
+.article-body .venue-reviews .src {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--gold);
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 13px;
+}
+.article-body .venue-reviews .src::before {
+  content: "G";
+  display: grid; place-items: center;
+  width: 17px; height: 17px; flex: none;
+  border-radius: 50%; background: #fff; color: #4285f4;
+  font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0;
+}
+
+/* Tor karuzeli: pełne wykrwawienie do krawędzi panelu, snapowanie palcem */
+.review-track {
+  display: flex; gap: 12px;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin: 0 -26px; padding: 2px 26px 8px;
+}
+.review-track::-webkit-scrollbar { display: none; }
+
+/* Pojedyncza opinia jako karta, podgląd następnej sygnalizuje przewijanie */
+.article-body .review {
+  flex: 0 0 78%; scroll-snap-align: start;
+  margin: 0; padding: 16px 17px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.review-stars { color: var(--gold); font-size: 0.82rem; letter-spacing: 2px; line-height: 1; }
+.article-body .review blockquote {
+  margin: 0; color: #d9d7ce; font-size: 0.9rem; line-height: 1.62;
+  display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden;
+}
+.article-body .review figcaption {
+  margin-top: auto; color: var(--paper); font-weight: 600; font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .review-track { margin: 0 -20px; padding: 2px 20px 8px; }
+  .article-body .review { flex-basis: 85%; }
+}
+
+/* ================= KARTA 6.0: Night glass — głębia, szkło, poświata ================= */
+
+/* Panel: gradient zamiast płaskiej czerni + ciepła poświata przy polecajce,
+   świetlisty górny brzeg, głębszy warstwowy cień. */
+.article-body .venue-card {
+  background:
+    radial-gradient(60% 42% at 22% 44%, rgba(193, 146, 46, 0.10), transparent 60%),
+    radial-gradient(80% 50% at 82% 88%, rgba(188, 90, 52, 0.10), transparent 62%),
+    linear-gradient(177deg, #26241f 0%, #1b1b18 40%, #131311 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 34px 64px -24px rgba(0, 0, 0, 0.55),
+    0 14px 28px -18px rgba(0, 0, 0, 0.4);
+  isolation: isolate;
+}
+.article-body .venue-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 44px 80px -24px rgba(0, 0, 0, 0.6),
+    0 18px 34px -18px rgba(0, 0, 0, 0.45);
+}
+
+/* Ziarno: matowa faktura zamiast cyfrowej płaskiej czerni */
+.article-body .venue-card::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Zdjęcie: łagodniejsze wtopienie w panel */
+.article-body .venue-photo::after {
+  background: linear-gradient(180deg, transparent 46%, rgba(19, 19, 17, 0.55) 78%, #131311 100%);
+}
+
+/* Ocena: chip mocniej doszlifowany */
+.article-body .venue-rating {
+  background: rgba(12, 12, 11, 0.46);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Rozdzielacze jako gasnące hairline'y */
+.article-body .venue-meta {
+  border-bottom: none; position: relative;
+  padding-bottom: 16px; margin-bottom: 18px;
+}
+.article-body .venue-meta::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16) 18%, rgba(255, 255, 255, 0.16) 82%, transparent);
+}
+.article-body .venue-reviews {
+  border-top: none; position: relative;
+  padding-top: 18px; margin-top: 20px;
+}
+.article-body .venue-reviews::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16) 18%, rgba(255, 255, 255, 0.16) 82%, transparent);
+}
+
+/* Polecajka: szklany blok nagrody z górnym refleksem */
+.article-body .menu-pick {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.article-body .menu-pick .score {
+  box-shadow: 0 4px 14px rgba(188, 90, 52, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+/* Karty opinii: to samo szkło, mocniejsze zaokrąglenie */
+.article-body .review {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.022));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* CTA: mocniejsza aura, bardziej „produktowy" przycisk */
+.article-body .venue-actions .btn-primary {
+  box-shadow: 0 8px 24px rgba(47, 111, 228, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06) inset, inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ================= KARTA 6.1: typografia panelu (inny vibe niż strona) ================= */
+
+/* Panel przechodzi na modern-grotesk + technical mono, odcinając się od
+   redakcyjnego Fraunces reszty strony. Zmiana tylko w obrębie karty. */
+.article-body .venue-card {
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}
+
+/* Nazwa dania: ciężki grotesk wersalikami (kierunek 02 "Bold").
+   Wersaliki przez text-transform, więc w DOM tekst zostaje normalny (SEO/AI). */
+.article-body .menu-pick .dish {
+  font-family: "Space Grotesk", var(--font-sans);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.16rem;
+  line-height: 1.16;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+/* Tagi też na techniczny mono, dla spójności odczytu */
+.article-body .venue-tags .pill {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+
+/* Mikro-etykiety: rytm dopasowany do szerszego JetBrains Mono */
+.article-body .venue-meta { letter-spacing: 0.01em; }
+.article-body .menu-pick .what,
+.article-body .venue-reviews .src { letter-spacing: 0.15em; }
+
+/* ================= KARTA 6.2: polecajka wyrównana + medalion oceny ================= */
+
+/* Siatka: medalion po lewej (spina nagłówek), werdykt pełną szerokością pod spodem.
+   display:contents rozpakowuje wewnętrzny <div>, żeby jego dzieci trafiły do siatki. */
+.article-body .menu-pick {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  row-gap: 6px;
+  align-items: center;
+  padding: 18px 20px;
+}
+.article-body .menu-pick > div { display: contents; }
+
+/* Ocena jako okrągła pieczęć — mocny punkt centralny, nie mały kafelek */
+.article-body .menu-pick .score {
+  grid-column: 1; grid-row: 1 / span 2; align-self: center;
+  width: 64px; height: 64px; border-radius: 50%;
+  padding: 0; gap: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-size: 1.35rem; line-height: 1;
+}
+.article-body .menu-pick .score small {
+  font-size: 0.5rem; font-weight: 500; opacity: 0.9; margin-top: 2px; letter-spacing: 0.03em;
+}
+
+/* Nagłówek obok medalionu, werdykt na całą szerokość — równo do lewej krawędzi */
+.article-body .menu-pick .what { grid-column: 2; grid-row: 1; align-self: end; margin: 0 0 1px; }
+.article-body .menu-pick .dish { grid-column: 2; grid-row: 2; align-self: start; margin: 0; }
+.article-body .menu-pick .verdict { grid-column: 1 / -1; grid-row: 3; margin: 6px 0 0; }
+
+@media (max-width: 640px) {
+  .article-body .menu-pick { column-gap: 14px; padding: 16px; }
+  .article-body .menu-pick .score { width: 58px; height: 58px; font-size: 1.25rem; }
 }

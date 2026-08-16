@@ -54,11 +54,21 @@
     const reviews = Array.isArray(v.reviews) ? v.reviews.filter(r => r.text) : [];
     const reviewsEl = card.querySelector('.venue-reviews');
     if (reviewsEl && reviews.length) {
+      const stars = n => {
+        const full = Math.round(Math.max(0, Math.min(5, n)));
+        return '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full);
+      };
       reviewsEl.innerHTML =
         `<div class="src">Reviews from Google</div>` +
-        reviews.slice(0, 2).map(r =>
-          `<p class="review"><b>${esc(r.author)}</b> ☆ ${r.rating}/5<br>“${esc(r.text)}”</p>`
-        ).join('');
+        `<div class="review-track">` +
+        reviews.slice(0, 3).map(r =>
+          `<figure class="review">` +
+            `<div class="review-stars" aria-label="${r.rating} out of 5 on Google">${stars(r.rating)}</div>` +
+            `<blockquote>${esc(r.text)}</blockquote>` +
+            `<figcaption>${esc(r.author)}</figcaption>` +
+          `</figure>`
+        ).join('') +
+        `</div>`;
       reviewsEl.hidden = false;
     }
   }
