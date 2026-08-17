@@ -29,20 +29,130 @@
     "headline": "Kleparz Food and Coffee Guide: Where Locals Eat Near Krakow's Oldest Market",
     "datePublished": "2026-07-07",
     "dateModified": "2026-08-14",
-    "author": { "@type": "Person", "name": "Cezary Musiał", "url": "https://bitekrakow.com/about/" },
-    "publisher": { "@type": "Organization", "name": "BiteKrakow", "url": "https://bitekrakow.com" },
-    "about": { "@type": "Place", "name": "Kleparz", "containedInPlace": { "@type": "City", "name": "Kraków" } },
+    "author": {
+      "@type": "Person",
+      "name": "Cezary Musiał",
+      "url": "https://bitekrakow.com/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BiteKrakow",
+      "url": "https://bitekrakow.com"
+    },
+    "about": {
+      "@type": "Place",
+      "name": "Kleparz",
+      "containedInPlace": {
+        "@type": "City",
+        "name": "Kraków"
+      }
+    },
     "mainEntity": {
       "@type": "ItemList",
       "name": "Where to Eat and Drink in Kleparz, Krakow",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "item": { "@type": "CafeOrCoffeeShop", "name": "Bruk Cafe",
-          "address": { "@type": "PostalAddress", "streetAddress": "ul. Krótka 1", "addressLocality": "Kraków", "postalCode": "31-149", "addressCountry": "PL" },
-          "servesCuisine": ["Specialty Coffee", "Breakfast", "Basque Cheesecake"] } },
-        { "@type": "ListItem", "position": 2, "item": { "@type": "Bakery", "name": "Cukiernia BiBułka",
-          "address": { "@type": "PostalAddress", "streetAddress": "ul. Karmelicka 46", "addressLocality": "Kraków", "addressCountry": "PL" } } },
-        { "@type": "ListItem", "position": 3, "item": { "@type": "BarOrPub", "name": "Baqaro",
-          "address": { "@type": "PostalAddress", "streetAddress": "Rynek Kleparski, Stary Kleparz market", "addressLocality": "Kraków", "addressCountry": "PL" } } }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CafeOrCoffeeShop",
+            "name": "Bruk Cafe",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "ul. Krótka 1",
+              "addressLocality": "Kraków",
+              "postalCode": "31-149",
+              "addressCountry": "PL"
+            },
+            "servesCuisine": [
+              "Specialty Coffee",
+              "Breakfast",
+              "Basque Cheesecake"
+            ],
+            "@id": "https://bitekrakow.com/kleparz-guide/#bruk-cafe",
+            "url": "https://bitekrakow.com/kleparz-guide/#bruk-cafe",
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "9.5",
+                "bestRating": "10",
+                "worstRating": "1"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Cezary Musiał",
+                "url": "https://bitekrakow.com/about/"
+              },
+              "datePublished": "2026-07-07",
+              "reviewBody": "Impossibly delicate, burnt on top and nearly liquid inside. The matcha is whisked properly, not syrup pretending."
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Bakery",
+            "name": "Cukiernia BiBułka",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "ul. Karmelicka 46",
+              "addressLocality": "Kraków",
+              "addressCountry": "PL"
+            },
+            "@id": "https://bitekrakow.com/kleparz-guide/#bibulka",
+            "url": "https://bitekrakow.com/kleparz-guide/#bibulka",
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "9",
+                "bestRating": "10",
+                "worstRating": "1"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Cezary Musiał",
+                "url": "https://bitekrakow.com/about/"
+              },
+              "datePublished": "2026-07-07",
+              "reviewBody": "Crunchy kadayif, thick pistachio cream, chocolate that snaps. The hype for once undersells it."
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "BarOrPub",
+            "name": "Baqaro",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Rynek Kleparski, Stary Kleparz market",
+              "addressLocality": "Kraków",
+              "addressCountry": "PL"
+            },
+            "@id": "https://bitekrakow.com/kleparz-guide/#baqaro",
+            "url": "https://bitekrakow.com/kleparz-guide/#baqaro",
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "8.5",
+                "bestRating": "10",
+                "worstRating": "1"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Cezary Musiał",
+                "url": "https://bitekrakow.com/about/"
+              },
+              "datePublished": "2026-07-07",
+              "reviewBody": "Bitter enough, cold enough, with little Venetian bites that taste like a holiday you did not have to book."
+            }
+          }
+        }
       ]
     }
   }
@@ -136,7 +246,7 @@
       </p>
     </div>
 
-    <section class="venue-card" data-venue-slug="bruk-cafe">
+    <section class="venue-card" id="bruk-cafe" data-venue-slug="bruk-cafe">
       <div class="venue-photo">
         <img src="/img/bruk-cafe.jpg" alt="Interior of Bruk Cafe on Krótka street in Kleparz, Krakow" loading="lazy">
       </div>
@@ -187,7 +297,7 @@
       </p>
     </div>
 
-    <section class="venue-card" data-venue-slug="bibulka">
+    <section class="venue-card" id="bibulka" data-venue-slug="bibulka">
       <div class="venue-photo">
         <img src="/api/photo?slug=bibulka" alt="Cukiernia BiBułka pastry shop on Karmelicka street in Krakow" loading="lazy" onerror="this.style.display='none'">
       </div>
@@ -229,7 +339,7 @@
       </p>
     </div>
 
-    <section class="venue-card" data-venue-slug="baqaro">
+    <section class="venue-card" id="baqaro" data-venue-slug="baqaro">
       <div class="venue-photo">
         <img src="/api/photo?slug=baqaro" alt="Baqaro aperitivo bar at Stary Kleparz market in Krakow" loading="lazy" onerror="this.style.display='none'">
       </div>

@@ -29,21 +29,129 @@
     "headline": "A Perfect Day in Kleparz, Krakow: Morning to Evening Itinerary (2026)",
     "datePublished": "2026-08-13",
     "dateModified": "2026-08-13",
-    "author": { "@type": "Person", "name": "Cezary Musiał", "url": "https://bitekrakow.com/about/" },
-    "publisher": { "@type": "Organization", "name": "BiteKrakow", "url": "https://bitekrakow.com" },
+    "author": {
+      "@type": "Person",
+      "name": "Cezary Musiał",
+      "url": "https://bitekrakow.com/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BiteKrakow",
+      "url": "https://bitekrakow.com"
+    },
     "mainEntity": {
       "@type": "ItemList",
       "name": "A Day in Kleparz Itinerary",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "item": { "@type": "CafeOrCoffeeShop", "name": "Bruk Cafe",
-          "address": { "@type": "PostalAddress", "streetAddress": "ul. Krotka 1", "addressLocality": "Krakow", "postalCode": "31-149", "addressCountry": "PL" },
-          "servesCuisine": ["Specialty Coffee", "Breakfast"] } },
-        { "@type": "ListItem", "position": 2, "item": { "@type": "Restaurant", "name": "Restauracja Atrium",
-          "address": { "@type": "PostalAddress", "streetAddress": "ul. Krzywa 7", "addressLocality": "Krakow", "addressCountry": "PL" },
-          "servesCuisine": ["Polish", "European"] } },
-        { "@type": "ListItem", "position": 3, "item": { "@type": "Restaurant", "name": "Forty Kleparz Restobar",
-          "address": { "@type": "PostalAddress", "streetAddress": "ul. Kamienna 2-4", "addressLocality": "Krakow", "addressCountry": "PL" },
-          "servesCuisine": ["International", "Cocktails"] } }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CafeOrCoffeeShop",
+            "name": "Bruk Cafe",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "ul. Krotka 1",
+              "addressLocality": "Krakow",
+              "postalCode": "31-149",
+              "addressCountry": "PL"
+            },
+            "servesCuisine": [
+              "Specialty Coffee",
+              "Breakfast"
+            ],
+            "@id": "https://bitekrakow.com/day-in-kleparz/#bruk-cafe",
+            "url": "https://bitekrakow.com/day-in-kleparz/#bruk-cafe",
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "9.5",
+                "bestRating": "10",
+                "worstRating": "1"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Cezary Musiał",
+                "url": "https://bitekrakow.com/about/"
+              },
+              "datePublished": "2026-08-13",
+              "reviewBody": "The morning light, the quiet street, the cheesecake. This is why the day starts here and not at the station Starbucks."
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Restaurant",
+            "name": "Restauracja Atrium",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "ul. Krzywa 7",
+              "addressLocality": "Krakow",
+              "addressCountry": "PL"
+            },
+            "servesCuisine": [
+              "Polish",
+              "European"
+            ],
+            "@id": "https://bitekrakow.com/day-in-kleparz/#atrium",
+            "url": "https://bitekrakow.com/day-in-kleparz/#atrium",
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "8.5",
+                "bestRating": "10",
+                "worstRating": "1"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Cezary Musiał",
+                "url": "https://bitekrakow.com/about/"
+              },
+              "datePublished": "2026-08-13",
+              "reviewBody": "The zurek was proper, sour and thick. The pork rib fell apart before the knife arrived. Market ingredients, restaurant skill."
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Restaurant",
+            "name": "Forty Kleparz Restobar",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "ul. Kamienna 2-4",
+              "addressLocality": "Krakow",
+              "addressCountry": "PL"
+            },
+            "servesCuisine": [
+              "International",
+              "Cocktails"
+            ],
+            "@id": "https://bitekrakow.com/day-in-kleparz/#forty-kleparz",
+            "url": "https://bitekrakow.com/day-in-kleparz/#forty-kleparz",
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "8.5",
+                "bestRating": "10",
+                "worstRating": "1"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Cezary Musiał",
+                "url": "https://bitekrakow.com/about/"
+              },
+              "datePublished": "2026-08-13",
+              "reviewBody": "The cocktail was correctly bitter. The courtyard was correctly quiet. Kleparz does not need nightlife to end a day well."
+            }
+          }
+        }
       ]
     }
   }
@@ -122,7 +230,7 @@
       </p>
     </div>
 
-    <section class="venue-card" data-venue-slug="bruk-cafe">
+    <section class="venue-card" id="bruk-cafe" data-venue-slug="bruk-cafe">
       <div class="venue-photo">
         <img src="/img/bruk-cafe.jpg" alt="Bruk Cafe morning coffee on Krotka street, Kleparz, Krakow" loading="lazy">
       </div>
@@ -220,7 +328,7 @@
       </p>
     </div>
 
-    <section class="venue-card" data-venue-slug="atrium">
+    <section class="venue-card" id="atrium" data-venue-slug="atrium">
       <div class="venue-photo">
         <img src="/api/photo?slug=atrium" alt="Restauracja Atrium on Krzywa street, Kleparz, Krakow" loading="lazy" onerror="this.style.display='none'">
       </div>
@@ -287,7 +395,7 @@
       </p>
     </div>
 
-    <section class="venue-card" data-venue-slug="forty-kleparz">
+    <section class="venue-card" id="forty-kleparz" data-venue-slug="forty-kleparz">
       <div class="venue-photo">
         <img src="/api/photo?slug=forty-kleparz" alt="Forty Kleparz Restobar courtyard terrace on Kamienna, Krakow" loading="lazy" onerror="this.style.display='none'">
       </div>

@@ -1144,3 +1144,6 @@ section h2 + p.section-lead { line-height: 1.75; }
   .article-body .menu-pick { column-gap: 14px; padding: 16px; }
   .article-body .menu-pick .score { width: 58px; height: 58px; font-size: 1.25rem; }
 }
+
+/* Kotwice lokali (#slug): anchor ląduje pod sticky headerem */
+.article-body .venue-card { scroll-margin-top: 96px; }
