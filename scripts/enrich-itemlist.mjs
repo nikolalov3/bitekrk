@@ -54,7 +54,7 @@ function processFile(file) {
   html = html.replace(scriptRe, (full, jsonText) => {
     let obj;
     try { obj = JSON.parse(jsonText); } catch { return full; }
-    if (obj['@type'] !== 'Article' || !obj.mainEntity || obj.mainEntity['@type'] !== 'ItemList') return full;
+    if (!['Article', 'NewsArticle'].includes(obj['@type']) || !obj.mainEntity || obj.mainEntity['@type'] !== 'ItemList') return full;
 
     const items = obj.mainEntity.itemListElement;
     if (!Array.isArray(items)) return full;
