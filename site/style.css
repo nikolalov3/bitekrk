@@ -1147,3 +1147,13 @@ section h2 + p.section-lead { line-height: 1.75; }
 
 /* Kotwice lokali (#slug): anchor ląduje pod sticky headerem */
 .article-body .venue-card { scroll-margin-top: 96px; }
+
+/* ================= FIX MOBILE: sticky header nie nachodzi na treść ================= */
+/* Na mobile header jest w kolumnie (logo + nav), ale wcześniejsza reguła klamruje
+   .wrap do 58px, przez co nav wychodził poza tło headera i lądował na treści.
+   Wysokość auto + tło/obramowanie na całym headerze naprawia nachodzenie. */
+@media (max-width: 640px) {
+  .site-header { background: rgba(250, 249, 246, 0.94); }
+  .site-header .wrap { height: auto; min-height: 0; padding-top: 10px; padding-bottom: 10px; }
+  .site-header .site-nav { padding-bottom: 2px; }
+}
