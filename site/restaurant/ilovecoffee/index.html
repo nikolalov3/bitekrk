@@ -183,71 +183,33 @@
   </div>
 </header>
 
-<article>
-  <header class="article-header wrap-narrow">
-    <span class="pill">Krowodrza · $$</span>
-    <h1>I Love Coffee</h1>
-    <p class="meta">Place profile · Details and ratings from Google and the BiteKrakow guides · Updated 19.08.2026</p>
-  </header>
-
-  <div class="article-body wrap">
-    <section class="venue-card" id="ilovecoffee" data-venue-slug="ilovecoffee">
-      <div class="venue-photo">
-        <img src="/api/photo?slug=ilovecoffee" alt="I Love Coffee in Krowodrza, Kraków" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="venue-body">
-        <div class="venue-rating" aria-label="Google rating"></div>
-        <div class="venue-meta">
-          <span>ul. Kazimierza Wielkiego 86, Kraków</span>
-          
-          <span>$$</span>
-        </div>
-        <div class="amenity-grid">
-          <span class="amen">Cards accepted</span>
-          <span class="amen">Contactless pay</span>
-          <span class="amen">Vegetarian options</span>
-          <span class="amen">Takes reservations</span>
-          <span class="amen">Takeout</span>
-          <span class="amen">Good for kids</span>
-          <span class="amen">Good for groups</span>
-          <span class="amen">Breakfast</span>
-          <span class="amen">Lunch</span>
-          <span class="amen">Dinner</span>
-          <span class="amen">Coffee</span>
-          <span class="amen">Desserts</span>
-          <span class="amen">Beer</span>
-          <span class="amen">Wine</span>
-          <span class="amen">Wheelchair accessible</span>
-          <span class="amen">Laptop-friendly</span>
-        </div>
-        <div class="venue-hours">
-          <div class="hrs-title">Opening hours</div>
-          <dl>
-            <dt>Monday</dt><dd>7:30 AM – 9:00 PM</dd>
-            <dt>Tuesday</dt><dd>7:30 AM – 9:00 PM</dd>
-            <dt>Wednesday</dt><dd>7:30 AM – 9:00 PM</dd>
-            <dt>Thursday</dt><dd>7:30 AM – 9:00 PM</dd>
-            <dt>Friday</dt><dd>7:30 AM – 9:00 PM</dd>
-            <dt>Saturday</dt><dd>9:00 AM – 4:00 PM</dd>
-            <dt>Sunday</dt><dd>9:00 AM – 4:00 PM</dd>
-          </dl>
-        </div>
-        <div class="venue-tags">
-          <span class="pill">cafe</span>
-          <span class="pill">breakfast</span>
-          <span class="pill">laptop friendly</span>
-        </div>
-        <div class="venue-reviews" hidden></div>
-        <div class="venue-actions">
-          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=I%20Love%20Coffee%20ul.%20Kazimierza%20Wielkiego%2086%2C%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
-          <a class="btn btn-ghost" href="https://pl-pl.facebook.com/ilovecoffeekrakow/" target="_blank" rel="noopener">Website</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="prose">
+<article class="venue-profile" data-venue-slug="ilovecoffee">
+  <div class="wrap vp-topwrap">
+    <nav class="vp-crumb" aria-label="Breadcrumb">
+      <a href="/restaurants/">All places</a>
+      <span aria-hidden="true">/</span>
+      <a href="/restaurants/#krowodrza">Krowodrza</a>
+      <span aria-hidden="true">/</span>
+      <span class="cur">I Love Coffee</span>
+    </nav>
+    <header class="vp-head">
+      <span class="pill">Krowodrza · $$</span>
+      <h1>I Love Coffee</h1>
       
-      
+    </header>
+  </div>
+
+  <div class="wrap vp-hero-wrap">
+    <div class="vp-hero">
+      <img src="/api/photo?slug=ilovecoffee" alt="I Love Coffee in Krowodrza, Kraków" onerror="this.parentNode.classList.add('noimg')">
+    </div>
+  </div>
+
+  <div class="wrap vp-layout">
+    <main class="vp-main">
+      <section class="vp-block">
+        <h2 class="vp-h">Our take</h2>
+        
       <div class="bk-quote">
         <div class="bk-score">9/10 · BITEKRAKOW SCORE</div>
         <blockquote>The V60 is immaculate. The breakfast is simple, well-sourced, and filling. The calm in the room is the kind of thing other cafes try and fail to manufacture.</blockquote>
@@ -268,20 +230,75 @@
         <blockquote>Homemade in the literal sense. The cake counter changes daily; whatever they cut for you, say yes.</blockquote>
         <p class="bk-src">From <a href="/where-to-work-krakow/">Best Cafes to Work From a Laptop in Krakow</a></p>
       </div>
-      
-      <h2 class="deco">Featured in our guides</h2>
-      <ul class="featured-list">
+      </section>
+
+      <section class="vp-block">
+        <h2 class="vp-h">Featured in our guides</h2>
+        <ul class="featured-list">
         <li><a href="/krowodrza-guide/">Krowodrza: 6 Places Beyond the Old Town Wall</a></li>
         <li><a href="/quiet-cafes-krakow/">Quiet Cafes in Krakow for Reading, Studying or Just Thinking</a></li>
         <li><a href="/specialty-coffee-krakow/">Specialty Coffee in Krakow, District by District</a></li>
         <li><a href="/where-to-work-krakow/">Best Cafes to Work From a Laptop in Krakow</a></li>
-      </ul>
-      <p style="margin-top:28px;">
+        </ul>
+      </section>
+
+      <section class="vp-block">
+        <div class="venue-reviews" hidden></div>
+      </section>
+
+      <p class="vp-editor-note">
         Every place on BiteKrakow was picked by an editor, not an algorithm.
         Browse <a href="/restaurants/">all places</a> or start from
         <a href="/guides/">the guides</a>.
       </p>
-    </div>
+    </main>
+
+    <aside class="vp-side">
+      <div class="vp-info-card">
+        <div class="venue-rating vp-grating" aria-label="Google rating"></div>
+        <dl class="vp-facts">
+          <div><dt>Address</dt><dd>ul. Kazimierza Wielkiego 86, Kraków</dd></div>
+          <div><dt>Price</dt><dd>$$</dd></div>
+          <div><dt>Cuisine</dt><dd class="vp-cuisine">cafe, breakfast, laptop friendly</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+48123134220">+48 12 313 42 20</a></dd></div>
+        </dl>
+        <div class="venue-hours">
+          <div class="hrs-title">Opening hours</div>
+          <dl>
+            <dt>Monday</dt><dd>7:30 AM – 9:00 PM</dd>
+            <dt>Tuesday</dt><dd>7:30 AM – 9:00 PM</dd>
+            <dt>Wednesday</dt><dd>7:30 AM – 9:00 PM</dd>
+            <dt>Thursday</dt><dd>7:30 AM – 9:00 PM</dd>
+            <dt>Friday</dt><dd>7:30 AM – 9:00 PM</dd>
+            <dt>Saturday</dt><dd>9:00 AM – 4:00 PM</dd>
+            <dt>Sunday</dt><dd>9:00 AM – 4:00 PM</dd>
+          </dl>
+        </div>
+        <div class="amenity-grid">
+          <span class="amen">Cards accepted</span>
+          <span class="amen">Contactless pay</span>
+          <span class="amen">Vegetarian options</span>
+          <span class="amen">Takes reservations</span>
+          <span class="amen">Takeout</span>
+          <span class="amen">Good for kids</span>
+          <span class="amen">Good for groups</span>
+          <span class="amen">Breakfast</span>
+          <span class="amen">Lunch</span>
+          <span class="amen">Dinner</span>
+          <span class="amen">Coffee</span>
+          <span class="amen">Desserts</span>
+          <span class="amen">Beer</span>
+          <span class="amen">Wine</span>
+          <span class="amen">Wheelchair accessible</span>
+          <span class="amen">Laptop-friendly</span>
+        </div>
+        <div class="vp-actions">
+          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=I%20Love%20Coffee%20ul.%20Kazimierza%20Wielkiego%2086%2C%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
+          <a class="btn btn-ghost" href="https://pl-pl.facebook.com/ilovecoffeekrakow/" target="_blank" rel="noopener">Website</a>
+        </div>
+        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
+      </div>
+    </aside>
   </div>
 </article>
 

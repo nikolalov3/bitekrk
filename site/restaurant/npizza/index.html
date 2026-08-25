@@ -169,24 +169,78 @@
   </div>
 </header>
 
-<article>
-  <header class="article-header wrap-narrow">
-    <span class="pill">Stare Miasto · $</span>
-    <h1>N'Pizza</h1>
-    <p class="meta">Place profile · Details and ratings from Google and the BiteKrakow guides · Updated 19.08.2026</p>
-  </header>
+<article class="venue-profile" data-venue-slug="npizza">
+  <div class="wrap vp-topwrap">
+    <nav class="vp-crumb" aria-label="Breadcrumb">
+      <a href="/restaurants/">All places</a>
+      <span aria-hidden="true">/</span>
+      <a href="/restaurants/#stare-miasto">Stare Miasto</a>
+      <span aria-hidden="true">/</span>
+      <span class="cur">N'Pizza</span>
+    </nav>
+    <header class="vp-head">
+      <span class="pill">Stare Miasto · $</span>
+      <h1>N'Pizza</h1>
+      <p class="vp-tagline">Top-tier Neapolitan pizza at the best value in town, inside the Tytano courtyard.</p>
+    </header>
+  </div>
 
-  <div class="article-body wrap">
-    <section class="venue-card" id="npizza" data-venue-slug="npizza">
-      <div class="venue-photo">
-        <img src="/api/photo?slug=npizza" alt="N'Pizza in Stare Miasto, Kraków" loading="lazy" onerror="this.style.display='none'">
+  <div class="wrap vp-hero-wrap">
+    <div class="vp-hero">
+      <img src="/api/photo?slug=npizza" alt="N'Pizza in Stare Miasto, Kraków" onerror="this.parentNode.classList.add('noimg')">
+    </div>
+  </div>
+
+  <div class="wrap vp-layout">
+    <main class="vp-main">
+      <section class="vp-block">
+        <h2 class="vp-h">Our take</h2>
+        
+      <div class="bk-quote">
+        <div class="bk-score">9/10 · BITEKRAKOW SCORE</div>
+        <blockquote>Top-tier Neapolitan dough at the friendliest prices in town, in the middle of the best courtyard for a night out. Hard to do better for the money.</blockquote>
+        <p class="bk-src">From <a href="/italian-krakow/">The Best Italian in Krakow, From Pizza to Truffle Pasta</a></p>
       </div>
-      <div class="venue-body">
-        <div class="venue-rating" aria-label="Google rating"></div>
-        <div class="venue-meta">
-          <span>ul. Rajska 3, 31-124 Kraków</span>
-          <span>Lunch and dinner</span>
-          <span>$</span>
+      </section>
+
+      <section class="vp-block">
+        <h2 class="vp-h">Featured in our guides</h2>
+        <ul class="featured-list">
+        <li><a href="/italian-krakow/">The Best Italian in Krakow, From Pizza to Truffle Pasta</a></li>
+        </ul>
+      </section>
+
+      <section class="vp-block">
+        <div class="venue-reviews" hidden></div>
+      </section>
+
+      <p class="vp-editor-note">
+        Every place on BiteKrakow was picked by an editor, not an algorithm.
+        Browse <a href="/restaurants/">all places</a> or start from
+        <a href="/guides/">the guides</a>.
+      </p>
+    </main>
+
+    <aside class="vp-side">
+      <div class="vp-info-card">
+        <div class="venue-rating vp-grating" aria-label="Google rating"></div>
+        <dl class="vp-facts">
+          <div><dt>Address</dt><dd>ul. Rajska 3, 31-124 Kraków</dd></div>
+          <div><dt>Price</dt><dd>$</dd></div>
+          <div><dt>Cuisine</dt><dd class="vp-cuisine">italian, neapolitan pizza, tytano, best value</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+48122628495">+48 12 262 84 95</a></dd></div>
+        </dl>
+        <div class="venue-hours">
+          <div class="hrs-title">Opening hours</div>
+          <dl>
+            <dt>Monday</dt><dd>1:00 – 10:00 PM</dd>
+            <dt>Tuesday</dt><dd>1:00 – 10:00 PM</dd>
+            <dt>Wednesday</dt><dd>1:00 – 10:00 PM</dd>
+            <dt>Thursday</dt><dd>1:00 – 11:00 PM</dd>
+            <dt>Friday</dt><dd>1:00 – 11:00 PM</dd>
+            <dt>Saturday</dt><dd>1:00 – 11:00 PM</dd>
+            <dt>Sunday</dt><dd>1:00 – 11:00 PM</dd>
+          </dl>
         </div>
         <div class="amenity-grid">
           <span class="amen">Cards accepted</span>
@@ -208,51 +262,13 @@
           <span class="amen">Cocktails</span>
           <span class="amen">Wheelchair accessible</span>
         </div>
-        <div class="venue-hours">
-          <div class="hrs-title">Opening hours</div>
-          <dl>
-            <dt>Monday</dt><dd>1:00 – 10:00 PM</dd>
-            <dt>Tuesday</dt><dd>1:00 – 10:00 PM</dd>
-            <dt>Wednesday</dt><dd>1:00 – 10:00 PM</dd>
-            <dt>Thursday</dt><dd>1:00 – 11:00 PM</dd>
-            <dt>Friday</dt><dd>1:00 – 11:00 PM</dd>
-            <dt>Saturday</dt><dd>1:00 – 11:00 PM</dd>
-            <dt>Sunday</dt><dd>1:00 – 11:00 PM</dd>
-          </dl>
-        </div>
-        <div class="venue-tags">
-          <span class="pill">italian</span>
-          <span class="pill">neapolitan pizza</span>
-          <span class="pill">tytano</span>
-          <span class="pill">best value</span>
-        </div>
-        <div class="venue-reviews" hidden></div>
-        <div class="venue-actions">
+        <div class="vp-actions">
           <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=N'Pizza%20ul.%20Rajska%203%2C%2031-124%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
           <a class="btn btn-ghost" href="https://npizza.pl/" target="_blank" rel="noopener">Website</a>
         </div>
+        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
       </div>
-    </section>
-
-    <div class="prose">
-      <p>Top-tier Neapolitan pizza at the best value in town, inside the Tytano courtyard.</p>
-      
-      <div class="bk-quote">
-        <div class="bk-score">9/10 · BITEKRAKOW SCORE</div>
-        <blockquote>Top-tier Neapolitan dough at the friendliest prices in town, in the middle of the best courtyard for a night out. Hard to do better for the money.</blockquote>
-        <p class="bk-src">From <a href="/italian-krakow/">The Best Italian in Krakow, From Pizza to Truffle Pasta</a></p>
-      </div>
-      
-      <h2 class="deco">Featured in our guides</h2>
-      <ul class="featured-list">
-        <li><a href="/italian-krakow/">The Best Italian in Krakow, From Pizza to Truffle Pasta</a></li>
-      </ul>
-      <p style="margin-top:28px;">
-        Every place on BiteKrakow was picked by an editor, not an algorithm.
-        Browse <a href="/restaurants/">all places</a> or start from
-        <a href="/guides/">the guides</a>.
-      </p>
-    </div>
+    </aside>
   </div>
 </article>
 

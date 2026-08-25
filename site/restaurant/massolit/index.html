@@ -178,58 +178,33 @@
   </div>
 </header>
 
-<article>
-  <header class="article-header wrap-narrow">
-    <span class="pill">Stare Miasto · $$</span>
-    <h1>Massolit Books &amp; Café</h1>
-    <p class="meta">Place profile · Details and ratings from Google and the BiteKrakow guides · Updated 19.08.2026</p>
-  </header>
-
-  <div class="article-body wrap">
-    <section class="venue-card" id="massolit" data-venue-slug="massolit">
-      <div class="venue-photo">
-        <img src="/api/photo?slug=massolit" alt="Massolit Books &amp; Café in Stare Miasto, Kraków" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="venue-body">
-        <div class="venue-rating" aria-label="Google rating"></div>
-        <div class="venue-meta">
-          <span>ul. Felicjanek 4, Kraków</span>
-          
-          <span>$$</span>
-        </div>
-        <div class="amenity-grid">
-          <span class="amen">Cards accepted</span>
-          <span class="amen">Contactless pay</span>
-          <span class="amen">Laptop-friendly</span>
-        </div>
-        <div class="venue-hours">
-          <div class="hrs-title">Opening hours</div>
-          <dl>
-            <dt>Monday</dt><dd>10:00 AM – 8:00 PM</dd>
-            <dt>Tuesday</dt><dd>10:00 AM – 8:00 PM</dd>
-            <dt>Wednesday</dt><dd>10:00 AM – 8:00 PM</dd>
-            <dt>Thursday</dt><dd>10:00 AM – 8:00 PM</dd>
-            <dt>Friday</dt><dd>10:00 AM – 8:00 PM</dd>
-            <dt>Saturday</dt><dd>10:00 AM – 8:00 PM</dd>
-            <dt>Sunday</dt><dd>10:00 AM – 8:00 PM</dd>
-          </dl>
-        </div>
-        <div class="venue-tags">
-          <span class="pill">cafe</span>
-          <span class="pill">bookstore</span>
-          <span class="pill">laptop friendly</span>
-        </div>
-        <div class="venue-reviews" hidden></div>
-        <div class="venue-actions">
-          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=Massolit%20Books%20%26%20Caf%C3%A9%20ul.%20Felicjanek%204%2C%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
-          <a class="btn btn-ghost" href="http://www.massolit.com/" target="_blank" rel="noopener">Website</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="prose">
+<article class="venue-profile" data-venue-slug="massolit">
+  <div class="wrap vp-topwrap">
+    <nav class="vp-crumb" aria-label="Breadcrumb">
+      <a href="/restaurants/">All places</a>
+      <span aria-hidden="true">/</span>
+      <a href="/restaurants/#stare-miasto">Stare Miasto</a>
+      <span aria-hidden="true">/</span>
+      <span class="cur">Massolit Books &amp; Café</span>
+    </nav>
+    <header class="vp-head">
+      <span class="pill">Stare Miasto · $$</span>
+      <h1>Massolit Books &amp; Café</h1>
       
-      
+    </header>
+  </div>
+
+  <div class="wrap vp-hero-wrap">
+    <div class="vp-hero">
+      <img src="/api/photo?slug=massolit" alt="Massolit Books &amp; Café in Stare Miasto, Kraków" onerror="this.parentNode.classList.add('noimg')">
+    </div>
+  </div>
+
+  <div class="wrap vp-layout">
+    <main class="vp-main">
+      <section class="vp-block">
+        <h2 class="vp-h">Our take</h2>
+        
       <div class="bk-quote">
         <div class="bk-score">8.5/10 · BITEKRAKOW SCORE</div>
         <blockquote>Bookshop quiet, good wifi, no one rushes you. The afternoon cake is a productivity hack disguised as a treat.</blockquote>
@@ -245,19 +220,61 @@
         <blockquote>Two hours vanished. The pie was excellent. The book I opened at page one left the cafe at page sixty. Both expenses justified.</blockquote>
         <p class="bk-src">From <a href="/quiet-cafes-krakow/">Quiet Cafes in Krakow for Reading, Studying or Just Thinking</a></p>
       </div>
-      
-      <h2 class="deco">Featured in our guides</h2>
-      <ul class="featured-list">
+      </section>
+
+      <section class="vp-block">
+        <h2 class="vp-h">Featured in our guides</h2>
+        <ul class="featured-list">
         <li><a href="/krakow-digital-nomads/">Krakow for Digital Nomads: Where to Work, What It Costs</a></li>
         <li><a href="/old-town-cafes/">Old Town Krakow Cafes That Locals Actually Use</a></li>
         <li><a href="/quiet-cafes-krakow/">Quiet Cafes in Krakow for Reading, Studying or Just Thinking</a></li>
-      </ul>
-      <p style="margin-top:28px;">
+        </ul>
+      </section>
+
+      <section class="vp-block">
+        <div class="venue-reviews" hidden></div>
+      </section>
+
+      <p class="vp-editor-note">
         Every place on BiteKrakow was picked by an editor, not an algorithm.
         Browse <a href="/restaurants/">all places</a> or start from
         <a href="/guides/">the guides</a>.
       </p>
-    </div>
+    </main>
+
+    <aside class="vp-side">
+      <div class="vp-info-card">
+        <div class="venue-rating vp-grating" aria-label="Google rating"></div>
+        <dl class="vp-facts">
+          <div><dt>Address</dt><dd>ul. Felicjanek 4, Kraków</dd></div>
+          <div><dt>Price</dt><dd>$$</dd></div>
+          <div><dt>Cuisine</dt><dd class="vp-cuisine">cafe, bookstore, laptop friendly</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+48124324150">+48 12 432 41 50</a></dd></div>
+        </dl>
+        <div class="venue-hours">
+          <div class="hrs-title">Opening hours</div>
+          <dl>
+            <dt>Monday</dt><dd>10:00 AM – 8:00 PM</dd>
+            <dt>Tuesday</dt><dd>10:00 AM – 8:00 PM</dd>
+            <dt>Wednesday</dt><dd>10:00 AM – 8:00 PM</dd>
+            <dt>Thursday</dt><dd>10:00 AM – 8:00 PM</dd>
+            <dt>Friday</dt><dd>10:00 AM – 8:00 PM</dd>
+            <dt>Saturday</dt><dd>10:00 AM – 8:00 PM</dd>
+            <dt>Sunday</dt><dd>10:00 AM – 8:00 PM</dd>
+          </dl>
+        </div>
+        <div class="amenity-grid">
+          <span class="amen">Cards accepted</span>
+          <span class="amen">Contactless pay</span>
+          <span class="amen">Laptop-friendly</span>
+        </div>
+        <div class="vp-actions">
+          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=Massolit%20Books%20%26%20Caf%C3%A9%20ul.%20Felicjanek%204%2C%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
+          <a class="btn btn-ghost" href="http://www.massolit.com/" target="_blank" rel="noopener">Website</a>
+        </div>
+        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
+      </div>
+    </aside>
   </div>
 </article>
 

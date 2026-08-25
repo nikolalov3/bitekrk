@@ -608,111 +608,122 @@ html[dir="rtl"] .cchip { padding: 8px 9px 8px 16px; }
   .article-body .venue-actions .btn { flex: none; width: auto; text-align: left; }
 }
 
-/* ================= KARTA 4.0: atramentowy panel-nagroda ================= */
+/* ================= KARTA 7.0: jasny panel edytorski ================= */
 
 .article-body .venue-card {
-  background: var(--ink);
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
   border-radius: 20px;
   overflow: hidden;
   max-width: 720px;
-  margin: 26px auto 48px;
-  box-shadow: 0 10px 30px rgba(27, 27, 24, 0.12);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 28px auto 52px;
+  box-shadow: 0 14px 34px -20px rgba(27, 27, 24, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .article-body .venue-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(27, 27, 24, 0.18);
+  border-color: var(--line-dark);
+  box-shadow: 0 26px 54px -24px rgba(27, 27, 24, 0.4);
 }
 
-/* Zdjęcie wtapia się w panel */
 .article-body .venue-photo {
   position: relative;
-  height: 300px;
+  height: 290px;
   border-radius: 0;
-  background: #2a2a26;
+  background: var(--paper-warm);
 }
 .article-body .venue-photo::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 55%, var(--ink) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.26) 0%, transparent 24%);
   pointer-events: none;
 }
 
-.article-body .venue-body { padding: 6px 26px 26px; color: #c9c7bd; }
+/* Ocena Google jako szklany chip na zdjęciu */
+.article-body .venue-rating {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  margin: 0; padding: 6px 13px;
+  background: rgba(255,255,255,0.94);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-radius: 999px; font-size: 0.82rem; font-weight: 600; color: var(--ink);
+  box-shadow: 0 4px 14px rgba(27,27,24,0.22);
+}
+.article-body .venue-rating:empty { display: none; }
+.article-body .venue-rating .stars .stars-bg { color: rgba(27,27,24,0.15); }
+.article-body .venue-rating .count { color: var(--ink-soft); }
 
-.article-body .venue-rating { color: var(--paper); font-size: 0.88rem; margin-bottom: 6px; }
-.article-body .venue-rating .stars .stars-bg { color: rgba(255,255,255,0.22); }
-.article-body .venue-rating .count { color: #8f8d84; }
+.article-body .venue-body { padding: 20px 24px 24px; color: var(--ink); }
 
 .article-body .venue-meta {
-  color: #8f8d84;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: var(--ink-soft);
+  font-family: var(--font-mono); font-size: 0.74rem;
+  border-bottom: 1px solid var(--line);
   padding-bottom: 14px; margin-bottom: 16px;
 }
 
-/* Polecajka: podświetlony blok nagrody */
+/* Polecajka: jasny blok z terakotowym badge oceny */
 .article-body .menu-pick {
-  background: rgba(255,255,255,0.055);
-  border: none; border-left: none; border-radius: 12px;
-  padding: 14px 16px; margin-bottom: 14px;
-  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--paper);
+  border: 1px solid var(--line); border-left: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px; margin-bottom: 16px;
+  display: flex; gap: 16px; align-items: flex-start;
 }
 .article-body .menu-pick .score {
   background: var(--accent); color: #fff;
-  border-radius: 9px; padding: 7px 10px;
-  font-size: 0.9rem; display: flex; align-items: baseline; gap: 3px;
+  border-radius: 12px; padding: 10px 12px; flex: none;
+  font-family: var(--font-mono); font-weight: 700;
+  font-size: 1.05rem; display: flex; align-items: baseline; gap: 2px;
+  box-shadow: 0 8px 18px -8px rgba(188,90,52,0.7);
 }
+.article-body .menu-pick .score small { font-size: 0.6rem; opacity: 0.85; }
 .article-body .menu-pick .score::after { display: none; }
 .article-body .menu-pick .what {
-  display: block;
-  color: var(--accent); font-size: 0.62rem;
-  letter-spacing: 0.16em; margin-bottom: 3px;
+  display: block; font-family: var(--font-mono);
+  color: var(--accent-deep); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 4px;
 }
 .article-body .menu-pick .dish {
   font-family: var(--font-serif); font-style: italic;
-  font-size: 1.12rem; font-weight: 600; color: var(--paper);
+  font-size: 1.18rem; font-weight: 600; color: var(--ink); line-height: 1.22;
 }
-.article-body .menu-pick .verdict { color: #a5a399; font-size: 0.88rem; }
+.article-body .menu-pick .verdict { color: var(--ink-soft); font-size: 0.9rem; margin-top: 5px; }
 
-.article-body .venue-note {
-  border-left: 2px solid var(--gold);
-  color: #a5a399;
+.article-body .venue-note { border-left: 2px solid var(--gold); color: var(--ink-soft); }
+
+.article-body .venue-tags { margin-bottom: 4px; display: flex; flex-wrap: wrap; gap: 7px; }
+.article-body .venue-tags .pill {
+  color: var(--ink-soft); background: var(--paper-warm);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 4px 11px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.03em;
 }
+.article-body .venue-tags .pill::before { content: none !important; }
 
-.article-body .venue-tags { margin-bottom: 14px; }
-.article-body .venue-tags .pill { color: #8f8d84; }
-.article-body .venue-tags .pill:not(:first-child)::before { color: #514f48; }
-
-/* Opinie: wyraźna sekcja */
 .article-body .venue-reviews {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 14px; margin-top: 4px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px; margin-top: 16px;
 }
-.article-body .venue-reviews .src { color: var(--gold); }
-.article-body .review { color: #a5a399; }
-.article-body .review b { color: var(--paper); }
+.article-body .venue-reviews .src { color: var(--accent-deep); }
+.article-body .review { color: var(--ink-soft); }
+.article-body .review b { color: var(--ink); }
 
-/* Akcje: przyciski wracają, odwrócone */
-.article-body .venue-actions { gap: 10px; margin-top: 18px; }
+.article-body .venue-actions { gap: 10px; margin-top: 18px; display: flex; flex-wrap: wrap; }
 .article-body .venue-actions .btn {
-  border-radius: 10px; padding: 11px 20px;
+  border-radius: 10px; padding: 11px 18px;
   font-size: 0.78rem; text-decoration: none;
 }
-.article-body .venue-actions .btn-primary {
-  background: var(--paper); color: var(--ink);
-}
+.article-body .venue-actions .btn-primary { background: var(--ink); color: var(--paper); }
 .article-body .venue-actions .btn-primary:hover { background: var(--accent); color: #fff; }
-.article-body .venue-actions .btn-primary::after { content: " ↗"; color: var(--accent); }
-.article-body .venue-actions .btn-primary:hover::after { color: #fff; }
+.article-body .venue-actions .btn-primary::after { content: " ↗"; }
 .article-body .venue-actions .btn-ghost {
-  border: 1px solid rgba(255,255,255,0.25); color: var(--paper);
+  border: 1px solid var(--line-dark); color: var(--ink);
 }
-.article-body .venue-actions .btn-ghost:hover { border-color: var(--paper); }
+.article-body .venue-actions .btn-ghost:hover { border-color: var(--ink); background: var(--paper-warm); }
 
 @media (max-width: 640px) {
-  .article-body .venue-photo { height: 210px; }
-  .article-body .venue-body { padding: 4px 18px 20px; }
-  .article-body .menu-pick { flex-direction: column; gap: 8px; }
+  .article-body .venue-photo { height: 200px; }
+  .article-body .venue-body { padding: 16px 18px 20px; }
   .article-body .venue-actions .btn { flex: 1; text-align: center; }
 }
 
@@ -1216,39 +1227,110 @@ section h2 + p.section-lead { line-height: 1.75; }
 /* Kotwice lokali (#slug): anchor ląduje pod sticky headerem */
 .article-body .venue-card { scroll-margin-top: 96px; }
 
-/* ================= PROFIL LOKALU (/restaurant/<slug>/) ================= */
+/* ================= PROFIL LOKALU (/restaurant/<slug>/) — wizytówka ================= */
 
-/* Znaczniki z Google Places: siatka czytelnych chipów na ciemnym panelu */
+.venue-profile { padding-bottom: 72px; }
+.vp-topwrap { padding-top: 26px; }
+.vp-crumb {
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em;
+  color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.vp-crumb a { color: var(--ink-soft); text-decoration: none; }
+.vp-crumb a:hover { color: var(--accent); }
+.vp-crumb .cur { color: var(--ink); }
+.vp-head { padding: 18px 0 4px; }
+.vp-head .pill { margin-bottom: 14px; }
+.vp-head h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); letter-spacing: -0.03em; }
+.vp-tagline {
+  font-family: var(--font-serif); font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--ink-soft); line-height: 1.4; margin-top: 12px; max-width: 640px;
+}
+
+.vp-hero-wrap { margin-top: 22px; }
+.vp-hero {
+  height: clamp(240px, 42vw, 420px); border-radius: 22px; overflow: hidden;
+  background: var(--paper-warm); position: relative;
+}
+.vp-hero img { width: 100%; height: 100%; object-fit: cover; }
+.vp-hero.noimg img { display: none; }
+.vp-hero.noimg::after { content: "🍽"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 48px; opacity: 0.3; }
+
+.vp-layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 48px;
+  align-items: start; margin-top: 40px;
+}
+.vp-main { min-width: 0; }
+.vp-block { margin-bottom: 34px; }
+.vp-h {
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-deep);
+  margin-bottom: 14px;
+}
+.vp-editor-note { color: var(--ink-soft); font-size: 0.95rem; border-top: 1px solid var(--line); padding-top: 20px; }
+
+/* Panel informacyjny po prawej (sticky) */
+.vp-side { position: sticky; top: 78px; }
+.vp-info-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 18px;
+  padding: 22px; box-shadow: 0 16px 40px -26px rgba(27,27,24,0.4);
+}
+.vp-grating {
+  margin: 0 0 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line);
+  font-size: 0.9rem; font-weight: 600; color: var(--ink);
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.vp-grating:empty { display: none; }
+.vp-grating .count { color: var(--ink-soft); font-weight: 400; font-size: 0.8rem; width: 100%; }
+.vp-facts { display: flex; flex-direction: column; gap: 12px; margin: 0; }
+.vp-facts > div { display: grid; grid-template-columns: 82px 1fr; gap: 12px; align-items: baseline; }
+.vp-facts dt { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+.vp-facts dd { margin: 0; font-size: 0.9rem; color: var(--ink); }
+.vp-facts dd a { color: var(--accent-deep); }
+.vp-cuisine { text-transform: capitalize; }
+
+.vp-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.vp-actions .btn { text-align: center; border-radius: 11px; padding: 12px 16px; font-size: 0.8rem; text-decoration: none; }
+.vp-actions .btn-primary { background: var(--ink); color: var(--paper); }
+.vp-actions .btn-primary:hover { background: var(--accent); color: #fff; }
+.vp-actions .btn-primary::after { content: " ↗"; }
+.vp-actions .btn-ghost { border: 1px solid var(--line-dark); color: var(--ink); }
+.vp-actions .btn-ghost:hover { border-color: var(--ink); background: var(--paper-warm); }
+.vp-source { font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-soft); margin-top: 14px; text-align: center; letter-spacing: 0.03em; }
+
+/* Znaczniki z Google Places / tagów: jasne chipy w panelu */
 .amenity-grid {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin: 2px 0 16px;
+  display: flex; flex-wrap: wrap; gap: 7px;
+  margin: 18px 0; padding-top: 18px; border-top: 1px solid var(--line);
 }
 .amenity-grid .amen {
-  font-family: var(--font-mono);
-  font-size: 0.7rem; letter-spacing: 0.04em;
-  color: #d9d7ce;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  padding: 6px 12px;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.03em;
+  color: var(--ink); background: var(--paper-warm);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px;
   display: inline-flex; align-items: center; gap: 6px;
 }
-.amenity-grid .amen::before { content: "✓"; color: var(--gold); font-weight: 700; }
+.amenity-grid .amen::before { content: "✓"; color: #2f8f4e; font-weight: 700; }
+.amenity-grid .amen.warn { background: #fbeee8; border-color: #f0d3c6; }
 .amenity-grid .amen.warn::before { content: "!"; color: var(--accent); }
 
 /* Godziny otwarcia: tabela dni */
 .venue-hours {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 14px; margin: 4px 0 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px; margin: 18px 0 4px;
 }
 .venue-hours .hrs-title {
   font-family: var(--font-mono);
-  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 10px;
+  font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-deep); margin-bottom: 10px;
 }
-.venue-hours dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 18px; margin: 0; }
-.venue-hours dt { font-family: var(--font-mono); font-size: 0.74rem; color: #8f8d84; }
-.venue-hours dd { font-family: var(--font-mono); font-size: 0.74rem; color: #d9d7ce; margin: 0; }
+.venue-hours dl { display: grid; grid-template-columns: auto 1fr; gap: 5px 18px; margin: 0; }
+.venue-hours dt { font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-soft); }
+.venue-hours dd { font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink); margin: 0; text-align: right; }
+
+@media (max-width: 900px) {
+  .vp-layout { grid-template-columns: 1fr; gap: 32px; }
+  .vp-side { position: static; order: -1; }
+  .vp-info-card { box-shadow: none; }
+}
 
 /* Cytaty redakcyjne na profilu */
 .bk-quote {

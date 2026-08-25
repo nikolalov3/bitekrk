@@ -117,57 +117,74 @@
   </div>
 </header>
 
-<article>
-  <header class="article-header wrap-narrow">
-    <span class="pill">Kazimierz · $</span>
-    <h1>Nasze Tbilisi</h1>
-    <p class="meta">Place profile · Details and ratings from Google and the BiteKrakow guides · Updated 19.08.2026</p>
-  </header>
+<article class="venue-profile" data-venue-slug="nasze-tbilisi">
+  <div class="wrap vp-topwrap">
+    <nav class="vp-crumb" aria-label="Breadcrumb">
+      <a href="/restaurants/">All places</a>
+      <span aria-hidden="true">/</span>
+      <a href="/restaurants/#kazimierz">Kazimierz</a>
+      <span aria-hidden="true">/</span>
+      <span class="cur">Nasze Tbilisi</span>
+    </nav>
+    <header class="vp-head">
+      <span class="pill">Kazimierz · $</span>
+      <h1>Nasze Tbilisi</h1>
+      <p class="vp-tagline">The only Georgian kitchen in Krakow making its own sulguni and imeruli cheese.</p>
+    </header>
+  </div>
 
-  <div class="article-body wrap">
-    <section class="venue-card" id="nasze-tbilisi" data-venue-slug="nasze-tbilisi">
-      <div class="venue-photo">
-        <img src="/api/photo?slug=nasze-tbilisi" alt="Nasze Tbilisi in Kazimierz, Kraków" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="venue-body">
-        <div class="venue-rating" aria-label="Google rating"></div>
-        <div class="venue-meta">
-          <span>ul. Starowiślna 49, 31-038 Kraków</span>
-          <span>Morning-evening, closed Sat</span>
-          <span>$</span>
-        </div>
-        <div class="venue-tags">
-          <span class="pill">georgian</span>
-          <span class="pill">bakery</span>
-          <span class="pill">house-made cheese</span>
-        </div>
-        <div class="venue-reviews" hidden></div>
-        <div class="venue-actions">
-          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=Nasze%20Tbilisi%20ul.%20Starowi%C5%9Blna%2049%2C%2031-038%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
-          
-        </div>
-      </div>
-    </section>
+  <div class="wrap vp-hero-wrap">
+    <div class="vp-hero">
+      <img src="/api/photo?slug=nasze-tbilisi" alt="Nasze Tbilisi in Kazimierz, Kraków" onerror="this.parentNode.classList.add('noimg')">
+    </div>
+  </div>
 
-    <div class="prose">
-      <p>The only Georgian kitchen in Krakow making its own sulguni and imeruli cheese.</p>
-      
+  <div class="wrap vp-layout">
+    <main class="vp-main">
+      <section class="vp-block">
+        <h2 class="vp-h">Our take</h2>
+        
       <div class="bk-quote">
         <div class="bk-score">8.5/10 · BITEKRAKOW SCORE</div>
         <blockquote>The only Georgian kitchen in Krakow making its own sulguni and imeruli cheese, so the khachapuri is house-made from the cheese up. A bakery-first stop, best in the morning.</blockquote>
         <p class="bk-src">From <a href="/georgian-krakow/">The Best Georgian Food in Krakow</a></p>
       </div>
-      
-      <h2 class="deco">Featured in our guides</h2>
-      <ul class="featured-list">
+      </section>
+
+      <section class="vp-block">
+        <h2 class="vp-h">Featured in our guides</h2>
+        <ul class="featured-list">
         <li><a href="/georgian-krakow/">The Best Georgian Food in Krakow</a></li>
-      </ul>
-      <p style="margin-top:28px;">
+        </ul>
+      </section>
+
+      <section class="vp-block">
+        <div class="venue-reviews" hidden></div>
+      </section>
+
+      <p class="vp-editor-note">
         Every place on BiteKrakow was picked by an editor, not an algorithm.
         Browse <a href="/restaurants/">all places</a> or start from
         <a href="/guides/">the guides</a>.
       </p>
-    </div>
+    </main>
+
+    <aside class="vp-side">
+      <div class="vp-info-card">
+        <div class="venue-rating vp-grating" aria-label="Google rating"></div>
+        <dl class="vp-facts">
+          <div><dt>Address</dt><dd>ul. Starowiślna 49, 31-038 Kraków</dd></div>
+          <div><dt>Price</dt><dd>$</dd></div>
+          <div><dt>Cuisine</dt><dd class="vp-cuisine">georgian, bakery, house-made cheese</dd></div>
+          
+        </dl>
+        <div class="vp-actions">
+          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=Nasze%20Tbilisi%20ul.%20Starowi%C5%9Blna%2049%2C%2031-038%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
+          
+        </div>
+        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
+      </div>
+    </aside>
   </div>
 </article>
 

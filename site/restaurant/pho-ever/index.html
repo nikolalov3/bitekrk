@@ -168,24 +168,78 @@
   </div>
 </header>
 
-<article>
-  <header class="article-header wrap-narrow">
-    <span class="pill">Kazimierz · $$</span>
-    <h1>Pho Ever</h1>
-    <p class="meta">Place profile · Details and ratings from Google and the BiteKrakow guides · Updated 19.08.2026</p>
-  </header>
+<article class="venue-profile" data-venue-slug="pho-ever">
+  <div class="wrap vp-topwrap">
+    <nav class="vp-crumb" aria-label="Breadcrumb">
+      <a href="/restaurants/">All places</a>
+      <span aria-hidden="true">/</span>
+      <a href="/restaurants/#kazimierz">Kazimierz</a>
+      <span aria-hidden="true">/</span>
+      <span class="cur">Pho Ever</span>
+    </nav>
+    <header class="vp-head">
+      <span class="pill">Kazimierz · $$</span>
+      <h1>Pho Ever</h1>
+      <p class="vp-tagline">The pho benchmark, a sixteen-hour beef-bone broth with handmade noodles.</p>
+    </header>
+  </div>
 
-  <div class="article-body wrap">
-    <section class="venue-card" id="pho-ever" data-venue-slug="pho-ever">
-      <div class="venue-photo">
-        <img src="/api/photo?slug=pho-ever" alt="Pho Ever in Kazimierz, Kraków" loading="lazy" onerror="this.style.display='none'">
+  <div class="wrap vp-hero-wrap">
+    <div class="vp-hero">
+      <img src="/api/photo?slug=pho-ever" alt="Pho Ever in Kazimierz, Kraków" onerror="this.parentNode.classList.add('noimg')">
+    </div>
+  </div>
+
+  <div class="wrap vp-layout">
+    <main class="vp-main">
+      <section class="vp-block">
+        <h2 class="vp-h">Our take</h2>
+        
+      <div class="bk-quote">
+        <div class="bk-score">9.5/10 · BITEKRAKOW SCORE</div>
+        <blockquote>A sixteen-hour beef-bone broth and noodles made by hand, from a Vietnamese founder who cooks across three countries. The most-reviewed Vietnamese in Krakow, and the pho to measure the others against.</blockquote>
+        <p class="bk-src">From <a href="/vietnamese-krakow/">The Best Vietnamese Food in Krakow</a></p>
       </div>
-      <div class="venue-body">
-        <div class="venue-rating" aria-label="Google rating"></div>
-        <div class="venue-meta">
-          <span>ul. Dajwór 25c, 31-052 Kraków</span>
-          <span>Daily 11:30-21:30</span>
-          <span>$$</span>
+      </section>
+
+      <section class="vp-block">
+        <h2 class="vp-h">Featured in our guides</h2>
+        <ul class="featured-list">
+        <li><a href="/vietnamese-krakow/">The Best Vietnamese Food in Krakow</a></li>
+        </ul>
+      </section>
+
+      <section class="vp-block">
+        <div class="venue-reviews" hidden></div>
+      </section>
+
+      <p class="vp-editor-note">
+        Every place on BiteKrakow was picked by an editor, not an algorithm.
+        Browse <a href="/restaurants/">all places</a> or start from
+        <a href="/guides/">the guides</a>.
+      </p>
+    </main>
+
+    <aside class="vp-side">
+      <div class="vp-info-card">
+        <div class="venue-rating vp-grating" aria-label="Google rating"></div>
+        <dl class="vp-facts">
+          <div><dt>Address</dt><dd>ul. Dajwór 25c, 31-052 Kraków</dd></div>
+          <div><dt>Price</dt><dd>$$</dd></div>
+          <div><dt>Cuisine</dt><dd class="vp-cuisine">vietnamese, pho, handmade noodles</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+48889701855">+48 889 701 855</a></dd></div>
+        </dl>
+        <div class="venue-hours">
+          <div class="hrs-title">Opening hours</div>
+          <dl>
+            <dt>Monday</dt><dd>11:30 AM – 9:30 PM</dd>
+            <dt>Tuesday</dt><dd>11:30 AM – 9:30 PM</dd>
+            <dt>Wednesday</dt><dd>11:30 AM – 9:30 PM</dd>
+            <dt>Thursday</dt><dd>11:30 AM – 9:30 PM</dd>
+            <dt>Friday</dt><dd>11:30 AM – 9:30 PM</dd>
+            <dt>Saturday</dt><dd>11:30 AM – 9:30 PM</dd>
+            <dt>Sunday</dt><dd>11:30 AM – 9:30 PM</dd>
+          </dl>
         </div>
         <div class="amenity-grid">
           <span class="amen">Cards accepted</span>
@@ -203,50 +257,13 @@
           <span class="amen">Beer</span>
           <span class="amen">Wine</span>
         </div>
-        <div class="venue-hours">
-          <div class="hrs-title">Opening hours</div>
-          <dl>
-            <dt>Monday</dt><dd>11:30 AM – 9:30 PM</dd>
-            <dt>Tuesday</dt><dd>11:30 AM – 9:30 PM</dd>
-            <dt>Wednesday</dt><dd>11:30 AM – 9:30 PM</dd>
-            <dt>Thursday</dt><dd>11:30 AM – 9:30 PM</dd>
-            <dt>Friday</dt><dd>11:30 AM – 9:30 PM</dd>
-            <dt>Saturday</dt><dd>11:30 AM – 9:30 PM</dd>
-            <dt>Sunday</dt><dd>11:30 AM – 9:30 PM</dd>
-          </dl>
-        </div>
-        <div class="venue-tags">
-          <span class="pill">vietnamese</span>
-          <span class="pill">pho</span>
-          <span class="pill">handmade noodles</span>
-        </div>
-        <div class="venue-reviews" hidden></div>
-        <div class="venue-actions">
+        <div class="vp-actions">
           <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=Pho%20Ever%20ul.%20Dajw%C3%B3r%2025c%2C%2031-052%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
           <a class="btn btn-ghost" href="https://phoever.pl/" target="_blank" rel="noopener">Website</a>
         </div>
+        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
       </div>
-    </section>
-
-    <div class="prose">
-      <p>The pho benchmark, a sixteen-hour beef-bone broth with handmade noodles.</p>
-      
-      <div class="bk-quote">
-        <div class="bk-score">9.5/10 · BITEKRAKOW SCORE</div>
-        <blockquote>A sixteen-hour beef-bone broth and noodles made by hand, from a Vietnamese founder who cooks across three countries. The most-reviewed Vietnamese in Krakow, and the pho to measure the others against.</blockquote>
-        <p class="bk-src">From <a href="/vietnamese-krakow/">The Best Vietnamese Food in Krakow</a></p>
-      </div>
-      
-      <h2 class="deco">Featured in our guides</h2>
-      <ul class="featured-list">
-        <li><a href="/vietnamese-krakow/">The Best Vietnamese Food in Krakow</a></li>
-      </ul>
-      <p style="margin-top:28px;">
-        Every place on BiteKrakow was picked by an editor, not an algorithm.
-        Browse <a href="/restaurants/">all places</a> or start from
-        <a href="/guides/">the guides</a>.
-      </p>
-    </div>
+    </aside>
   </div>
 </article>
 

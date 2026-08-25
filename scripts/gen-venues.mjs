@@ -278,50 +278,69 @@ ${JSON.stringify(breadcrumb, null, 2).split('\n').map(l => '  ' + l).join('\n')}
   </div>
 </header>
 
-<article>
-  <header class="article-header wrap-narrow">
-    <span class="pill">${esc(displayDistrict)}${v.price_range ? ` · ${esc(v.price_range)}` : ''}</span>
-    <h1>${esc(v.name)}</h1>
-    <p class="meta">Place profile · Details and ratings from Google and the BiteKrakow guides · Updated ${TODAY.split('-').reverse().join('.')}</p>
-  </header>
+<article class="venue-profile" data-venue-slug="${v.slug}">
+  <div class="wrap vp-topwrap">
+    <nav class="vp-crumb" aria-label="Breadcrumb">
+      <a href="/restaurants/">All places</a>
+      <span aria-hidden="true">/</span>
+      <a href="/restaurants/#${displayDistrict.toLowerCase().replace(/[^a-z0-9]+/g, '-')}">${esc(displayDistrict)}</a>
+      <span aria-hidden="true">/</span>
+      <span class="cur">${esc(v.name)}</span>
+    </nav>
+    <header class="vp-head">
+      <span class="pill">${esc(displayDistrict)}${v.price_range ? ` · ${esc(v.price_range)}` : ''}</span>
+      <h1>${esc(v.name)}</h1>
+      ${v.description_en ? `<p class="vp-tagline">${esc(v.description_en)}</p>` : ''}
+    </header>
+  </div>
 
-  <div class="article-body wrap">
-    <section class="venue-card" id="${v.slug}" data-venue-slug="${v.slug}">
-      <div class="venue-photo">
-        <img src="/api/photo?slug=${v.slug}" alt="${esc(v.name)} in ${esc(displayDistrict)}, Kraków" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="venue-body">
-        <div class="venue-rating" aria-label="Google rating"></div>
-        <div class="venue-meta">
-          <span>${esc(v.address || '')}</span>
-          ${v.hours_short ? `<span>${esc(v.hours_short)}</span>` : ''}
-          ${v.price_range ? `<span>${esc(v.price_range)}</span>` : ''}
-        </div>${amensHtml}${hoursHtml}
-        <div class="venue-tags">
-          ${tagsHtml}
-        </div>
-        <div class="venue-reviews" hidden></div>
-        <div class="venue-actions">
-          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=${encodeURIComponent(v.name + ' ' + (v.address || 'Kraków'))}" target="_blank" rel="noopener">See on Google Maps</a>
-          ${v.website_url ? `<a class="btn btn-ghost" href="${esc(v.website_url)}" target="_blank" rel="noopener">Website</a>` : ''}
-        </div>
-      </div>
-    </section>
+  <div class="wrap vp-hero-wrap">
+    <div class="vp-hero">
+      <img src="/api/photo?slug=${v.slug}" alt="${esc(v.name)} in ${esc(displayDistrict)}, Kraków" onerror="this.parentNode.classList.add('noimg')">
+    </div>
+  </div>
 
-    <div class="prose">
-      ${v.description_en ? `<p>${esc(v.description_en)}</p>` : ''}
-      ${quotesHtml}
-      ${feats.length ? `
-      <h2 class="deco">Featured in our guides</h2>
-      <ul class="featured-list">
+  <div class="wrap vp-layout">
+    <main class="vp-main">
+      ${feats.length ? `<section class="vp-block">
+        <h2 class="vp-h">Our take</h2>
+        ${quotesHtml || `<p>${esc(v.description_en || `${v.name} is covered across the BiteKrakow guides.`)}</p>`}
+      </section>` : ''}
+
+      ${feats.length ? `<section class="vp-block">
+        <h2 class="vp-h">Featured in our guides</h2>
+        <ul class="featured-list">
 ${featsHtml}
-      </ul>` : ''}
-      <p style="margin-top:28px;">
+        </ul>
+      </section>` : ''}
+
+      <section class="vp-block">
+        <div class="venue-reviews" hidden></div>
+      </section>
+
+      <p class="vp-editor-note">
         Every place on BiteKrakow was picked by an editor, not an algorithm.
         Browse <a href="/restaurants/">all places</a> or start from
         <a href="/guides/">the guides</a>.
       </p>
-    </div>
+    </main>
+
+    <aside class="vp-side">
+      <div class="vp-info-card">
+        <div class="venue-rating vp-grating" aria-label="Google rating"></div>
+        <dl class="vp-facts">
+          <div><dt>Address</dt><dd>${esc(v.address || `${displayDistrict}, Kraków`)}</dd></div>
+          ${v.price_range ? `<div><dt>Price</dt><dd>${esc(v.price_range)}</dd></div>` : ''}
+          ${cuisineTags.length ? `<div><dt>Cuisine</dt><dd class="vp-cuisine">${cuisineTags.map(t => esc(t)).join(', ')}</dd></div>` : ''}
+          ${v.phone ? `<div><dt>Phone</dt><dd><a href="tel:${esc(v.phone.replace(/\s+/g, ''))}">${esc(v.phone)}</a></dd></div>` : ''}
+        </dl>${hoursHtml}${amensHtml}
+        <div class="vp-actions">
+          <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=${encodeURIComponent(v.name + ' ' + (v.address || 'Kraków'))}" target="_blank" rel="noopener">See on Google Maps</a>
+          ${v.website_url ? `<a class="btn btn-ghost" href="${esc(v.website_url)}" target="_blank" rel="noopener">Website</a>` : ''}
+        </div>
+        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
+      </div>
+    </aside>
   </div>
 </article>
 

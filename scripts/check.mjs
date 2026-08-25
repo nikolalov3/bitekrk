@@ -111,13 +111,20 @@ for (const page of pages) {
   if (!/rel="icon"/.test(html)) problems.push(`${label} brak favicon`);
   if (!/name="twitter:card"/.test(html)) problems.push(`${label} brak twitter:card`);
 
-  // 4. Karty kompletne
-  for (const slug of cards) {
-    const cardHtml = html.split(`data-venue-slug="${slug}"`)[1] || '';
-    const section = cardHtml.split('</section>')[0];
-    if (!section.includes('venue-rating')) problems.push(`${label} karta ${slug} bez slotu oceny`);
-    if (!section.includes('venue-reviews')) problems.push(`${label} karta ${slug} bez sekcji opinii`);
-    if (!section.includes('js-maps-link')) problems.push(`${label} karta ${slug} bez linku do wizytówki Google`);
+  // 4. Karty kompletne. Profil lokalu ma inny układ (wizytówka 2-kolumnowa),
+  // więc sprawdzamy tylko obecność hooków dla venue-cards.js na całej stronie.
+  if (isVenueProfile) {
+    if (!/venue-rating/.test(html)) problems.push(`${label} profil bez slotu oceny`);
+    if (!/venue-reviews/.test(html)) problems.push(`${label} profil bez sekcji opinii`);
+    if (!/js-maps-link/.test(html)) problems.push(`${label} profil bez linku do wizytówki Google`);
+  } else {
+    for (const slug of cards) {
+      const cardHtml = html.split(`data-venue-slug="${slug}"`)[1] || '';
+      const section = cardHtml.split('</section>')[0];
+      if (!section.includes('venue-rating')) problems.push(`${label} karta ${slug} bez slotu oceny`);
+      if (!section.includes('venue-reviews')) problems.push(`${label} karta ${slug} bez sekcji opinii`);
+      if (!section.includes('js-maps-link')) problems.push(`${label} karta ${slug} bez linku do wizytówki Google`);
+    }
   }
 
   // 5. Sitemap
