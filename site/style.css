@@ -1213,6 +1213,17 @@ section h2 + p.section-lead { line-height: 1.75; }
 .venue-row .vr-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: auto; text-align: right; }
 .venue-row:hover .vr-name { color: var(--accent); }
 
+/* Chipy kuchni: większe pola dotyku, emoji, wygodne na telefonie */
+.cuisine-chips a, .cuisine-chips span {
+  font-family: var(--font-sans);
+  font-size: 0.92rem; letter-spacing: 0.01em;
+  padding: 13px 20px; border-radius: 12px;
+}
+@media (max-width: 640px) {
+  .cuisine-chips { gap: 8px; }
+  .cuisine-chips a, .cuisine-chips span { flex: 1 1 44%; text-align: center; padding: 14px 10px; }
+}
+
 /* ================= JĘZYKI: przełącznik AR/EN + RTL ================= */
 
 .lang-switch {
