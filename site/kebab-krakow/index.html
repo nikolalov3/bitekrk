@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  (function(){try{
+    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
+    var p=location.pathname;
+    if(p.indexOf("/ar/")===0)return;
+    if(localStorage.getItem("bk-lang"))return;
+    var L=navigator.languages||[navigator.language||""];
+    if(!L.some(function(x){return /^ar/i.test(x);}))return;
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/"];
+    if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+  }catch(e){}})();
+  </script>
   <title>Best Kebab and Middle Eastern Food in Krakow (2026): The Places Locals Argue About</title>
   <meta name="description" content="A local's guide to the best kebab and Middle Eastern food in Krakow: the Syrian charcoal grill locals call the best kebab in town, a 4.8-star doner with 2,300 reviews, tandoor-baked flatbread, hummus 25 ways and Israeli mezze. Real addresses and prices.">
   <link rel="canonical" href="https://bitekrakow.com/kebab-krakow/">

@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  (function(){try{
+    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
+    var p=location.pathname;
+    if(p.indexOf("/ar/")===0)return;
+    if(localStorage.getItem("bk-lang"))return;
+    var L=navigator.languages||[navigator.language||""];
+    if(!L.some(function(x){return /^ar/i.test(x);}))return;
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/"];
+    if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+  }catch(e){}})();
+  </script>
   <title>أفضل المطاعم المكسيكية في كراكوف (2026): تاكو وبيريا ومارغريتا | بايت كراكوف</title>
   <meta name="description" content="دليل محلي لأفضل طعام مكسيكي في كراكوف: تاكيريا عائلة من يوكاتان، بيريا تستحق عبور النهر، كشك في السوق يصنع التورتيلا يدوياً، وأكبر بار تكيلا في المدينة. عناوين وأسعار وماذا تطلب.">
   <link rel="canonical" href="https://bitekrakow.com/ar/mexican-krakow/">

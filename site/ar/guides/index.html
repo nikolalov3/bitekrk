@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  (function(){try{
+    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
+    var p=location.pathname;
+    if(p.indexOf("/ar/")===0)return;
+    if(localStorage.getItem("bk-lang"))return;
+    var L=navigator.languages||[navigator.language||""];
+    if(!L.some(function(x){return /^ar/i.test(x);}))return;
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/"];
+    if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+  }catch(e){}})();
+  </script>
   <title>كل أدلة كراكوف | بايت كراكوف</title>
   <meta name="description" content="كل أدلة بايت كراكوف في صفحة واحدة: أفضل مطاعم إيطالية ويابانية وجورجية وفيتنامية وهندية في كراكوف، فطور، قهوة مختصة، وأدلة الأحياء.">
   <link rel="canonical" href="https://bitekrakow.com/ar/guides/">
