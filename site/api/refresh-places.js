@@ -57,6 +57,20 @@ export default async function handler(req, res) {
     return res.status(200).json({ audit });
   }
 
+  // Tryb dezaktywacji: ?deactivate=slug1,slug2 ustawia active=false
+  // (usuwa lokal z /restaurants/, profili i sitemap po regeneracji).
+  if (req.query.deactivate) {
+    const slugs = String(req.query.deactivate).split(',').map(s => s.trim()).filter(Boolean);
+    const out = [];
+    for (const slug of slugs) {
+      const p = await sb(`venues?slug=eq.${encodeURIComponent(slug)}`, {
+        method: 'PATCH', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ active: false })
+      });
+      out.push({ slug, ok: p.ok, status: p.status });
+    }
+    return res.status(200).json({ mode: 'deactivate', results: out });
+  }
+
   // Tryb statusu: ?status=1 sprawdza w Google, czy lokal wciąż działa
   // (businessStatus). Zwraca listę zamkniętych/tymczasowo zamkniętych.
   if (req.query.status) {
