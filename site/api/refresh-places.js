@@ -57,6 +57,23 @@ export default async function handler(req, res) {
     return res.status(200).json({ audit });
   }
 
+  // Tryb statusu: ?status=1 sprawdza w Google, czy lokal wciąż działa
+  // (businessStatus). Zwraca listę zamkniętych/tymczasowo zamkniętych.
+  if (req.query.status) {
+    const r = await sb(`venues?select=slug,name,place_id&place_id=not.is.null&active=eq.true&order=slug`);
+    const rows = await r.json();
+    const out = [];
+    for (const v of rows) {
+      const g = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(v.place_id)}`, {
+        headers: { 'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY, 'X-Goog-FieldMask': 'businessStatus,displayName' }
+      });
+      const p = g.ok ? await g.json() : null;
+      out.push({ slug: v.slug, name: v.name, status: p ? (p.businessStatus || 'UNKNOWN') : `ERR ${g.status}` });
+    }
+    const closed = out.filter(x => x.status !== 'OPERATIONAL');
+    return res.status(200).json({ checked: out.length, closed_count: closed.length, closed, all: out });
+  }
+
   // Tryb znaczników: ?attrs=1 dociąga dla wszystkich lokali z place_id
   // atrybuty wizytówki (płatność, ogródek, wege, psy, rezerwacje, dostępność),
   // strukturalne godziny, telefon i współrzędne. Zapisuje do kolumn
