@@ -1148,6 +1148,90 @@ section h2 + p.section-lead { line-height: 1.75; }
 /* Kotwice lokali (#slug): anchor ląduje pod sticky headerem */
 .article-body .venue-card { scroll-margin-top: 96px; }
 
+/* ================= PROFIL LOKALU (/restaurant/<slug>/) ================= */
+
+/* Znaczniki z Google Places: siatka czytelnych chipów na ciemnym panelu */
+.amenity-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 2px 0 16px;
+}
+.amenity-grid .amen {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; letter-spacing: 0.04em;
+  color: #d9d7ce;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 6px 12px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.amenity-grid .amen::before { content: "✓"; color: var(--gold); font-weight: 700; }
+.amenity-grid .amen.warn::before { content: "!"; color: var(--accent); }
+
+/* Godziny otwarcia: tabela dni */
+.venue-hours {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 14px; margin: 4px 0 16px;
+}
+.venue-hours .hrs-title {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.venue-hours dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 18px; margin: 0; }
+.venue-hours dt { font-family: var(--font-mono); font-size: 0.74rem; color: #8f8d84; }
+.venue-hours dd { font-family: var(--font-mono); font-size: 0.74rem; color: #d9d7ce; margin: 0; }
+
+/* Cytaty redakcyjne na profilu */
+.bk-quote {
+  border-left: 2px solid var(--accent);
+  padding: 4px 0 4px 16px;
+  margin: 18px 0;
+}
+.bk-quote .bk-score {
+  font-family: var(--font-mono); font-weight: 700;
+  color: var(--accent); font-size: 0.85rem; letter-spacing: 0.08em;
+}
+.bk-quote blockquote { margin: 4px 0 6px; font-style: italic; color: #33322c; }
+.bk-quote .bk-src { font-size: 0.85rem; color: var(--ink-soft); }
+.bk-quote .bk-src a { color: inherit; }
+
+/* Lista "featured in" */
+.featured-list { list-style: none; padding: 0; margin: 10px 0 0; }
+.featured-list li { padding: 10px 0; border-top: 1px solid var(--line); }
+.featured-list li:last-child { border-bottom: 1px solid var(--line); }
+.featured-list a { text-decoration-color: var(--line-dark); text-underline-offset: 3px; }
+
+/* Indeks /restaurants/: zwarte wiersze lokali */
+.venue-row {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 12px 0; border-top: 1px solid var(--line);
+  text-decoration: none;
+}
+.venue-row:last-child { border-bottom: 1px solid var(--line); }
+.venue-row .vr-name { font-weight: 600; }
+.venue-row .vr-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: auto; text-align: right; }
+.venue-row:hover .vr-name { color: var(--accent); }
+
+/* ================= JĘZYKI: przełącznik AR/EN + RTL ================= */
+
+.lang-switch {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+  border: 1px solid var(--line-dark); border-radius: 999px;
+  padding: 4px 12px; text-decoration: none;
+  color: var(--ink-soft);
+}
+.lang-switch:hover { color: var(--ink); border-color: var(--ink); }
+
+/* Arabska wersja: RTL + font Tajawal ładowany na stronach /ar/ */
+html[dir="rtl"] body { font-family: "Tajawal", var(--font-sans); }
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3 { font-family: "Tajawal", var(--font-serif); letter-spacing: 0; }
+html[dir="rtl"] .venue-h::before { order: 2; }
+html[dir="rtl"] .venue-h::after { order: -1; }
+html[dir="rtl"] .article-body .menu-pick { border-left: none; border-right: 2px solid var(--accent); }
+html[dir="rtl"] .bk-quote { border-left: none; border-right: 2px solid var(--accent); padding: 4px 16px 4px 0; }
+html[dir="rtl"] .venue-note { border-left: none; border-right: 2px solid var(--gold); padding: 1px 12px 1px 0; }
+
 /* ================= FIX MOBILE: sticky header nie nachodzi na treść ================= */
 /* Na mobile header jest w kolumnie (logo + nav), ale wcześniejsza reguła klamruje
    .wrap do 58px, przez co nav wychodził poza tło headera i lądował na treści.

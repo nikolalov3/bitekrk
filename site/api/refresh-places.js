@@ -57,6 +57,60 @@ export default async function handler(req, res) {
     return res.status(200).json({ audit });
   }
 
+  // Tryb znaczników: ?attrs=1 dociąga dla wszystkich lokali z place_id
+  // atrybuty wizytówki (płatność, ogródek, wege, psy, rezerwacje, dostępność),
+  // strukturalne godziny, telefon i współrzędne. Zapisuje do kolumn
+  // attrs/hours/phone/lat/lng (patrz supabase/migration-attrs.sql).
+  if (req.query.attrs) {
+    const FIELDS = [
+      'internationalPhoneNumber', 'websiteUri', 'regularOpeningHours', 'location',
+      'paymentOptions', 'outdoorSeating', 'servesVegetarianFood', 'servesBeer',
+      'servesWine', 'servesCocktails', 'servesCoffee', 'servesDessert',
+      'servesBreakfast', 'servesLunch', 'servesDinner', 'allowsDogs',
+      'goodForChildren', 'goodForGroups', 'accessibilityOptions',
+      'delivery', 'dineIn', 'takeout', 'reservable', 'curbsidePickup', 'restroom'
+    ].join(',');
+    const listR = await sb(`venues?select=id,slug,place_id&place_id=not.is.null&active=eq.true&order=slug`);
+    if (!listR.ok) return res.status(502).json({ error: 'Supabase nie oddał listy.', detail: await listR.text() });
+    const rows = await listR.json();
+    const out = [];
+    for (const v of rows) {
+      try {
+        const g = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(v.place_id)}`, {
+          headers: { 'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY, 'X-Goog-FieldMask': FIELDS }
+        });
+        if (!g.ok) { out.push({ slug: v.slug, ok: false, status: g.status }); continue; }
+        const p = await g.json();
+        const attrs = {};
+        for (const k of ['outdoorSeating','servesVegetarianFood','servesBeer','servesWine','servesCocktails','servesCoffee','servesDessert','servesBreakfast','servesLunch','servesDinner','allowsDogs','goodForChildren','goodForGroups','delivery','dineIn','takeout','reservable','curbsidePickup','restroom']) {
+          if (typeof p[k] === 'boolean') attrs[k] = p[k];
+        }
+        if (p.paymentOptions) attrs.paymentOptions = p.paymentOptions;
+        if (p.accessibilityOptions) attrs.accessibilityOptions = p.accessibilityOptions;
+        const patchBody = {
+          attrs,
+          hours: p.regularOpeningHours ? {
+            weekdayDescriptions: p.regularOpeningHours.weekdayDescriptions || null,
+            periods: p.regularOpeningHours.periods || null
+          } : null,
+          phone: p.internationalPhoneNumber || null,
+          lat: p.location ? p.location.latitude : null,
+          lng: p.location ? p.location.longitude : null
+        };
+        if (p.websiteUri) patchBody.website_url = p.websiteUri;
+        const patch = await sb(`venues?id=eq.${v.id}`, {
+          method: 'PATCH',
+          headers: { Prefer: 'return=minimal' },
+          body: JSON.stringify(patchBody)
+        });
+        out.push({ slug: v.slug, ok: patch.ok, attrs: Object.keys(attrs).length, hours: !!p.regularOpeningHours });
+      } catch (e) {
+        out.push({ slug: v.slug, ok: false, error: String(e) });
+      }
+    }
+    return res.status(200).json({ mode: 'attrs', updated: out.length, results: out });
+  }
+
   // Tryb naprawy: ?fix=<slug>&q=<własne zapytanie> wyszukuje wizytówkę od
   // nowa po podanej frazie, nadpisuje place_id i czyści datę syncu.
   if (req.query.fix && req.query.q) {

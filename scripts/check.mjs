@@ -68,7 +68,21 @@ for (const page of pages) {
   const cards = [...html.matchAll(/data-venue-slug="([^"]+)"/g)].map(m => m[1]);
 
   const isIndexPage = types.includes('CollectionPage');
-  if (page && !['about'].includes(page) && !isIndexPage) {
+  // Profile lokali (/restaurant/<slug>/) mają własny standard:
+  // typ LocalBusiness-owy z adresem i nazwą + BreadcrumbList, bez Article.
+  // Strony /ar/ to lustrzane wersje językowe, sprawdzane łagodniej.
+  const isVenueProfile = page.startsWith('restaurant/');
+  const isArabic = page === 'ar' || page.startsWith('ar/');
+  if (isVenueProfile) {
+    const biz = blocks.find(b => ['Restaurant', 'CafeOrCoffeeShop', 'Bakery', 'BarOrPub', 'IceCreamShop', 'LocalBusiness'].includes(b['@type']));
+    if (!biz) problems.push(`${label} profil bez schema LocalBusiness/Restaurant`);
+    else {
+      if (!biz.address) problems.push(`${label} profil bez adresu w schema`);
+      if (!biz.name) problems.push(`${label} profil bez nazwy w schema`);
+    }
+    if (!types.includes('BreadcrumbList')) problems.push(`${label} brak BreadcrumbList`);
+  }
+  if (page && !['about'].includes(page) && !isIndexPage && !isVenueProfile && !isArabic) {
     if (!article) problems.push(`${label} brak schema Article`);
     else {
       if (!article.author || !article.author.name) problems.push(`${label} Article bez autora`);
