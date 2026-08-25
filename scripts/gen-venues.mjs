@@ -347,7 +347,9 @@ const districts = Object.keys(byDistrict).sort((a, b) => byDistrict[b].length - 
 const CUISINE_LINKS = [
   ['Italian', '/italian-krakow/'], ['Ramen & Japanese', '/ramen-krakow/'],
   ['Georgian', '/georgian-krakow/'], ['Vietnamese', '/vietnamese-krakow/'],
-  ['Indian', '/indian-krakow/'], ['Specialty coffee', '/specialty-coffee-krakow/'],
+  ['Indian', '/indian-krakow/'], ['Pierogi \u0026 Polish', '/pierogi-krakow/'], ['Thai', '/thai-krakow/'],
+  ['Mexican', '/mexican-krakow/'], ['Kebab \u0026 Middle East', '/kebab-krakow/'], ['Korean', '/korean-krakow/'],
+  ['Specialty coffee', '/specialty-coffee-krakow/'],
   ['Breakfast', '/breakfast-krakow/'], ['Ice cream', '/ice-cream-krakow/'],
 ];
 
