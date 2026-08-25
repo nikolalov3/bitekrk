@@ -95,18 +95,35 @@ const AMENITY_LABELS = {
   servesCocktails: 'Cocktails',
 };
 
+// Wi-Fi, klimatyzacja i "laptop-friendly" nie są dostępne w Google Places API,
+// więc bierzemy je z tagów lokalu (wpisywanych ręcznie w bazie).
+const TAG_AMENITIES = [
+  [/\bwi-?fi\b|free wifi/i, 'Free WiFi'],
+  [/laptop|work.?friendly|do pracy/i, 'Laptop-friendly'],
+  [/\bsockets?\b|power|gniazdka/i, 'Power sockets'],
+  [/air.?con|klimatyzacj|\ba\/?c\b/i, 'Air conditioning'],
+  [/pet.?friendly|dog.?friendly/i, 'Dogs welcome'],
+];
+
 function amenities(v) {
   const a = v.attrs || {};
   const out = [];
+  const seen = new Set();
+  const add = (label, warn) => { if (!seen.has(label)) { seen.add(label); out.push(warn ? { label, warn } : { label }); } };
   const pay = a.paymentOptions || {};
-  if (pay.acceptsCreditCards) out.push({ label: 'Cards accepted' });
-  if (pay.acceptsNfc) out.push({ label: 'Contactless pay' });
-  if (pay.acceptsCashOnly) out.push({ label: 'Cash only', warn: true });
+  if (pay.acceptsCreditCards) add('Cards accepted');
+  if (pay.acceptsNfc) add('Contactless pay');
+  if (pay.acceptsCashOnly) add('Cash only', true);
   for (const [k, label] of Object.entries(AMENITY_LABELS)) {
-    if (a[k] === true) out.push({ label });
+    if (a[k] === true) add(label);
   }
   const acc = a.accessibilityOptions || {};
-  if (acc.wheelchairAccessibleEntrance) out.push({ label: 'Wheelchair accessible' });
+  if (acc.wheelchairAccessibleEntrance) add('Wheelchair accessible');
+  // Znaczniki z tagów (Wi-Fi, laptop, klimatyzacja) - czego Places nie oddaje
+  const tagStr = (v.tags || []).join(' ');
+  for (const [re, label] of TAG_AMENITIES) {
+    if (re.test(tagStr)) add(label);
+  }
   return out;
 }
 
@@ -370,12 +387,22 @@ const indexSchema = {
 };
 
 const districtSections = districts.map(d => `
-    <section class="prose" id="${d.toLowerCase().replace(/[^a-z0-9]+/g, '-')}">
-      <h2 class="deco">${esc(d)} <small style="font-family:var(--font-mono);font-size:0.8rem;color:var(--ink-soft);">· ${byDistrict[d].length} places</small></h2>
-      ${byDistrict[d].map(v => `<a class="venue-row" href="/restaurant/${v.slug}/">
-        <span class="vr-name">${esc(v.name)}</span>
-        <span class="vr-meta">${esc((v.tags || [])[0] || '')}${v.rating ? ` · ★ ${v.rating}` : ''}${v.price_range ? ` · ${esc(v.price_range)}` : ''}</span>
-      </a>`).join('\n      ')}
+    <section class="venue-district" id="${d.toLowerCase().replace(/[^a-z0-9]+/g, '-')}">
+      <h2 class="deco">${esc(d)} <small class="vd-count">${byDistrict[d].length} places</small></h2>
+      <div class="venue-grid">
+      ${byDistrict[d].map(v => {
+        const cuisine = (v.tags || [])[0] || '';
+        const meta = [cuisine, v.price_range].filter(Boolean).join(' · ');
+        return `<a class="venue-tile" href="/restaurant/${v.slug}/">
+        <span class="vt-photo"><img src="/api/photo?slug=${v.slug}" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="vt-body">
+          <span class="vt-name">${esc(v.name)}</span>
+          <span class="vt-meta">${esc(meta)}</span>
+        </span>
+        ${v.rating ? `<span class="vt-rating">★ ${v.rating}</span>` : ''}
+      </a>`;
+      }).join('\n      ')}
+      </div>
     </section>`).join('\n');
 
 const indexHtml = `<!DOCTYPE html>

@@ -765,9 +765,14 @@ section h2 + p.section-lead { line-height: 1.75; }
 
 /* ---------- Mobile: koniec ściśnięcia ---------- */
 @media (max-width: 640px) {
-  .wrap, .wrap-narrow { padding: 0 22px; }
-  .article-header { padding: 56px 0 8px; }
-  .article-header h1 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
+  .wrap, .wrap-narrow { padding: 0 24px; }
+  .article-header { padding: 44px 6px 8px; }
+  .article-header h1 {
+    font-size: clamp(1.95rem, 7.8vw, 2.45rem); line-height: 1.14;
+    letter-spacing: -0.02em; overflow-wrap: break-word; hyphens: auto;
+  }
+  .article-header .pill { margin-bottom: 14px; }
+  .article-header .meta { padding-right: 6px; }
   .article-body .prose p { font-size: 1.05rem; line-height: 1.8; margin: 20px 0; }
   .article-body > .prose:first-child > p:first-child { font-size: 1.18rem; line-height: 1.62; }
   .article-body .prose h2 { margin-top: 56px; }
@@ -1275,6 +1280,48 @@ section h2 + p.section-lead { line-height: 1.75; }
 .venue-row .vr-name { font-weight: 600; }
 .venue-row .vr-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: auto; text-align: right; }
 .venue-row:hover .vr-name { color: var(--accent); }
+
+/* Indeks /restaurants/: kafelki lokali z miniaturą */
+.venue-district { max-width: 1120px; margin: 0 auto; padding: 20px 24px 0; }
+.venue-district h2 { margin-bottom: 16px; }
+.vd-count { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.04em; }
+.venue-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+.venue-tile {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px; border: 1px solid var(--line); border-radius: 14px;
+  background: #fff; text-decoration: none; color: var(--ink);
+  box-shadow: 0 1px 2px rgba(27,27,24,0.04);
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.venue-tile:hover {
+  transform: translateY(-2px); border-color: var(--line-dark);
+  box-shadow: 0 10px 24px -8px rgba(27,27,24,0.18);
+}
+.vt-photo {
+  width: 64px; height: 64px; flex: none; border-radius: 10px; overflow: hidden;
+  background: var(--paper-warm); position: relative;
+}
+.vt-photo img { width: 100%; height: 100%; object-fit: cover; }
+.vt-photo.noimg { display: flex; align-items: center; justify-content: center; }
+.vt-photo.noimg img { display: none; }
+.vt-photo.noimg::after {
+  content: "🍽"; font-size: 22px; opacity: 0.35;
+}
+.vt-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+.vt-name { font-weight: 600; font-size: 0.98rem; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vt-meta { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.03em; color: var(--ink-soft); text-transform: capitalize; }
+.vt-rating {
+  flex: none; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
+  color: var(--accent-deep); align-self: flex-start; padding-top: 2px;
+}
+.venue-tile:hover .vt-name { color: var(--accent); }
+@media (max-width: 640px) {
+  .venue-district { padding: 16px 20px 0; }
+  .venue-grid { grid-template-columns: 1fr; gap: 10px; }
+}
 
 /* ================= JĘZYKI: przełącznik AR/EN + RTL ================= */
 
