@@ -15,6 +15,7 @@
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { FLAG_SPRITE, cuisineChips } from './flags.mjs';
 
 const SITE = new URL('../site/', import.meta.url).pathname;
 const HOST = 'https://bitekrakow.com';
@@ -416,6 +417,7 @@ ${JSON.stringify(indexSchema, null, 2).split('\n').map(l => '  ' + l).join('\n')
   </script>
 </head>
 <body>
+${FLAG_SPRITE}
 
 <header class="site-header">
   <div class="wrap">
@@ -444,9 +446,8 @@ ${JSON.stringify(indexSchema, null, 2).split('\n').map(l => '  ' + l).join('\n')
         which of our guides it earned a place in. Start with a cuisine, a district,
         or just browse.
       </p>
-      <div class="district-chips cuisine-chips" style="margin: 18px 0 8px;">
-        ${CUISINE_LINKS.map(([label, href]) => `<a href="${href}">${esc(label)}</a>`).join('\n        ')}
-      </div>
+      ${cuisineChips('en')}
+      <div class="chip-alt" style="margin-top: 12px;"><span class="lbl">Also</span><a href="/specialty-coffee-krakow/">Coffee</a><a href="/breakfast-krakow/">Breakfast</a><a href="/ice-cream-krakow/">Ice cream</a></div>
     </div>
 ${districtSections}
   </div>
