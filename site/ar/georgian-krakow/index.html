@@ -11,7 +11,7 @@
     if(localStorage.getItem("bk-lang"))return;
     var L=navigator.languages||[navigator.language||""];
     if(!L.some(function(x){return /^ar/i.test(x);}))return;
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/"];
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/"];
     if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
   }catch(e){}})();
   </script>

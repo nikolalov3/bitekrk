@@ -11,7 +11,7 @@
     if(localStorage.getItem("bk-lang"))return;
     var L=navigator.languages||[navigator.language||""];
     if(!L.some(function(x){return /^ar/i.test(x);}))return;
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/"];
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/"];
     if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
   }catch(e){}})();
   </script>
@@ -56,7 +56,8 @@
       { "@type": "ListItem", "position": 8, "url": "https://bitekrakow.com/ar/mexican-krakow/" },
       { "@type": "ListItem", "position": 9, "url": "https://bitekrakow.com/ar/kebab-krakow/" },
       { "@type": "ListItem", "position": 10, "url": "https://bitekrakow.com/ar/korean-krakow/" },
-      { "@type": "ListItem", "position": 11, "url": "https://bitekrakow.com/ar/halal-krakow/" }
+      { "@type": "ListItem", "position": 11, "url": "https://bitekrakow.com/ar/halal-krakow/" },
+      { "@type": "ListItem", "position": 12, "url": "https://bitekrakow.com/ar/best-restaurants-krakow/" }
     ] }
   }
   </script>
@@ -94,6 +95,21 @@
 
   <div class="article-body wrap">
     <section class="teasers" style="padding-top:12px;">
+      <span class="eyebrow">ابدأ من هنا</span>
+      <h2 class="deco">القائمة الكبرى</h2>
+      <div class="guide-grid">
+        <a class="guide-card" href="/ar/best-restaurants-krakow/">
+          <h3>أفضل 10 مطاعم في كراكوف</h3>
+          <p>ترتيب واحد عبر كل المطابخ: المطبخ البولندي الحائز نجمتي ميشلان، وأفضل بيتزا وسوشي وجورجي وفيتنامي وكباب حلال في المدينة، بعناوين وأسعار.</p>
+        </a>
+        <a class="guide-card" href="/ar/map/">
+          <h3>خريطة طعام كراكوف حسب الحي</h3>
+          <p>أين يقع كل شيء: كازيميَش، البلدة القديمة، Zabłocie وبقية الأحياء على خريطة واحدة قابلة للنقر.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="teasers">
       <span class="eyebrow">بالعربية</span>
       <h2 class="deco">أدلة المطابخ</h2>
       <div class="guide-grid">

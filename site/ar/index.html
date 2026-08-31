@@ -11,7 +11,7 @@
     if(localStorage.getItem("bk-lang"))return;
     var L=navigator.languages||[navigator.language||""];
     if(!L.some(function(x){return /^ar/i.test(x);}))return;
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/"];
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/"];
     if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
   }catch(e){}})();
   </script>
@@ -153,6 +153,22 @@
       <h3>مؤرَّخ ومحدَّث</h3>
       <p>كل دليل يذكر متى جرى التحقق منه آخر مرة. عندما يغلق مكان أو يتراجع مستواه، نعدّل أو نحذف.</p>
     </div>
+  </div>
+</section>
+
+<section class="teasers wrap">
+  <span class="eyebrow">للقراءة أكثر</span>
+  <h2 class="deco">عن كراكوف وبولندا بالعربية</h2>
+  <p class="section-lead">
+    قبل الرحلة يفيد أن تعرف المدينة والبلد. هذه مصادر عربية موثوقة عن كراكوف
+    وبولندا، إلى جانب أدلتنا للطعام والقهوة.
+  </p>
+  <div class="district-chips">
+    <a href="https://ar.wikipedia.org/wiki/كراكوف" target="_blank" rel="noopener">كراكوف على ويكيبيديا</a>
+    <a href="https://ar.wikipedia.org/wiki/بولندا" target="_blank" rel="noopener">بولندا على ويكيبيديا</a>
+    <a href="/ar/best-restaurants-krakow/">أفضل 10 مطاعم في كراكوف</a>
+    <a href="/ar/halal-krakow/">مطاعم حلال</a>
+    <a href="/ar/map/">خريطة الطعام حسب الحي</a>
   </div>
 </section>
 
