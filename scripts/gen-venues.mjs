@@ -255,6 +255,7 @@ function venuePage(v) {
   <meta name="twitter:image" content="${HOST}/api/photo?slug=${v.slug}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
@@ -297,7 +298,7 @@ ${JSON.stringify(breadcrumb, null, 2).split('\n').map(l => '  ' + l).join('\n')}
 
   <div class="wrap vp-hero-wrap">
     <div class="vp-hero">
-      <img src="/api/photo?slug=${v.slug}" alt="${esc(v.name)} in ${esc(displayDistrict)}, Kraków" onerror="this.parentNode.classList.add('noimg')">
+      <img src="/api/photo?slug=${v.slug}" alt="${esc(v.name)} in ${esc(displayDistrict)}, Kraków" fetchpriority="high" decoding="async" width="720" height="420" onerror="this.parentNode.classList.add('noimg')">
     </div>
   </div>
 
@@ -414,7 +415,7 @@ const districtSections = districts.map(d => `
         const cuisine = (v.tags || [])[0] || '';
         const meta = [cuisine, v.price_range].filter(Boolean).join(' · ');
         return `<a class="venue-tile" href="/restaurant/${v.slug}/">
-        <span class="vt-photo"><img src="/api/photo?slug=${v.slug}" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="vt-photo"><img src="/api/photo?slug=${v.slug}" alt="" loading="lazy" decoding="async" width="64" height="64" onerror="this.parentNode.classList.add('noimg')"></span>
         <span class="vt-body">
           <span class="vt-name">${esc(v.name)}</span>
           <span class="vt-meta">${esc(meta)}</span>
@@ -447,6 +448,7 @@ const indexHtml = `<!DOCTYPE html>
   <meta name="twitter:image" content="${HOST}/img/og-default.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
