@@ -175,13 +175,10 @@ function venuePage(v) {
     sameAs: [v.maps_url, v.website_url].filter(Boolean),
   };
   if (v.lat && v.lng) schema.geo = { '@type': 'GeoCoordinates', latitude: v.lat, longitude: v.lng };
-  if (v.rating && v.reviews_count) {
-    schema.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: String(v.rating), reviewCount: v.reviews_count,
-      bestRating: '5', worstRating: '1'
-    };
-  }
+  // Ocena Google pokazujemy na stronie ("Reviews from Google"), ale NIE oznaczamy jej
+  // jako wlasny aggregateRating w schema — wytyczne Google zabraniaja oznaczania
+  // ocen zewnetrznych/cudzych jako swoich (ryzyko manual action). Zostaje tylko
+  // nasza autorska recenzja (Review ponizej).
   const spec = hoursSpec(v);
   if (spec && spec.length) schema.openingHoursSpecification = spec;
   const realQuotes = feats.filter(f => f.verdict && f.score && f.score !== 'NEW');
