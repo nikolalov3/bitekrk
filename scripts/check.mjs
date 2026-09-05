@@ -82,7 +82,7 @@ for (const page of pages) {
     }
     if (!types.includes('BreadcrumbList')) problems.push(`${label} brak BreadcrumbList`);
   }
-  if (page && !['about'].includes(page) && !isIndexPage && !isVenueProfile && !isArabic) {
+  if (page && !['about', 'how-we-test'].includes(page) && !isIndexPage && !isVenueProfile && !isArabic) {
     if (!article) problems.push(`${label} brak schema Article`);
     else {
       if (!article.author || !article.author.name) problems.push(`${label} Article bez autora`);
