@@ -7,17 +7,21 @@
   (function(){try{
     document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
     var p=location.pathname;
-    if(p.indexOf("/ar/")===0)return;
+    if(p.indexOf("/ar/")===0||p.indexOf("/pl/")===0)return;
     if(localStorage.getItem("bk-lang"))return;
     var L=navigator.languages||[navigator.language||""];
-    if(!L.some(function(x){return /^ar/i.test(x);}))return;
+    var isAr=L.some(function(x){return /^ar/i.test(x);});
+    var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
     var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
-    if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/"];
+    if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+    else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
   }catch(e){}})();
   </script>
   <title>All Krakow Guides | BiteKrakow</title>
   <meta name="description" content="Every BiteKrakow guide in one place: work-friendly cafes, neighborhood food guides, early breakfasts, family-run ice cream and coffee near the main station.">
   <link rel="canonical" href="https://bitekrakow.com/guides/">
+  <link rel="alternate" type="application/rss+xml" title="BiteKrakow" href="/feed.xml">
   <link rel="alternate" hreflang="en" href="https://bitekrakow.com/guides/">
   <link rel="alternate" hreflang="ar" href="https://bitekrakow.com/ar/guides/">
   <link rel="alternate" hreflang="x-default" href="https://bitekrakow.com/guides/">
@@ -259,6 +263,18 @@
         <a href="/krowodrza-guide/">Krowodrza</a>
         <span>Wesoła <small>· soon</small></span>
         <span>Nowa Huta <small>· soon</small></span>
+      </div>
+    </section>
+
+    <section class="districts" id="po-polsku" lang="pl">
+      <span class="eyebrow">Po polsku</span>
+      <h2 class="deco">Przewodniki po polsku</h2>
+      <p class="section-lead">Wybrane przewodniki w polskiej wersji, te same adresy i te same oceny. Reszta serwisu po angielsku i arabsku.</p>
+      <div class="district-chips">
+        <a href="/pl/kleparz-guide/">Kleparz: gdzie zjeść</a>
+        <a href="/pl/specialty-coffee-krakow/">Kawa specialty po dzielnicach</a>
+        <a href="/pl/matcha-krakow/">Matcha w Krakowie</a>
+        <a href="/pl/cocktail-bars-krakow/">Bary koktajlowe</a>
       </div>
     </section>
   </div>

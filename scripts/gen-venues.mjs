@@ -172,7 +172,9 @@ function venuePage(v) {
     servesCuisine: cuisineTags,
     priceRange: v.price_range || undefined,
     telephone: v.phone || undefined,
-    sameAs: [v.maps_url, v.website_url].filter(Boolean),
+    // sameAs: tylko prawdziwe, zweryfikowane linki (Maps, www, Instagram z attrs.instagram).
+    // Nigdy nie zgadujemy adresow profili spolecznosciowych.
+    sameAs: [...new Set([v.maps_url, v.website_url, v.attrs && v.attrs.instagram].filter(Boolean))],
   };
   if (v.lat && v.lng) schema.geo = { '@type': 'GeoCoordinates', latitude: v.lat, longitude: v.lng };
   // Ocena Google pokazujemy na stronie ("Reviews from Google"), ale NIE oznaczamy jej
@@ -192,6 +194,25 @@ function venuePage(v) {
     };
   }
   if (feats.length) schema.subjectOf = feats.map(f => ({ '@type': 'Article', headline: f.title, url: `${HOST}${f.path}` }));
+
+  // Daty strony: datePublished = kiedy lokal trafil do bazy, dateModified = ostatnie
+  // odswiezenie danych z Google (ocena/godziny). LocalBusiness nie ma tych pol, wiec
+  // siedza na WebPage, ktorej mainEntity to lokal.
+  const day = d => (d ? String(d).slice(0, 10) : undefined);
+  const webpage = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name: `${v.name}, Kraków: hours, prices and what to order`,
+    inLanguage: 'en',
+    datePublished: day(v.created_at),
+    dateModified: day(v.rating_synced_at) || day(v.created_at),
+    isPartOf: { '@type': 'WebSite', name: 'BiteKrakow', url: `${HOST}/` },
+    author: { '@type': 'Person', name: 'Cezary Musiał', url: `${HOST}/about/` },
+    publisher: { '@type': 'Organization', name: 'BiteKrakow', url: `${HOST}/` },
+    mainEntity: { '@id': url }
+  };
 
   const breadcrumb = {
     '@context': 'https://schema.org',
@@ -257,6 +278,9 @@ function venuePage(v) {
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
 ${JSON.stringify(schema, null, 2).split('\n').map(l => '  ' + l).join('\n')}
+  </script>
+  <script type="application/ld+json">
+${JSON.stringify(webpage, null, 2).split('\n').map(l => '  ' + l).join('\n')}
   </script>
   <script type="application/ld+json">
 ${JSON.stringify(breadcrumb, null, 2).split('\n').map(l => '  ' + l).join('\n')}

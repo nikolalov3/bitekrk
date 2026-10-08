@@ -3,6 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  (function(){try{
+    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
+    var p=location.pathname;
+    if(p.indexOf("/ar/")===0||p.indexOf("/pl/")===0)return;
+    if(localStorage.getItem("bk-lang"))return;
+    var L=navigator.languages||[navigator.language||""];
+    var isAr=L.some(function(x){return /^ar/i.test(x);});
+    var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
+    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/"];
+    if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+    else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
+  }catch(e){}})();
+  </script>
   <title>Matcha in Krakow: Where to Drink It (2026)</title>
   <meta name="description" content="Where to drink matcha in Krakow: three cafes that take it seriously. Cafe Belmont in Kazimierz whisks its own under the Yume Matcha brand, Ayko is a dedicated matcha bar in Podgorze, Boby in Debniki does coffee and matcha. Addresses, hours, prices. Updated September 2026.">
   <link rel="canonical" href="https://bitekrakow.com/matcha-krakow/">
@@ -154,6 +169,7 @@
       <a href="/news/">News</a>
       <a href="/about/">About</a>
       <a class="lang-switch" href="/ar/matcha-krakow/" lang="ar">العربية</a>
+      <a class="lang-switch" href="/pl/matcha-krakow/" lang="pl">Polski</a>
     </nav>
   </div>
 </header>

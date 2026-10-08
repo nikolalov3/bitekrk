@@ -27,3 +27,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://bitekrakow.com/sitemap.xml
+Sitemap: https://bitekrakow.com/news-sitemap.xml

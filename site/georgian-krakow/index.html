@@ -7,12 +7,15 @@
   (function(){try{
     document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
     var p=location.pathname;
-    if(p.indexOf("/ar/")===0)return;
+    if(p.indexOf("/ar/")===0||p.indexOf("/pl/")===0)return;
     if(localStorage.getItem("bk-lang"))return;
     var L=navigator.languages||[navigator.language||""];
-    if(!L.some(function(x){return /^ar/i.test(x);}))return;
+    var isAr=L.some(function(x){return /^ar/i.test(x);});
+    var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
     var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
-    if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/"];
+    if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+    else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
   }catch(e){}})();
   </script>
   <title>Best Georgian Restaurants in Krakow (2026): Khachapuri, Khinkali and Wine</title>

@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  (function(){try{
+    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
+    var p=location.pathname;
+    if(p.indexOf("/ar/")===0||p.indexOf("/pl/")===0)return;
+    if(localStorage.getItem("bk-lang"))return;
+    var L=navigator.languages||[navigator.language||""];
+    var isAr=L.some(function(x){return /^ar/i.test(x);});
+    var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
+    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/"];
+    if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
+    else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
+  }catch(e){}})();
+  </script>
   <title>Specialty Coffee in Krakow: A Local's Map, District by District (2026)</title>
   <meta name="description" content="Where to drink specialty coffee in Krakow, neighborhood by neighborhood: Kleparz, Kazimierz, Krowodrza, Wesoła, the Starowiślna corridor and the city roastery. One local pick per district.">
   <link rel="canonical" href="https://bitekrakow.com/specialty-coffee-krakow/">
+  <link rel="alternate" hreflang="en" href="https://bitekrakow.com/specialty-coffee-krakow/">
+  <link rel="alternate" hreflang="pl" href="https://bitekrakow.com/pl/specialty-coffee-krakow/">
+  <link rel="alternate" hreflang="x-default" href="https://bitekrakow.com/specialty-coffee-krakow/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:site_name" content="BiteKrakow">
   <meta property="og:type" content="article">
@@ -252,6 +270,7 @@
       <a href="/restaurants/">Places</a>
       <a href="/news/">News</a>
       <a href="/about/">About</a>
+      <a class="lang-switch" href="/pl/specialty-coffee-krakow/" lang="pl">Polski</a>
     </nav>
   </div>
 </header>

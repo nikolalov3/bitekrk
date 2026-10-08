@@ -99,7 +99,7 @@ for (const page of pages) {
     if (/class="faq"/.test(html) && !types.includes('FAQPage')) {
       problems.push(`${label} jest sekcja FAQ, ale brak schema FAQPage`);
     }
-    if (!/Last verified|checked August|checked [A-Z][a-z]+ 20/.test(html) && !/Details checked/.test(html)) {
+    if (!/Last verified|checked August|checked [A-Z][a-z]+ 20/.test(html) && !/Details checked/.test(html) && !/sprawdzone [^<]{0,40}20\d\d/i.test(html)) {
       problems.push(`${label} brak widocznej daty weryfikacji treści`);
     }
   }
