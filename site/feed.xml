@@ -6,7 +6,28 @@
   <atom:link href="https://bitekrakow.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Independent guides to where locals eat and drink in Kraków: openings, neighborhood guides and cuisine rankings, every place visited in person.</description>
   <language>en</language>
-  <lastBuildDate>Thu, 08 Oct 2026 11:35:41 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 12 Oct 2026 09:13:52 GMT</lastBuildDate>
+  <item>
+    <title>Krakow Restaurant Week 2026: Dates, Prices, Rules and How to Book</title>
+    <link>https://bitekrakow.com/krakow-restaurant-week/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/krakow-restaurant-week/</guid>
+    <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Krakow Restaurant Week runs 7 Oct to 25 Nov 2026: three courses and a cocktail for 69.99 zl plus a 12.99 zl fee at 54 restaurants. Rules, cancellation, is it worth it.</description>
+  </item>
+  <item>
+    <title>Krakow Restaurant Week 2026: All 54 Restaurants by District and the 12 We Would Book</title>
+    <link>https://bitekrakow.com/news/krakow-restaurant-week-2026-restaurants/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/news/krakow-restaurant-week-2026-restaurants/</guid>
+    <pubDate>Mon, 12 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Krakow Restaurant Week 2026: all 54 restaurants sorted by district with festival dishes and prices, the 12 we would book first, and the booking questions answered.</description>
+  </item>
+  <item>
+    <title>Restaurant Week Kraków jesień 2026: lista 54 restauracji, ceny, rezerwacja i czy warto</title>
+    <link>https://bitekrakow.com/pl/krakow-restaurant-week/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/pl/krakow-restaurant-week/</guid>
+    <pubDate>Mon, 12 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Restaurant Week Kraków trwa do 25 listopada 2026. Lista 54 restauracji z daniami i cenami, realny koszt z opłatą 12,99 zł, zasady anulowania i które stoliki rezerwować.</description>
+  </item>
   <item>
     <title>Najlepsze bary koktajlowe w Krakowie: 6 miejsc wartych wieczoru</title>
     <link>https://bitekrakow.com/pl/cocktail-bars-krakow/</link>
@@ -34,13 +55,6 @@
     <guid isPermaLink="true">https://bitekrakow.com/pl/specialty-coffee-krakow/</guid>
     <pubDate>Thu, 08 Oct 2026 07:00:00 GMT</pubDate>
     <description>Gdzie na kawę specialty w Krakowie, dzielnica po dzielnicy: Kleparz, Kazimierz, Krowodrza, Wesoła i korytarz Starowiślnej. Jeden sprawdzony adres na dzielnicę, z cenami i tym, co zamówić.</description>
-  </item>
-  <item>
-    <title>Krakow Restaurant Week 2026: Dates, Prices and How to Book</title>
-    <link>https://bitekrakow.com/krakow-restaurant-week/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/krakow-restaurant-week/</guid>
-    <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
-    <description>Krakow Restaurant Week runs 7 October to 25 November 2026: a three-course meal and a cocktail for 70 zl at 50-plus restaurants. How it works, whether it is worth it, and how to book.</description>
   </item>
   <item>
     <title>8 New Restaurants and Cafes in Krakow, Autumn 2026</title>
@@ -272,20 +286,6 @@
     <guid isPermaLink="true">https://bitekrakow.com/halal-krakow/</guid>
     <pubDate>Wed, 19 Aug 2026 07:00:00 GMT</pubDate>
     <description>A local's guide to halal food in Krakow: certified halal Indian, Syrian charcoal kebab, tandoor grills, plus fully vegetarian kitchens with no meat question. Real addresses, prices and what to order, in English and Arabic.</description>
-  </item>
-  <item>
-    <title>COPPA: A Specialty Coffee and Tiramisu Bar Opens on Mazowiecka</title>
-    <link>https://bitekrakow.com/news/coppa-specialty-coffee-opens/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/news/coppa-specialty-coffee-opens/</guid>
-    <pubDate>Tue, 18 Aug 2026 07:00:00 GMT</pubDate>
-    <description>COPPA, a new specialty coffee spot built around tiramisu, has opened at Mazowiecka 60 in Krakow's Krowodrza: serious coffee, a dessert on the sign, open seven days a week.</description>
-  </item>
-  <item>
-    <title>Old Town Krakow Cafes: 6 Places Locals Actually Go (2026)</title>
-    <link>https://bitekrakow.com/old-town-cafes/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/old-town-cafes/</guid>
-    <pubDate>Sun, 16 Aug 2026 07:00:00 GMT</pubDate>
-    <description>Six cafes in Krakow's Old Town that locals use, not tourist traps: real hot chocolate, a bookstore cafe, specialty roasters and a gallery garden. Checked August 2026.</description>
   </item>
 </channel>
 </rss>
