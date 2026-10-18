@@ -6,7 +6,21 @@
   <atom:link href="https://bitekrakow.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Independent guides to where locals eat and drink in Kraków: openings, neighborhood guides and cuisine rankings, every place visited in person.</description>
   <language>en</language>
-  <lastBuildDate>Sat, 17 Oct 2026 19:53:06 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 18 Oct 2026 05:58:31 GMT</lastBuildDate>
+  <item>
+    <title>Art &amp; Food Bazar at Stary Kleparz: Sunday Dates, Hours and How to Plan It</title>
+    <link>https://bitekrakow.com/news/art-food-bazar-stary-kleparz/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/news/art-food-bazar-stary-kleparz/</guid>
+    <pubDate>Sun, 18 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Art &amp;amp; Food Bazar at Stary Kleparz: free Sunday food fair on 18 Oct, 15 Nov and 6 Dec 2026, 11:00 to 17:00. What to expect and where to eat before and after.</description>
+  </item>
+  <item>
+    <title>Art &amp; Food Bazar na Starym Kleparzu: terminy, godziny i jak zaplanować niedzielę</title>
+    <link>https://bitekrakow.com/pl/news/art-food-bazar-stary-kleparz/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/pl/news/art-food-bazar-stary-kleparz/</guid>
+    <pubDate>Sun, 18 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Art &amp;amp; Food Bazar na Starym Kleparzu: darmowy niedzielny festiwal jedzenia 18.10, 15.11 i 6.12.2026, 11:00 do 17:00. Co tam jest i gdzie zjeść przed i po.</description>
+  </item>
   <item>
     <title>Breakfast in Krakow: 6 Places That Actually Open Early (2026)</title>
     <link>https://bitekrakow.com/breakfast-krakow/</link>
@@ -272,20 +286,6 @@
     <guid isPermaLink="true">https://bitekrakow.com/thai-krakow/</guid>
     <pubDate>Wed, 12 Aug 2026 07:00:00 GMT</pubDate>
     <description>A local's guide to the best Thai food in Krakow: the Michelin Bib Gourmand canteen cooking over open fire, an all-Thai kitchen in Kazimierz, and the neighborhood woks locals rate 4.8 and up. Real addresses, prices and what to order.</description>
-  </item>
-  <item>
-    <title>Best Vietnamese Restaurants in Krakow (2026): Pho, Bun Cha and Banh Mi</title>
-    <link>https://bitekrakow.com/vietnamese-krakow/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/vietnamese-krakow/</guid>
-    <pubDate>Tue, 04 Aug 2026 07:00:00 GMT</pubDate>
-    <description>A local's guide to the best Vietnamese food in Krakow: a 16-hour beef pho with handmade noodles, family kitchens with the mother at the stove, and the city's best banh mi. Real addresses, prices and what to order.</description>
-  </item>
-  <item>
-    <title>مطاعم حلال في كراكوف (2026): مطابخ معتمدة وماذا تطلب</title>
-    <link>https://bitekrakow.com/ar/halal-krakow/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/ar/halal-krakow/</guid>
-    <pubDate>Wed, 19 Aug 2026 07:00:00 GMT</pubDate>
-    <description>دليل محلي للطعام الحلال في كراكوف: مطابخ هندية حلال معتمدة، مشاوي كباب سورية على الفحم، تندور، ومطاعم نباتية بالكامل بلا أي لحم. عناوين حقيقية وأسعار وماذا تطلب، قرب البلدة القديمة وكازيميَش.</description>
   </item>
 </channel>
 </rss>

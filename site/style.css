@@ -1824,3 +1824,8 @@ html[dir="rtl"] .article-body .menu-pick { border-right: none; }
   .callout .thesis { font-size: 1.32rem; }
   .vp-info-card { border-top: 1px solid var(--rule-strong); }
 }
+
+/* Nawigacja PL/AR: dluzsze etykiety nie moga rozpychac strony na waskich telefonach */
+@media (max-width: 480px) {
+  .site-header .site-nav { flex-wrap: wrap; justify-content: center; column-gap: 16px; row-gap: 6px; max-width: 100%; }
+}
