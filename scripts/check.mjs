@@ -13,7 +13,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { cssVersion, JS_FILES, jsVersion } from './bust-css.mjs';
+import { cssVersion, JS_FILES, jsVersion, venuesVersion } from './bust-css.mjs';
 
 const SITE = new URL('../site/', import.meta.url).pathname;
 const HOST = 'https://bitekrakow.com';
@@ -146,6 +146,9 @@ for (const page of pages) {
     const bad = execSync(`grep -rlE 'src="/${js.replace('.', '\\.')}(\\?v=[0-9a-f]+)?"' --include=index.html ${SITE} | xargs grep -L 'src="/${js}?v=${jv}"' || true`, { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
     if (bad.length) problems.push(`${bad.length} stron ma nieaktualna wersje ${js} (uruchom: node scripts/bust-css.mjs), np. ${bad[0].replace(SITE, '/')}`);
   }
+  const dv = venuesVersion();
+  const badData = execSync(`grep -rl 'data-venues-v=' --include=index.html ${SITE} | xargs grep -L 'data-venues-v="${dv}"' || true`, { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
+  if (badData.length) problems.push(`${badData.length} stron ma nieaktualna wersje map-venues.json (uruchom: node scripts/bust-css.mjs), np. ${badData[0].replace(SITE, '/')}`);
 }
 
 console.log('Sprawdzone strony:');

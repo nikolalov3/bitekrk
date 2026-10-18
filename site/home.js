@@ -113,7 +113,7 @@
 
   // Dane lokali pobieramy dopiero po pierwszym kliknieciu (nic na starcie strony).
   function load() {
-    if (!loading) loading = fetch('/data/map-venues.json').then(function (r) { return r.json(); }).then(function (data) {
+    if (!loading) loading = fetch('/data/map-venues.json?v=' + (box.getAttribute('data-venues-v') || '')).then(function (r) { return r.json(); }).then(function (data) {
       venues = (data.venues || []).filter(function (v) { return v.lat && v.lng; });
     });
     return loading;

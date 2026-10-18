@@ -13,6 +13,11 @@ export function cssVersion() {
   return createHash('md5').update(readFileSync(join(SITE, 'style.css'))).digest('hex').slice(0, 10);
 }
 export const JS_FILES = ['home.js', 'map.js', 'venue-cards.js'];
+// Dane lokali (cache 1 h + SWR 1 dzien): wersja w atrybucie data-venues-v, z ktorego home.js i map.js
+// buduja adres ?v=..., inaczej przegladarka do doby podaje stary plik po gen-venues.
+export function venuesVersion() {
+  return createHash('md5').update(readFileSync(join(SITE, 'data', 'map-venues.json'))).digest('hex').slice(0, 10);
+}
 export function jsVersion(name) {
   return createHash('md5').update(readFileSync(join(SITE, name))).digest('hex').slice(0, 10);
 }
@@ -27,6 +32,7 @@ function walk(dir, out = []) {
 export function bust() {
   const v = cssVersion();
   const jsv = Object.fromEntries(JS_FILES.map(j => [j, jsVersion(j)]));
+  const dv = venuesVersion();
   let files = 0;
   for (const f of walk(SITE)) {
     const h = readFileSync(f, 'utf8');
@@ -35,6 +41,7 @@ export function bust() {
       const re = new RegExp(`src="/${js.replace('.', '\\.')}(?:\\?v=[0-9a-f]+)?"`, 'g');
       n = n.replace(re, `src="/${js}?v=${jsv[js]}"`);
     }
+    n = n.replace(/data-venues-v="[0-9a-f]*"/g, `data-venues-v="${dv}"`);
     if (n !== h) { writeFileSync(f, n); files++; }
   }
   return { v, files };

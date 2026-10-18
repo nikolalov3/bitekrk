@@ -144,7 +144,7 @@
     });
   });
 
-  fetch('/data/map-venues.json').then(function (r) { return r.json(); }).then(function (data) {
+  fetch('/data/map-venues.json?v=' + (el.getAttribute('data-venues-v') || '')).then(function (r) { return r.json(); }).then(function (data) {
     venues = (data.venues || []).slice().sort(function (a, b) { return a.p - b.p; });
     venues.forEach(function (v) {
       var b = document.createElement('button');
