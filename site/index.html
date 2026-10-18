@@ -455,7 +455,6 @@
     }, { passive: true });
     ['mouseenter', 'touchstart', 'focusin'].forEach(function (e) { box.addEventListener(e, function () { paused = true; }); });
     ['mouseleave', 'focusout'].forEach(function (e) { box.addEventListener(e, function () { paused = false; }); });
-    setInterval(function () { if (!paused && !document.hidden) go(i + 1); }, 5200);
     mark();
   })();
 </script>
