@@ -3,3 +3,6 @@ scripts/bk-db.py
 scripts/bk-refresh.py
 scripts/bk-clients.py
 .DS_Store
+
+# szkice poza site/ (np. karuzele IG)
+/_*.html
