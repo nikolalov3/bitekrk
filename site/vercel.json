@@ -117,7 +117,7 @@
       ]
     },
     {
-      "source": "/(map|venue-cards)\\.js",
+      "source": "/(map|venue-cards|home)\\.js",
       "headers": [
         {
           "key": "Cache-Control",

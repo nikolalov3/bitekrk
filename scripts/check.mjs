@@ -13,7 +13,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { cssVersion } from './bust-css.mjs';
+import { cssVersion, JS_FILES, jsVersion } from './bust-css.mjs';
 
 const SITE = new URL('../site/', import.meta.url).pathname;
 const HOST = 'https://bitekrakow.com';
@@ -141,6 +141,11 @@ for (const page of pages) {
   const stale = execSync(`grep -rL 'href="/style.css?v=${v}"' --include=index.html ${SITE} || true`, { encoding: 'utf8' })
     .split('\n').filter(f => f && readFileSync(f, 'utf8').includes('/style.css'));
   if (stale.length) problems.push(`${stale.length} stron ma nieaktualna wersje style.css (uruchom: node scripts/bust-css.mjs), np. ${stale[0].replace(SITE, '/')}`);
+  for (const js of JS_FILES) {
+    const jv = jsVersion(js);
+    const bad = execSync(`grep -rlE 'src="/${js.replace('.', '\\.')}(\\?v=[0-9a-f]+)?"' --include=index.html ${SITE} | xargs grep -L 'src="/${js}?v=${jv}"' || true`, { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
+    if (bad.length) problems.push(`${bad.length} stron ma nieaktualna wersje ${js} (uruchom: node scripts/bust-css.mjs), np. ${bad[0].replace(SITE, '/')}`);
+  }
 }
 
 console.log('Sprawdzone strony:');

@@ -42,14 +42,16 @@
 
   var AR = box.getAttribute('data-lang') === 'ar';
   var T = AR ? {
-    walk: function (m) { return m + ' د مشيًا'; }, you: 'بالقرب منك', reviews: 'مراجعة', ours: 'تقييمنا',
+    walk: function (m) { return m + ' د مشيًا'; }, you: 'موقعك', reviews: 'مراجعة', ours: 'تقييمنا',
     guide: 'في الدليل', profile: 'الملف', intro: function (n, a) { return n + ' أماكن ننصح بها على بعد مشي من ' + a; },
-    locating: 'جارٍ تحديد موقعك…', denied: 'لم نتمكن من تحديد موقعك. اختر حيًا أعلاه.', map: 'كل الأماكن على الخريطة',
+    locating: 'جارٍ تحديد موقعك…', denied: 'لم نتمكن من تحديد موقعك. اختر حي فندقك أعلاه.', map: 'كل الأماكن على الخريطة',
+    far: 'يبدو أنك خارج كراكوف الآن. اختر حي فندقك أعلاه.', loading: 'جارٍ التحميل…', error: 'تعذّر تحميل القائمة. جرّب الخريطة.',
     type: { cafe: 'مقهى', food: 'مطعم', bar: 'بار' }, partner: 'شريك'
   } : {
     walk: function (m) { return m + ' min walk'; }, you: 'you', reviews: 'reviews', ours: 'Our score',
     guide: 'In the guide', profile: 'Profile', intro: function (n, a) { return n + ' places we recommend within a walk of ' + a; },
-    locating: 'Finding you…', denied: 'We could not get your location. Pick an area above.', map: 'Everything on the map',
+    locating: 'Finding you…', denied: 'We could not get your location. Pick the area of your hotel above.', map: 'Everything on the map',
+    far: 'You seem to be outside Krakow right now. Pick the area of your hotel above.', loading: 'Loading…', error: 'Could not load the list. Try the map instead.',
     type: { cafe: 'Cafe', food: 'Restaurant', bar: 'Bar' }, partner: 'Partner'
   };
 
@@ -57,7 +59,9 @@
   var geoBtn = box.querySelector('.stay-geo');
   var track = box.querySelector('.rail-track');
   var lead = box.querySelector('.stay-lead');
-  var venues = null, current = null;
+  var railBox = box.querySelector('.rail');
+  var venues = null, loading = null;
+  var CENTER = { lat: 50.0614, lng: 19.9366 };
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function dist(a, b, c, d) {
@@ -105,9 +109,22 @@
       '</span></a>';
   }
 
+  // Dane lokali pobieramy dopiero po pierwszym kliknieciu (nic na starcie strony).
+  function load() {
+    if (!loading) loading = fetch('/data/map-venues.json').then(function (r) { return r.json(); }).then(function (data) {
+      venues = (data.venues || []).filter(function (v) { return v.lat && v.lng; });
+    });
+    return loading;
+  }
+  function show(lat, lng, label) {
+    if (lead) lead.textContent = T.loading;
+    load().then(function () { render(lat, lng, label); }, function () { loading = null; if (lead) lead.textContent = T.error; });
+  }
+
   function render(lat, lng, label) {
     if (!venues) return;
     var list = pick(lat, lng);
+    if (railBox) railBox.hidden = false;
     track.innerHTML = list.map(card).join('') +
       '<a class="rail-card stay-more" href="/map/"><span class="rc-body"><span class="rc-title">' + T.map + (AR ? ' ←' : ' →') + '</span></span></a>';
     track.scrollTo({ left: 0 });
@@ -115,16 +132,14 @@
     var rail = box.querySelector('.rail'); if (rail && rail._bkSync) setTimeout(function () { rail._bkSync(true); }, 60);
   }
 
-  function select(chip, persist) {
+  function select(chip) {
     Array.prototype.forEach.call(chips, function (c) { var on = c === chip; c.classList.toggle('on', on); c.setAttribute('aria-pressed', on ? 'true' : 'false'); });
     if (geoBtn) geoBtn.classList.remove('on');
-    current = { lat: +chip.getAttribute('data-lat'), lng: +chip.getAttribute('data-lng'), label: chip.getAttribute('data-label') || chip.textContent.trim() };
-    if (persist) { try { localStorage.setItem('bk-stay', chip.getAttribute('data-key') || ''); } catch (e) {} }
-    render(current.lat, current.lng, current.label);
+    show(+chip.getAttribute('data-lat'), +chip.getAttribute('data-lng'), chip.getAttribute('data-label') || chip.textContent.trim());
   }
 
   Array.prototype.forEach.call(chips, function (chip) {
-    chip.addEventListener('click', function () { select(chip, true); });
+    chip.addEventListener('click', function () { select(chip); });
   });
   if (geoBtn) {
     if (!('geolocation' in navigator)) geoBtn.hidden = true;
@@ -133,9 +148,11 @@
       navigator.geolocation.getCurrentPosition(function (pos) {
         geoBtn.textContent = old; geoBtn.disabled = false;
         Array.prototype.forEach.call(chips, function (c) { c.classList.remove('on'); c.setAttribute('aria-pressed', 'false'); });
+        var here = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        // Poza Krakowem lista "w zasiegu spaceru" nie ma sensu: prosimy o wybor dzielnicy hotelu.
+        if (dist(here.lat, here.lng, CENTER.lat, CENTER.lng) > 15000) { if (lead) lead.textContent = T.far; return; }
         geoBtn.classList.add('on');
-        try { localStorage.setItem('bk-stay', 'geo'); } catch (e) {}
-        render(pos.coords.latitude, pos.coords.longitude, T.you);
+        show(here.lat, here.lng, T.you);
       }, function () {
         geoBtn.textContent = old; geoBtn.disabled = false;
         if (lead) lead.textContent = T.denied;
@@ -143,13 +160,6 @@
     });
   }
 
-  fetch('/data/map-venues.json').then(function (r) { return r.json(); }).then(function (data) {
-    venues = (data.venues || []).filter(function (v) { return v.lat && v.lng; });
-    var saved = null; try { saved = localStorage.getItem('bk-stay'); } catch (e) {}
-    var start = null;
-    Array.prototype.forEach.call(chips, function (c) { if (saved && c.getAttribute('data-key') === saved) start = c; });
-    if (!start) start = chips[0];
-    if (start) select(start, false);
-    initRails();
-  }).catch(function () { box.classList.add('stay-fallback'); initRails(); });
+  // Domyslnie bez listy: sekcja prosi o lokalizacje albo wybor dzielnicy.
+  initRails();
 })();

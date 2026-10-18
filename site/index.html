@@ -43,7 +43,7 @@
   <script>(function(){var u="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap",n=0;function f(){var l=document.createElement("link");l.rel="stylesheet";l.href=u;document.head.appendChild(l)}function w(){var p=performance.getEntriesByType&&performance.getEntriesByType("paint");if((p&&p.length)||n++>90)requestAnimationFrame(f);else requestAnimationFrame(w)}window.requestAnimationFrame?requestAnimationFrame(w):f()})();</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"></noscript>
   <link rel="preload" as="image" href="/img/autumn/art-food-bazar-2026.webp" fetchpriority="high">
-  <link rel="stylesheet" href="/style.css?v=48eea6ddde">
+  <link rel="stylesheet" href="/style.css?v=dc13a96a88">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -138,8 +138,8 @@
 
 <section class="wrap">
   <div class="hero-stats">
-    <div class="stat"><b>90</b><span>Places covered</span></div>
-    <div class="stat"><b>14</b><span>Neighborhoods</span></div>
+    <div class="stat"><b data-stat="places">119</b><span>Places covered</span></div>
+    <div class="stat"><b data-stat="districts">13</b><span>Neighborhoods</span></div>
     <div class="stat"><b>2026</b><span>Updated for</span></div>
   </div>
 </section>
@@ -147,7 +147,11 @@
 <section class="wrap stay" id="stay" data-lang="en">
   <span class="eyebrow">By where you sleep</span>
   <h2 class="deco">Where are you staying?</h2>
-  <p class="section-lead">Pick your area and we show the places we recommend within a walk of your hotel, with the Google rating and our own score.</p>
+  <p class="section-lead">Share your location and we list the places we recommend within a walk, with the Google rating and our own score. Your location stays in your browser.</p>
+  <div class="stay-ask">
+    <button type="button" class="stay-geo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>Use my location</button>
+    <span class="stay-or">or pick the area of your hotel</span>
+  </div>
   <div class="stay-chips" role="group" aria-label="Where are you staying?">
     <button type="button" class="stay-chip" data-key="old-town" data-lat="50.0617" data-lng="19.9373" data-label="the Main Square" aria-pressed="false">Old Town &amp; Main Square</button>
     <button type="button" class="stay-chip" data-key="station" data-lat="50.0668" data-lng="19.943" data-label="the main station" aria-pressed="false">Main station &amp; Kleparz</button>
@@ -156,10 +160,9 @@
     <button type="button" class="stay-chip" data-key="krowodrza" data-lat="50.069" data-lng="19.923" data-label="Krowodrza" aria-pressed="false">Krowodrza &amp; Błonia</button>
     <button type="button" class="stay-chip" data-key="grzegorzki" data-lat="50.06" data-lng="19.951" data-label="Grzegórzki" aria-pressed="false">Grzegórzki &amp; Hala Targowa</button>
     <button type="button" class="stay-chip" data-key="debniki" data-lat="50.049" data-lng="19.927" data-label="Dębniki" aria-pressed="false">Dębniki &amp; Salwator</button>
-    <button type="button" class="stay-geo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>Use my location</button>
   </div>
   <p class="stay-lead" aria-live="polite"></p>
-  <div class="rail">
+  <div class="rail" hidden>
     <div class="rail-nav" aria-hidden="true" style="position:absolute;top:-52px;right:0"><button type="button" class="rail-prev" aria-label="Previous" tabindex="-1">‹</button><button type="button" class="rail-next" aria-label="Next" tabindex="-1">›</button></div>
     <div class="rail-track"></div>
   </div>
@@ -363,8 +366,16 @@
   </div>
 </section>
 
-<section class="values">
+<section class="values" aria-labelledby="values-h">
   <div class="wrap">
+    <header class="values-head">
+      <div>
+        <span class="eyebrow">How this guide works</span>
+        <h2 id="values-h">Three rules we keep</h2>
+      </div>
+      <p class="values-facts"><span><b data-stat="places">119</b>places with a profile</span><span><b>Oct 2026</b>hours last re-checked</span></p>
+    </header>
+    <div class="values-grid">
     <div>
       <span class="val-num">01</span>
       <h3>Visited in person</h3>
@@ -380,49 +391,77 @@
       <h3>Dated and updated</h3>
       <p>Every guide says when it was last verified. When a place closes or slides, we edit or delete. Stale recommendations are worse than none.</p>
     </div>
+    </div>
+    <a class="values-more" href="/how-we-test/">How we test and score <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
 
-<!-- Rysowane grafiki: zestaw losowany przy każdym wejściu (czysto dekoracyjne) -->
-<div class="doodle-band" aria-hidden="true">
-  <div class="doodle-set" id="set-coffee">
-    <svg class="dood" viewBox="0 0 40 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="20" cy="22" rx="12" ry="17" transform="rotate(18 20 22)"/><path d="M14 9 C24 16 16 28 26 35"/></svg>
-    <svg class="dood" viewBox="0 0 52 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 18 h28 v12 a10 10 0 0 1 -10 10 h-8 a10 10 0 0 1 -10 -10 z"/><path d="M36 20 c8 0 8 10 0 10"/><path d="M17 4 c-2 3 2 5 0 9 M25 3 c-2 3 2 5 0 9"/></svg>
-    <svg class="dood" viewBox="0 0 40 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 h16 l3 14 h-22 z"/><path d="M9 30 l3 -12 h16 l3 12 z"/><path d="M9 30 h22 l-3 14 h-16 z"/><path d="M31 20 c6 1 6 8 0 9"/></svg>
-    <svg class="dood" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 12 h30 l-9 14 v9 l-12 5 v-14 z"/><path d="M14 12 c0 -6 18 -6 18 0"/></svg>
-    <svg class="dood" viewBox="0 0 56 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6 c6 -4 12 0 10 6 c8 -2 14 4 10 10 c6 4 2 12 -6 12 h-20 c-10 0 -14 -10 -6 -15 c-6 -7 4 -16 12 -13z"/><path d="M16 34 c4 -6 20 -6 24 0"/></svg>
-    <svg class="dood" viewBox="0 0 40 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="20" cy="22" rx="12" ry="17" transform="rotate(-14 20 22)"/><path d="M26 9 C16 16 24 28 14 35"/></svg>
-  </div>
-  <div class="doodle-set" id="set-kitchen" hidden>
-    <svg class="dood" viewBox="0 0 36 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 4 v14"/><path d="M10 18 c-4 10 -2 20 8 26 c10 -6 12 -16 8 -26 c-5 -3 -11 -3 -16 0z"/><path d="M18 18 v26 M12 22 c2 8 2 14 6 20 M24 22 c-2 8 -2 14 -6 20"/></svg>
-    <svg class="dood" viewBox="0 0 44 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M30 8 c6 2 8 8 6 13 c-3 9 -12 20 -24 21 c-3 0 -5 -2 -4 -5 c3 -12 12 -24 22 -29z"/><path d="M30 8 c-1 -3 1 -5 4 -5 c0 3 -1 4 -4 5z"/></svg>
-    <svg class="dood" viewBox="0 0 34 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="17" cy="14" rx="10" ry="12"/><path d="M17 26 v16 M13 42 h8"/></svg>
-    <svg class="dood" viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 4 c-8 6 -12 14 -8 24 c3 8 13 8 16 0 c4 -10 0 -18 -8 -24z"/><path d="M20 10 v30"/><path d="M20 16 c-4 2 -6 6 -6 10 M20 16 c4 2 6 6 6 10"/></svg>
-    <svg class="dood" viewBox="0 0 56 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="12" y="10" width="32" height="14" rx="7"/><path d="M4 17 h8 M44 17 h8"/></svg>
-    <svg class="dood" viewBox="0 0 40 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 44 c-8 -8 -12 -18 -6 -26 c4 -6 12 -6 14 2 c2 8 -2 18 -8 24z"/><path d="M20 12 c0 -4 2 -7 6 -8"/></svg>
-  </div>
-</div>
-<script>
-  (function () {
-    if (Math.random() < 0.5) {
-      document.getElementById('set-coffee').hidden = true;
-      document.getElementById('set-kitchen').hidden = false;
-    }
-  })();
-</script>
-
-<footer class="site-footer">
+<!-- Rysowane grafiki = skroty do przewodnikow; kreska rysuje sie przy przewijaniu (CSS, bez JS) -->
+<nav class="crave" aria-labelledby="crave-h">
   <div class="wrap">
-    <a class="logo" href="/">Bite<span>Krakow</span></a>
-    <nav class="foot-nav">
-      <a href="/guides/">All guides</a>
-      <a href="/news/">News</a>
-      <a href="/about/">About</a>
-      <a href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>
-    </nav>
-    <p>Independent guides to Krakow's food and coffee scene. Written and edited by <a href="/about/">Cezary Musiał</a> in Kraków, every place visited in person.</p>
-    <p>Ratings and review quotes shown on venue cards come from Google.</p>
+    <p class="crave-title" id="crave-h">What are you in the mood for?</p>
+    <ul class="crave-list">
+      <li><a href="/specialty-coffee-krakow/"><span class="crave-ico"><svg viewBox="0 0 52 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M8 18 h28 v12 a10 10 0 0 1 -10 10 h-8 a10 10 0 0 1 -10 -10 z"/><path pathLength="1" d="M36 20 c8 0 8 10 0 10"/><path pathLength="1" d="M17 4 c-2 3 2 5 0 9 M25 3 c-2 3 2 5 0 9"/></svg></span><span class="crave-lbl">Coffee</span></a></li>
+      <li><a href="/breakfast-krakow/"><span class="crave-ico"><svg viewBox="0 0 56 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M7 30 C9 15 19 7 28 7 C37 7 47 15 49 30 C44 27 39 26 35 27 C32 23 24 23 21 27 C17 26 12 27 7 30 Z"/><path pathLength="1" d="M21 27 C20 19 22 12 25 8 M35 27 C36 19 34 12 31 8"/><path pathLength="1" d="M7 30 c-2 2 -1 5 3 4 M49 30 c2 2 1 5 -3 4"/></svg></span><span class="crave-lbl">Breakfast</span></a></li>
+      <li><a href="/matcha-krakow/"><span class="crave-ico"><svg viewBox="0 0 58 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 22 h36 c0 11 -8 18 -18 18 c-10 0 -18 -7 -18 -18 z"/><path pathLength="1" d="M8 22 c3 -3 6 -3 9 0 c3 -3 6 -3 9 0 c3 -3 6 -3 9 0"/><path pathLength="1" d="M51 3 v13"/><path pathLength="1" d="M46 16 c0 10 2 16 5 20 c3 -4 5 -10 5 -20 z"/><path pathLength="1" d="M51 17 v19 M48.5 18 c0 7 1 12 2.5 18 M53.5 18 c0 7 -1 12 -2.5 18"/></svg></span><span class="crave-lbl">Matcha</span></a></li>
+      <li><a href="/where-to-work-krakow/"><span class="crave-ico"><svg viewBox="0 0 54 42" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect pathLength="1" x="9" y="6" width="32" height="22" rx="2"/><path pathLength="1" d="M3 32 h44 l-3 5 h-38 z"/><path pathLength="1" d="M18 14 h14 M18 19 h9"/><path pathLength="1" d="M47 18 h5 v6 a3 3 0 0 1 -3 3 h0 a3 3 0 0 1 -3 -3 z"/></svg></span><span class="crave-lbl">Work &amp; study</span></a></li>
+      <li><a href="/cheap-eats-krakow/"><span class="crave-ico"><svg viewBox="0 0 58 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 26 c0 -6 4 -9 10 -9 h30 c6 0 10 3 10 9 c0 6 -4 8 -10 8 h-30 c-6 0 -10 -2 -10 -8 z"/><path pathLength="1" d="M10 19 c3 -4 5 3 8 0 s5 3 8 0 s5 3 8 0 s5 3 8 0 s4 3 6 0"/><path pathLength="1" d="M15 26 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0 M29 27 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0 M41 25 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0"/></svg></span><span class="crave-lbl">Cheap eats</span></a></li>
+      <li><a href="/cocktail-bars-krakow/"><span class="crave-ico"><svg viewBox="0 0 48 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M7 8 h32 l-16 18 z"/><path pathLength="1" d="M23 26 v14 M15 41 h16"/><path pathLength="1" d="M12 13 h22"/><path pathLength="1" d="M38 3 l-9 13"/><path pathLength="1" d="M27 14 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"/></svg></span><span class="crave-lbl">Cocktails</span></a></li>
+      <li><a href="/wine-bars-krakow/"><span class="crave-ico"><svg viewBox="0 0 34 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M8 5 h18 c1 10 -1 18 -9 20 c-8 -2 -10 -10 -9 -20 z"/><path pathLength="1" d="M8.6 13 h16.8"/><path pathLength="1" d="M17 25 v15 M11 41 h12"/></svg></span><span class="crave-lbl">Wine</span></a></li>
+      <li><a href="/dog-friendly-cafes-krakow/"><span class="crave-ico"><svg viewBox="0 0 50 42" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M15 14 c0 -6 4 -9 10 -9 s10 3 10 9 v8 c0 8 -4 13 -10 13 s-10 -5 -10 -13 z"/><path pathLength="1" d="M15 12 c-6 0 -9 6 -8 13 c3 0 6 -3 8 -6 M35 12 c6 0 9 6 8 13 c-3 0 -6 -3 -8 -6"/><path pathLength="1" d="M20 18 h.5 M29.5 18 h.5"/><path pathLength="1" d="M23 25 h4 l-2 2.5 z"/><path pathLength="1" d="M25 27.5 v2 c-1 2 -3 2 -4 1 M25 29.5 c1 2 3 2 4 1"/></svg></span><span class="crave-lbl">Dog-friendly</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<footer class="site-footer" data-foot="2">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="/">Bite<span>Krakow</span></a>
+        <p class="foot-tag">Independent guides to Krakow's food and coffee scene. Written and edited by <a href="/about/">Cezary Musiał</a> in Kraków, every place visited in person.</p>
+        <a class="foot-mail" href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>
+      </div>
+      <nav class="foot-col" aria-label="Eat and drink">
+        <p class="foot-h">Eat and drink</p>
+        <ul>
+          <li><a href="/breakfast-krakow/">Breakfast</a></li>
+          <li><a href="/specialty-coffee-krakow/">Specialty coffee</a></li>
+          <li><a href="/matcha-krakow/">Matcha</a></li>
+          <li><a href="/where-to-work-krakow/">Cafes to work from</a></li>
+          <li><a href="/pierogi-krakow/">Pierogi</a></li>
+          <li><a href="/halal-krakow/">Halal</a></li>
+          <li><a href="/cocktail-bars-krakow/">Cocktail bars</a></li>
+          <li><a href="/wine-bars-krakow/">Wine bars</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Neighborhoods">
+        <p class="foot-h">Neighborhoods</p>
+        <ul>
+          <li><a href="/kazimierz-guide/">Kazimierz</a></li>
+          <li><a href="/old-town-cafes/">Old Town cafes</a></li>
+          <li><a href="/podgorze-guide/">Podgórze</a></li>
+          <li><a href="/kleparz-guide/">Kleparz</a></li>
+          <li><a href="/krowodrza-guide/">Krowodrza</a></li>
+          <li><a href="/coffee-near-krakow-main-station/">Near the main station</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="BiteKrakow">
+        <p class="foot-h">BiteKrakow</p>
+        <ul>
+          <li><a href="/guides/">All guides</a></li>
+          <li><a href="/restaurants/">All places</a></li>
+          <li><a href="/map/">Map</a></li>
+          <li><a href="/news/">News</a></li>
+          <li><a href="/how-we-test/">How we test</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <p class="foot-src">Ratings and review quotes shown on venue cards come from Google.</p>
+      <p class="foot-meta"><span>&copy; 2026 BiteKrakow</span> <a href="/ar/" hreflang="ar" lang="ar">العربية</a></p>
+    </div>
   </div>
 </footer>
 
@@ -458,6 +497,6 @@
     mark();
   })();
 </script>
-<script src="/home.js" defer></script>
+<script src="/home.js?v=25f1c1a7a7" defer></script>
 </body>
 </html>

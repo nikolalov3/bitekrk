@@ -17,16 +17,20 @@ import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { FLAG_SPRITE, cuisineChips } from './flags.mjs';
+import { footerHtml } from './footer.mjs';
+import { jsVersion } from './bust-css.mjs';
 
 const SITE = new URL('../site/', import.meta.url).pathname;
 const HOST = 'https://bitekrakow.com';
 // Wersja CSS (hash) do cache-bustingu: /style.css jest serwowany z dlugim cache (vercel.json).
 const CSS_V = createHash('md5').update(readFileSync(join(SITE, 'style.css'))).digest('hex').slice(0, 10);
-// Fonty Google ladowane nieblokujaco (preload + onload), z fallbackiem noscript.
-const FONT_URL = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap';
-const FONTS_HTML = `<link rel="preload" as="style" href="${FONT_URL}" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="${FONT_URL}"></noscript>`;
-const TODAY = '2026-08-19';
+// Fonty Google wstrzykiwane dopiero po pierwszym malowaniu (preload zbijal Lighthouse do ~65,
+// bo Lantern liczy fonty VeryHigh jako zaleznosc FCP). Ten sam URL co na reszcie strony (cache).
+const FONT_URL = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap';
+const FONTS_HTML = `<script>(function(){var u="${FONT_URL}",n=0;function f(){var l=document.createElement("link");l.rel="stylesheet";l.href=u;document.head.appendChild(l)}function w(){var p=performance.getEntriesByType&&performance.getEntriesByType("paint");if((p&&p.length)||n++>90)requestAnimationFrame(f);else requestAnimationFrame(w)}window.requestAnimationFrame?requestAnimationFrame(w):f()})();</script>
+  <noscript><link rel="stylesheet" href="${FONT_URL.replace(/&/g, '&amp;')}"></noscript>`;
+// Dzisiejsza data: trafia do lastmod TYLKO gdy tresc profilu faktycznie sie zmienila (scripts/lastmod.json).
+const TODAY = new Date().toISOString().slice(0, 10);
 
 const esc = s => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -157,6 +161,31 @@ function streetOf(addr) {
 }
 
 // ---------- 4. Strona profilu ----------
+// ---------- 3b. W poblizu: 6 najblizszych lokali z wlasnym profilem ----------
+// Czysto po odleglosci (bez premii dla kogokolwiek). Daje kazdemu profilowi linki
+// z sasiednich profili, czyli siatke linkow wewnetrznych zamiast samej listy /restaurants/.
+const KIND = { CafeOrCoffeeShop: 'Cafe', Bakery: 'Bakery', IceCreamShop: 'Ice cream', BarOrPub: 'Bar', Winery: 'Wine bar', Restaurant: 'Restaurant', FastFoodRestaurant: 'Quick bite', LocalBusiness: 'Place' };
+const profiled = venues.filter(x => featured[x.slug] && featured[x.slug].length && x.lat && x.lng);
+function metres(a, b) {
+  const R = 6371000, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+function nearbyHtml(v) {
+  if (!v.lat || !v.lng) return '';
+  const near = profiled.filter(x => x.slug !== v.slug)
+    .map(x => ({ x, d: metres(v, x) })).filter(o => o.d <= 1500)
+    .sort((a, b) => a.d - b.d).slice(0, 6);
+  if (near.length < 2) return '';
+  const fmt = d => d < 950 ? `${Math.round(d / 10) * 10} m` : `${(d / 1000).toFixed(1)} km`;
+  return `      <section class="vp-block">
+        <h2 class="vp-h">Nearby on BiteKrakow</h2>
+        <ul class="vp-nearby">
+${near.map(({ x, d }) => `          <li><a href="/restaurant/${x.slug}/"><span class="nb-name">${esc(x.name)}</span><span class="nb-meta">${KIND[schemaType(x)] || 'Place'} · ${fmt(d)}, ${Math.max(1, Math.round(d / 80))} min walk</span></a></li>`).join('\n')}
+        </ul>
+      </section>`;
+}
+
 function venuePage(v) {
   const feats = featured[v.slug] || [];
   const type = schemaType(v);
@@ -391,6 +420,7 @@ ${featsHtml}
       </section>` : ''}
 
 ${menuHtml}
+${nearbyHtml(v)}
       <section class="vp-block">
         <div class="venue-reviews" hidden></div>
       </section>
@@ -421,21 +451,9 @@ ${menuHtml}
   </div>
 </article>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <a class="logo" href="/">Bite<span>Krakow</span></a>
-    <nav class="foot-nav">
-      <a href="/guides/">All guides</a>
-      <a href="/restaurants/">All places</a>
-      <a href="/news/">News</a>
-      <a href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>
-    </nav>
-    <p>Independent guides to Krakow's food and coffee scene. Written by locals, updated year-round.</p>
-    <p>Ratings, review quotes, opening hours, amenity details and some photos on this page come from Google.</p>
-  </div>
-</footer>
+${footerHtml('en', ['Ratings, review quotes, opening hours, amenity details and some photos on this page come from Google.'])}
 
-<script src="/venue-cards.js" defer></script>
+<script src="/venue-cards.js?v=${jsVersion('venue-cards.js')}" defer></script>
 </body>
 </html>
 `;
@@ -619,19 +637,7 @@ ${districtSections}
   </div>
 </article>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <a class="logo" href="/">Bite<span>Krakow</span></a>
-    <nav class="foot-nav">
-      <a href="/guides/">All guides</a>
-      <a href="/news/">News</a>
-      <a href="/about/">About</a>
-      <a href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>
-    </nav>
-    <p>Independent guides to Krakow's food and coffee scene. Written by locals, updated year-round.</p>
-    <p>Ratings shown on this page come from Google.</p>
-  </div>
-</footer>
+${footerHtml('en', ['Ratings shown on this page come from Google.'])}
 
 </body>
 </html>
@@ -642,13 +648,31 @@ writeFileSync(join(SITE, 'restaurants', 'index.html'), indexHtml);
 // ---------- 7. Sitemap ----------
 const smFile = join(SITE, 'sitemap.xml');
 let sm = readFileSync(smFile, 'utf8');
+// lastmod = dzien ostatniej REALNEJ zmiany tresci (hash strony bez hasha CSS), nie data uruchomienia.
+// Google ignoruje lastmod, ktory zmienia sie przy kazdym buildzie, a uczciwy pomaga w recrawlu.
+const LM_FILE = new URL('./lastmod.json', import.meta.url).pathname;
+const lm = existsSync(LM_FILE) ? JSON.parse(readFileSync(LM_FILE, 'utf8')) : {};
+const stamp = (key, html) => {
+  const h = createHash('md5').update(html.replace(/style\.css\?v=[0-9a-f]+/g, '').replace(/"dateModified":"[^"]*"/g, '')).digest('hex').slice(0, 12);
+  if (!lm[key] || lm[key].h !== h) lm[key] = { h, d: TODAY };
+  return lm[key].d;
+};
 const venueXml = [
-  `  <url>\n    <loc>${HOST}/restaurants/</loc>\n    <lastmod>${TODAY}</lastmod>\n  </url>`,
-  ...madeSlugs.map(s => `  <url>\n    <loc>${HOST}/restaurant/${s}/</loc>\n    <lastmod>${TODAY}</lastmod>\n  </url>`)
+  `  <url>\n    <loc>${HOST}/restaurants/</loc>\n    <lastmod>${stamp('restaurants', indexHtml)}</lastmod>\n  </url>`,
+  ...madeSlugs.map(s => `  <url>\n    <loc>${HOST}/restaurant/${s}/</loc>\n    <lastmod>${stamp(s, readFileSync(join(SITE, 'restaurant', s, 'index.html'), 'utf8'))}</lastmod>\n  </url>`)
 ].join('\n');
+writeFileSync(LM_FILE, JSON.stringify(Object.fromEntries(Object.entries(lm).sort()), null, 1) + '\n');
 sm = sm.replace(/  <!-- venues:start -->[\s\S]*?<!-- venues:end -->/,
   `  <!-- venues:start -->\n${venueXml}\n  <!-- venues:end -->`);
 writeFileSync(smFile, sm);
+
+for (const f of ['index.html', 'ar/index.html']) {
+  const fp = join(SITE, f);
+  if (!existsSync(fp)) continue;
+  const h = readFileSync(fp, 'utf8');
+  const n = h.replace(/(data-stat="places">)\d+/g, `$1${madeSlugs.length}`).replace(/(data-stat="districts">)\d+/g, `$1${districts.length}`);
+  if (n !== h) writeFileSync(fp, n);
+}
 
 console.log(`Profile: ${madeSlugs.length} stron, indeks: ${made.length} lokali, ${districts.length} dzielnic`);
 console.log(`Pominięte (bez artykułu): ${skipped.join(', ') || 'brak'}`);
