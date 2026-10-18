@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap');
 
 /* BiteKrakow — design system v2 "Paper & Ink".
    Papierowa biel, atrament, terakota jako jedyny akcent.
@@ -1890,3 +1889,62 @@ body { background: var(--paper); }
 .vp-menu .mi-alt { font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); }
 .vp-menu .mi-price { font-family: var(--font-mono); font-size: 0.88rem; white-space: nowrap; }
 .vp-menu .mi-desc { font-size: 0.86rem; color: var(--ink-soft); margin: 3px 0 0; line-height: 1.45; }
+
+/* ======================================================================
+   MAPA KRAKOWA (MapLibre): pinezki, karta z ocena i opinia, filtry
+   ====================================================================== */
+.bk-map-shell { position: relative; margin: 4px 0 8px; }
+.bk-map-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-bottom: 12px; }
+.bk-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.bk-chips button { font: 600 0.7rem/1 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; min-height: 38px; padding: 0 14px; border: 1px solid var(--line-dark); background: transparent; color: var(--ink); cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.bk-chips button:hover { border-color: var(--ink); }
+.bk-chips button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.bk-count { font-size: 0.8rem; color: var(--ink-soft); }
+.bk-map { position: relative; height: min(74vh, 700px); min-height: 460px; border: 1px solid var(--line-dark); background: #ece8df; overflow: hidden; }
+.bk-map-note { font-size: 0.8rem; color: var(--ink-soft); margin: 10px 0 0; }
+.bk-pin { display: flex; align-items: center; gap: 7px; padding: 4px; margin: -4px; border: 0; background: none; cursor: pointer; transition: opacity .28s ease, transform .28s ease; }
+.bk-pin.off { opacity: 0; transform: scale(.55); pointer-events: none; }
+.bk-pin .dot { flex: none; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 1px 5px rgba(27,27,24,.35); transition: transform .18s ease, box-shadow .18s ease; }
+.bk-pin.t-cafe .dot { background: #8a5a2e; }
+.bk-pin.t-bar .dot { background: #5a3550; }
+.bk-pin.top .dot { width: 17px; height: 17px; border-width: 3px; }
+.bk-pin .lbl { font: 600 12px/1.15 var(--font-sans); color: var(--ink); background: rgba(250, 248, 243, .95); border: 1px solid var(--line); padding: 4px 8px; white-space: nowrap; box-shadow: 0 1px 4px rgba(27,27,24,.10); opacity: 0; transform: translateX(-4px); transition: opacity .2s ease, transform .2s ease; pointer-events: none; }
+.bk-pin.lbl-on .lbl, .bk-pin:hover .lbl, .bk-pin.active .lbl, .bk-pin:focus-visible .lbl { opacity: 1; transform: none; }
+.bk-pin:hover .dot, .bk-pin.active .dot, .bk-pin:focus-visible .dot { transform: scale(1.25); box-shadow: 0 3px 10px rgba(27,27,24,.4); }
+.bk-pin:focus-visible { outline: none; }
+.bk-pin.active { z-index: 3; }
+.bk-card { position: absolute; z-index: 4; width: 290px; background: #fff; border: 1px solid var(--line); box-shadow: 0 22px 44px -18px rgba(27,27,24,.5); padding: 14px 16px 15px; opacity: 0; transform: translateY(6px); transition: opacity .18s ease, transform .18s ease; pointer-events: none; }
+.bk-card.on { opacity: 1; transform: none; pointer-events: auto; }
+.bk-card .k-x { position: absolute; top: 6px; right: 8px; width: 30px; height: 30px; border: 0; background: none; font-size: 20px; line-height: 1; color: var(--ink-soft); cursor: pointer; }
+.bk-card[dir="rtl"] .k-x { right: auto; left: 8px; }
+.bk-card .k-type { font: 600 0.62rem/1.3 var(--font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-deep); padding-right: 26px; }
+.bk-card .k-name { font-family: var(--font-serif); font-weight: 700; font-size: 1.2rem; line-height: 1.2; margin: 4px 0 6px; color: var(--ink); }
+.bk-card .k-rate { display: flex; align-items: center; gap: 7px; font-size: 0.8rem; color: var(--ink-soft); }
+.bk-card .k-rate b { color: var(--ink); font-size: 0.9rem; }
+.k-stars { position: relative; display: inline-block; font-size: 14px; letter-spacing: 1px; line-height: 1; }
+.k-stars .k-s0 { color: #ddd4c4; }
+.k-stars .k-s1 { position: absolute; left: 0; top: 0; overflow: hidden; white-space: nowrap; color: var(--gold); }
+.bk-card .k-quote { margin: 10px 0 0; padding: 0 0 0 10px; border-left: 2px solid var(--line-dark); font-size: 0.84rem; line-height: 1.45; color: var(--ink); font-style: italic; }
+.bk-card[dir="rtl"] .k-quote { padding: 0 10px 0 0; border-left: 0; border-right: 2px solid var(--line-dark); }
+.bk-card .k-quote cite { display: block; margin-top: 4px; font-style: normal; font-size: 0.72rem; color: var(--ink-soft); }
+.bk-card .k-ours { margin-top: 9px; font-size: 0.78rem; color: var(--ink-soft); }
+.bk-card .k-ours b { color: var(--accent-deep); }
+.bk-card .k-go { display: inline-block; margin-top: 10px; font: 600 0.72rem/1 var(--font-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--accent); padding-bottom: 3px; text-decoration: none; }
+@media (max-width: 640px) {
+  .bk-map { height: 68vh; min-height: 420px; }
+  .bk-card { left: 8px !important; right: 8px; bottom: 8px; top: auto !important; width: auto; }
+  .bk-chips button { padding: 0 11px; }
+}
+.bk-mk { line-height: 0; }
+
+/* ======================================================================
+   WYDAJNOSC I DOSTEPNOSC (Lighthouse 18.10): kontrast nawigacji,
+   naglowki slajdow jako h2, wieksze pola klikniecia kropek slidera
+   ====================================================================== */
+.site-nav a { color: #5a584f; }
+.slide h2.s-title { color: var(--paper); font-family: var(--font-serif); font-weight: 700; font-size: 1.3rem; line-height: 1.2; margin: 0; letter-spacing: normal; }
+.slide-dots { gap: 2px; right: 14px; bottom: 12px; }
+.slide-dots button { position: relative; width: 26px; height: 26px; background: transparent; transform: none; }
+.slide-dots button::before { content: ""; position: absolute; left: 9px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: rgba(250, 249, 246, 0.5); transition: background .2s ease, transform .2s ease; }
+.slide-dots button.on { background: transparent; transform: none; }
+.slide-dots button.on::before { background: var(--paper); transform: scale(1.3); }

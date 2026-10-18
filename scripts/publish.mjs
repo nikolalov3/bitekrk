@@ -21,7 +21,7 @@ const noGen = args.includes('--no-gen');
 let paths = args.filter(a => !a.startsWith('--'));
 
 if (!noGen) {
-  for (const s of ['gen-llms.mjs', 'gen-feed.mjs']) {
+  for (const s of ['bust-css.mjs', 'gen-llms.mjs', 'gen-feed.mjs']) {
     if (existsSync(`${ROOT}scripts/${s}`)) console.log(execSync(`node ${ROOT}scripts/${s}`, { encoding: 'utf8' }).trim());
   }
 }

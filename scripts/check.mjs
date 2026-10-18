@@ -12,6 +12,8 @@
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { execSync } from 'node:child_process';
+import { cssVersion } from './bust-css.mjs';
 
 const SITE = new URL('../site/', import.meta.url).pathname;
 const HOST = 'https://bitekrakow.com';
@@ -131,6 +133,14 @@ for (const page of pages) {
   if (!sitemap.includes(`${HOST}${path}`)) problems.push(`${label} nie ma w sitemap.xml`);
 
   ok.push(`${label} (${cards.length} kart, ${blocks.length} bloków schema)`);
+}
+
+// 6. Wersja CSS: /style.css ma roczny cache, wiec kazda strona musi wskazywac aktualny hash
+{
+  const v = cssVersion();
+  const stale = execSync(`grep -rL 'href="/style.css?v=${v}"' --include=index.html ${SITE} || true`, { encoding: 'utf8' })
+    .split('\n').filter(f => f && readFileSync(f, 'utf8').includes('/style.css'));
+  if (stale.length) problems.push(`${stale.length} stron ma nieaktualna wersje style.css (uruchom: node scripts/bust-css.mjs), np. ${stale[0].replace(SITE, '/')}`);
 }
 
 console.log('Sprawdzone strony:');

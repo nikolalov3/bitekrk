@@ -15,10 +15,17 @@
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { createHash } from 'node:crypto';
 import { FLAG_SPRITE, cuisineChips } from './flags.mjs';
 
 const SITE = new URL('../site/', import.meta.url).pathname;
 const HOST = 'https://bitekrakow.com';
+// Wersja CSS (hash) do cache-bustingu: /style.css jest serwowany z dlugim cache (vercel.json).
+const CSS_V = createHash('md5').update(readFileSync(join(SITE, 'style.css'))).digest('hex').slice(0, 10);
+// Fonty Google ladowane nieblokujaco (preload + onload), z fallbackiem noscript.
+const FONT_URL = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap';
+const FONTS_HTML = `<link rel="preload" as="style" href="${FONT_URL}" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="${FONT_URL}"></noscript>`;
 const TODAY = '2026-08-19';
 
 const esc = s => String(s ?? '')
@@ -38,7 +45,7 @@ function walkPages(dir, prefix) {
   const out = [];
   for (const d of readdirSync(dir, { withFileTypes: true })) {
     if (!d.isDirectory()) continue;
-    if (['api', 'img', 'restaurant', 'restaurants', 'ar'].includes(d.name)) continue;
+    if (['api', 'img', 'restaurant', 'restaurants', 'ar', 'pl', 'data'].includes(d.name)) continue;
     const rel = prefix ? `${prefix}/${d.name}` : d.name;
     out.push(rel, ...walkPages(join(dir, d.name), rel));
   }
@@ -320,8 +327,8 @@ function venuePage(v) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  ${FONTS_HTML}
+  <link rel="stylesheet" href="/style.css?v=${CSS_V}">
   <script type="application/ld+json">
 ${JSON.stringify(schema, null, 2).split('\n').map(l => '  ' + l).join('\n')}
   </script>
@@ -445,6 +452,43 @@ for (const v of venues) {
   madeSlugs.push(v.slug);
 }
 
+// ---------- 5b. Dane interaktywnej mapy /map/ ----------
+// Ranking: klienci z wlasnym profilem na gorze (zawsze widoczni przy oddalonej mapie),
+// potem ocena redakcji, potem ocena Google wazona liczba opinii.
+const MAP_TOP = ['bruk-cafe', 'cafe-belmont', 'coppa'];
+const mapType = v => { const t = schemaType(v); return ['CafeOrCoffeeShop', 'Bakery', 'IceCreamShop', 'LocalBusiness'].includes(t) ? 'cafe' : t === 'BarOrPub' ? 'bar' : 'food'; };
+const edScore = v => Math.max(0, ...(featured[v.slug] || []).map(f => parseFloat(f.score) || 0));
+function mapQuote(v) {
+  const rs = (Array.isArray(v.reviews) ? v.reviews : []).filter(r => r && r.text && (r.rating || 0) >= 4);
+  if (!rs.length) return null;
+  const pick = rs.find(r => r.text.length >= 50 && r.text.length <= 240) || rs[0];
+  let t = pick.text.replace(/\s+/g, ' ').trim();
+  if (t.length > 180) t = t.slice(0, 180).replace(/\s+\S*$/, '') + '…';
+  const parts = String(pick.author || '').trim().split(/\s+/);
+  const a = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0]}.` : (parts[0] || 'Google user');
+  return { t, a, r: pick.rating };
+}
+const mapPts = madeSlugs.map(sl => bySlug[sl]).filter(v => v.lat && v.lng);
+mapPts.sort((x, y) => {
+  const ix = MAP_TOP.indexOf(x.slug), iy = MAP_TOP.indexOf(y.slug);
+  if (ix !== -1 || iy !== -1) return (ix === -1 ? 99 : ix) - (iy === -1 ? 99 : iy);
+  const ds = edScore(y) - edScore(x);
+  if (Math.abs(ds) > 0.01) return ds;
+  return (y.rating || 0) * Math.log10((y.reviews_count || 0) + 10) - (x.rating || 0) * Math.log10((x.reviews_count || 0) + 10);
+});
+const mapData = mapPts.map((v, i) => {
+  const f = (featured[v.slug] || [])[0];
+  return {
+    s: v.slug, n: v.name, d: v.district || 'Kraków', t: mapType(v), p: i + 1,
+    lat: +(+v.lat).toFixed(5), lng: +(+v.lng).toFixed(5),
+    r: v.rating ? +v.rating : null, c: v.reviews_count || 0,
+    sc: edScore(v) || null, pr: v.price_range || null, q: mapQuote(v),
+    g: f ? { p: f.path, t: f.title } : null
+  };
+});
+mkdirSync(join(SITE, 'data'), { recursive: true });
+writeFileSync(join(SITE, 'data', 'map-venues.json'), JSON.stringify({ updated: new Date().toISOString().slice(0, 10), venues: mapData }));
+
 // ---------- 6. Indeks /restaurants/ ----------
 const made = madeSlugs.map(s => bySlug[s]);
 const byDistrict = {};
@@ -517,8 +561,8 @@ const indexHtml = `<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  ${FONTS_HTML}
+  <link rel="stylesheet" href="/style.css?v=${CSS_V}">
   <script type="application/ld+json">
 ${JSON.stringify(indexSchema, null, 2).split('\n').map(l => '  ' + l).join('\n')}
   </script>
