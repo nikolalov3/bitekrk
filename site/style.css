@@ -1876,13 +1876,16 @@ body { background: var(--paper); }
 @media (max-width: 640px) { .site-header { background: rgba(248, 245, 239, 0.95); } }
 
 .season-strip { background: var(--paper-warm); border-bottom: 1px solid var(--line); font-size: 0.8rem; }
-.season-strip .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 18px; padding-top: 9px; padding-bottom: 9px; }
+.season-strip .wrap { display: flex; flex-wrap: nowrap; align-items: center; justify-content: safe center; gap: 0 18px; padding-top: 9px; padding-bottom: 9px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.season-strip .wrap::-webkit-scrollbar { display: none; }
+.season-strip .wrap > * { flex: none; }
+/* jeden wiersz niezaleznie od szerokosci i kroju: pasek nie moze zmieniac wysokosci, gdy dojda fonty (CLS 0.24 na mobile) */
 .season-strip .ss-label { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.66rem; color: var(--season-plum); }
 .season-strip .ss-label svg { width: 15px; height: 15px; flex: none; }
 .season-strip a { color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(181, 81, 42, 0.35); padding-bottom: 1px; }
 .season-strip a:hover { color: var(--accent-deep); border-bottom-color: var(--accent); }
 .season-strip .ss-sep { color: var(--line-dark); }
-@media (max-width: 640px) { .season-strip .ss-sep { display: none; } .season-strip .wrap { gap: 4px 14px; } }
+@media (max-width: 640px) { .season-strip .ss-sep { display: none; } .season-strip .wrap { gap: 0 14px; justify-content: flex-start; } }
 .article-body .photo-credit { font-size: 0.76rem; line-height: 1.4; color: var(--ink-soft); margin: 6px 0 0; }
 
 /* ======================================================================
