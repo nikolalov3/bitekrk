@@ -3,14 +3,17 @@
    Papierowa biel, atrament, terakota jako jedyny akcent.
    Wielka typografia magazynowa, hairline'y zamiast kafelków. */
 
-/* Zapasowe kroje z metrykami dopasowanymi do Fraunces/Inter/Space Grotesk (fontTools, 2026-10-18):
+/* Zapasowe kroje z metrykami dopasowanymi do Fraunces/Inter/Space Grotesk (fontTools + kalibracja w Brave, 2026-10-18).
+   Space Grotesk i "Inter Fallback Caps" skalowane pod WIELKIE litery (etykiety, przyciski), Inter pod tekst ciagly:
    fonty Google dochodza po pierwszym malowaniu, wiec tekst nie moze "skakac" przy podmianie (CLS). */
-@font-face { font-family: "Fraunces Fallback"; src: local("Georgia"); size-adjust: 109.00%; ascent-override: 89.72%; descent-override: 23.39%; line-gap-override: 0%; }
-@font-face { font-family: "Fraunces Fallback Android"; src: local("Noto Serif"); size-adjust: 99.94%; ascent-override: 97.85%; descent-override: 25.51%; line-gap-override: 0%; }
+@font-face { font-family: "Fraunces Fallback"; src: local("Georgia"); size-adjust: 111.17%; ascent-override: 87.97%; descent-override: 22.94%; line-gap-override: 0%; }
+@font-face { font-family: "Fraunces Fallback Android"; src: local("Noto Serif"); size-adjust: 101.93%; ascent-override: 95.95%; descent-override: 25.02%; line-gap-override: 0%; }
 @font-face { font-family: "Inter Fallback"; src: local("Arial"); size-adjust: 107.32%; ascent-override: 90.27%; descent-override: 22.48%; line-gap-override: 0%; }
 @font-face { font-family: "Inter Fallback Android"; src: local("Roboto"); size-adjust: 107.05%; ascent-override: 90.50%; descent-override: 22.53%; line-gap-override: 0%; }
-@font-face { font-family: "Space Grotesk Fallback"; src: local("Arial"); size-adjust: 110.76%; ascent-override: 88.84%; descent-override: 26.36%; line-gap-override: 0%; }
-@font-face { font-family: "Space Grotesk Fallback Android"; src: local("Roboto"); size-adjust: 110.48%; ascent-override: 89.07%; descent-override: 26.43%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback Caps"; src: local("Arial"); size-adjust: 101.80%; ascent-override: 95.19%; descent-override: 23.67%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback Caps Android"; src: local("Roboto"); size-adjust: 109.10%; ascent-override: 88.82%; descent-override: 22.09%; line-gap-override: 0%; }
+@font-face { font-family: "Space Grotesk Fallback"; src: local("Arial"); size-adjust: 93.00%; ascent-override: 105.81%; descent-override: 31.40%; line-gap-override: 0%; }
+@font-face { font-family: "Space Grotesk Fallback Android"; src: local("Roboto"); size-adjust: 99.60%; ascent-override: 98.80%; descent-override: 29.32%; line-gap-override: 0%; }
 
 :root {
   --paper: #faf9f6;
@@ -1528,7 +1531,7 @@ html[dir="rtl"] .venue-note { border-left: none; border-right: 2px solid var(--g
 
 /* --- Przyciski: ostre, dyskretne, wersalikowe --- */
 .btn {
-  font-family: var(--font-sans); font-weight: 600;
+  font-family: "Inter", "Inter Fallback Caps", "Inter Fallback Caps Android", -apple-system, "Segoe UI", sans-serif; font-weight: 600;
   font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
   border-radius: 0; padding: 13px 22px;
 }
