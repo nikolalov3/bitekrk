@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css?v=c0145fa889">
+  <link rel="stylesheet" href="/style.css?v=9cb59741a3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -121,20 +121,106 @@
   <div class="chip-alt"><span class="lbl">أيضاً</span><a href="/specialty-coffee-krakow/">قهوة مختصة</a><a href="/breakfast-krakow/">فطور</a><a href="/ice-cream-krakow/">آيس كريم</a><a href="/ar/halal-krakow/">حلال</a><a href="/restaurants/">كل الأماكن</a></div>
 </section>
 
-<section class="wrap districts" id="districts">
-  <span class="eyebrow">حسب الحي</span>
+<section class="wrap stay at-start" id="stay" data-lang="ar">
+  <span class="eyebrow">حسب مكان إقامتك</span>
   <h2 class="deco">أين تقيم؟</h2>
-  <p class="section-lead">
-    كراكوف تأكل بشكل مختلف كل بضع مئات من الأمتار. أدلة الأحياء الكاملة متوفرة
-    بالإنجليزية، وكل الأسماء والعناوين فيها بالحروف اللاتينية.
-  </p>
-  <div class="district-chips">
-    <a href="/old-town-cafes/">البلدة القديمة</a>
-    <a href="/kazimierz-guide/">كازيميَش (Kazimierz)</a>
-    <a href="/kleparz-guide/">كليباش (Kleparz)</a>
-    <a href="/podgorze-guide/">بودغوجه (Podgórze)</a>
-    <a href="/coffee-near-krakow-main-station/">قرب المحطة الرئيسية</a>
+  <p class="section-lead">اختر الحي، ونعرض لك الأماكن التي ننصح بها على بعد مشي من فندقك، بتقييم جوجل وتقييمنا.</p>
+  <div class="stay-chips" role="group" aria-label="أين تقيم؟">
+    <button type="button" class="stay-chip" data-key="old-town" data-lat="50.0617" data-lng="19.9373" data-label="الساحة الرئيسية" aria-pressed="false">البلدة القديمة والساحة الرئيسية</button>
+    <button type="button" class="stay-chip" data-key="station" data-lat="50.0668" data-lng="19.943" data-label="محطة القطار" aria-pressed="false">محطة القطار وكليباش</button>
+    <button type="button" class="stay-chip" data-key="kazimierz" data-lat="50.0515" data-lng="19.945" data-label="كازيميَش" aria-pressed="false">كازيميَش</button>
+    <button type="button" class="stay-chip" data-key="podgorze" data-lat="50.0465" data-lng="19.953" data-label="بودغوجه" aria-pressed="false">بودغوجه وزابووتشه</button>
+    <button type="button" class="stay-chip" data-key="krowodrza" data-lat="50.069" data-lng="19.923" data-label="كروفودجا" aria-pressed="false">كروفودجا والبوونيا</button>
+    <button type="button" class="stay-chip" data-key="grzegorzki" data-lat="50.06" data-lng="19.951" data-label="غجيغوجكي" aria-pressed="false">غجيغوجكي وهالا تارغوفا</button>
+    <button type="button" class="stay-chip" data-key="debniki" data-lat="50.049" data-lng="19.927" data-label="دمبنيكي" aria-pressed="false">دمبنيكي وسالفاتور</button>
+    <button type="button" class="stay-geo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>حدّد موقعي</button>
   </div>
+  <p class="stay-lead" aria-live="polite"></p>
+  <div class="rail">
+    <div class="rail-nav" aria-hidden="true" style="position:absolute;top:-52px;left:0"><button type="button" class="rail-prev" aria-label="السابق" tabindex="-1">›</button><button type="button" class="rail-next" aria-label="التالي" tabindex="-1">‹</button></div>
+    <div class="rail-track"></div>
+  </div>
+  <p class="stay-links"><a href="/ar/map/">الخريطة التفاعلية</a><a href="/ar/halal-krakow/">حلال</a><a href="/ar/breakfast-krakow/">الفطور</a><a href="/ar/arab-travellers-krakow/">دليل الزوار العرب</a></p>
+</section>
+
+<section class="wrap teasers at-start" id="guides">
+  <div class="rail-head">
+    <div>
+      <span class="eyebrow">الأدلة</span>
+      <h2 class="deco">قراءات طويلة وعناوين حقيقية</h2>
+      <p class="section-lead">كل دليل زرناه بأنفسنا، مع الأسعار وماذا تطلب. مرّر جانبيًا.</p>
+    </div>
+    <div class="rail-nav" aria-hidden="true"><button type="button" class="rail-prev" aria-label="السابق" tabindex="-1">›</button><button type="button" class="rail-next" aria-label="التالي" tabindex="-1">‹</button></div>
+  </div>
+  <div class="rail">
+    <div class="rail-track">
+      <a class="rail-card" href="/ar/best-restaurants-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=bottiglieria-1881&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل 10 مطاعم في كراكوف</span><span class="rc-dek">ترتيب واحد عبر كل المطابخ: المطبخ البولندي الحائز نجمتي ميشلان، وأفضل بيتزا وسوشي وجورجي وفيتنامي وكباب حلال في المدينة، بعناوين وأسعار.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/map/">
+        <span class="rc-photo"><img src="/img/og-default.jpg" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">خريطة طعام كراكوف حسب الحي</span><span class="rc-dek">أين يقع كل شيء: كازيميَش، البلدة القديمة، Zabłocie وبقية الأحياء على خريطة واحدة قابلة للنقر.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/matcha-krakow/">
+        <span class="rc-photo"><img src="/img/autumn/belmont-autumn-iced-coffee.webp" alt="" loading="lazy" decoding="async" width="480" height="320" style="object-position:50% 40%" onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">الماتشا في كراكوف</span><span class="rc-dek">أين تشرب الماتشا في كازيميَش. Café Belmont يحضّر ماتشا خاصة به تحت اسم Yume Matcha.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/italian-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=nolio&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل المطاعم الإيطالية في كراكوف</span><span class="rc-dek">البيتزا النابولية التي بدأت الموجة، باستا الكمأة في أجمل شارع، ومطعم مأكولات بحرية فاخر قرب الساحة الرئيسية.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/ramen-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=akita-ramen&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل الرامن والمطاعم اليابانية</span><span class="rc-dek">تونكوتسو يتصدر تصنيف المدينة الرسمي، نودلز تُصنع داخلياً، وسوشي مدرج في دليل ميشلان.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/georgian-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=tbilisuri&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل المطاعم الجورجية</span><span class="rc-dek">خبز الخاتشابوري بالجبن الذائب، زلابية الخينكالي على ضفة النهر، ونبيذ جورجي بالكأس.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/vietnamese-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=pho-ever&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل المطاعم الفيتنامية</span><span class="rc-dek">فو بمرق يُطهى ست عشرة ساعة، مطابخ عائلية، وأفضل ساندويتش بان مي في المدينة.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/indian-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=indian-flame&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل المطاعم الهندية</span><span class="rc-dek">أعلى مطعم هندي تقييماً في المدينة، مطبخ دوسا جنوب هندي وحيد من نوعه، وغرفة نباتية بالكامل. خيارات حلال واسعة.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/kebab-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=jamra&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل كباب وطعام شرق أوسطي</span><span class="rc-dek">مشاوٍ سورية على الفحم، خبز تندور طازج، حمص بخمسة وعشرين نوعاً ومزة إسرائيلية. أسماء حلال يثق بها السكان.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/pierogi-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=u-stasi&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل البييروغي والطعام البولندي</span><span class="rc-dek">مطعم عائلي عمره ثمانون عاماً، بار حليب على الطريق الملكي، وأرقى مطبخ بولندي بنجمتي ميشلان.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/thai-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=molam&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل المطاعم التايلاندية</span><span class="rc-dek">مقصف حائز على بيب غورمان من ميشلان يطهو على النار، مطبخ تايلاندي بالكامل، ومطابخ أحياء بتقييم 4.8 فأعلى.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/mexican-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=tacoteka&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل المطاعم المكسيكية</span><span class="rc-dek">تاكيريا عائلة يوكاتان، بيريا تستحق عبور النهر، كشك سوق بتورتيلا يدوية، وأكبر بار تكيلا في المدينة.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/korean-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=hankki&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل المطاعم الكورية</span><span class="rc-dek">مطبخ كوري-ياباني مدرج في ميشلان، فرع مقهى من سيول، بيبيمباب الشيف بارك، وأعلى كيمباب تقييماً.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/arab-travellers-krakow/">
+        <span class="rc-photo"><img src="/img/coppa/tiramisu-sliwka-kruszonka.webp" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">كراكوف للزوار العرب والخليجيين</span><span class="rc-dek">حلال حسب الحي، عشاء متأخر، الصلاة، قهوة وحلويات بلا كحول، والتسوق يوم الأحد.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/breakfast-krakow/">
+        <span class="rc-photo"><img src="/img/bruk-breakfast.webp" alt="" loading="lazy" decoding="async" width="480" height="320" style="object-position:50% 40%" onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">أفضل فطور في كراكوف</span><span class="rc-dek">ستة أماكن تفتح باكراً، وما تطلبه في كل مكان دون لحم خنزير.</span></span>
+      </a>
+      <a class="rail-card" href="/ar/halal-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=indian-flame&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">دليل</span><span class="rc-title">مطاعم حلال في كراكوف</span><span class="rc-dek">مطابخ هندية حلال معتمدة، مشاوي كباب سورية على الفحم وتندور، ومطاعم نباتية بالكامل بلا أي مسألة لحم. قرب البلدة القديمة وكازيميَش.</span></span>
+      </a>
+    </div>
+  </div>
+  <p class="section-lead" style="margin-top:14px;"><a href="/ar/guides/">كل الأدلة ←</a></p>
 </section>
 
 <section class="values">
@@ -188,5 +274,6 @@
   </div>
 </footer>
 
+<script src="/home.js" defer></script>
 </body>
 </html>

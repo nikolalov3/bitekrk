@@ -483,7 +483,11 @@ const mapData = mapPts.map((v, i) => {
     lat: +(+v.lat).toFixed(5), lng: +(+v.lng).toFixed(5),
     r: v.rating ? +v.rating : null, c: v.reviews_count || 0,
     sc: edScore(v) || null, pr: v.price_range || null, q: mapQuote(v),
-    g: f ? { p: f.path, t: f.title } : null
+    g: f ? { p: f.path, t: f.title } : null,
+    k: ((v.tags || [])[0] || '').replace(/\b\w/g, ch => ch.toUpperCase()) || null,
+    a: streetOf(v.address) || null,
+    img: (v.attrs && v.attrs.hero_image) || null,
+    cl: ['bruk-cafe', 'cafe-belmont', 'coppa'].includes(v.slug) ? 1 : 0
   };
 });
 mkdirSync(join(SITE, 'data'), { recursive: true });

@@ -43,7 +43,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"></noscript>
   <link rel="preload" as="image" href="/img/autumn/art-food-bazar-2026.webp" fetchpriority="high">
-  <link rel="stylesheet" href="/style.css?v=c0145fa889">
+  <link rel="stylesheet" href="/style.css?v=9cb59741a3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -144,6 +144,28 @@
   </div>
 </section>
 
+<section class="wrap stay at-start" id="stay" data-lang="en">
+  <span class="eyebrow">By where you sleep</span>
+  <h2 class="deco">Where are you staying?</h2>
+  <p class="section-lead">Pick your area and we show the places we recommend within a walk of your hotel, with the Google rating and our own score.</p>
+  <div class="stay-chips" role="group" aria-label="Where are you staying?">
+    <button type="button" class="stay-chip" data-key="old-town" data-lat="50.0617" data-lng="19.9373" data-label="the Main Square" aria-pressed="false">Old Town &amp; Main Square</button>
+    <button type="button" class="stay-chip" data-key="station" data-lat="50.0668" data-lng="19.943" data-label="the main station" aria-pressed="false">Main station &amp; Kleparz</button>
+    <button type="button" class="stay-chip" data-key="kazimierz" data-lat="50.0515" data-lng="19.945" data-label="Kazimierz" aria-pressed="false">Kazimierz</button>
+    <button type="button" class="stay-chip" data-key="podgorze" data-lat="50.0465" data-lng="19.953" data-label="Podgórze" aria-pressed="false">Podgórze &amp; Zabłocie</button>
+    <button type="button" class="stay-chip" data-key="krowodrza" data-lat="50.069" data-lng="19.923" data-label="Krowodrza" aria-pressed="false">Krowodrza &amp; Błonia</button>
+    <button type="button" class="stay-chip" data-key="grzegorzki" data-lat="50.06" data-lng="19.951" data-label="Grzegórzki" aria-pressed="false">Grzegórzki &amp; Hala Targowa</button>
+    <button type="button" class="stay-chip" data-key="debniki" data-lat="50.049" data-lng="19.927" data-label="Dębniki" aria-pressed="false">Dębniki &amp; Salwator</button>
+    <button type="button" class="stay-geo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>Use my location</button>
+  </div>
+  <p class="stay-lead" aria-live="polite"></p>
+  <div class="rail">
+    <div class="rail-nav" aria-hidden="true" style="position:absolute;top:-52px;right:0"><button type="button" class="rail-prev" aria-label="Previous" tabindex="-1">‹</button><button type="button" class="rail-next" aria-label="Next" tabindex="-1">›</button></div>
+    <div class="rail-track"></div>
+  </div>
+  <p class="stay-links"><a href="/map/">Interactive map</a><a href="/old-town-cafes/">Old Town</a><a href="/kazimierz-guide/">Kazimierz</a><a href="/kleparz-guide/">Kleparz</a><a href="/podgorze-guide/">Podgórze</a><a href="/krowodrza-guide/">Krowodrza</a><a href="/coffee-near-krakow-main-station/">Main station</a></p>
+</section>
+
 <section class="wrap districts" id="cuisines">
   <span class="eyebrow">By cuisine</span>
   <h2 class="deco">What are you hungry for?</h2>
@@ -163,120 +185,160 @@
   <div class="chip-alt"><span class="lbl">Also</span><a href="/specialty-coffee-krakow/">Coffee</a><a href="/breakfast-krakow/">Breakfast</a><a href="/ice-cream-krakow/">Ice cream</a><a href="/study-cafes-krakow/">For students</a><a href="/halal-krakow/">Halal</a><a href="/restaurants/">All places</a></div>
 </section>
 
-<section class="wrap districts" id="districts-top">
-  <span class="eyebrow">By neighborhood</span>
-  <h2 class="deco">Where are you staying?</h2>
-  <div class="district-chips">
-    <a href="/old-town-cafes/">Old Town</a>
-    <a href="/kazimierz-guide/">Kazimierz</a>
-    <a href="/kleparz-guide/">Kleparz</a>
-    <a href="/podgorze-guide/">Podgórze</a>
-    <a href="/krowodrza-guide/">Krowodrza</a>
-    <a href="/coffee-near-krakow-main-station/">Main station</a>
+<section class="wrap teasers at-start" id="guides">
+  <div class="rail-head">
+    <div>
+      <span class="eyebrow">The guides</span>
+      <h2 class="deco">Long reads, real addresses</h2>
+      <p class="section-lead">Every guide visited in person, with prices and what to order. Scroll sideways.</p>
+    </div>
+    <div class="rail-nav" aria-hidden="true"><button type="button" class="rail-prev" aria-label="Previous" tabindex="-1">‹</button><button type="button" class="rail-next" aria-label="Next" tabindex="-1">›</button></div>
   </div>
-  <p class="section-lead" style="margin-top:18px;">
-    Or see the whole city on the <a href="/map/">interactive food map</a>, district by district.
-  </p>
+  <div class="rail">
+    <div class="rail-track">
+      <a class="rail-card" href="/best-restaurants-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=bottiglieria-1881&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Ranking</span><span class="rc-title">The 10 Best Restaurants in Krakow</span><span class="rc-dek">Our flagship ranking across every cuisine, from the two-Michelin-star Polish table to the best pizza, sushi and Georgian in the city.</span></span>
+      </a>
+      <a class="rail-card" href="/brunch-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=kolanko-no6&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Brunch</span><span class="rc-title">Best Brunch in Krakow</span><span class="rc-dek">Six spots for a slow weekend: Kazimierz buffets and crepes, eggs benedict, and a riverside view.</span></span>
+      </a>
+      <a class="rail-card" href="/wine-bars-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=moti-wine-bar&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Wine</span><span class="rc-title">Best Wine Bars in Krakow</span><span class="rc-dek">Polish wine by the market, natural wine in Zablocie and Kazimierz, and Georgian amber by the glass.</span></span>
+      </a>
+      <a class="rail-card" href="/cocktail-bars-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=mercy-brown&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Cocktails</span><span class="rc-title">Best Cocktail Bars in Krakow</span><span class="rc-dek">A marquee cocktail-and-music bar, two hidden speakeasies, and cocktails in a former synagogue.</span></span>
+      </a>
+      <a class="rail-card" href="/matcha-krakow/">
+        <span class="rc-photo"><img src="/img/autumn/belmont-autumn-iced-coffee.webp" alt="" loading="lazy" decoding="async" width="480" height="320" style="object-position:50% 40%" onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Matcha</span><span class="rc-title">Matcha in Krakow</span><span class="rc-dek">Three cafes that take matcha seriously, led by Cafe Belmont and its own Yume Matcha brand.</span></span>
+      </a>
+      <a class="rail-card" href="/cheap-eats-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=pod-temida&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Budget</span><span class="rc-title">Cheap Eats Under 30 zl</span><span class="rc-dek">Milk bars, Syrian grills and student-priced plates where a full meal stays under 30 zloty.</span></span>
+      </a>
+      <a class="rail-card" href="/where-to-work-krakow/">
+        <span class="rc-photo"><img src="/img/autumn/bruk-chocolate-tart-flat-white.webp" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Laptop</span><span class="rc-title">Best Cafes to Work From a Laptop</span><span class="rc-dek">Four cafes tested a full working day each: sockets, Wi-Fi, food and how long you can actually sit.</span></span>
+      </a>
+      <a class="rail-card" href="/kleparz-guide/">
+        <span class="rc-photo"><img src="/img/bruk-cafe.webp" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Neighborhood</span><span class="rc-title">Kleparz Food and Coffee Guide</span><span class="rc-dek">Krakow's oldest market district, five minutes from the main station and still wonderfully overlooked.</span></span>
+      </a>
+      <a class="rail-card" href="/coffee-near-krakow-main-station/">
+        <span class="rc-photo"><img src="/api/photo?slug=bruk-cafe&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Station</span><span class="rc-title">Coffee Near the Main Station</span><span class="rc-dek">Five independent cafes within ten minutes of the platforms, timed with a suitcase.</span></span>
+      </a>
+      <a class="rail-card" href="/breakfast-krakow/">
+        <span class="rc-photo"><img src="/img/bruk-breakfast.webp" alt="" loading="lazy" decoding="async" width="480" height="320" style="object-position:50% 40%" onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Breakfast</span><span class="rc-title">Breakfast in Krakow Before 9 AM</span><span class="rc-dek">Six spots that actually open early, from 7:00, with exact hours and prices.</span></span>
+      </a>
+      <a class="rail-card" href="/kazimierz-guide/">
+        <span class="rc-photo"><img src="/api/photo?slug=cafe-belmont&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Neighborhood</span><span class="rc-title">Kazimierz Coffee and Brunch Guide</span><span class="rc-dek">Coffee in former prayer houses and the calm end of the loudest district.</span></span>
+      </a>
+      <a class="rail-card" href="/autumn-menu-krakow/">
+        <span class="rc-photo"><img src="/img/coppa/pumpkin-spice.webp" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Autumn 2026</span><span class="rc-title">Autumn Menus: Pumpkin Spice, Matcha, Hojicha</span><span class="rc-dek">COPPA's house pumpkin syrup, Yume matcha at Café Belmont, Bruk by the station.</span></span>
+      </a>
+      <a class="rail-card" href="/dog-friendly-cafes-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=bruk-cafe&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">With a dog</span><span class="rc-title">Dog-Friendly Cafes in Krakow</span><span class="rc-dek">Water bowls and treats confirmed, from Bruk by the station to Kazimierz: five places that mean it.</span></span>
+      </a>
+      <a class="rail-card" href="/specialty-coffee-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=bruk-cafe&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Coffee</span><span class="rc-title">Specialty Coffee by Neighborhood</span><span class="rc-dek">One pick per district, from the station to the roastery in Zabłocie.</span></span>
+      </a>
+      <a class="rail-card" href="/old-town-cafes/">
+        <span class="rc-photo"><img src="/api/photo?slug=nowa-prowincja&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Old Town</span><span class="rc-title">Old Town Cafes Locals Actually Use</span><span class="rc-dek">Six places inside the Planty ring where the person next to you lives here.</span></span>
+      </a>
+      <a class="rail-card" href="/quiet-cafes-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=bruk-cafe&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Quiet</span><span class="rc-title">Quiet Cafes for Reading and Study</span><span class="rc-dek">Bookshop cafes, stone walls, no rush. Six places where you can hear yourself think.</span></span>
+      </a>
+      <a class="rail-card" href="/day-in-kleparz/">
+        <span class="rc-photo"><img src="/api/photo?slug=bruk-cafe&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Itinerary</span><span class="rc-title">A Day in Kleparz: Itinerary</span><span class="rc-dek">Morning coffee to evening cocktails in the district most visitors walk past.</span></span>
+      </a>
+      <a class="rail-card" href="/vegan-breakfast-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=veganic&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Vegan</span><span class="rc-title">Vegan Breakfast in Krakow</span><span class="rc-dek">Six places where plant-based breakfast is the point, not the afterthought.</span></span>
+      </a>
+      <a class="rail-card" href="/podgorze-guide/">
+        <span class="rc-photo"><img src="/api/photo?slug=vamos&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Neighborhood</span><span class="rc-title">Podgorze Food Guide</span><span class="rc-dek">Three Michelin picks, the best view in the city and a French bakery on the quiet square.</span></span>
+      </a>
+      <a class="rail-card" href="/best-flat-white-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=karma-coffee&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Coffee</span><span class="rc-title">Best Flat White in Krakow</span><span class="rc-dek">Six specialty cafes across five neighborhoods, two with their own roastery.</span></span>
+      </a>
+      <a class="rail-card" href="/krakow-digital-nomads/">
+        <span class="rc-photo"><img src="/api/photo?slug=bruk-cafe&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Remote work</span><span class="rc-title">Krakow for Digital Nomads</span><span class="rc-dek">Laptop cafes, coworking day passes, costs and visa rules for remote workers.</span></span>
+      </a>
+      <a class="rail-card" href="/outdoor-cafes-krakow/">
+        <span class="rc-photo"><img src="/api/photo?slug=meho-cafe&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Outdoors</span><span class="rc-title">Best Outdoor Cafes and Terraces</span><span class="rc-dek">Seven hidden gardens, courtyards and riverside terraces where outside is the point.</span></span>
+      </a>
+      <a class="rail-card" href="/krowodrza-guide/">
+        <span class="rc-photo"><img src="/img/coppa/bar-900.webp" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">Neighborhood</span><span class="rc-title">Krowodrza Food Guide</span><span class="rc-dek">A family roastery, the best bakery in the city and Polish wine at the market.</span></span>
+      </a>
+    </div>
+  </div>
+  <p class="section-lead" style="margin-top:14px;"><a href="/guides/">All 23 guides →</a></p>
 </section>
 
-<section class="wrap teasers" id="guides">
-  <span class="eyebrow">The guides</span>
-  <h2 class="deco">Long reads, real addresses</h2>
-  <p class="section-lead">Long, specific and opinionated. Addresses, opening hours, prices, what to order and what to skip.</p>
-  <div class="guide-grid">
-    <a class="guide-card" href="/best-restaurants-krakow/">
-      <h3>The 10 Best Restaurants in Krakow</h3>
-      <p>Our flagship ranking across every cuisine, from the two-Michelin-star Polish table to the best pizza, sushi and Georgian in the city.</p>
-    </a>
-    <a class="guide-card" href="/brunch-krakow/">
-      <h3>Best Brunch in Krakow</h3>
-      <p>Six spots for a slow weekend: Kazimierz buffets and crepes, eggs benedict, and a riverside view.</p>
-    </a>
-    <a class="guide-card" href="/wine-bars-krakow/">
-      <h3>Best Wine Bars in Krakow</h3>
-      <p>Polish wine by the market, natural wine in Zablocie and Kazimierz, and Georgian amber by the glass.</p>
-    </a>
-    <a class="guide-card" href="/cocktail-bars-krakow/">
-      <h3>Best Cocktail Bars in Krakow</h3>
-      <p>A marquee cocktail-and-music bar, two hidden speakeasies, and cocktails in a former synagogue.</p>
-    </a>
-    <a class="guide-card" href="/matcha-krakow/">
-      <h3>Matcha in Krakow</h3>
-      <p>Three cafes that take matcha seriously, led by Cafe Belmont and its own Yume Matcha brand.</p>
-    </a>
-    <a class="guide-card" href="/cheap-eats-krakow/">
-      <h3>Cheap Eats Under 30 zl</h3>
-      <p>Milk bars, Syrian grills and student-priced plates where a full meal stays under 30 zloty.</p>
-    </a>
-    <a class="guide-card" href="/where-to-work-krakow/">
-      <h3>Best Cafes to Work From a Laptop</h3>
-      <p>Four cafes tested a full working day each: sockets, Wi-Fi, food and how long you can actually sit.</p>
-    </a>
-    <a class="guide-card" href="/kleparz-guide/">
-      <h3>Kleparz Food and Coffee Guide</h3>
-      <p>Krakow's oldest market district, five minutes from the main station and still wonderfully overlooked.</p>
-    </a>
-    <a class="guide-card" href="/coffee-near-krakow-main-station/">
-      <h3>Coffee Near the Main Station</h3>
-      <p>Five independent cafes within ten minutes of the platforms, timed with a suitcase.</p>
-    </a>
-    <a class="guide-card" href="/breakfast-krakow/">
-      <h3>Breakfast in Krakow Before 9 AM</h3>
-      <p>Six spots that actually open early, from 7:00, with exact hours and prices.</p>
-    </a>
-    <a class="guide-card" href="/kazimierz-guide/">
-      <h3>Kazimierz Coffee and Brunch Guide</h3>
-      <p>Coffee in former prayer houses and the calm end of the loudest district.</p>
-    </a>
-    <a class="guide-card" href="/autumn-menu-krakow/">
-      <h3>Autumn Menus: Pumpkin Spice, Matcha, Hojicha</h3>
-      <p>COPPA's house pumpkin syrup, Yume matcha at Café Belmont, Bruk by the station.</p>
-    </a>
-    <a class="guide-card" href="/dog-friendly-cafes-krakow/">
-      <h3>Dog-Friendly Cafes in Krakow</h3>
-      <p>Water bowls and treats confirmed, from Bruk by the station to Kazimierz: five places that mean it.</p>
-    </a>
-    <a class="guide-card" href="/specialty-coffee-krakow/">
-      <h3>Specialty Coffee by Neighborhood</h3>
-      <p>One pick per district, from the station to the roastery in Zabłocie.</p>
-    </a>
-    <a class="guide-card" href="/old-town-cafes/">
-      <h3>Old Town Cafes Locals Actually Use</h3>
-      <p>Six places inside the Planty ring where the person next to you lives here.</p>
-    </a>
-    <a class="guide-card" href="/quiet-cafes-krakow/">
-      <h3>Quiet Cafes for Reading and Study</h3>
-      <p>Bookshop cafes, stone walls, no rush. Six places where you can hear yourself think.</p>
-    </a>
-    <a class="guide-card" href="/day-in-kleparz/">
-      <h3>A Day in Kleparz: Itinerary</h3>
-      <p>Morning coffee to evening cocktails in the district most visitors walk past.</p>
-    </a>
-    <a class="guide-card" href="/vegan-breakfast-krakow/">
-      <h3>Vegan Breakfast in Krakow</h3>
-      <p>Six places where plant-based breakfast is the point, not the afterthought.</p>
-    </a>
-    <a class="guide-card" href="/podgorze-guide/">
-      <h3>Podgorze Food Guide</h3>
-      <p>Three Michelin picks, the best view in the city and a French bakery on the quiet square.</p>
-    </a>
-    <a class="guide-card" href="/best-flat-white-krakow/">
-      <h3>Best Flat White in Krakow</h3>
-      <p>Six specialty cafes across five neighborhoods, two with their own roastery.</p>
-    </a>
-    <a class="guide-card" href="/krakow-digital-nomads/">
-      <h3>Krakow for Digital Nomads</h3>
-      <p>Laptop cafes, coworking day passes, costs and visa rules for remote workers.</p>
-    </a>
-    <a class="guide-card" href="/outdoor-cafes-krakow/">
-      <h3>Best Outdoor Cafes and Terraces</h3>
-      <p>Seven hidden gardens, courtyards and riverside terraces where outside is the point.</p>
-    </a>
-    <a class="guide-card" href="/krowodrza-guide/">
-      <h3>Krowodrza Food Guide</h3>
-      <p>A family roastery, the best bakery in the city and Polish wine at the market.</p>
-    </a>
+<section class="wrap teasers at-start" id="latest">
+  <div class="rail-head">
+    <div>
+      <span class="eyebrow">News</span>
+      <h2 class="deco">Openings, events and festivals</h2>
+      <p class="section-lead">What is new in Krakow this month, checked against the live listings.</p>
+    </div>
+    <div class="rail-nav" aria-hidden="true"><button type="button" class="rail-prev" aria-label="Previous" tabindex="-1">‹</button><button type="button" class="rail-next" aria-label="Next" tabindex="-1">›</button></div>
   </div>
+  <div class="rail">
+    <div class="rail-track">
+      <a class="rail-card" href="/news/mlaskoty-food-festival-krakow/">
+        <span class="rc-photo"><img src="/img/og-default.jpg" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Mlaskoty food festival, Plac Na Stawach, 25 October</span><span class="rc-dek">Krakow\'s free local food festival returns to Zwierzyniec: Sunday 25 October, 11:00 to 17:00, about thirty small kitchens.</span></span>
+      </a>
+      <a class="rail-card" href="/news/art-food-bazar-stary-kleparz/">
+        <span class="rc-photo"><img src="/img/autumn/art-food-bazar-2026.webp" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Art &amp; Food Bazar at Stary Kleparz: Sunday dates and how to plan it</span><span class="rc-dek">Krakow's oldest market opens on three autumn Sundays for a free food fair: 18 October, 15 November, 6 December, 11:00 to 17:00. Breakfast at Bruk first.</span></span>
+      </a>
+      <a class="rail-card" href="/news/krakow-restaurant-week-2026-restaurants/">
+        <span class="rc-photo"><img src="/img/og-default.jpg" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Restaurant Week 2026: all 54 restaurants and the 12 we would book</span><span class="rc-dek">The full Kraków lineup by district with festival dishes, prices, the sold-out room and the booking questions answered.</span></span>
+      </a>
+      <a class="rail-card" href="/news/new-restaurants-krakow-autumn-2026/">
+        <span class="rc-photo"><img src="/img/og-default.jpg" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">8 new restaurants and cafes, autumn 2026</span><span class="rc-dek">6 October 2026 · A Zablocie steakhouse, empanadas on Krupnicza, a gluten-free bakery, a new roastery and a 30 zl milk bar.</span></span>
+      </a>
+      <a class="rail-card" href="/krakow-restaurant-week/">
+        <span class="rc-photo"><img src="/img/og-default.jpg" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Krakow Restaurant Week 2026: how to book</span><span class="rc-dek">6 October 2026 · Three courses and a cocktail for 70 zl at 50-plus restaurants, 7 October to 25 November. Dates, prices, steps.</span></span>
+      </a>
+      <a class="rail-card" href="/news/coppa-specialty-coffee-opens/">
+        <span class="rc-photo"><img src="/api/photo?slug=coppa&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">COPPA: specialty coffee and tiramisu on Mazowiecka</span><span class="rc-dek">18 August 2026 · A new Krowodrza cafe that specializes in tiramisu, with a real kogel-mogel note in it, pouring specialty coffee seven days a week.</span></span>
+      </a>
+      <a class="rail-card" href="/news/new-restaurants-krakow-2026/">
+        <span class="rc-photo"><img src="/img/og-default.jpg" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">9 new restaurants and cafes, summer 2026</span><span class="rc-dek">13 August 2026 · Swedish fine dining, matcha cocktails, Berlin kebab, an outdoor food court and five more openings worth knowing about.</span></span>
+      </a>
+      <a class="rail-card" href="/news/green-film-festival-food/">
+        <span class="rc-photo"><img src="/img/og-default.jpg" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Green Film Festival: what to eat by the river</span><span class="rc-dek">13 August 2026 · The eco food zone on the Bulwary, river restaurants near Wawel, and three more food events this August.</span></span>
+      </a>
+    </div>
+  </div>
+  <p class="section-lead" style="margin-top:14px;"><a href="/news/">All news →</a></p>
 </section>
 
 <section class="wrap teasers" style="padding-top:8px;">
@@ -397,5 +459,6 @@
     mark();
   })();
 </script>
+<script src="/home.js" defer></script>
 </body>
 </html>
