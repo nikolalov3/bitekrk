@@ -505,6 +505,9 @@ const mapData = mapPts.map((v, i) => {
     k: ((v.tags || [])[0] || '').replace(/\b\w/g, ch => ch.toUpperCase()) || null,
     a: streetOf(v.address) || null,
     img: (v.attrs && v.attrs.hero_image) || null,
+    // wybrane zdjecie z Google (wnetrze/fasada) do kart na glownej + autor do podpisu (wymog Places)
+    pa: (v.attrs && Array.isArray(v.attrs.photo_pick) && v.attrs.photo_pick[0] && v.attrs.photo_pick[0].author) || undefined,
+    palt: (v.attrs && Array.isArray(v.attrs.photo_pick) && v.attrs.photo_pick[0] && v.attrs.photo_pick[0].alt) || undefined,
     cl: ['bruk-cafe', 'cafe-belmont', 'coppa'].includes(v.slug) ? 1 : 0
   };
 });

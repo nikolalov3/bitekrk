@@ -73,7 +73,8 @@
     var w = Math.max(0, Math.min(100, (r / 5) * 100));
     return '<span class="k-stars" aria-hidden="true"><span class="k-s0">★★★★★</span><span class="k-s1" style="width:' + w + '%">★★★★★</span></span>';
   }
-  function photo(v) { return v.img ? v.img : '/api/photo?slug=' + encodeURIComponent(v.s) + '&w=480'; }
+  // Na glownej: wybrane zdjecie wnetrza/fasady z Google (p=0), jesli jest, potem wlasne, potem domyslne.
+  function photo(v) { return v.pa ? '/api/photo?slug=' + encodeURIComponent(v.s) + '&p=0&w=480' : v.img ? v.img : '/api/photo?slug=' + encodeURIComponent(v.s) + '&w=480'; }
 
   function pick(lat, lng) {
     var all = venues.map(function (v) { return { v: v, d: dist(lat, lng, v.lat, v.lng) }; });
@@ -100,7 +101,8 @@
     var rate = v.r ? '<span class="sc-rate">' + stars(v.r) + '<b>' + v.r.toFixed(1) + '</b><span>' + (v.c ? ' (' + v.c + ')' : '') + '</span></span>' : '';
     var ours = v.sc ? '<span class="sc-ours">' + T.ours + ' <b>' + v.sc + '/10</b></span>' : '';
     return '<a class="rail-card stay-card' + (v.cl ? ' is-partner' : '') + '" href="/restaurant/' + esc(v.s) + '/">' +
-      '<span class="rc-photo"><img src="' + esc(photo(v)) + '" alt="" loading="lazy" decoding="async" width="480" height="320" onerror="this.parentNode.classList.add(\'noimg\')"></span>' +
+      '<span class="rc-photo"><img src="' + esc(photo(v)) + '" alt="' + esc(v.pa ? v.palt || '' : '') + '" loading="lazy" decoding="async" width="480" height="320" onerror="this.parentNode.classList.add(\'noimg\')">' +
+      (v.pa ? '<span class="rc-credit">' + (AR ? 'الصورة: ' : 'Photo: ') + esc(v.pa) + ' / Google</span>' : '') + '</span>' +
       '<span class="rc-body">' +
       '<span class="rc-kicker">' + esc(kicker) + '</span>' +
       '<span class="rc-title">' + esc(v.n.replace(/\s*\(.*?\)\s*/g, ' ').trim()) + '</span>' +

@@ -1082,7 +1082,7 @@ section h2 + p.section-lead { line-height: 1.75; }
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--gold);
 }
-.chip-accent .s-tag { color: #ffe9b8; }
+.chip-accent .s-tag { color: #fff; } /* #ffe9b8 na akcencie mialo kontrast 4.2 (< AA) */
 .slide h3 { color: var(--paper); font-size: 1.3rem; line-height: 1.2; }
 .slide .s-more {
   font-family: var(--font-mono);
@@ -2050,6 +2050,10 @@ body { background: var(--paper); }
 .rail-card.stay-more .rc-title { font-size: 1.05rem; color: var(--accent-deep); }
 
 .stay { padding-top: 64px; padding-bottom: 24px; }
+/* na desktopie inne sekcje (.districts, .teasers) zeruja boczny padding .wrap, wiec stay tez, inaczej jest wcieta o 24 px */
+@media (min-width: 1168px) { .stay { padding-left: 0; padding-right: 0; } }
+/* kuchnie stoja teraz zaraz nad "Where are you staying?": jedna przerwa zamiast dwoch (88 + 64 px) */
+.districts + .stay { padding-top: 0; }
 @media (max-width: 699px) { .rail-nav { display: none !important; } }
 .stay-chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 16px 6px; margin: 22px -16px 0; scroll-snap-type: x proximity; }
 .stay-chips::-webkit-scrollbar { display: none; }
@@ -2088,3 +2092,8 @@ body { background: var(--paper); }
 .vp-nearby .nb-meta { font-size: 0.82rem; color: var(--ink-soft); }
 .vp-nearby a:hover .nb-name { color: var(--accent); }
 @media (max-width: 560px) { .vp-nearby { grid-template-columns: 1fr; } .vp-nearby li:nth-child(2n) { border-inline-start: 0; } .vp-nearby li:nth-child(2n) a { padding-inline: 0; } }
+
+/* Podpis autora zdjecia z Google Places na kartach (wymog Google przy zdjeciach z Places) */
+.rc-photo { position: relative; }
+.rc-credit { position: absolute; left: 0; bottom: 0; max-width: 100%; padding: 3px 7px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; background: rgba(27, 27, 24, 0.78); color: #fff; font-size: 0.62rem; line-height: 1.4; letter-spacing: 0.02em; pointer-events: none; }
+[dir="rtl"] .rc-credit { left: auto; right: 0; }
