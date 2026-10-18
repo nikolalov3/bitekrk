@@ -3,6 +3,15 @@
    Papierowa biel, atrament, terakota jako jedyny akcent.
    Wielka typografia magazynowa, hairline'y zamiast kafelków. */
 
+/* Zapasowe kroje z metrykami dopasowanymi do Fraunces/Inter/Space Grotesk (fontTools, 2026-10-18):
+   fonty Google dochodza po pierwszym malowaniu, wiec tekst nie moze "skakac" przy podmianie (CLS). */
+@font-face { font-family: "Fraunces Fallback"; src: local("Georgia"); size-adjust: 109.00%; ascent-override: 89.72%; descent-override: 23.39%; line-gap-override: 0%; }
+@font-face { font-family: "Fraunces Fallback Android"; src: local("Noto Serif"); size-adjust: 99.94%; ascent-override: 97.85%; descent-override: 25.51%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback"; src: local("Arial"); size-adjust: 107.32%; ascent-override: 90.27%; descent-override: 22.48%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback Android"; src: local("Roboto"); size-adjust: 107.05%; ascent-override: 90.50%; descent-override: 22.53%; line-gap-override: 0%; }
+@font-face { font-family: "Space Grotesk Fallback"; src: local("Arial"); size-adjust: 110.76%; ascent-override: 88.84%; descent-override: 26.36%; line-gap-override: 0%; }
+@font-face { font-family: "Space Grotesk Fallback Android"; src: local("Roboto"); size-adjust: 110.48%; ascent-override: 89.07%; descent-override: 26.43%; line-gap-override: 0%; }
+
 :root {
   --paper: #faf9f6;
   --paper-warm: #f4efe7;
@@ -14,9 +23,9 @@
   --accent-deep: #93401f;
   --gold: #c1922e;
   --radius: 10px;
-  --font-serif: "Fraunces", Georgia, serif;
-  --font-sans: "Inter", -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Space Grotesk", "SF Mono", monospace;
+  --font-serif: "Fraunces", "Fraunces Fallback", "Fraunces Fallback Android", Georgia, serif;
+  --font-sans: "Inter", "Inter Fallback", "Inter Fallback Android", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Space Grotesk", "Space Grotesk Fallback", "Space Grotesk Fallback Android", "SF Mono", monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1549,7 +1558,7 @@ html[dir="rtl"] .venue-note { border-left: none; border-right: 2px solid var(--g
 
 .article-body .venue-card,
 .article-body .venue-card:hover {
-  --font-mono: "Space Grotesk", "SF Mono", monospace;
+  --font-mono: "Space Grotesk", "Space Grotesk Fallback", "Space Grotesk Fallback Android", "SF Mono", monospace;
   display: block;
   background: none; border: none; border-radius: 0;
   box-shadow: none; transform: none; isolation: auto; overflow: visible;
