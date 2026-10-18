@@ -12,7 +12,7 @@
     var L=navigator.languages||[navigator.language||""];
     var isAr=L.some(function(x){return /^ar/i.test(x);});
     var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/","/breakfast-krakow/"];
     var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/","/autumn-menu-krakow/","/news/mlaskoty-food-festival-krakow/"];
     if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
     else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);

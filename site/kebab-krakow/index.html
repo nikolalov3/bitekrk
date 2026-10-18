@@ -12,7 +12,7 @@
     var L=navigator.languages||[navigator.language||""];
     var isAr=L.some(function(x){return /^ar/i.test(x);});
     var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/","/breakfast-krakow/"];
     var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/","/autumn-menu-krakow/","/news/mlaskoty-food-festival-krakow/"];
     if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
     else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
@@ -136,7 +136,7 @@
                 "url": "https://bitekrakow.com/about/"
               },
               "datePublished": "2026-08-20",
-              "reviewBody": "4.8 stars from over 2,300 reviews and open past midnight on weekends. The consistency champion, and the late-night answer near the station."
+              "reviewBody": "4.8 stars from over 2,300 reviews and open until 21:00, closed on Sundays. The consistency champion, and the easiest stop near the station."
             }
           }
         },
@@ -464,12 +464,12 @@
           <div>
             <div class="what">What to order</div>
             <div class="dish">Beef doner in bread with the signature sauces</div>
-            <p class="verdict">4.8 stars from over 2,300 reviews and open past midnight on weekends. The consistency champion, and the late-night answer near the station.</p>
+            <p class="verdict">4.8 stars from over 2,300 reviews and open until 21:00, closed on Sundays. The consistency champion, and the easiest stop near the station.</p>
           </div>
         </div>
         <div class="venue-tags">
           <span class="pill">4.8 from 2,300+</span>
-          <span class="pill">Open late</span>
+          <span class="pill">Near the station</span>
           <span class="pill">Halal</span>
         </div>
         <div class="venue-reviews" hidden></div>
@@ -709,7 +709,7 @@
       <h2>How to use this list</h2>
       <p>
         Settle the kebab argument yourself: Jamra in Zabłocie for the charcoal Syrian
-        wrap, Soltan on Warszawska for the late-night doner, Tandoor Kebab on Starowiślna
+        wrap, Soltan on Warszawska for the doner everyone argues about, Tandoor Kebab on Starowiślna
         for bread baked while you watch, Arabia at the <a href="/kleparz-guide/">Kleparz</a>
         market for the shawarma and the free baklava. For a sit-down evening, mezze at
         Hamsa in <a href="/kazimierz-guide/">Kazimierz</a>. For lunch, hummus at

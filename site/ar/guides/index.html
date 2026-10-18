@@ -11,7 +11,7 @@
     if(localStorage.getItem("bk-lang"))return;
     var L=navigator.languages||[navigator.language||""];
     if(!L.some(function(x){return /^ar/i.test(x);}))return;
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
+    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/","/breakfast-krakow/"];
     if(AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
   }catch(e){}})();
   </script>
@@ -59,7 +59,9 @@
       { "@type": "ListItem", "position": 10, "url": "https://bitekrakow.com/ar/korean-krakow/" },
       { "@type": "ListItem", "position": 11, "url": "https://bitekrakow.com/ar/halal-krakow/" },
       { "@type": "ListItem", "position": 12, "url": "https://bitekrakow.com/ar/best-restaurants-krakow/" },
-      { "@type": "ListItem", "position": 13, "url": "https://bitekrakow.com/ar/matcha-krakow/" }
+      { "@type": "ListItem", "position": 13, "url": "https://bitekrakow.com/ar/matcha-krakow/" },
+      { "@type": "ListItem", "position": 14, "url": "https://bitekrakow.com/ar/arab-travellers-krakow/" },
+      { "@type": "ListItem", "position": 15, "url": "https://bitekrakow.com/ar/breakfast-krakow/" }
     ] }
   }
   </script>
@@ -166,6 +168,14 @@
       <span class="eyebrow">حسب النظام الغذائي</span>
       <h2 class="deco">حلال ونباتي</h2>
       <div class="guide-grid">
+        <a class="guide-card" href="/ar/arab-travellers-krakow/">
+          <h3>كراكوف للزوار العرب والخليجيين</h3>
+          <p>حلال حسب الحي، عشاء متأخر، الصلاة، قهوة وحلويات بلا كحول، والتسوق يوم الأحد.</p>
+        </a>
+        <a class="guide-card" href="/ar/breakfast-krakow/">
+          <h3>أفضل فطور في كراكوف</h3>
+          <p>ستة أماكن تفتح باكراً، وما تطلبه في كل مكان دون لحم خنزير.</p>
+        </a>
         <a class="guide-card" href="/ar/halal-krakow/">
           <h3>مطاعم حلال في كراكوف</h3>
           <p>مطابخ هندية حلال معتمدة، مشاوي كباب سورية على الفحم وتندور، ومطاعم نباتية بالكامل بلا أي مسألة لحم. قرب البلدة القديمة وكازيميَش.</p>
