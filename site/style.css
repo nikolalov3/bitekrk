@@ -1829,3 +1829,47 @@ html[dir="rtl"] .article-body .menu-pick { border-right: none; }
 @media (max-width: 480px) {
   .site-header .site-nav { flex-wrap: wrap; justify-content: center; column-gap: 16px; row-gap: 6px; max-width: 100%; }
 }
+
+/* ======================================================================
+   ZDJECIA AUTORSKIE W ARTYKULE: zdjecie tytulowe + rzad zdjec
+   ====================================================================== */
+.article-body .photo-lead { margin: 4px 0 30px; }
+.article-body .photo-lead img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.article-body .photo-lead figcaption,
+.article-body .photo-row figcaption,
+.article-body .photo-poster figcaption { font-size: 0.76rem; line-height: 1.4; color: var(--ink-soft); margin-top: 8px; }
+.article-body figure { margin: 0; }
+.article-body .photo-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 20px 0 6px; }
+.article-body .photo-row img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; }
+.article-body .photo-poster { max-width: 360px; margin: 22px auto 10px; }
+.article-body .photo-poster img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+@media (max-width: 640px) {
+  .article-body .photo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ======================================================================
+   SEZON: JESIEN + HALLOWEEN 2026. Caly motyw siedzi w tym bloku i w pasku
+   .season-strip na glownej. Zdjac po 2 listopada: usunac blok + pasek.
+   ====================================================================== */
+:root {
+  --paper: #f8f5ef;
+  --paper-warm: #f2e9dc;
+  --accent: #b5512a;
+  --accent-deep: #8a3818;
+  --gold: #bf8a2a;
+  --season-plum: #3f2633;
+}
+body { background: var(--paper); }
+::selection { background: #efc9a3; color: var(--ink); }
+.site-header { border-bottom: 1px solid transparent; border-image: linear-gradient(90deg, var(--gold), var(--accent) 55%, var(--season-plum)) 1; }
+@media (max-width: 640px) { .site-header { background: rgba(248, 245, 239, 0.95); } }
+
+.season-strip { background: var(--paper-warm); border-bottom: 1px solid var(--line); font-size: 0.8rem; }
+.season-strip .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 18px; padding-top: 9px; padding-bottom: 9px; }
+.season-strip .ss-label { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.66rem; color: var(--season-plum); }
+.season-strip .ss-label svg { width: 15px; height: 15px; flex: none; }
+.season-strip a { color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(181, 81, 42, 0.35); padding-bottom: 1px; }
+.season-strip a:hover { color: var(--accent-deep); border-bottom-color: var(--accent); }
+.season-strip .ss-sep { color: var(--line-dark); }
+@media (max-width: 640px) { .season-strip .ss-sep { display: none; } .season-strip .wrap { gap: 4px 14px; } }
+.article-body .photo-credit { font-size: 0.76rem; line-height: 1.4; color: var(--ink-soft); margin: 6px 0 0; }

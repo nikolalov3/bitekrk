@@ -13,7 +13,7 @@
     var isAr=L.some(function(x){return /^ar/i.test(x);});
     var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
     var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
-    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/"];
+    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/","/autumn-menu-krakow/"];
     if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
     else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
   }catch(e){}})();
@@ -82,6 +82,15 @@
   </div>
 </header>
 
+<div class="season-strip" role="region" aria-label="Autumn in Krakow">
+  <div class="wrap">
+    <span class="ss-label"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.2-2-2.6-2.7-3.6-2.4"/><path d="M12 6.5c3.2-.6 7 1.6 7 6.6 0 4.4-3 7.4-7 7.4s-7-3-7-7.4c0-5 3.8-7.2 7-6.6Z"/><path d="M12 6.8c-1.6 2.6-1.6 10.6 0 13.6M12 6.8c1.6 2.6 1.6 10.6 0 13.6"/></svg>Autumn &amp; Halloween in Krakow</span>
+    <a href="/autumn-menu-krakow/">Autumn menus</a><span class="ss-sep" aria-hidden="true">/</span>
+    <a href="/news/krakow-restaurant-week-2026-restaurants/">Restaurant Week until 25 Nov</a><span class="ss-sep" aria-hidden="true">/</span>
+    <a href="/news/art-food-bazar-stary-kleparz/">Art &amp; Food Bazar, 15 Nov</a>
+  </div>
+</div>
+
 <section class="hero hero-split">
   <div class="hero-left">
     <div class="hero-left-inner">
@@ -95,19 +104,19 @@
   </div>
   <div class="hero-slider" aria-label="Featured stories">
     <div class="slides" id="heroSlides">
-      <a class="slide" href="/news/slonce-polish-restaurant-opens/">
-        <img class="bg" src="/api/photo?slug=slonce" alt="Slonce, a modern Polish restaurant in Krakow" onerror="this.remove()">
+      <a class="slide" href="/news/art-food-bazar-stary-kleparz/" style="background:#ebe8e3">
+        <img class="bg" src="/img/autumn/art-food-bazar-2026.jpg" alt="Art &amp; Food Bazar 2026 poster, Sunday food fair at Stary Kleparz, 11:00 to 17:00" style="object-fit:contain" onerror="this.remove()">
         <div class="slide-chip chip-accent">
-          <span class="s-tag">Just opened · 11 Aug</span>
-          <h3>Słońce: new Polish table on św. Tomasza</h3>
+          <span class="s-tag">Stary Kleparz · next 15 Nov</span>
+          <h3>Art &amp; Food Bazar: the Sunday food fair at the oldest market</h3>
           <span class="s-more">Read the news ↗</span>
         </div>
       </a>
-      <a class="slide" href="/ice-cream-krakow/">
-        <img class="bg" src="/api/photo?slug=lody-starowislna" alt="Lody na Starowislnej, family ice cream in Krakow" loading="lazy" onerror="this.remove()">
+      <a class="slide" href="/autumn-menu-krakow/">
+        <img class="bg" src="/img/coppa/pumpkin-spice.webp" alt="Pumpkin Spice dusted with cinnamon at COPPA, Krakow" loading="lazy" style="object-position:50% 62%" onerror="this.remove()">
         <div class="slide-chip">
-          <span class="s-tag">Season's pick</span>
-          <h3>Family-run ice cream, no chains allowed</h3>
+          <span class="s-tag">Autumn 2026</span>
+          <h3>Pumpkin spice, matcha and hojicha: autumn menus worth the walk</h3>
           <span class="s-more">Read the guide ↗</span>
         </div>
       </a>
@@ -216,9 +225,9 @@
       <h3>Kazimierz Coffee and Brunch Guide</h3>
       <p>Coffee in former prayer houses and the calm end of the loudest district.</p>
     </a>
-    <a class="guide-card" href="/ice-cream-krakow/">
-      <h3>Family-Run Ice Cream, No Chains</h3>
-      <p>The legendary Starowiślna queue, a recipe from 1917 and Nowa Huta's finest.</p>
+    <a class="guide-card" href="/autumn-menu-krakow/">
+      <h3>Autumn Menus: Pumpkin Spice, Matcha, Hojicha</h3>
+      <p>COPPA's house pumpkin syrup, Yume matcha at Café Belmont, Bruk by the station.</p>
     </a>
     <a class="guide-card" href="/dog-friendly-cafes-krakow/">
       <h3>Dog-Friendly Cafes in Krakow</h3>

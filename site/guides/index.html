@@ -13,7 +13,7 @@
     var isAr=L.some(function(x){return /^ar/i.test(x);});
     var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
     var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/"];
-    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/"];
+    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/","/autumn-menu-krakow/"];
     if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
     else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
   }catch(e){}})();
@@ -83,7 +83,8 @@
       { "@type": "ListItem", "position": 32, "url": "https://bitekrakow.com/brunch-krakow/" },
       { "@type": "ListItem", "position": 33, "url": "https://bitekrakow.com/wine-bars-krakow/" },
       { "@type": "ListItem", "position": 34, "url": "https://bitekrakow.com/cocktail-bars-krakow/" },
-      { "@type": "ListItem", "position": 35, "url": "https://bitekrakow.com/krakow-restaurant-week/" }
+      { "@type": "ListItem", "position": 35, "url": "https://bitekrakow.com/krakow-restaurant-week/" },
+      { "@type": "ListItem", "position": 36, "url": "https://bitekrakow.com/autumn-menu-krakow/" }
     ] }
   }
   </script>
@@ -219,7 +220,11 @@
         </a>
         <a class="guide-card" href="/krakow-restaurant-week/">
           <h3>Krakow Restaurant Week 2026</h3>
-          <p>Dates, prices and how to book: three courses and a cocktail for 70 zl, 7 October to 25 November.</p>
+          <p>Dates, prices and how to book: three courses and a cocktail for 69.99 zl, 7 October to 25 November.</p>
+        </a>
+        <a class="guide-card" href="/autumn-menu-krakow/">
+          <h3>Autumn menus in Krakow</h3>
+          <p>Pumpkin spice on a house syrup at COPPA, Yume matcha at Café Belmont, Bruk by the station, and the restaurants cooking pumpkin and game.</p>
         </a>
         <a class="guide-card" href="/krakow-digital-nomads/">
           <h3>Krakow for Digital Nomads</h3>
@@ -276,6 +281,7 @@
         <a href="/pl/matcha-krakow/">Matcha w Krakowie</a>
         <a href="/pl/cocktail-bars-krakow/">Bary koktajlowe</a>
         <a href="/pl/krakow-restaurant-week/">Restaurant Week 2026</a>
+        <a href="/pl/autumn-menu-krakow/">Jesienne menu</a>
       </div>
     </section>
   </div>
