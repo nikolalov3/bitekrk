@@ -1885,7 +1885,8 @@ body { background: var(--paper); }
 .season-strip a { color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(181, 81, 42, 0.35); padding-bottom: 1px; }
 .season-strip a:hover { color: var(--accent-deep); border-bottom-color: var(--accent); }
 .season-strip .ss-sep { color: var(--line-dark); }
-@media (max-width: 640px) { .season-strip .ss-sep { display: none; } .season-strip .wrap { gap: 0 14px; justify-content: flex-start; } }
+@media (max-width: 640px) { .season-strip { position: relative; } .season-strip .ss-sep { display: none; } .season-strip .wrap { gap: 0 14px; justify-content: flex-start; padding-right: 44px; }
+  .season-strip::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 44px; background: linear-gradient(90deg, rgba(242, 233, 220, 0), var(--paper-warm) 70%); pointer-events: none; } }
 .article-body .photo-credit { font-size: 0.76rem; line-height: 1.4; color: var(--ink-soft); margin: 6px 0 0; }
 
 /* ======================================================================
