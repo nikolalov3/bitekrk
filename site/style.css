@@ -1873,3 +1873,20 @@ body { background: var(--paper); }
 .season-strip .ss-sep { color: var(--line-dark); }
 @media (max-width: 640px) { .season-strip .ss-sep { display: none; } .season-strip .wrap { gap: 4px 14px; } }
 .article-body .photo-credit { font-size: 0.76rem; line-height: 1.4; color: var(--ink-soft); margin: 6px 0 0; }
+
+/* ======================================================================
+   PROFIL LOKALU: menu (klienci, z ich wlasnych stron)
+   ====================================================================== */
+.vp-menu .vp-menu-src { font-size: 0.8rem; color: var(--ink-soft); margin: -4px 0 18px; }
+.vp-menu .vp-menu-src a { color: inherit; }
+.vp-menu-sec { border-top: 1px solid var(--line); padding: 16px 0 6px; }
+.vp-menu-sec h3 { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-deep); margin: 0 0 10px; }
+.vp-menu-note { font-size: 0.88rem; color: var(--ink-soft); margin: 0 0 10px; }
+.vp-menu-sec ul { list-style: none; margin: 0; padding: 0; }
+.vp-menu-sec li { padding: 8px 0; border-bottom: 1px dotted var(--line); }
+.vp-menu-sec li:last-child { border-bottom: none; }
+.vp-menu .mi-row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+.vp-menu .mi-name { font-weight: 600; font-size: 0.95rem; }
+.vp-menu .mi-alt { font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); }
+.vp-menu .mi-price { font-family: var(--font-mono); font-size: 0.88rem; white-space: nowrap; }
+.vp-menu .mi-desc { font-size: 0.86rem; color: var(--ink-soft); margin: 3px 0 0; line-height: 1.45; }

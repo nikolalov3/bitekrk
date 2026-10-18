@@ -128,8 +128,14 @@ function amenities(v) {
 }
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// Godziny: jesli wlasciciel publikuje je na swojej stronie (attrs.hours_override,
+// ustawiane przez bk-clients.py), maja pierwszenstwo przed Google Places.
+function hoursOf(v) {
+  return (v.attrs && v.attrs.hours_override) || v.hours || null;
+}
 function hoursSpec(v) {
-  const per = v.hours && v.hours.periods;
+  const H = hoursOf(v);
+  const per = H && H.periods;
   if (!Array.isArray(per)) return null;
   return per.filter(p => p.open && p.close).map(p => ({
     '@type': 'OpeningHoursSpecification',
@@ -149,7 +155,13 @@ function venuePage(v) {
   const type = schemaType(v);
   const url = `${HOST}/restaurant/${v.slug}/`;
   const amens = amenities(v);
-  const weekday = v.hours && v.hours.weekdayDescriptions;
+  const H = hoursOf(v);
+  const weekday = H && H.weekdayDescriptions;
+  const ownHours = !!(v.attrs && v.attrs.hours_override);
+  const menu = v.attrs && v.attrs.menu;
+  const heroImg = (v.attrs && v.attrs.hero_image) || `/api/photo?slug=${v.slug}`;
+  const heroAbs = heroImg.startsWith('/api/') ? `${HOST}${heroImg}` : `${HOST}${heroImg}`;
+  const heroAlt = (v.attrs && v.attrs.hero_alt) || null;
   const cuisineTags = (v.tags || []).slice(0, 6);
   const displayDistrict = v.district || 'Kraków';
   const desc = v.description_en ||
@@ -162,7 +174,7 @@ function venuePage(v) {
     '@id': url,
     name: v.name,
     url,
-    image: `${HOST}/api/photo?slug=${v.slug}`,
+    image: heroAbs,
     address: {
       '@type': 'PostalAddress',
       streetAddress: streetOf(v.address),
@@ -181,6 +193,26 @@ function venuePage(v) {
   // jako wlasny aggregateRating w schema — wytyczne Google zabraniaja oznaczania
   // ocen zewnetrznych/cudzych jako swoich (ryzyko manual action). Zostaje tylko
   // nasza autorska recenzja (Review ponizej).
+  if (menu && Array.isArray(menu.sections) && menu.sections.length) {
+    schema.hasMenu = {
+      '@type': 'Menu',
+      name: `${v.name} menu`,
+      url: menu.source,
+      inLanguage: 'en',
+      hasMenuSection: menu.sections.filter(sec => sec.items && sec.items.length).map(sec => ({
+        '@type': 'MenuSection',
+        name: sec.name,
+        ...(sec.note ? { description: sec.note } : {}),
+        hasMenuItem: sec.items.map(it => ({
+          '@type': 'MenuItem',
+          name: it.name,
+          ...(it.alternateName ? { alternateName: it.alternateName } : {}),
+          ...(it.description ? { description: it.description } : {}),
+          ...(it.price ? { offers: { '@type': 'Offer', price: it.price, priceCurrency: menu.currency || 'PLN' } } : {})
+        }))
+      }))
+    };
+  }
   const spec = hoursSpec(v);
   if (spec && spec.length) schema.openingHoursSpecification = spec;
   const realQuotes = feats.filter(f => f.verdict && f.score && f.score !== 'NEW');
@@ -249,6 +281,20 @@ function venuePage(v) {
           </dl>
         </div>` : '';
 
+  const fmtDate = d => { try { return new Date(d + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); } catch { return d; } };
+  const menuHtml = menu && Array.isArray(menu.sections) && menu.sections.length ? `
+      <section class="vp-block vp-menu" id="menu">
+        <h2 class="vp-h">Menu</h2>
+        <p class="vp-menu-src">From ${esc(v.name)}'s own menu, translated by us. Checked ${esc(fmtDate(menu.checked))}${menu.sections.some(sec => (sec.items || []).some(it => it.price)) ? '. Prices in zł' : ''}. <a href="${esc(menu.source)}" target="_blank" rel="noopener">Current menu on their site</a>.</p>
+        ${menu.sections.map(sec => `<div class="vp-menu-sec">
+          <h3>${esc(sec.name)}</h3>${sec.note ? `
+          <p class="vp-menu-note">${esc(sec.note)}</p>` : ''}${sec.items && sec.items.length ? `
+          <ul>
+            ${sec.items.map(it => `<li><div class="mi-row"><span class="mi-name">${esc(it.name)}${it.alternateName ? ` <span class="mi-alt" lang="pl">${esc(it.alternateName)}</span>` : ''}</span>${it.price ? `<span class="mi-price">${esc(it.price)} zł</span>` : ''}</div>${it.description ? `<p class="mi-desc">${esc(it.description)}</p>` : ''}</li>`).join('\n            ')}
+          </ul>` : ''}
+        </div>`).join('\n        ')}
+      </section>` : '';
+
   const tagsHtml = cuisineTags.map(t => `<span class="pill">${esc(t)}</span>`).join('\n          ');
 
   return `<!DOCTYPE html>
@@ -265,12 +311,12 @@ function venuePage(v) {
   <meta property="og:title" content="${esc(v.name)}, ${esc(displayDistrict)}, Kraków">
   <meta property="og:description" content="${esc(metaDesc)}">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${HOST}/api/photo?slug=${v.slug}">
+  <meta property="og:image" content="${heroAbs}">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(v.name)}, Kraków | BiteKrakow">
   <meta name="twitter:description" content="${esc(metaDesc)}">
-  <meta name="twitter:image" content="${HOST}/api/photo?slug=${v.slug}">
+  <meta name="twitter:image" content="${heroAbs}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
@@ -319,7 +365,7 @@ ${JSON.stringify(breadcrumb, null, 2).split('\n').map(l => '  ' + l).join('\n')}
 
   <div class="wrap vp-hero-wrap">
     <div class="vp-hero">
-      <img src="/api/photo?slug=${v.slug}" alt="${esc(v.name)} in ${esc(displayDistrict)}, Kraków" fetchpriority="high" decoding="async" width="720" height="420" onerror="this.parentNode.classList.add('noimg')">
+      <img src="${esc(heroImg)}" alt="${esc(heroAlt || `${v.name} in ${displayDistrict}, Kraków`)}" fetchpriority="high" decoding="async" width="720" height="420" onerror="this.parentNode.classList.add('noimg')">
     </div>
   </div>
 
@@ -337,6 +383,7 @@ ${featsHtml}
         </ul>
       </section>` : ''}
 
+${menuHtml}
       <section class="vp-block">
         <div class="venue-reviews" hidden></div>
       </section>
@@ -361,7 +408,7 @@ ${featsHtml}
           <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=${encodeURIComponent(v.name + ' ' + (v.address || 'Kraków'))}" target="_blank" rel="noopener">See on Google Maps</a>
           ${v.website_url ? `<a class="btn btn-ghost" href="${esc(v.website_url)}" target="_blank" rel="noopener">Website</a>` : ''}
         </div>
-        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
+        <p class="vp-source">${ownHours ? 'Hours and menu from the venue\'s own website. Ratings and amenity details from Google.' : 'Ratings, hours and amenity details from Google.'}</p>
       </div>
     </aside>
   </div>

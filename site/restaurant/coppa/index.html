@@ -12,12 +12,12 @@
   <meta property="og:title" content="COPPA, Krowodrza, Kraków">
   <meta property="og:description" content="COPPA, Krowodrza, Kraków: A specialty coffee cafe on Mazowiecka that specializes in tiramisu. The dessert leads, with a homemade… Hours, prices, Google rating and what to order.">
   <meta property="og:url" content="https://bitekrakow.com/restaurant/coppa/">
-  <meta property="og:image" content="https://bitekrakow.com/api/photo?slug=coppa">
+  <meta property="og:image" content="https://bitekrakow.com/img/coppa/bar.webp">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="COPPA, Kraków | BiteKrakow">
   <meta name="twitter:description" content="COPPA, Krowodrza, Kraków: A specialty coffee cafe on Mazowiecka that specializes in tiramisu. The dessert leads, with a homemade… Hours, prices, Google rating and what to order.">
-  <meta name="twitter:image" content="https://bitekrakow.com/api/photo?slug=coppa">
+  <meta name="twitter:image" content="https://bitekrakow.com/img/coppa/bar.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
@@ -30,7 +30,7 @@
     "@id": "https://bitekrakow.com/restaurant/coppa/",
     "name": "COPPA",
     "url": "https://bitekrakow.com/restaurant/coppa/",
-    "image": "https://bitekrakow.com/api/photo?slug=coppa",
+    "image": "https://bitekrakow.com/img/coppa/bar.webp",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "ul. Mazowiecka 60",
@@ -53,55 +53,301 @@
       "latitude": 50.0755407,
       "longitude": 19.9235278
     },
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "COPPA menu",
+      "url": "https://www.coppaspecialty.cafe/",
+      "inLanguage": "en",
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "Tiramisu, always on",
+          "hasMenuItem": [
+            {
+              "@type": "MenuItem",
+              "name": "Classic tiramisu",
+              "alternateName": "Tiramisu klasyczne",
+              "description": "Where COPPA started, inspired by tiramisu from travels in Italy. No alcohol."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Pistachio tiramisu",
+              "alternateName": "Tiramisu pistacjowe",
+              "description": "Pistachio from the first spoon to the last: intensely nutty and silky. No alcohol."
+            }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Tiramisu, seasonal",
+          "hasMenuItem": [
+            {
+              "@type": "MenuItem",
+              "name": "Earl Grey tiramisu",
+              "alternateName": "Tiramisu Earl Grey",
+              "description": "Bergamot with citrus and floral notes. No coffee, no alcohol."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Hojicha tiramisu",
+              "alternateName": "Tiramisu hojicha",
+              "description": "Roasted Japanese green tea: nuts, caramel, a little smoke, umami, with a hojicha ganache. No coffee, no alcohol."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Limoncello tiramisu",
+              "alternateName": "Tiramisu limoncello",
+              "description": "An alcohol-free take on limoncello, with citrus peel oils and an aromatic dusting. No coffee, no alcohol."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "White peach and lemon thyme tiramisu",
+              "alternateName": "Tiramisu białe brzoskwinie i tymianek cytrynowy",
+              "description": "Sweet white peach and the herbal freshness of lemon thyme. Seasonal."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Hazelnut praline tiramisu",
+              "alternateName": "Tiramisu pralina z orzecha laskowego",
+              "description": "Caramel hazelnut praline with a crunchy top on a silky cream. Seasonal."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Matcha and raspberry tiramisu",
+              "alternateName": "Tiramisu matcha i malina",
+              "description": "Green, umami matcha with fruity raspberry. No coffee, no alcohol."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Plum and crumble tiramisu",
+              "alternateName": "Tiramisu śliwka z kruszonką",
+              "description": "Ripe plums and crunchy crumble on a silky cream. The taste of autumn."
+            }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Coffee and drinks",
+          "hasMenuItem": [
+            {
+              "@type": "MenuItem",
+              "name": "Cortado"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Cappuccino"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Flat white"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Latte"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Iced latte"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Matcha"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Cocoa",
+              "alternateName": "Kakao"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Espresso"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Batch brew"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Refill"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Hand brew"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Cold brew"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Orange espresso"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Espresso tonic"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Orange juice"
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Lemonade"
+            }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Sandwiches",
+          "hasMenuItem": [
+            {
+              "@type": "MenuItem",
+              "name": "Salami piccante sandwich",
+              "alternateName": "Kanapka salami piccante",
+              "description": "Ciabatta, salami piccante, ricotta, chilli honey, rocket and red onion. Hot and sweet at once."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Vegetarian sandwich",
+              "alternateName": "Kanapka wege",
+              "description": "Ciabatta, olives, sun-dried tomatoes, stracciatella, rocket and balsamic olive oil. Salty, creamy, meat-free."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Mortadella sandwich",
+              "alternateName": "Kanapka z mortadelą",
+              "description": "Ciabatta, mortadella, stracciatella, mascarpone, lemon, pistachio and rocket. An Italian classic with lemon freshness."
+            }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Autumn coffees",
+          "hasMenuItem": [
+            {
+              "@type": "MenuItem",
+              "name": "Iced Banana Bread",
+              "description": "Banana bread as an iced coffee: ripe banana, cinnamon, milk and espresso."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Iced Apple Pie Latte",
+              "description": "Baked autumn apple with espresso and milk over ice, creamy and gently sweet, like a home-made apple pie."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Pumpkin Spice",
+              "description": "House syrup of roasted pumpkin and warm spices with a note of orange. Creamy, deep and balanced in sweetness."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Banana Bread Latte",
+              "description": "Banana bread turned into a creamy hot coffee, to the recipe of barista Karola."
+            }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Autumn drinks",
+          "hasMenuItem": [
+            {
+              "@type": "MenuItem",
+              "name": "White Vanilla Matcha",
+              "description": "Matcha with house vanilla syrup enriched with tonka and white chocolate. Mild, creamy, dessert-like."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Berry Cocoa",
+              "description": "House cocoa with raspberry purée: milk chocolate sweetness cut with a little raspberry acidity."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Dark Chocolate Mocha",
+              "description": "Double espresso with dark cocoa and milk. Intensely chocolatey and deep."
+            },
+            {
+              "@type": "MenuItem",
+              "name": "Oat Cinnamon Hojicha",
+              "description": "Roasted Japanese tea with oat milk and warm spices. Lightly sweet, nutty and warming."
+            }
+          ]
+        }
+      ]
+    },
     "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "09:00",
-        "closes": "17:00"
-      },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Monday",
         "opens": "08:00",
-        "closes": "18:00"
+        "closes": "19:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Tuesday",
         "opens": "08:00",
-        "closes": "18:00"
+        "closes": "19:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Wednesday",
         "opens": "08:00",
-        "closes": "18:00"
+        "closes": "19:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Thursday",
         "opens": "08:00",
-        "closes": "18:00"
+        "closes": "19:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Friday",
         "opens": "08:00",
-        "closes": "18:00"
+        "closes": "19:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Saturday",
-        "opens": "09:00",
-        "closes": "17:00"
+        "opens": "09:30",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "09:30",
+        "closes": "18:00"
       }
     ],
+    "review": {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "9",
+        "bestRating": "10",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Cezary Musiał",
+        "url": "https://bitekrakow.com/about/"
+      },
+      "reviewBody": "The fullest autumn card in the city, built on house syrups rather than bought ones, with a plum tiramisu to finish."
+    },
     "subjectOf": [
+      {
+        "@type": "Article",
+        "headline": "Autumn in Krakow, by the cup and by the plate",
+        "url": "https://bitekrakow.com/autumn-menu-krakow/"
+      },
       {
         "@type": "Article",
         "headline": "COPPA: A Cafe That Puts the Tiramisu on the Sign",
         "url": "https://bitekrakow.com/news/coppa-specialty-coffee-opens/"
+      },
+      {
+        "@type": "Article",
+        "headline": "Jesień w Krakowie, w kubku i na talerzu",
+        "url": "https://bitekrakow.com/pl/autumn-menu-krakow/"
       }
     ]
   }
@@ -196,7 +442,7 @@
 
   <div class="wrap vp-hero-wrap">
     <div class="vp-hero">
-      <img src="/api/photo?slug=coppa" alt="COPPA in Krowodrza, Kraków" fetchpriority="high" decoding="async" width="720" height="420" onerror="this.parentNode.classList.add('noimg')">
+      <img src="/img/coppa/bar.webp" alt="The bar at COPPA Specialty Coffee &amp; Tiramisu on Mazowiecka, Krakow" fetchpriority="high" decoding="async" width="720" height="420" onerror="this.parentNode.classList.add('noimg')">
     </div>
   </div>
 
@@ -206,19 +452,106 @@
         <h2 class="vp-h">Our take</h2>
         
       <div class="bk-quote">
+        <div class="bk-score">9/10 · BITEKRAKOW SCORE</div>
+        <blockquote>The fullest autumn card in the city, built on house syrups rather than bought ones, with a plum tiramisu to finish.</blockquote>
+        <p class="bk-src">From <a href="/autumn-menu-krakow/">Autumn in Krakow, by the cup and by the plate</a></p>
+      </div>
+      <div class="bk-quote">
         <div class="bk-score">NEW OPENING</div>
         <blockquote>Early taste, not a full review yet. The tiramisu is the reason to come: a genuine kogel-mogel richness under the cocoa, the homemade kind, and it works. The coffee and the room we will judge on a proper sit-down.</blockquote>
         <p class="bk-src">From <a href="/news/coppa-specialty-coffee-opens/">COPPA: A Cafe That Puts the Tiramisu on the Sign</a></p>
+      </div>
+      <div class="bk-quote">
+        <div class="bk-score">9/10 · BITEKRAKOW SCORE</div>
+        <blockquote>Najpełniejsza jesienna karta w mieście, na domowych syropach, nie kupnych, z tiramisu śliwkowym na deser.</blockquote>
+        <p class="bk-src">From <a href="/pl/autumn-menu-krakow/">Jesień w Krakowie, w kubku i na talerzu</a></p>
       </div>
       </section>
 
       <section class="vp-block">
         <h2 class="vp-h">Featured in our guides</h2>
         <ul class="featured-list">
+        <li><a href="/autumn-menu-krakow/">Autumn in Krakow, by the cup and by the plate</a></li>
         <li><a href="/news/coppa-specialty-coffee-opens/">COPPA: A Cafe That Puts the Tiramisu on the Sign</a></li>
+        <li><a href="/pl/autumn-menu-krakow/">Jesień w Krakowie, w kubku i na talerzu</a></li>
         </ul>
       </section>
 
+
+      <section class="vp-block vp-menu" id="menu">
+        <h2 class="vp-h">Menu</h2>
+        <p class="vp-menu-src">From COPPA's own menu, translated by us. Checked 18 October 2026. <a href="https://www.coppaspecialty.cafe/" target="_blank" rel="noopener">Current menu on their site</a>.</p>
+        <div class="vp-menu-sec">
+          <h3>Tiramisu, always on</h3>
+          <ul>
+            <li><div class="mi-row"><span class="mi-name">Classic tiramisu <span class="mi-alt" lang="pl">Tiramisu klasyczne</span></span></div><p class="mi-desc">Where COPPA started, inspired by tiramisu from travels in Italy. No alcohol.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Pistachio tiramisu <span class="mi-alt" lang="pl">Tiramisu pistacjowe</span></span></div><p class="mi-desc">Pistachio from the first spoon to the last: intensely nutty and silky. No alcohol.</p></li>
+          </ul>
+        </div>
+        <div class="vp-menu-sec">
+          <h3>Tiramisu, seasonal</h3>
+          <ul>
+            <li><div class="mi-row"><span class="mi-name">Earl Grey tiramisu <span class="mi-alt" lang="pl">Tiramisu Earl Grey</span></span></div><p class="mi-desc">Bergamot with citrus and floral notes. No coffee, no alcohol.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Hojicha tiramisu <span class="mi-alt" lang="pl">Tiramisu hojicha</span></span></div><p class="mi-desc">Roasted Japanese green tea: nuts, caramel, a little smoke, umami, with a hojicha ganache. No coffee, no alcohol.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Limoncello tiramisu <span class="mi-alt" lang="pl">Tiramisu limoncello</span></span></div><p class="mi-desc">An alcohol-free take on limoncello, with citrus peel oils and an aromatic dusting. No coffee, no alcohol.</p></li>
+            <li><div class="mi-row"><span class="mi-name">White peach and lemon thyme tiramisu <span class="mi-alt" lang="pl">Tiramisu białe brzoskwinie i tymianek cytrynowy</span></span></div><p class="mi-desc">Sweet white peach and the herbal freshness of lemon thyme. Seasonal.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Hazelnut praline tiramisu <span class="mi-alt" lang="pl">Tiramisu pralina z orzecha laskowego</span></span></div><p class="mi-desc">Caramel hazelnut praline with a crunchy top on a silky cream. Seasonal.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Matcha and raspberry tiramisu <span class="mi-alt" lang="pl">Tiramisu matcha i malina</span></span></div><p class="mi-desc">Green, umami matcha with fruity raspberry. No coffee, no alcohol.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Plum and crumble tiramisu <span class="mi-alt" lang="pl">Tiramisu śliwka z kruszonką</span></span></div><p class="mi-desc">Ripe plums and crunchy crumble on a silky cream. The taste of autumn.</p></li>
+          </ul>
+        </div>
+        <div class="vp-menu-sec">
+          <h3>Coffee and drinks</h3>
+          <ul>
+            <li><div class="mi-row"><span class="mi-name">Cortado</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Cappuccino</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Flat white</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Latte</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Iced latte</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Matcha</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Cocoa <span class="mi-alt" lang="pl">Kakao</span></span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Espresso</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Batch brew</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Refill</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Hand brew</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Cold brew</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Orange espresso</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Espresso tonic</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Orange juice</span></div></li>
+            <li><div class="mi-row"><span class="mi-name">Lemonade</span></div></li>
+          </ul>
+        </div>
+        <div class="vp-menu-sec">
+          <h3>Sandwiches</h3>
+          <ul>
+            <li><div class="mi-row"><span class="mi-name">Salami piccante sandwich <span class="mi-alt" lang="pl">Kanapka salami piccante</span></span></div><p class="mi-desc">Ciabatta, salami piccante, ricotta, chilli honey, rocket and red onion. Hot and sweet at once.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Vegetarian sandwich <span class="mi-alt" lang="pl">Kanapka wege</span></span></div><p class="mi-desc">Ciabatta, olives, sun-dried tomatoes, stracciatella, rocket and balsamic olive oil. Salty, creamy, meat-free.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Mortadella sandwich <span class="mi-alt" lang="pl">Kanapka z mortadelą</span></span></div><p class="mi-desc">Ciabatta, mortadella, stracciatella, mascarpone, lemon, pistachio and rocket. An Italian classic with lemon freshness.</p></li>
+          </ul>
+        </div>
+        <div class="vp-menu-sec">
+          <h3>Autumn coffees</h3>
+          <ul>
+            <li><div class="mi-row"><span class="mi-name">Iced Banana Bread</span></div><p class="mi-desc">Banana bread as an iced coffee: ripe banana, cinnamon, milk and espresso.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Iced Apple Pie Latte</span></div><p class="mi-desc">Baked autumn apple with espresso and milk over ice, creamy and gently sweet, like a home-made apple pie.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Pumpkin Spice</span></div><p class="mi-desc">House syrup of roasted pumpkin and warm spices with a note of orange. Creamy, deep and balanced in sweetness.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Banana Bread Latte</span></div><p class="mi-desc">Banana bread turned into a creamy hot coffee, to the recipe of barista Karola.</p></li>
+          </ul>
+        </div>
+        <div class="vp-menu-sec">
+          <h3>Autumn drinks</h3>
+          <ul>
+            <li><div class="mi-row"><span class="mi-name">White Vanilla Matcha</span></div><p class="mi-desc">Matcha with house vanilla syrup enriched with tonka and white chocolate. Mild, creamy, dessert-like.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Berry Cocoa</span></div><p class="mi-desc">House cocoa with raspberry purée: milk chocolate sweetness cut with a little raspberry acidity.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Dark Chocolate Mocha</span></div><p class="mi-desc">Double espresso with dark cocoa and milk. Intensely chocolatey and deep.</p></li>
+            <li><div class="mi-row"><span class="mi-name">Oat Cinnamon Hojicha</span></div><p class="mi-desc">Roasted Japanese tea with oat milk and warm spices. Lightly sweet, nutty and warming.</p></li>
+          </ul>
+        </div>
+        <div class="vp-menu-sec">
+          <h3>Coffee</h3>
+          <p class="vp-menu-note">House espresso from Roastains, a second grinder with rotating fruit-forward beans (the &quot;funky flat white&quot;) and guest roasters such as Gringo Nordic. Classic, lactose-free, oat or pea milk at no extra charge.</p>
+        </div>
+      </section>
       <section class="vp-block">
         <div class="venue-reviews" hidden></div>
       </section>
@@ -242,13 +575,13 @@
         <div class="venue-hours">
           <div class="hrs-title">Opening hours</div>
           <dl>
-            <dt>Monday</dt><dd>8:00 AM – 6:00 PM</dd>
-            <dt>Tuesday</dt><dd>8:00 AM – 6:00 PM</dd>
-            <dt>Wednesday</dt><dd>8:00 AM – 6:00 PM</dd>
-            <dt>Thursday</dt><dd>8:00 AM – 6:00 PM</dd>
-            <dt>Friday</dt><dd>8:00 AM – 6:00 PM</dd>
-            <dt>Saturday</dt><dd>9:00 AM – 5:00 PM</dd>
-            <dt>Sunday</dt><dd>9:00 AM – 5:00 PM</dd>
+            <dt>Monday</dt><dd>8:00 AM – 7:00 PM</dd>
+            <dt>Tuesday</dt><dd>8:00 AM – 7:00 PM</dd>
+            <dt>Wednesday</dt><dd>8:00 AM – 7:00 PM</dd>
+            <dt>Thursday</dt><dd>8:00 AM – 7:00 PM</dd>
+            <dt>Friday</dt><dd>8:00 AM – 7:00 PM</dd>
+            <dt>Saturday</dt><dd>9:30 AM – 6:00 PM</dd>
+            <dt>Sunday</dt><dd>9:30 AM – 6:00 PM</dd>
           </dl>
         </div>
         <div class="amenity-grid">
@@ -266,7 +599,7 @@
           <a class="btn btn-primary js-maps-link" href="https://maps.google.com/?q=COPPA%20ul.%20Mazowiecka%2060%2C%2030-019%20Krak%C3%B3w" target="_blank" rel="noopener">See on Google Maps</a>
           <a class="btn btn-ghost" href="https://www.instagram.com/coppaspecialty/" target="_blank" rel="noopener">Website</a>
         </div>
-        <p class="vp-source">Ratings, hours and amenity details from Google.</p>
+        <p class="vp-source">Hours and menu from the venue's own website. Ratings and amenity details from Google.</p>
       </div>
     </aside>
   </div>

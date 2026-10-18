@@ -4,5 +4,97 @@
       "path": "/api/refresh-places",
       "schedule": "0 6 * * 1"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/restaurant/aqua-e-vino/",
+      "destination": "/italian-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/aqua-e-vino",
+      "destination": "/italian-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/baqaro/",
+      "destination": "/wine-bars-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/baqaro",
+      "destination": "/wine-bars-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/coffee-cargo/",
+      "destination": "/specialty-coffee-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/coffee-cargo",
+      "destination": "/specialty-coffee-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/handelek/",
+      "destination": "/breakfast-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/handelek",
+      "destination": "/breakfast-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/lody-u-marysi/",
+      "destination": "/ice-cream-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/lody-u-marysi",
+      "destination": "/ice-cream-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/milkbar-tomasza/",
+      "destination": "/breakfast-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/milkbar-tomasza",
+      "destination": "/breakfast-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/raw-nest/",
+      "destination": "/vegan-breakfast-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/raw-nest",
+      "destination": "/vegan-breakfast-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/nasze-tbilisi/",
+      "destination": "/georgian-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/nasze-tbilisi",
+      "destination": "/georgian-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/psikawka/",
+      "destination": "/dog-friendly-cafes-krakow/",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant/psikawka",
+      "destination": "/dog-friendly-cafes-krakow/",
+      "permanent": true
+    }
   ]
 }

@@ -1,0 +1,5 @@
+# Lokalne skrypty z dostepem do bazy i kluczy (repo deployuje publicznie)
+scripts/bk-db.py
+scripts/bk-refresh.py
+scripts/bk-clients.py
+.DS_Store
