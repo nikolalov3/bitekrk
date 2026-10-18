@@ -10,25 +10,29 @@
       var track = rail.querySelector('.rail-track');
       var scope = rail.closest('section') || rail;
       var prev = scope.querySelector('.rail-prev'), next = scope.querySelector('.rail-next');
-      if (!track || rail.dataset.railInit) return;
-      rail.dataset.railInit = '1';
+      if (!track || rail._bkSync) return;
+      var max = 0, raf = 0;
+      function measure() { max = track.scrollWidth - track.clientWidth; }
+      // Tylko stan przyciskow: zadnych klas na sekcji, zeby nie przeliczac stylu 30 kart.
+      function apply() {
+        raf = 0;
+        if (!prev || !next) return;
+        var x = Math.abs(track.scrollLeft);
+        prev.disabled = x <= 2;
+        next.disabled = x >= max - 2;
+        var nav = prev.parentNode; if (nav) nav.style.visibility = max <= 4 ? 'hidden' : '';
+      }
+      function sync(remeasure) { if (remeasure) measure(); if (!raf) raf = requestAnimationFrame(apply); }
       function step(dir) {
         var rtl = getComputedStyle(track).direction === 'rtl';
         track.scrollBy({ left: (rtl ? -dir : dir) * Math.max(240, track.clientWidth * 0.8), behavior: 'smooth' });
       }
-      function sync() {
-        var max = track.scrollWidth - track.clientWidth - 2;
-        var x = Math.abs(track.scrollLeft);
-        scope.classList.toggle('at-start', x <= 2);
-        scope.classList.toggle('at-end', x >= max);
-        scope.classList.toggle('no-scroll', max <= 4);
-      }
       if (prev) prev.addEventListener('click', function () { step(-1); });
       if (next) next.addEventListener('click', function () { step(1); });
-      track.addEventListener('scroll', sync, { passive: true });
-      window.addEventListener('resize', sync);
-      rail.addEventListener('bk-rail-update', function () { setTimeout(sync, 50); });
-      sync();
+      track.addEventListener('scroll', function () { sync(false); }, { passive: true });
+      window.addEventListener('resize', function () { sync(true); }, { passive: true });
+      rail._bkSync = sync;
+      sync(true);
     });
   }
 
@@ -108,8 +112,7 @@
       '<a class="rail-card stay-more" href="/map/"><span class="rc-body"><span class="rc-title">' + T.map + (AR ? ' ←' : ' →') + '</span></span></a>';
     track.scrollTo({ left: 0 });
     if (lead) lead.textContent = T.intro(list.length, label);
-    var rail = box.querySelector('.rail'); if (rail) rail.dispatchEvent(new Event('bk-rail-update'));
-    var ev; try { ev = new Event('scroll'); track.dispatchEvent(ev); } catch (e) {}
+    var rail = box.querySelector('.rail'); if (rail && rail._bkSync) setTimeout(function () { rail._bkSync(true); }, 60);
   }
 
   function select(chip, persist) {
