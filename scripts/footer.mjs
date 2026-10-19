@@ -17,7 +17,7 @@ const L = {
         ['/kleparz-guide/', 'Kleparz'], ['/krowodrza-guide/', 'Krowodrza'], ['/coffee-near-krakow-main-station/', 'Near the main station']]],
       ['BiteKrakow', [
         ['/guides/', 'All guides'], ['/restaurants/', 'All places'], ['/map/', 'Map'],
-        ['/news/', 'News'], ['/how-we-test/', 'How we test'], ['/about/', 'About']]]
+        ['/news/', 'News'], ['/how-we-test/', 'How we test'], ['/photo-credits/', 'Photo credits'], ['/about/', 'About']]]
     ],
     langs: [['/ar/', 'العربية', 'ar']]
   },
@@ -30,7 +30,7 @@ const L = {
         ['/pl/cocktail-bars-krakow/', 'Bary koktajlowe'], ['/pl/autumn-menu-krakow/', 'Jesienne menu'], ['/pl/krakow-restaurant-week/', 'Restaurant Week']]],
       ['BiteKrakow', [
         ['/guides/', 'Wszystkie przewodniki (EN)'], ['/map/', 'Mapa lokali'], ['/restaurants/', 'Wszystkie lokale'],
-        ['/how-we-test/', 'Jak testujemy'], ['/about/', 'O nas']]]
+        ['/how-we-test/', 'Jak testujemy'], ['/photo-credits/', 'Prawa do zdjęć (EN)'], ['/about/', 'O nas']]]
     ],
     langs: [['/', 'English', 'en'], ['/ar/', 'العربية', 'ar']]
   },
@@ -42,7 +42,7 @@ const L = {
         ['/ar/halal-krakow/', 'الطعام الحلال'], ['/ar/arab-travellers-krakow/', 'دليل المسافر العربي'], ['/ar/breakfast-krakow/', 'الفطور'],
         ['/ar/matcha-krakow/', 'الماتشا'], ['/ar/best-restaurants-krakow/', 'أفضل المطاعم'], ['/ar/kebab-krakow/', 'الكباب']]],
       ['BiteKrakow', [
-        ['/ar/guides/', 'كل الأدلة'], ['/ar/map/', 'الخريطة'], ['/restaurants/', 'كل الأماكن'], ['/about/', 'نبذة عنا وكيف نختبر']]]
+        ['/ar/guides/', 'كل الأدلة'], ['/ar/map/', 'الخريطة'], ['/restaurants/', 'كل الأماكن'], ['/photo-credits/', 'حقوق الصور (EN)'], ['/about/', 'نبذة عنا وكيف نختبر']]]
     ],
     langs: [['/', 'English', 'en']]
   }
