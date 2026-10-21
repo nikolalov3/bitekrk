@@ -1,35 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  <url>
-    <loc>https://bitekrakow.com/news/art-food-bazar-stary-kleparz/</loc>
-    <news:news>
-      <news:publication><news:name>BiteKrakow</news:name><news:language>en</news:language></news:publication>
-      <news:publication_date>2026-10-18</news:publication_date>
-      <news:title>Art &amp; Food Bazar at Stary Kleparz: Sunday Dates, Hours and How to Plan It</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://bitekrakow.com/news/mlaskoty-food-festival-krakow/</loc>
-    <news:news>
-      <news:publication><news:name>BiteKrakow</news:name><news:language>en</news:language></news:publication>
-      <news:publication_date>2026-10-18</news:publication_date>
-      <news:title>Mlaskoty Food Festival at Plac Na Stawach: Sunday 25 October 2026</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://bitekrakow.com/pl/news/art-food-bazar-stary-kleparz/</loc>
-    <news:news>
-      <news:publication><news:name>BiteKrakow</news:name><news:language>pl</news:language></news:publication>
-      <news:publication_date>2026-10-18</news:publication_date>
-      <news:title>Art &amp; Food Bazar na Starym Kleparzu: terminy, godziny i jak zaplanować niedzielę</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://bitekrakow.com/pl/news/mlaskoty-food-festival-krakow/</loc>
-    <news:news>
-      <news:publication><news:name>BiteKrakow</news:name><news:language>pl</news:language></news:publication>
-      <news:publication_date>2026-10-18</news:publication_date>
-      <news:title>Mlaskoty na placu Na Stawach: niedziela 25 października 2026</news:title>
-    </news:news>
-  </url>
+
 </urlset>

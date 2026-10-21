@@ -6,7 +6,14 @@
   <atom:link href="https://bitekrakow.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Independent guides to where locals eat and drink in Kraków: openings, neighborhood guides and cuisine rankings, every place visited in person.</description>
   <language>en</language>
-  <lastBuildDate>Mon, 19 Oct 2026 11:21:01 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 21 Oct 2026 18:27:52 GMT</lastBuildDate>
+  <item>
+    <title>Polish Food in Krakow (2026): 14 Dishes to Try and Where to Eat Them</title>
+    <link>https://bitekrakow.com/polish-food-krakow/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/polish-food-krakow/</guid>
+    <pubDate>Wed, 21 Oct 2026 07:00:00 GMT</pubDate>
+    <description>What to eat in Krakow and where: pierogi, żurek, obwarzanek, zapiekanka, oscypek and more, with the canteens, milk bars and dinner tables locals use.</description>
+  </item>
   <item>
     <title>كراكوف للزوار العرب والخليجيين 2026: حلال، صلاة، قهوة وتسوق</title>
     <link>https://bitekrakow.com/ar/arab-travellers-krakow/</link>
@@ -279,13 +286,6 @@
     <guid isPermaLink="true">https://bitekrakow.com/matcha-krakow/</guid>
     <pubDate>Tue, 01 Sep 2026 07:00:00 GMT</pubDate>
     <description>Where to drink matcha in Krakow: Café Belmont in Kazimierz with Yume Matcha, the Ayko matcha bar in Podgórze and Boby in Dębniki. Hours and prices.</description>
-  </item>
-  <item>
-    <title>Best Mexican Food in Krakow (2026): Real Tacos, Birria and Margaritas</title>
-    <link>https://bitekrakow.com/mexican-krakow/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/mexican-krakow/</guid>
-    <pubDate>Sat, 15 Aug 2026 07:00:00 GMT</pubDate>
-    <description>The best Mexican food in Krakow: a Yucatán family taqueria, birria worth the trip, house-made tortillas at a market stall and the biggest tequila bar.</description>
   </item>
 </channel>
 </rss>
