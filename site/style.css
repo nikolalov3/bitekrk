@@ -2097,3 +2097,6 @@ body { background: var(--paper); }
 .rc-photo { position: relative; }
 .rc-credit { position: absolute; left: 0; bottom: 0; max-width: 100%; padding: 3px 7px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; background: rgba(27, 27, 24, 0.78); color: #fff; font-size: 0.62rem; line-height: 1.4; letter-spacing: 0.02em; pointer-events: none; }
 [dir="rtl"] .rc-credit { left: auto; right: 0; }
+
+/* Strona glowna: delikatnie zaokraglone przyciski (2026-10-24). Reszta serwisu zostaje kanciasta. */
+.hero-cta .btn, .stay-chip, .stay-geo, .rail-nav button, .cchip { border-radius: 6px; }
