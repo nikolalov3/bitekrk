@@ -375,6 +375,8 @@ ${JSON.stringify(breadcrumb, null, 2).split('\n').map(l => '  ' + l).join('\n')}
     <a class="logo" href="/">Bite<span>Krakow</span></a>
     <nav class="site-nav">
       <a href="/guides/">Guides</a>
+      <a href="/nightlife-krakow/">Nightlife</a>
+      <a href="/events/">Events</a>
       <a href="/map/">Map</a>
       <a href="/restaurants/">Places</a>
       <a href="/news/">News</a>
@@ -610,6 +612,8 @@ ${FLAG_SPRITE}
     <a class="logo" href="/">Bite<span>Krakow</span></a>
     <nav class="site-nav">
       <a href="/guides/">Guides</a>
+      <a href="/nightlife-krakow/">Nightlife</a>
+      <a href="/events/">Events</a>
       <a href="/map/">Map</a>
       <a href="/restaurants/" aria-current="page">Places</a>
       <a href="/news/">News</a>

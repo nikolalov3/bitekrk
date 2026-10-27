@@ -12,7 +12,7 @@ const SITE = new URL('../site/', import.meta.url).pathname;
 export function cssVersion() {
   return createHash('md5').update(readFileSync(join(SITE, 'style.css'))).digest('hex').slice(0, 10);
 }
-export const JS_FILES = ['home.js', 'map.js', 'venue-cards.js'];
+export const JS_FILES = ['home.js', 'map.js', 'venue-cards.js', 'live.js'];
 // Dane lokali (cache 1 h + SWR 1 dzien): wersja w atrybucie data-venues-v, z ktorego home.js i map.js
 // buduja adres ?v=..., inaczej przegladarka do doby podaje stary plik po gen-venues.
 export function venuesVersion() {

@@ -9,14 +9,14 @@ const L = {
     tag: 'Independent guides to Krakow\'s food and coffee scene. Written and edited by <a href="/about/">Cezary Musiał</a> in Kraków, every place visited in person.',
     cols: [
       ['Eat and drink', [
-        ['/polish-food-krakow/', 'Polish food'], ['/breakfast-krakow/', 'Breakfast'], ['/specialty-coffee-krakow/', 'Specialty coffee'], ['/matcha-krakow/', 'Matcha'],
+        ['/polish-food-krakow/', 'Polish food'], ['/nightlife-krakow/', 'Nightlife'], ['/breakfast-krakow/', 'Breakfast'], ['/specialty-coffee-krakow/', 'Specialty coffee'], ['/matcha-krakow/', 'Matcha'],
         ['/where-to-work-krakow/', 'Cafes to work from'], ['/pierogi-krakow/', 'Pierogi'], ['/halal-krakow/', 'Halal'],
         ['/cocktail-bars-krakow/', 'Cocktail bars'], ['/wine-bars-krakow/', 'Wine bars']]],
       ['Neighborhoods', [
         ['/kazimierz-guide/', 'Kazimierz'], ['/old-town-cafes/', 'Old Town cafes'], ['/podgorze-guide/', 'Podgórze'],
         ['/kleparz-guide/', 'Kleparz'], ['/krowodrza-guide/', 'Krowodrza'], ['/coffee-near-krakow-main-station/', 'Near the main station']]],
       ['BiteKrakow', [
-        ['/guides/', 'All guides'], ['/restaurants/', 'All places'], ['/map/', 'Map'],
+        ['/guides/', 'All guides'], ['/restaurants/', 'All places'], ['/events/', 'Events'], ['/map/', 'Map'],
         ['/news/', 'News'], ['/how-we-test/', 'How we test'], ['/photo-credits/', 'Photo credits'], ['/about/', 'About']]]
     ],
     langs: [['/ar/', 'العربية', 'ar']]

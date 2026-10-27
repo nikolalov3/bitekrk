@@ -1,5 +1,6 @@
 // Rytuał publikacji po git push:
-//   1. odświeża llms.txt / llms-full.txt / feed.xml / news-sitemap.xml (gen-llms, gen-feed),
+//   1. odświeża kalendarz wydarzeń (gen-events), polecane wpisy (apply-related),
+//      llms.txt / llms-full.txt / feed.xml / news-sitemap.xml (gen-llms, gen-feed),
 //   2. pinguje IndexNow (Bing, Yandex, Naver itd.) bezpośrednio, bez sekretu
 //      (klucz IndexNow jest z założenia publiczny i leży w site/<klucz>.txt),
 //   3. jeśli ustawiono SYNC_SECRET, odświeża też dane Google przez /api/refresh-places.
@@ -21,7 +22,7 @@ const noGen = args.includes('--no-gen');
 let paths = args.filter(a => !a.startsWith('--'));
 
 if (!noGen) {
-  for (const s of ['bust-css.mjs', 'gen-llms.mjs', 'gen-feed.mjs']) {
+  for (const s of ['gen-events.mjs', 'apply-related.mjs', 'bust-css.mjs', 'gen-llms.mjs', 'gen-feed.mjs']) {
     if (existsSync(`${ROOT}scripts/${s}`)) console.log(execSync(`node ${ROOT}scripts/${s}`, { encoding: 'utf8' }).trim());
   }
 }
