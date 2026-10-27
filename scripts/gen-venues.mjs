@@ -496,6 +496,24 @@ mapPts.sort((x, y) => {
   if (Math.abs(ds) > 0.01) return ds;
   return (y.rating || 0) * Math.log10((y.reviews_count || 0) + 10) - (x.rating || 0) * Math.log10((x.reviews_count || 0) + 10);
 });
+// Zestaw "bez przyblizania": klienci, wszystkie lokale z przewodnika Michelin, 3 polskie kuchnie,
+// po jednym lokalu z kazdej kuchni swiata (jesli jeszcze jej nie ma) oraz najlepszy bar i winiarnia.
+// Reszta wedlug rankingu wyzej, odslaniana przy przyblizaniu. Znacznik Michelin tylko z tagow w bazie.
+const tagsOf = v => (v.tags || []).map(t => String(t).toLowerCase()).join(',');
+const michelinOf = v => { const t = tagsOf(v); return /two michelin stars/.test(t) ? '2s' : /one michelin star/.test(t) ? '1s' : /bib gourmand/.test(t) ? 'bib' : /michelin/.test(t) ? 'guide' : null; };
+const M_RANK = { '2s': 0, '1s': 1, bib: 2, guide: 3 };
+const WORLD = ['/italian-krakow/', '/ramen-krakow/', '/indian-krakow/', '/georgian-krakow/', '/vietnamese-krakow/', '/thai-krakow/', '/mexican-krakow/', '/kebab-krakow/', '/korean-krakow/', '/cocktail-bars-krakow/', '/wine-bars-krakow/'];
+const feat = [];
+const addF = v => { if (v && !feat.includes(v)) feat.push(v); };
+MAP_TOP.forEach(sl => addF(mapPts.find(v => v.slug === sl)));
+mapPts.filter(michelinOf).sort((a, b) => M_RANK[michelinOf(a)] - M_RANK[michelinOf(b)] || edScore(b) - edScore(a)).forEach(addF);
+mapPts.filter(v => /polish|pierog|milk bar/.test(tagsOf(v)) && !feat.includes(v)).slice(0, 3).forEach(addF);
+for (const g of WORLD) {
+  const inG = mapPts.filter(v => (featured[v.slug] || []).some(f => f.path === g));
+  if (!inG.some(v => feat.includes(v))) addF(inG[0]);
+}
+mapPts.splice(0, mapPts.length, ...feat, ...mapPts.filter(v => !feat.includes(v)));
+
 const mapData = mapPts.map((v, i) => {
   const f = (featured[v.slug] || [])[0];
   return {
@@ -504,17 +522,19 @@ const mapData = mapPts.map((v, i) => {
     r: v.rating ? +v.rating : null, c: v.reviews_count || 0,
     sc: edScore(v) || null, pr: v.price_range || null, q: mapQuote(v),
     g: f ? { p: f.path, t: f.title } : null,
-    k: ((v.tags || [])[0] || '').replace(/\b\w/g, ch => ch.toUpperCase()) || null,
+    // etykieta kuchni: pierwszy tag, ktory nie jest wyroznieniem (Michelin ma osobne pole m)
+    k: ((v.tags || []).find(t => !/michelin|bib gourmand/i.test(t)) || '').replace(/\b\w/g, ch => ch.toUpperCase()) || null,
     a: streetOf(v.address) || null,
     img: (v.attrs && v.attrs.hero_image) || null,
     // wybrane zdjecie z Google (wnetrze/fasada) do kart na glownej + autor do podpisu (wymog Places)
     pa: (v.attrs && Array.isArray(v.attrs.photo_pick) && v.attrs.photo_pick[0] && v.attrs.photo_pick[0].author) || undefined,
     palt: (v.attrs && Array.isArray(v.attrs.photo_pick) && v.attrs.photo_pick[0] && v.attrs.photo_pick[0].alt) || undefined,
-    cl: ['bruk-cafe', 'cafe-belmont', 'coppa'].includes(v.slug) ? 1 : 0
+    cl: ['bruk-cafe', 'cafe-belmont', 'coppa'].includes(v.slug) ? 1 : 0,
+    m: michelinOf(v) || undefined
   };
 });
 mkdirSync(join(SITE, 'data'), { recursive: true });
-writeFileSync(join(SITE, 'data', 'map-venues.json'), JSON.stringify({ updated: new Date().toISOString().slice(0, 10), venues: mapData }));
+writeFileSync(join(SITE, 'data', 'map-venues.json'), JSON.stringify({ updated: new Date().toISOString().slice(0, 10), fc: feat.length, venues: mapData }));
 
 // ---------- 6. Indeks /restaurants/ ----------
 const made = madeSlugs.map(s => bySlug[s]);

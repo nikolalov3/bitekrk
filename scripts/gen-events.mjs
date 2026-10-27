@@ -21,19 +21,32 @@ const upcoming = data.events.filter(e => Date.parse(e.end) >= now).sort((a, b) =
 function attrs(e) {
   return `data-start="${e.start}" data-end="${e.end}"${e.daily ? ` data-daily="${e.daily}"` : ''} data-hide-past`;
 }
-function card(e, h = 'h3') {
+// Okladki bez wlasnego zdjecia: lekkie ilustracje SVG w stylu strony (zero wagi obrazkow)
+const ILLUS = {
+  wine: '<svg viewBox="0 0 34 46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5 h18 c1 10 -1 18 -9 20 c-8 -2 -10 -10 -9 -20 z"/><path d="M8.6 13 h16.8"/><path d="M17 25 v15 M11 41 h12"/></svg>',
+  market: '<svg viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22 L32 6 L56 22 Z"/><path d="M14 22 v26 M50 22 v26 M8 48 h48"/><path d="M14 34 h36"/><path d="M20 22 c0 5 6 5 6 0 M26 22 c0 5 6 5 6 0 M32 22 c0 5 6 5 6 0 M38 22 c0 5 6 5 6 0"/><path d="M32 40 l1.5 3 3.3 .4 -2.4 2.3 .6 3.3 -3 -1.6 -3 1.6 .6 -3.3 -2.4 -2.3 3.3 -.4 z"/></svg>'
+};
+function cover(e) {
+  if (e.img) return `<img src="${e.img.replace(/&/g, '&amp;')}" alt="${esc(e.img_alt || '')}" loading="lazy" decoding="async" width="600" height="400"${e.img_pos ? ` style="object-position:${e.img_pos}"` : ''}>`;
+  return `<span class="ev-illus ev-illus-${e.illus || 'wine'}">${ILLUS[e.illus] || ILLUS.wine}</span>`;
+}
+function card(e, h = 'h3', featured = false) {
   const s = day(e.start), en = day(e.end), multi = e.start.slice(0, 10) !== e.end.slice(0, 10);
-  const title = e.url ? `<a href="${e.url}">${esc(e.title)}</a>` : esc(e.title);
+  const link = e.url || e.source || '/events/';
+  const ext = !e.url && e.source ? ' target="_blank" rel="noopener"' : '';
   const tbc = e.status === 'tbc' ? '<span class="live-badge is-tbc">Dates to be confirmed</span>' : '';
-  return `<article class="ev-card${e.status === 'tbc' ? ' is-tbc' : ''}" ${attrs(e)}>
-  <div class="ev-date" aria-hidden="true"><span class="ev-day">${s.d}</span><span class="ev-mon">${s.m}</span>${multi ? `<span class="ev-to">to ${en.d} ${en.m}</span>` : ''}</div>
-  <div class="ev-body">
-    <div class="live-slot">${tbc}</div>
+  return `<article class="ev-tile${featured ? ' is-featured' : ''}${e.status === 'tbc' ? ' is-tbc' : ''}" ${attrs(e)}>
+  <div class="ev-media">
+    <a class="ev-cover" href="${link}"${ext} tabindex="-1" aria-hidden="true">${cover(e)}</a>
+    <span class="ev-datechip" aria-hidden="true"><b>${s.d}</b>${s.m}${multi ? `<i>to ${en.d} ${en.m}</i>` : ''}</span>
+    <span class="live-slot">${tbc}</span>${e.credit ? `\n    <span class="rc-credit">${esc(e.credit)}</span>` : ''}
+  </div>
+  <div class="ev-info">
     <p class="ev-cat">${esc(e.category)} · ${esc(e.venue)}</p>
-    <${h} class="ev-title">${title}</${h}>
+    <${h} class="ev-title"><a href="${link}"${ext}>${esc(e.title)}</a></${h}>
     <p class="ev-when">${esc(e.when)}</p>
     <p class="ev-desc">${esc(e.desc)}</p>
-    <p class="ev-meta">${esc(e.price)}${e.source ? ` · <a href="${esc(e.source)}" target="_blank" rel="noopener">Organiser</a>` : ''}</p>
+    <p class="ev-meta">${esc(e.price)}${e.source && e.url ? ` · <a href="${esc(e.source)}" target="_blank" rel="noopener">Organiser ↗</a>` : ''}</p>
   </div>
 </article>`;
 }
@@ -98,7 +111,7 @@ ${header}
   </header>
 
   <section class="wrap events-list" aria-label="Upcoming events">
-${upcoming.map(e => card(e, 'h2')).join('\n')}
+${upcoming.map((e, i) => card(e, 'h2', i === 0)).join('\n')}
   </section>
 
   <section class="wrap events-weekly">

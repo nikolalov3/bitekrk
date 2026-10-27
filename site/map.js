@@ -8,13 +8,17 @@
   var T = AR ? {
     showing: function (n, t) { return 'نعرض ' + n + ' من ' + t + ' مكانًا'; }, more: 'قرّب الخريطة لترى المزيد',
     reviews: 'مراجعة على جوجل', ours: 'تقييمنا', profile: 'الملف الكامل', guide: 'في الدليل', gr: 'مراجعة من جوجل',
-    type: { cafe: 'مقهى', food: 'مطعم', bar: 'بار' }, close: 'إغلاق', none: 'لا توجد تقييمات بعد'
+    type: { cafe: 'مقهى', food: 'مطعم', bar: 'بار' }, close: 'إغلاق', none: 'لا توجد تقييمات بعد',
+    mich: { '2s': 'نجمتا ميشلان', '1s': 'نجمة ميشلان', bib: 'ميشلان Bib Gourmand', guide: 'في دليل ميشلان' }
   } : {
     showing: function (n, t) { return 'Showing ' + n + ' of ' + t + ' places'; }, more: 'zoom in for more',
     reviews: 'Google reviews', ours: 'Our score', profile: 'Full profile', guide: 'In the guide', gr: 'Google review',
-    type: { cafe: 'Cafe', food: 'Restaurant', bar: 'Bar' }, close: 'Close', none: 'No reviews yet'
+    type: { cafe: 'Cafe', food: 'Restaurant', bar: 'Bar' }, close: 'Close', none: 'No reviews yet',
+    mich: { '2s': 'Two Michelin stars', '1s': 'One Michelin star', bib: 'Michelin Bib Gourmand', guide: 'In the Michelin Guide' }
   };
-  var TIERS = [[0, 10], [13.4, 35], [14.5, 999]];
+  // pierwszy prog = zestaw "wyrozniony" z danych (fc): klienci, Michelin, kuchnie polska i swiata
+  var FC = 10, TIERS = [[0, 10], [13.4, 35], [14.5, 999]];
+  var MICH_SHORT = { '2s': '★★ Michelin', '1s': '★ Michelin', bib: 'Bib Gourmand', guide: 'Michelin' };
   var LABEL_ALL_ZOOM = 15.6;
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var mobile = window.matchMedia('(max-width: 640px)').matches;
@@ -67,7 +71,7 @@
     var ours = v.sc ? '<div class="k-ours">' + T.ours + ' <b>' + v.sc + '/10</b>' + (v.g ? ' · <a href="' + esc(v.g.p) + '">' + T.guide + '</a>' : '') + '</div>' : '';
     return '<button type="button" class="k-x" aria-label="' + T.close + '">×</button>' +
       '<div class="k-type">' + esc(meta) + '</div>' +
-      '<div class="k-name">' + esc(v.n) + '</div>' + rating + quote + ours +
+      '<div class="k-name">' + esc(v.n) + '</div>' + (v.m ? '<div class="k-mich">' + (v.m === '2s' ? '★★ ' : v.m === '1s' ? '★ ' : '') + T.mich[v.m] + '</div>' : '') + rating + quote + ours +
       '<a class="k-go" href="/restaurant/' + esc(v.s) + '/">' + T.profile + (AR ? ' ←' : ' →') + '</a>';
   }
 
@@ -107,10 +111,10 @@
   var raf = 0;
   function update() {
     raf = 0;
-    var z = map.getZoom(), max = maxFor(z), list = venues.filter(function (v) { return filter === 'all' || v.t === filter; });
+    var z = map.getZoom(), max = maxFor(z), list = venues.filter(function (v) { return filter === 'all' || (filter === 'michelin' ? !!v.m : v.t === filter); });
     var vis = {}; list.slice(0, max).forEach(function (v) { vis[v.s] = 1; });
-    var top = {}; list.slice(0, 10).forEach(function (v) { top[v.s] = 1; });
-    var lblMax = z >= LABEL_ALL_ZOOM ? 999 : (z >= 14.2 ? 35 : 10), lblSet = {};
+    var top = {}; list.slice(0, FC).forEach(function (v) { top[v.s] = 1; });
+    var lblMax = z >= LABEL_ALL_ZOOM ? 999 : (z >= 14.2 ? Math.max(35, FC) : FC), lblSet = {};
     list.slice(0, lblMax).forEach(function (v) { lblSet[v.s] = 1; });
     var shown = 0, boxes = [];
     function free(r) { for (var i = 0; i < boxes.length; i++) { var o = boxes[i]; if (r[0] < o[2] && r[2] > o[0] && r[1] < o[3] && r[3] > o[1]) return false; } return true; }
@@ -146,13 +150,14 @@
 
   fetch('/data/map-venues.json?v=' + (el.getAttribute('data-venues-v') || '')).then(function (r) { return r.json(); }).then(function (data) {
     venues = (data.venues || []).slice().sort(function (a, b) { return a.p - b.p; });
+    FC = data.fc || 10; TIERS = [[0, FC], [13.4, Math.max(35, FC + 12)], [14.5, 999]];
     venues.forEach(function (v) {
       var b = document.createElement('button');
       b.type = 'button';
-      b.className = 'bk-pin t-' + v.t + ' off';
+      b.className = 'bk-pin t-' + v.t + (v.m ? ' is-mich' : '') + ' off';
       b.setAttribute('aria-label', v.n + ', ' + v.d + (v.r ? ', ' + v.r.toFixed(1) + ' ★' : ''));
       var short = v.n.replace(/\s*\(.*?\)\s*/g, ' ').trim();
-      b.innerHTML = '<span class="dot"></span><span class="lbl">' + esc(short) + '</span>';
+      b.innerHTML = '<span class="dot"></span><span class="lbl">' + esc(short) + (v.m ? '<span class="mi">' + MICH_SHORT[v.m] + '</span>' : '') + '</span>';
       var p = { v: v, el: b };
       if (canHover) {
         b.addEventListener('mouseenter', function () { if (!pinned || open === p) show(p, pinned && open === p); });
@@ -170,7 +175,7 @@
       pins.push(p);
     });
     update();
-    var top = venues.slice(0, 10);
+    var top = venues.slice(0, FC);
     if (top.length) {
       var bb = new maplibregl.LngLatBounds();
       top.forEach(function (v) { bb.extend([v.lng, v.lat]); });

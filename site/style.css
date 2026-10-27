@@ -2195,3 +2195,55 @@ body { background: var(--paper); }
 .rel-title { font-family: var(--font-serif); font-size: 1.12rem; font-weight: 700; line-height: 1.25; }
 .rel-card:hover .rel-title { color: var(--accent); }
 .rel-dek { font-size: 0.86rem; line-height: 1.55; color: var(--ink-soft); }
+
+/* Mapa: wyroznienie Michelin (tagi w bazie) */
+.bk-pin.is-mich .dot { background: #b3261e; box-shadow: 0 0 0 3px rgba(179, 38, 30, .22), 0 1px 5px rgba(27,27,24,.35); }
+.bk-pin .lbl .mi { margin-inline-start: 6px; padding: 1px 5px; border-radius: 3px; background: #b3261e; color: #fff; font: 700 9.5px/1.4 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; vertical-align: 1px; }
+.bk-card .k-mich { margin: -2px 0 8px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #b3261e; }
+
+/* Wydarzenia 2.0: kafelki ze zdjeciem (WebP / Google z podpisem / ilustracja SVG) */
+.ev-grid, .events-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; }
+.events-list { max-width: 1120px; padding-top: 8px; padding-bottom: 8px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.ev-tile { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 12px; transition: transform .2s ease, box-shadow .2s ease; }
+.ev-tile:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -20px rgba(27, 27, 24, .5); }
+.ev-tile.is-tbc { border-style: dashed; }
+.ev-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-warm); }
+.ev-cover { display: block; width: 100%; height: 100%; }
+.ev-cover img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.ev-tile:hover .ev-cover img { transform: scale(1.04); }
+.ev-illus { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.ev-illus svg { height: 46%; width: auto; }
+.ev-illus-wine { background: linear-gradient(135deg, #4a2c43, #8a3a4a); color: #f6dfe6; }
+.ev-illus-market { background: linear-gradient(135deg, #1f4d3a, #3b7a5a); color: #f6e7c8; }
+.ev-datechip { position: absolute; right: 12px; bottom: 12px; min-width: 52px; padding: 6px 9px 7px; border-radius: 9px; background: var(--paper); text-align: center; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); box-shadow: 0 4px 14px rgba(0, 0, 0, .18); }
+.ev-datechip b { display: block; font-family: var(--font-serif); font-size: 1.55rem; line-height: 1; letter-spacing: 0; color: var(--ink); }
+.ev-datechip i { display: block; margin-top: 3px; font-style: normal; font-size: 0.56rem; color: var(--ink-soft); letter-spacing: 0.06em; }
+.ev-media .live-slot { position: absolute; left: 12px; top: 12px; }
+.ev-media .live-badge { margin: 0; box-shadow: 0 2px 10px rgba(0, 0, 0, .22); }
+.ev-media .live-badge.is-tbc { background: var(--paper); border-color: var(--line-dark); }
+.ev-media .rc-credit { right: auto; }
+.ev-info { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px 18px; }
+.ev-info .ev-cat, .ev-info .ev-when, .ev-info .ev-desc, .ev-info .ev-meta, .ev-info .ev-title { margin: 0; }
+.events-list .ev-tile.is-featured { grid-column: 1 / -1; flex-direction: row; }
+.events-list .ev-tile.is-featured .ev-media { flex: 0 0 56%; aspect-ratio: auto; min-height: 340px; }
+.events-list .ev-tile.is-featured .ev-info { justify-content: center; padding: 28px 32px; }
+.events-list .ev-tile.is-featured .ev-title { font-size: 1.7rem; }
+@media (max-width: 760px) {
+  .events-list .ev-tile.is-featured { flex-direction: column; }
+  .events-list .ev-tile.is-featured .ev-media { flex: none; aspect-ratio: 3 / 2; min-height: 0; }
+  .events-list .ev-tile.is-featured .ev-info { padding: 16px 18px 18px; }
+  .events-list .ev-tile.is-featured .ev-title { font-size: 1.3rem; }
+}
+
+/* Szersza kolumna (2026-10-27): tekst 780 px (czytelny wiersz), karty i zdjecia 880 px.
+   Na telefonie bez zmian, bo to tylko maksymalne szerokosci. */
+.wrap-narrow { max-width: 828px; }
+.article-body .prose { max-width: 780px; }
+.article-body .venue-card { max-width: 880px; }
+.article-body .venue-photo { width: 100%; } /* proporcje 3:2 przy stalej wysokosci zwezaly zdjecie do 540 px */
+@media (min-width: 900px) { .article-body .venue-photo { height: 360px; } }
+.night-table-wrap { max-width: 960px; }
+.events-page .article-header { max-width: 1120px; }
+.events-page .article-header .meta { max-width: 720px; }
+.events-weekly { max-width: 1120px; }
+.events-weekly .wk-list { max-width: 960px; }
