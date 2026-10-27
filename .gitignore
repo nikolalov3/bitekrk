@@ -6,3 +6,6 @@ scripts/bk-clients.py
 
 # szkice poza site/ (np. karuzele IG)
 /_*.html
+
+# szkice lokalne (np. polityka prywatnosci przed uzupelnieniem danych administratora)
+/drafts/

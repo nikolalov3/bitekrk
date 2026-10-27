@@ -12,9 +12,9 @@ const SKIP = new Set(['', 'about', 'how-we-test', 'photo-credits', 'guides', 're
 const CLUSTERS = {
   coffee: ['news/coppa-specialty-coffee-opens', 'specialty-coffee-krakow', 'best-flat-white-krakow', 'matcha-krakow', 'where-to-work-krakow', 'study-cafes-krakow', 'quiet-cafes-krakow', 'old-town-cafes', 'coffee-near-krakow-main-station', 'krakow-digital-nomads', 'dog-friendly-cafes-krakow', 'outdoor-cafes-krakow', 'autumn-menu-krakow'],
   breakfast: ['breakfast-krakow', 'brunch-krakow', 'vegan-breakfast-krakow', 'polish-food-krakow'],
-  food: ['news/art-food-bazar-stary-kleparz', 'news/mlaskoty-food-festival-krakow', 'news/krakow-restaurant-week-2026-restaurants', 'news/slonce-polish-restaurant-opens', 'news/new-restaurants-krakow-2026', 'news/new-restaurants-krakow-autumn-2026', 'news/green-film-festival-food', 'pierogi-krakow', 'polish-food-krakow', 'best-restaurants-krakow', 'cheap-eats-krakow', 'italian-krakow', 'ramen-krakow', 'indian-krakow', 'georgian-krakow', 'vietnamese-krakow', 'thai-krakow', 'mexican-krakow', 'kebab-krakow', 'korean-krakow', 'halal-krakow', 'krakow-restaurant-week', 'christmas-market-krakow'],
+  food: ['news/habit-palac-oginskich-krakow', 'news/art-food-bazar-stary-kleparz', 'news/mlaskoty-food-festival-krakow', 'news/krakow-restaurant-week-2026-restaurants', 'news/slonce-polish-restaurant-opens', 'news/new-restaurants-krakow-2026', 'news/new-restaurants-krakow-autumn-2026', 'news/green-film-festival-food', 'pierogi-krakow', 'polish-food-krakow', 'best-restaurants-krakow', 'cheap-eats-krakow', 'italian-krakow', 'ramen-krakow', 'indian-krakow', 'georgian-krakow', 'vietnamese-krakow', 'thai-krakow', 'mexican-krakow', 'kebab-krakow', 'korean-krakow', 'halal-krakow', 'krakow-restaurant-week', 'christmas-market-krakow'],
   sweet: ['ice-cream-krakow', 'autumn-menu-krakow', 'breakfast-krakow'],
-  night: ['nightlife-krakow', 'cocktail-bars-krakow', 'wine-bars-krakow'],
+  night: ['news/habit-palac-oginskich-krakow', 'nightlife-krakow', 'cocktail-bars-krakow', 'wine-bars-krakow'],
   district: ['news/art-food-bazar-stary-kleparz', 'kazimierz-guide', 'podgorze-guide', 'kleparz-guide', 'krowodrza-guide', 'day-in-kleparz', 'old-town-cafes', 'coffee-near-krakow-main-station'],
 };
 const FRESH = new Set(['polish-food-krakow', 'nightlife-krakow']);
