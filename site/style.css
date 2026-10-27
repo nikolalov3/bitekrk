@@ -2247,3 +2247,32 @@ body { background: var(--paper); }
 .events-page .article-header .meta { max-width: 720px; }
 .events-weekly { max-width: 1120px; }
 .events-weekly .wk-list { max-width: 960px; }
+
+/* Mapa: wyroznienie redakcji (wlasne, w kolorze akcentu, odroznialne od czerwieni Michelin) */
+.bk-pin.is-pick .dot { width: 19px; height: 19px; border-width: 3px; background: var(--accent); box-shadow: 0 0 0 4px rgba(188, 90, 52, .25), 0 1px 6px rgba(27,27,24,.4); }
+.bk-pin .lbl .pk { margin-inline-start: 6px; padding: 1px 6px; border-radius: 3px; background: var(--accent); color: #fff; font: 700 9.5px/1.4 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; vertical-align: 1px; }
+.bk-pin.is-pick .lbl { border-color: var(--accent); }
+.bk-card .k-pick { display: flex; flex-direction: column; gap: 2px; margin: -2px 0 10px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.bk-card .k-pick span { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink-soft); }
+.bk-card .k-why { margin: 8px 0 10px; border-top: 1px solid var(--line); padding-top: 8px; }
+.bk-card .k-why summary { cursor: pointer; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-deep, #8a3818); }
+.bk-card .k-why p { margin: 8px 0 0; font-size: 0.84rem; line-height: 1.55; color: #3d3c35; }
+
+/* Sekcja "Editors' picks" pod mapa (statyczna, dla ludzi i botow) */
+.map-picks { max-width: 880px; margin: 36px auto 8px; }
+.pick-item { border-top: 1px solid var(--line); padding: 14px 0; }
+.pick-item:last-of-type { border-bottom: 1px solid var(--line); }
+.pick-item summary { cursor: pointer; list-style: none; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-size: 1rem; }
+.pick-item summary::-webkit-details-marker { display: none; }
+.pick-item summary::after { content: "+"; margin-inline-start: auto; font-family: var(--font-mono); color: var(--accent); }
+.pick-item[open] summary::after { content: "−"; }
+.pick-item summary b { font-family: var(--font-serif); font-size: 1.15rem; }
+.pk-badge { padding: 2px 8px; border-radius: 4px; background: var(--accent); color: #fff; font: 700 0.62rem/1.6 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.pk-line { flex-basis: 100%; font-size: 0.86rem; color: var(--ink-soft); }
+.pick-item p { margin: 10px 0 0; font-size: 0.95rem; line-height: 1.7; }
+
+/* Slajd bez zdjecia: ilustracja w stylu strony (np. otwarcie Habit w palacu) */
+.slide-habit { background: linear-gradient(160deg, #2a1f2e 0%, #43263a 55%, #5b2f3a 100%); }
+.slide-illus { position: absolute; inset: 0; display: flex; align-items: flex-start; justify-content: center; padding-top: 9%; color: rgba(246, 231, 200, .88); pointer-events: none; }
+.slide-illus svg { width: 74%; max-width: 440px; height: auto; }
+@media (max-width: 640px) { .slide-illus { padding-top: 7%; } .slide-illus svg { width: 82%; } }

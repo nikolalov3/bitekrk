@@ -40,7 +40,8 @@ const L = {
     cols: [
       ['أدلة بالعربية', [
         ['/ar/halal-krakow/', 'الطعام الحلال'], ['/ar/arab-travellers-krakow/', 'دليل المسافر العربي'], ['/ar/breakfast-krakow/', 'الفطور'],
-        ['/ar/matcha-krakow/', 'الماتشا'], ['/ar/best-restaurants-krakow/', 'أفضل المطاعم'], ['/ar/kebab-krakow/', 'الكباب']]],
+        ['/ar/matcha-krakow/', 'الماتشا'], ['/ar/polish-food-krakow/', 'المطبخ البولندي'], ['/ar/kazimierz-guide/', 'حي كازيميَش'],
+        ['/ar/best-restaurants-krakow/', 'أفضل المطاعم'], ['/ar/kebab-krakow/', 'الكباب']]],
       ['BiteKrakow', [
         ['/ar/guides/', 'كل الأدلة'], ['/ar/map/', 'الخريطة'], ['/restaurants/', 'كل الأماكن'], ['/photo-credits/', 'حقوق الصور (EN)'], ['/about/', 'نبذة عنا وكيف نختبر']]]
     ],

@@ -514,6 +514,32 @@ for (const g of WORLD) {
 }
 mapPts.splice(0, mapPts.length, ...feat, ...mapPts.filter(v => !feat.includes(v)));
 
+// Wyroznienia redakcji na mapie (wlasne, NIE Michelin): tylko tam, gdzie lokal jest #1 w naszych
+// opublikowanych przewodnikach. Liczba przewodnikow liczona z tresci, wiec napis sie nie zestarzeje.
+const firstIn = slug => Object.values(featured).length && walkPages(SITE, '').filter(pg => {
+  const f = join(SITE, pg, 'index.html'); if (!existsSync(f)) return false;
+  const m = readFileSync(f, 'utf8').match(/data-venue-slug="([^"]+)"/); return m && m[1] === slug;
+}).length;
+const brukN = firstIn('bruk-cafe');
+const AWARDS = {
+  'bruk-cafe': {
+    label: { en: 'Our top pick', ar: 'اختيارنا الأول' },
+    line: { en: `No. 1 in ${brukN} of our guides, from work and study cafes to breakfast`, ar: `الأول في ${brukN} من أدلتنا، من مقاهي العمل والدراسة إلى الفطور` },
+    why: {
+      en: 'A specialty cafe on Krótka, between the Barbakan and the Stary Kleparz market, five minutes from the main station. Serious espresso, a matcha list longer than most matcha bars, breakfast until 1 pm and a Basque cheesecake we score 9.5 out of 10. Sockets within reach of most tables, dogs welcome, open from 8:00 on weekdays and on Sunday mornings.',
+      ar: 'مقهى قهوة مختصة في شارع Krótka بين البارباكان وسوق Stary Kleparz، على بعد خمس دقائق من المحطة الرئيسية. إسبريسو جاد، وقائمة ماتشا أطول من معظم بارات الماتشا، وفطور حتى الواحدة ظهراً، وتشيز كيك باسكي نمنحه 9.5 من 10. مقابس كهرباء قرب معظم الطاولات، والكلاب مرحب بها، ويفتح من الثامنة صباحاً أيام الأسبوع وصباح الأحد.'
+    }
+  },
+  'cafe-belmont': {
+    label: { en: 'Best matcha', ar: 'أفضل ماتشا' },
+    line: { en: 'No. 1 in our matcha guide and our best cafe in Kazimierz', ar: 'الأول في دليل الماتشا وأفضل مقهى في كازيميَش حسب تقييمنا' },
+    why: {
+      en: 'The Kazimierz cafe that blends its own matcha, sold under the Yume Matcha brand, and whisks it properly: vivid green, no chalky bitterness. Proper specialty coffee and onigiri made in-house, on Berka Joselewicza 12, open every day from 9:00 to 19:00. We score it 9.5 out of 10.',
+      ar: 'مقهى في كازيميَش يمزج الماتشا الخاصة به وتباع تحت اسم Yume Matcha، ويخفقها كما يجب: أخضر زاهٍ بلا مرارة طباشيرية. قهوة مختصة حقيقية وأونيغيري يُحضَّر في المكان، في شارع Berka Joselewicza 12، ويفتح يومياً من 9:00 إلى 19:00. نمنحه 9.5 من 10.'
+    }
+  }
+};
+
 const mapData = mapPts.map((v, i) => {
   const f = (featured[v.slug] || [])[0];
   return {
@@ -530,9 +556,39 @@ const mapData = mapPts.map((v, i) => {
     pa: (v.attrs && Array.isArray(v.attrs.photo_pick) && v.attrs.photo_pick[0] && v.attrs.photo_pick[0].author) || undefined,
     palt: (v.attrs && Array.isArray(v.attrs.photo_pick) && v.attrs.photo_pick[0] && v.attrs.photo_pick[0].alt) || undefined,
     cl: ['bruk-cafe', 'cafe-belmont', 'coppa'].includes(v.slug) ? 1 : 0,
-    m: michelinOf(v) || undefined
+    m: michelinOf(v) || undefined,
+    aw: AWARDS[v.slug] || undefined
   };
 });
+// Statyczna sekcja pod mapa (EN/AR): te same opisy w HTML + schema, czytelne dla botow bez JS
+for (const [file, lang] of [['map/index.html', 'en'], ['ar/map/index.html', 'ar']]) {
+  const fp = join(SITE, file); if (!existsSync(fp)) continue;
+  let h = readFileSync(fp, 'utf8');
+  const picks = Object.keys(AWARDS).map(sl => bySlug[sl]).filter(Boolean);
+  const head = lang === 'ar' ? { eb: 'اختيارات المحررين', h2: 'المكانان اللذان نرشحهما أولاً', more: 'لماذا نختاره', prof: 'الملف الكامل' }
+                             : { eb: 'Editors\' picks', h2: 'The two places we send people first', more: 'Why we pick it', prof: 'Full profile' };
+  const items = picks.map(v => { const a = AWARDS[v.slug]; return `      <details class="pick-item">
+        <summary><span class="pk-badge">${esc(a.label[lang])}</span> <b>${esc(v.name)}</b> <span class="pk-line">${esc(a.line[lang])}</span></summary>
+        <p>${esc(a.why[lang])}</p>
+        <p><a href="/restaurant/${v.slug}/">${head.prof} →</a> · <span dir="ltr">${esc(streetOf(v.address) || '')}</span></p>
+      </details>`; }).join('\n');
+  const ld = { '@context': 'https://schema.org', '@type': 'ItemList', name: head.h2, itemListElement: picks.map((v, i) => ({ '@type': 'ListItem', position: i + 1, item: {
+    '@type': 'CafeOrCoffeeShop', name: v.name, url: `${HOST}/restaurant/${v.slug}/`, description: AWARDS[v.slug].why[lang], award: `BiteKrakow: ${AWARDS[v.slug].line.en}`,
+    address: { '@type': 'PostalAddress', streetAddress: streetOf(v.address), addressLocality: 'Kraków', addressCountry: 'PL' },
+    ...(v.lat && v.lng ? { geo: { '@type': 'GeoCoordinates', latitude: +v.lat, longitude: +v.lng } } : {}) } })) };
+  const block = `<!-- picks:start -->
+    <section class="map-picks"${lang === 'ar' ? ' dir="rtl"' : ''}>
+      <span class="eyebrow">${head.eb}</span>
+      <h2 class="deco">${head.h2}</h2>
+${items}
+      <script type="application/ld+json">${JSON.stringify(ld)}</script>
+    </section>
+    <!-- picks:end -->`;
+  if (/<!-- picks:start -->[\s\S]*?<!-- picks:end -->/.test(h)) h = h.replace(/<!-- picks:start -->[\s\S]*?<!-- picks:end -->/, block);
+  else h = h.replace('    <section class="md-group">', block + '\n\n    <section class="md-group">');
+  writeFileSync(fp, h);
+}
+
 mkdirSync(join(SITE, 'data'), { recursive: true });
 writeFileSync(join(SITE, 'data', 'map-venues.json'), JSON.stringify({ updated: new Date().toISOString().slice(0, 10), fc: feat.length, venues: mapData }));
 
