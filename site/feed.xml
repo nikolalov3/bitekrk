@@ -6,13 +6,27 @@
   <atom:link href="https://bitekrakow.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Independent guides to where locals eat and drink in Kraków: openings, neighborhood guides and cuisine rankings, every place visited in person.</description>
   <language>en</language>
-  <lastBuildDate>Tue, 27 Oct 2026 19:03:11 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 27 Oct 2026 19:10:15 GMT</lastBuildDate>
+  <item>
+    <title>Habit: Maro Kafaro Opens a Restaurant in a Krakow Palace</title>
+    <link>https://bitekrakow.com/news/habit-palac-oginskich-krakow/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/news/habit-palac-oginskich-krakow/</guid>
+    <pubDate>Tue, 27 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Habit, the new restaurant from chef Marek Rusiński (Maro Kafaro), opened on 24 October 2026 in the Ogiński Palace at ul. Piłsudskiego 4: Central European food, with bars, jazz and art upstairs.</description>
+  </item>
   <item>
     <title>Krakow Nightlife Guide (2026): Bars, Clubs and Who Closes Last</title>
     <link>https://bitekrakow.com/nightlife-krakow/</link>
     <guid isPermaLink="true">https://bitekrakow.com/nightlife-krakow/</guid>
     <pubDate>Tue, 27 Oct 2026 07:00:00 GMT</pubDate>
     <description>Where to go out in Krakow: cocktail and wine bars we reviewed, the clubs and late bars that stay open until 4, 5 or 8 am, what is open right now, and how to get home.</description>
+  </item>
+  <item>
+    <title>Habit: Maro Kafaro otwiera restaurację w krakowskim pałacu</title>
+    <link>https://bitekrakow.com/pl/news/habit-palac-oginskich-krakow/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/pl/news/habit-palac-oginskich-krakow/</guid>
+    <pubDate>Tue, 27 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Habit, nowa restauracja Marka Rusińskiego (Maro Kafaro), otworzyła się 24 października 2026 w Pałacu Ogińskich przy Piłsudskiego 4: kuchnia środkowoeuropejska, a piętro wyżej bary, jazz i sztuka.</description>
   </item>
   <item>
     <title>Old Town Krakow Cafes: 6 Places Locals Actually Go (2026)</title>
@@ -272,20 +286,6 @@
     <guid isPermaLink="true">https://bitekrakow.com/korean-krakow/</guid>
     <pubDate>Mon, 24 Aug 2026 07:00:00 GMT</pubDate>
     <description>The best Korean food in Krakow: a Michelin-listed Korean-Japanese kitchen, chef Park's bibimbap, the top-rated kimbap and Korean fried chicken.</description>
-  </item>
-  <item>
-    <title>Krakow for Digital Nomads: Cafes, Coworking and Costs in 2026</title>
-    <link>https://bitekrakow.com/krakow-digital-nomads/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/krakow-digital-nomads/</guid>
-    <pubDate>Fri, 14 Aug 2026 07:00:00 GMT</pubDate>
-    <description>Working remotely from Krakow: laptop-friendly cafes, coworking day passes, monthly costs, internet speeds, visa rules and where to live.</description>
-  </item>
-  <item>
-    <title>Krakow Restaurant Week 2026: Dates, Prices, Rules and How to Book</title>
-    <link>https://bitekrakow.com/krakow-restaurant-week/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/krakow-restaurant-week/</guid>
-    <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
-    <description>Krakow Restaurant Week, 7 Oct to 25 Nov 2026: three courses and a cocktail for 69.99 zl plus a 12.99 zl fee at 54 restaurants. Rules and booking.</description>
   </item>
 </channel>
 </rss>
