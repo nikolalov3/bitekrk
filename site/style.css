@@ -2276,3 +2276,8 @@ body { background: var(--paper); }
 .slide-illus { position: absolute; inset: 0; display: flex; align-items: flex-start; justify-content: center; padding-top: 9%; color: rgba(246, 231, 200, .88); pointer-events: none; }
 .slide-illus svg { width: 74%; max-width: 440px; height: auto; }
 @media (max-width: 640px) { .slide-illus { padding-top: 7%; } .slide-illus svg { width: 82%; } }
+
+/* "First look" (wpis bez ocen): fakty o lokalu w liscie */
+.first-look { list-style: none; margin: 14px 0 6px; padding: 14px 18px; background: var(--paper-warm, #f2e9dc); border-radius: 10px; }
+.first-look li { margin: 4px 0; font-size: 0.93rem; line-height: 1.55; }
+.first-look-src { margin-top: 4px; font-size: 0.8rem; color: var(--ink-soft); }
