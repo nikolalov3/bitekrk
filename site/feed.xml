@@ -6,7 +6,21 @@
   <atom:link href="https://bitekrakow.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Independent guides to where locals eat and drink in Kraków: openings, neighborhood guides and cuisine rankings, every place visited in person.</description>
   <language>en</language>
-  <lastBuildDate>Wed, 21 Oct 2026 18:27:52 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 27 Oct 2026 18:48:46 GMT</lastBuildDate>
+  <item>
+    <title>Krakow Nightlife Guide (2026): Bars, Clubs and Who Closes Last</title>
+    <link>https://bitekrakow.com/nightlife-krakow/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/nightlife-krakow/</guid>
+    <pubDate>Tue, 27 Oct 2026 07:00:00 GMT</pubDate>
+    <description>Where to go out in Krakow: cocktail and wine bars we reviewed, the clubs and late bars that stay open until 4, 5 or 8 am, what is open right now, and how to get home.</description>
+  </item>
+  <item>
+    <title>Old Town Krakow Cafes: 6 Places Locals Actually Go (2026)</title>
+    <link>https://bitekrakow.com/old-town-cafes/</link>
+    <guid isPermaLink="true">https://bitekrakow.com/old-town-cafes/</guid>
+    <pubDate>Sun, 16 Aug 2026 07:00:00 GMT</pubDate>
+    <description>Six Old Town Krakow cafes locals actually use: real hot chocolate, a bookstore cafe, specialty coffee by the Kleparz market and a gallery garden near the Main Square.</description>
+  </item>
   <item>
     <title>Polish Food in Krakow (2026): 14 Dishes to Try and Where to Eat Them</title>
     <link>https://bitekrakow.com/polish-food-krakow/</link>
@@ -272,20 +286,6 @@
     <guid isPermaLink="true">https://bitekrakow.com/krakow-restaurant-week/</guid>
     <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
     <description>Krakow Restaurant Week, 7 Oct to 25 Nov 2026: three courses and a cocktail for 69.99 zl plus a 12.99 zl fee at 54 restaurants. Rules and booking.</description>
-  </item>
-  <item>
-    <title>Krowodrza Food Guide: 6 Places Beyond the Old Town Wall in Krakow</title>
-    <link>https://bitekrakow.com/krowodrza-guide/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/krowodrza-guide/</guid>
-    <pubDate>Sat, 15 Aug 2026 07:00:00 GMT</pubDate>
-    <description>Eating in Krowodrza and Kleparz, Krakow: a family roastery, the city's best artisan bakery, brunch on Plac Inwalidów and a restobar in a 19th-century fort.</description>
-  </item>
-  <item>
-    <title>Matcha in Krakow: Where to Drink It in Kazimierz</title>
-    <link>https://bitekrakow.com/matcha-krakow/</link>
-    <guid isPermaLink="true">https://bitekrakow.com/matcha-krakow/</guid>
-    <pubDate>Tue, 01 Sep 2026 07:00:00 GMT</pubDate>
-    <description>Where to drink matcha in Krakow: Café Belmont in Kazimierz with Yume Matcha, the Ayko matcha bar in Podgórze and Boby in Dębniki. Hours and prices.</description>
   </item>
 </channel>
 </rss>

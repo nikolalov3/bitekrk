@@ -66,7 +66,9 @@ for (const a of idx) {
   const mid = cards >= 4 ? ranked[0].b : null;
   const end = ranked.filter(x => x.b !== mid).slice(0, 3).map(x => x.b);
 
-  let html = a.html.replace(/\n?<!-- related:mid:start -->[\s\S]*?<!-- related:mid:end -->\n?/g, '\n').replace(/\n?<!-- related:end:start -->[\s\S]*?<!-- related:end:end -->\n?/g, '\n');
+  // usuwamy stare bloki razem z otaczajacymi pustymi liniami, zeby kolejne uruchomienia nic nie zmienialy
+  let html = a.html.replace(/\n*<!-- related:mid:start -->[\s\S]*?<!-- related:mid:end -->/g, '')
+    .replace(/\n*<!-- related:end:start -->[\s\S]*?<!-- related:end:end -->\n*/g, '\n\n');
 
   if (mid) {
     let n = 0;
