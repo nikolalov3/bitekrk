@@ -2326,3 +2326,8 @@ html[lang|="zh"] h1, html[lang|="zh"] h2, html[lang|="zh"] h3 { letter-spacing: 
 html[lang|="zh"] .prose p, html[lang|="zh"] .article-body p, html[lang|="zh"] .prose li { line-height: 1.85; }
 html[lang|="zh"] .site-nav a, html[lang|="zh"] .eyebrow, html[lang|="zh"] .pill { letter-spacing: 0.04em; }
 html[lang|="zh"] em { font-style: normal; font-weight: 600; }
+/* Menu i przełącznik w jednej linii: środek do środka (linki nie rozciągają się do wysokości pigułki) */
+.site-nav { align-items: center; }
+.site-nav > a { line-height: 1.2; }
+.lang-menu > summary { line-height: 1.2; }
+.site-nav .lang-list a[dir="rtl"] { text-align: right; }
