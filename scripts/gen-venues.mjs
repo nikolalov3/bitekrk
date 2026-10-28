@@ -49,7 +49,7 @@ function walkPages(dir, prefix) {
   const out = [];
   for (const d of readdirSync(dir, { withFileTypes: true })) {
     if (!d.isDirectory()) continue;
-    if (['api', 'img', 'restaurant', 'restaurants', 'ar', 'pl', 'data'].includes(d.name)) continue;
+    if (['api', 'img', 'restaurant', 'restaurants', 'ar', 'pl', 'zh', 'data'].includes(d.name)) continue;
     const rel = prefix ? `${prefix}/${d.name}` : d.name;
     out.push(rel, ...walkPages(join(dir, d.name), rel));
   }
@@ -523,19 +523,23 @@ const firstIn = slug => Object.values(featured).length && walkPages(SITE, '').fi
 const brukN = firstIn('bruk-cafe');
 const AWARDS = {
   'bruk-cafe': {
-    label: { en: 'Our top pick', ar: 'اختيارنا الأول' },
-    line: { en: `No. 1 in ${brukN} of our guides, from work and study cafes to breakfast`, ar: `الأول في ${brukN} من أدلتنا، من مقاهي العمل والدراسة إلى الفطور` },
+    label: { en: 'Our top pick', ar: 'اختيارنا الأول', pl: 'Nasz numer jeden', zh: '编辑首选' },
+    line: { en: `No. 1 in ${brukN} of our guides, from work and study cafes to breakfast`, ar: `الأول في ${brukN} من أدلتنا، من مقاهي العمل والدراسة إلى الفطور`, pl: `Numer 1 w ${brukN} naszych przewodnikach, od kawiarni do pracy i nauki po śniadania`, zh: `在我们 ${brukN} 篇指南中排名第一，从办公、学习咖啡馆到早餐` },
     why: {
       en: 'A specialty cafe on Krótka, between the Barbakan and the Stary Kleparz market, five minutes from the main station. Serious espresso, a matcha list longer than most matcha bars, breakfast until 1 pm and a Basque cheesecake we score 9.5 out of 10. Sockets within reach of most tables, dogs welcome, open from 8:00 on weekdays and on Sunday mornings.',
-      ar: 'مقهى قهوة مختصة في شارع Krótka بين البارباكان وسوق Stary Kleparz، على بعد خمس دقائق من المحطة الرئيسية. إسبريسو جاد، وقائمة ماتشا أطول من معظم بارات الماتشا، وفطور حتى الواحدة ظهراً، وتشيز كيك باسكي نمنحه 9.5 من 10. مقابس كهرباء قرب معظم الطاولات، والكلاب مرحب بها، ويفتح من الثامنة صباحاً أيام الأسبوع وصباح الأحد.'
+      ar: 'مقهى قهوة مختصة في شارع Krótka بين البارباكان وسوق Stary Kleparz، على بعد خمس دقائق من المحطة الرئيسية. إسبريسو جاد، وقائمة ماتشا أطول من معظم بارات الماتشا، وفطور حتى الواحدة ظهراً، وتشيز كيك باسكي نمنحه 9.5 من 10. مقابس كهرباء قرب معظم الطاولات، والكلاب مرحب بها، ويفتح من الثامنة صباحاً أيام الأسبوع وصباح الأحد.',
+      pl: 'Kawiarnia specialty przy Krótkiej, między Barbakanem a Starym Kleparzem, pięć minut od dworca głównego. Porządne espresso, lista matchy dłuższa niż w większości matcha barów, śniadania do 13:00 i sernik baskijski, który oceniamy na 9,5 na 10. Gniazdka przy większości stolików, psy mile widziane, otwarte od 8:00 w dni powszednie i w niedzielne poranki.',
+      zh: '位于 Krótka 街的精品咖啡馆，在巴比肯城堡 (Barbakan) 和老克莱帕日市场 (Stary Kleparz) 之间，距中央火车站步行五分钟。意式浓缩做得认真，抹茶单比大多数抹茶吧还长，早餐供应到13:00，巴斯克芝士蛋糕我们打9.5分（满分10分）。大多数座位旁都有插座，欢迎带狗，工作日8:00开门，周日上午也营业。'
     }
   },
   'cafe-belmont': {
-    label: { en: 'Best matcha', ar: 'أفضل ماتشا' },
-    line: { en: 'No. 1 in our matcha guide and our best cafe in Kazimierz', ar: 'الأول في دليل الماتشا وأفضل مقهى في كازيميَش حسب تقييمنا' },
+    label: { en: 'Best matcha', ar: 'أفضل ماتشا', pl: 'Najlepsza matcha', zh: '最佳抹茶' },
+    line: { en: 'No. 1 in our matcha guide and our best cafe in Kazimierz', ar: 'الأول في دليل الماتشا وأفضل مقهى في كازيميَش حسب تقييمنا', pl: 'Numer 1 w naszym przewodniku po matchy i nasza najlepsza kawiarnia na Kazimierzu', zh: '我们抹茶指南的第一名，也是我们在卡齐米日评分最高的咖啡馆' },
     why: {
       en: 'The Kazimierz cafe that blends its own matcha, sold under the Yume Matcha brand, and whisks it properly: vivid green, no chalky bitterness. Proper specialty coffee and onigiri made in-house, on Berka Joselewicza 12, open every day from 9:00 to 19:00. We score it 9.5 out of 10.',
-      ar: 'مقهى في كازيميَش يمزج الماتشا الخاصة به وتباع تحت اسم Yume Matcha، ويخفقها كما يجب: أخضر زاهٍ بلا مرارة طباشيرية. قهوة مختصة حقيقية وأونيغيري يُحضَّر في المكان، في شارع Berka Joselewicza 12، ويفتح يومياً من 9:00 إلى 19:00. نمنحه 9.5 من 10.'
+      ar: 'مقهى في كازيميَش يمزج الماتشا الخاصة به وتباع تحت اسم Yume Matcha، ويخفقها كما يجب: أخضر زاهٍ بلا مرارة طباشيرية. قهوة مختصة حقيقية وأونيغيري يُحضَّر في المكان، في شارع Berka Joselewicza 12، ويفتح يومياً من 9:00 إلى 19:00. نمنحه 9.5 من 10.',
+      pl: 'Kawiarnia na Kazimierzu, która blenduje własną matchę, sprzedawaną pod marką Yume Matcha, i porządnie ją ubija: intensywnie zielona, bez kredowej goryczy. Prawdziwa kawa specialty i onigiri robione na miejscu, przy Berka Joselewicza 12, otwarte codziennie od 9:00 do 19:00. Oceniamy ją na 9,5 na 10.',
+      zh: '卡齐米日的一家咖啡馆，自己调配抹茶并以 Yume Matcha 品牌出售，点茶手法到位：颜色鲜绿，没有粉笔般的苦涩。有正经的精品咖啡和店内现做的饭团，地址 Berka Joselewicza 12，每天9:00至19:00营业。我们打9.5分（满分10分）。'
     }
   }
 };
@@ -561,12 +565,16 @@ const mapData = mapPts.map((v, i) => {
   };
 });
 // Statyczna sekcja pod mapa (EN/AR): te same opisy w HTML + schema, czytelne dla botow bez JS
-for (const [file, lang] of [['map/index.html', 'en'], ['ar/map/index.html', 'ar']]) {
+for (const [file, lang] of [['map/index.html', 'en'], ['ar/map/index.html', 'ar'], ['pl/map/index.html', 'pl'], ['zh/map/index.html', 'zh']]) {
   const fp = join(SITE, file); if (!existsSync(fp)) continue;
   let h = readFileSync(fp, 'utf8');
   const picks = Object.keys(AWARDS).map(sl => bySlug[sl]).filter(Boolean);
-  const head = lang === 'ar' ? { eb: 'اختيارات المحررين', h2: 'المكانان اللذان نرشحهما أولاً', more: 'لماذا نختاره', prof: 'الملف الكامل' }
-                             : { eb: 'Editors\' picks', h2: 'The two places we send people first', more: 'Why we pick it', prof: 'Full profile' };
+  const head = {
+    ar: { eb: 'اختيارات المحررين', h2: 'المكانان اللذان نرشحهما أولاً', more: 'لماذا نختاره', prof: 'الملف الكامل' },
+    pl: { eb: 'Wybór redakcji', h2: 'Dwa miejsca, do których wysyłamy najpierw', more: 'Dlaczego je wybieramy', prof: 'Pełny profil' },
+    zh: { eb: '编辑精选', h2: '我们首先推荐的两个地方', more: '我们为什么推荐', prof: '店铺详情' },
+    en: { eb: 'Editors\' picks', h2: 'The two places we send people first', more: 'Why we pick it', prof: 'Full profile' }
+  }[lang];
   const items = picks.map(v => { const a = AWARDS[v.slug]; return `      <details class="pick-item">
         <summary><span class="pk-badge">${esc(a.label[lang])}</span> <b>${esc(v.name)}</b> <span class="pk-line">${esc(a.line[lang])}</span></summary>
         <p>${esc(a.why[lang])}</p>

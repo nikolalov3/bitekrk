@@ -4,18 +4,35 @@
 (function () {
   var el = document.getElementById('bkMap');
   if (!el || !window.maplibregl) return;
-  var AR = el.getAttribute('data-lang') === 'ar';
-  var T = AR ? {
-    showing: function (n, t) { return 'نعرض ' + n + ' من ' + t + ' مكانًا'; }, more: 'قرّب الخريطة لترى المزيد',
-    reviews: 'مراجعة على جوجل', ours: 'تقييمنا', profile: 'الملف الكامل', guide: 'في الدليل', gr: 'مراجعة من جوجل',
-    type: { cafe: 'مقهى', food: 'مطعم', bar: 'بار' }, close: 'إغلاق', none: 'لا توجد تقييمات بعد',
-    mich: { '2s': 'نجمتا ميشلان', '1s': 'نجمة ميشلان', bib: 'ميشلان Bib Gourmand', guide: 'في دليل ميشلان' }, why: 'لماذا نختاره'
-  } : {
-    showing: function (n, t) { return 'Showing ' + n + ' of ' + t + ' places'; }, more: 'zoom in for more',
-    reviews: 'Google reviews', ours: 'Our score', profile: 'Full profile', guide: 'In the guide', gr: 'Google review',
-    type: { cafe: 'Cafe', food: 'Restaurant', bar: 'Bar' }, close: 'Close', none: 'No reviews yet',
-    mich: { '2s': 'Two Michelin stars', '1s': 'One Michelin star', bib: 'Michelin Bib Gourmand', guide: 'In the Michelin Guide' }, why: 'Why we pick it'
+  var LANG = el.getAttribute('data-lang') || 'en', AR = LANG === 'ar';
+  var TT = {
+    ar: {
+      showing: function (n, t) { return 'نعرض ' + n + ' من ' + t + ' مكانًا'; }, more: 'قرّب الخريطة لترى المزيد',
+      reviews: 'مراجعة على جوجل', ours: 'تقييمنا', profile: 'الملف الكامل', guide: 'في الدليل', gr: 'مراجعة من جوجل',
+      type: { cafe: 'مقهى', food: 'مطعم', bar: 'بار' }, close: 'إغلاق', none: 'لا توجد تقييمات بعد',
+      mich: { '2s': 'نجمتا ميشلان', '1s': 'نجمة ميشلان', bib: 'ميشلان Bib Gourmand', guide: 'في دليل ميشلان' }, why: 'لماذا نختاره'
+    },
+    pl: {
+      showing: function (n, t) { return 'Widać ' + n + ' z ' + t + ' miejsc'; }, more: 'przybliż, by zobaczyć więcej',
+      reviews: 'opinii w Google', ours: 'Nasza ocena', profile: 'Pełny profil', guide: 'W przewodniku', gr: 'opinia z Google',
+      type: { cafe: 'Kawiarnia', food: 'Restauracja', bar: 'Bar' }, close: 'Zamknij', none: 'Brak opinii',
+      mich: { '2s': 'Dwie gwiazdki Michelin', '1s': 'Gwiazdka Michelin', bib: 'Michelin Bib Gourmand', guide: 'W przewodniku Michelin' }, why: 'Dlaczego go wybieramy'
+    },
+    zh: {
+      showing: function (n, t) { return '显示 ' + n + ' / ' + t + ' 个地点'; }, more: '放大地图查看更多',
+      reviews: '条谷歌评价', ours: '我们的评分', profile: '店铺详情', guide: '收录于指南', gr: '谷歌评价',
+      type: { cafe: '咖啡馆', food: '餐厅', bar: '酒吧' }, close: '关闭', none: '暂无评价',
+      mich: { '2s': '米其林二星', '1s': '米其林一星', bib: '米其林必比登推介', guide: '米其林指南推荐' }, why: '我们为什么推荐'
+    },
+    en: {
+      showing: function (n, t) { return 'Showing ' + n + ' of ' + t + ' places'; }, more: 'zoom in for more',
+      reviews: 'Google reviews', ours: 'Our score', profile: 'Full profile', guide: 'In the guide', gr: 'Google review',
+      type: { cafe: 'Cafe', food: 'Restaurant', bar: 'Bar' }, close: 'Close', none: 'No reviews yet',
+      mich: { '2s': 'Two Michelin stars', '1s': 'One Michelin star', bib: 'Michelin Bib Gourmand', guide: 'In the Michelin Guide' }, why: 'Why we pick it'
+    }
   };
+  var T = TT[LANG] || TT.en;
+  function L(o) { return o ? (o[LANG] || o.en) : ''; }
   // pierwszy prog = zestaw "wyrozniony" z danych (fc): klienci, Michelin, kuchnie polska i swiata
   var FC = 10, TIERS = [[0, 10], [13.4, 35], [14.5, 999]];
   var MICH_SHORT = { '2s': '★★ Michelin', '1s': '★ Michelin', bib: 'Bib Gourmand', guide: 'Michelin' };
@@ -71,7 +88,7 @@
     var ours = v.sc ? '<div class="k-ours">' + T.ours + ' <b>' + v.sc + '/10</b>' + (v.g ? ' · <a href="' + esc(v.g.p) + '">' + T.guide + '</a>' : '') + '</div>' : '';
     return '<button type="button" class="k-x" aria-label="' + T.close + '">×</button>' +
       '<div class="k-type">' + esc(meta) + '</div>' +
-      '<div class="k-name">' + esc(v.n) + '</div>' + (v.aw ? '<div class="k-pick">' + esc(v.aw.label[AR ? 'ar' : 'en']) + '<span>' + esc(v.aw.line[AR ? 'ar' : 'en']) + '</span></div>' : '') + (v.m ? '<div class="k-mich">' + (v.m === '2s' ? '★★ ' : v.m === '1s' ? '★ ' : '') + T.mich[v.m] + '</div>' : '') + rating + quote + ours + (v.aw ? '<details class="k-why"><summary>' + T.why + '</summary><p>' + esc(v.aw.why[AR ? 'ar' : 'en']) + '</p></details>' : '') +
+      '<div class="k-name">' + esc(v.n) + '</div>' + (v.aw ? '<div class="k-pick">' + esc(L(v.aw.label)) + '<span>' + esc(L(v.aw.line)) + '</span></div>' : '') + (v.m ? '<div class="k-mich">' + (v.m === '2s' ? '★★ ' : v.m === '1s' ? '★ ' : '') + T.mich[v.m] + '</div>' : '') + rating + quote + ours + (v.aw ? '<details class="k-why"><summary>' + T.why + '</summary><p>' + esc(L(v.aw.why)) + '</p></details>' : '') +
       '<a class="k-go" href="/restaurant/' + esc(v.s) + '/">' + T.profile + (AR ? ' ←' : ' →') + '</a>';
   }
 
@@ -157,7 +174,7 @@
       b.className = 'bk-pin t-' + v.t + (v.m ? ' is-mich' : '') + (v.aw ? ' is-pick' : '') + ' off';
       b.setAttribute('aria-label', v.n + ', ' + v.d + (v.r ? ', ' + v.r.toFixed(1) + ' ★' : ''));
       var short = v.n.replace(/\s*\(.*?\)\s*/g, ' ').trim();
-      b.innerHTML = '<span class="dot"></span><span class="lbl">' + esc(short) + (v.m ? '<span class="mi">' + MICH_SHORT[v.m] + '</span>' : '') + (v.aw ? '<span class="pk">' + esc(v.aw.label[AR ? 'ar' : 'en']) + '</span>' : '') + '</span>';
+      b.innerHTML = '<span class="dot"></span><span class="lbl">' + esc(short) + (v.m ? '<span class="mi">' + MICH_SHORT[v.m] + '</span>' : '') + (v.aw ? '<span class="pk">' + esc(L(v.aw.label)) + '</span>' : '') + '</span>';
       var p = { v: v, el: b };
       if (canHover) {
         b.addEventListener('mouseenter', function () { if (!pinned || open === p) show(p, pinned && open === p); });

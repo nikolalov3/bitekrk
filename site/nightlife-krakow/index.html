@@ -3,25 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-  (function(){try{
-    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
-    var p=location.pathname;
-    if(p.indexOf("/ar/")===0||p.indexOf("/pl/")===0)return;
-    if(localStorage.getItem("bk-lang"))return;
-    var L=navigator.languages||[navigator.language||""];
-    var isAr=L.some(function(x){return /^ar/i.test(x);});
-    var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/","/breakfast-krakow/"];
-    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/","/autumn-menu-krakow/","/news/mlaskoty-food-festival-krakow/"];
-    if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
-    else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
-  }catch(e){}})();
-  </script>
+  <!-- langredir:start --><script>(function(){try{if(localStorage.getItem("bk-lang"))return;var V={"pl":"/pl/nightlife-krakow/","zh":"/zh/nightlife-krakow/"};var L=navigator.languages||[navigator.language||""];for(var i=0;i<L.length;i++){var k=String(L[i]).slice(0,2).toLowerCase();if(k==="en")return;if(V[k]){location.replace(V[k]);return}}}catch(e){}})();</script><!-- langredir:end -->
   <title>Krakow Nightlife Guide (2026): Bars, Clubs and Who Closes Last</title>
   <meta name="description" content="Where to go out in Krakow: cocktail and wine bars we reviewed, the clubs and late bars that stay open until 4, 5 or 8 am, what is open right now, and how to get home.">
   <link rel="canonical" href="https://bitekrakow.com/nightlife-krakow/">
   <link rel="alternate" hreflang="en" href="https://bitekrakow.com/nightlife-krakow/">
+  <link rel="alternate" hreflang="pl" href="https://bitekrakow.com/pl/nightlife-krakow/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://bitekrakow.com/zh/nightlife-krakow/">
   <link rel="alternate" hreflang="x-default" href="https://bitekrakow.com/nightlife-krakow/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:site_name" content="BiteKrakow">
@@ -40,7 +28,7 @@
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
   <script>(function(){var u="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap",n=0;function f(){var l=document.createElement("link");l.rel="stylesheet";l.href=u;document.head.appendChild(l)}function w(){var p=performance.getEntriesByType&&performance.getEntriesByType("paint");if((p&&p.length)||n++>90)requestAnimationFrame(f);else requestAnimationFrame(w)}window.requestAnimationFrame?requestAnimationFrame(w):f()})();</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css?v=1c9e4bfc4f">
+  <link rel="stylesheet" href="/style.css?v=b90c2e8307">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -495,7 +483,7 @@
       <a href="/map/">Map</a>
       <a href="/restaurants/">Places</a>
       <a href="/news/">News</a>
-      <a href="/about/">About</a>
+      <!-- langs:start --><details class="lang-menu"><summary aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg><span>EN</span></summary><div class="lang-list"><a href="/nightlife-krakow/" hreflang="en" lang="en" aria-current="true">English</a><a href="/pl/nightlife-krakow/" hreflang="pl" lang="pl">Polski</a><a href="/ar/" hreflang="ar" lang="ar" dir="rtl">العربية <small>الرئيسية</small></a><a href="/zh/nightlife-krakow/" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></details><script>(function(){var m=document.currentScript.previousElementSibling;m.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-list a");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("hreflang"))}catch(_){}}});document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.open=false})})();</script><!-- langs:end -->
     </nav>
   </div>
 </header>
@@ -1234,12 +1222,12 @@
     </div>
     <div class="foot-bottom">
       <p class="foot-src">Ratings, review quotes and some venue photos on this page come from Google.</p>
-      <p class="foot-meta"><span>&copy; 2026 BiteKrakow</span> <a href="/ar/" hreflang="ar" lang="ar">العربية</a></p>
+      <p class="foot-meta"><span>&copy; 2026 BiteKrakow</span> <a href="/pl/" hreflang="pl" lang="pl">Polski</a> <a href="/ar/" hreflang="ar" lang="ar">العربية</a> <a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></p>
     </div>
   </div>
 </footer>
 
-<script src="/live.js?v=6d85eb51b6" defer></script>
-<script src="/venue-cards.js?v=8f424b0e9e" defer></script>
+<script src="/live.js?v=083ff083b7" defer></script>
+<script src="/venue-cards.js?v=718909b6d7" defer></script>
 </body>
 </html>

@@ -74,7 +74,7 @@ for (const page of pages) {
   // typ LocalBusiness-owy z adresem i nazwą + BreadcrumbList, bez Article.
   // Strony /ar/ to lustrzane wersje językowe, sprawdzane łagodniej.
   const isVenueProfile = page.startsWith('restaurant/');
-  const isArabic = page === 'ar' || page.startsWith('ar/');
+  const isArabic = page === 'ar' || page.startsWith('ar/') || page === 'zh' || page.startsWith('zh/'); // AR i ZH: lustrzane wersje, łagodniej
   if (isVenueProfile) {
     const biz = blocks.find(b => ['Restaurant', 'CafeOrCoffeeShop', 'Bakery', 'BarOrPub', 'IceCreamShop', 'LocalBusiness'].includes(b['@type']));
     if (!biz) problems.push(`${label} profil bez schema LocalBusiness/Restaurant`);
@@ -84,7 +84,8 @@ for (const page of pages) {
     }
     if (!types.includes('BreadcrumbList')) problems.push(`${label} brak BreadcrumbList`);
   }
-  if (page && !['about', 'how-we-test', 'photo-credits'].includes(page) && !isIndexPage && !isVenueProfile && !isArabic) {
+  const base = page.replace(/^(pl|ar|zh)(\/|$)/, ''); // strony glowne i 'o nas' w kazdym jezyku jak EN
+  if (base && !['about', 'how-we-test', 'photo-credits'].includes(base) && !isIndexPage && !isVenueProfile && !isArabic) {
     if (!article) problems.push(`${label} brak schema Article`);
     else {
       if (!article.author || !article.author.name) problems.push(`${label} Article bez autora`);
@@ -104,6 +105,12 @@ for (const page of pages) {
     if (!/Last verified|checked August|checked [A-Z][a-z]+ 20/.test(html) && !/Details checked/.test(html) && !/sprawdzone [^<]{0,40}20\d\d/i.test(html)) {
       problems.push(`${label} brak widocznej daty weryfikacji treści`);
     }
+  }
+
+  // 3a. Przełącznik języków i hreflang (apply-langs.mjs)
+  if (/<header class="site-header">/.test(html) && !/class="lang-menu"/.test(html)) problems.push(`${label} brak przełącznika języków (uruchom: node scripts/apply-langs.mjs)`);
+  if (/[\u4e00-\u9fff]{20}/.test(html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<a [^>]*hreflang[^>]*>[^<]*<\/a>/g, '')) && !(page === 'zh' || page.startsWith('zh/'))) {
+    problems.push(`${label} ma chiński tekst poza /zh/`);
   }
 
   // 3b. Social/SEO meta na każdej stronie

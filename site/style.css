@@ -2281,3 +2281,48 @@ body { background: var(--paper); }
 .first-look { list-style: none; margin: 14px 0 6px; padding: 14px 18px; background: var(--paper-warm, #f2e9dc); border-radius: 10px; }
 .first-look li { margin: 4px 0; font-size: 0.93rem; line-height: 1.55; }
 .first-look-src { margin-top: 4px; font-size: 0.8rem; color: var(--ink-soft); }
+
+/* ================= JĘZYKI v2: przełącznik EN / PL / AR / ZH (apply-langs.mjs) ================= */
+.site-header .wrap { position: relative; }
+.lang-menu { position: relative; display: inline-flex; align-items: center; }
+.lang-menu > summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--ink-soft); border: 1px solid var(--line-dark); border-radius: 999px; padding: 4px 10px 4px 8px;
+  user-select: none;
+}
+.lang-menu > summary::-webkit-details-marker { display: none; }
+.lang-menu > summary svg { width: 14px; height: 14px; flex: none; }
+.lang-menu > summary:hover, .lang-menu[open] > summary { color: var(--ink); border-color: var(--ink); }
+.lang-list {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 80; min-width: 168px;
+  display: grid; gap: 2px; padding: 6px;
+  background: var(--paper); border: 1px solid var(--line-dark); border-radius: 8px;
+}
+.site-nav .lang-list a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  font-family: var(--font-sans); font-size: 0.92rem; font-weight: 500; letter-spacing: 0; text-transform: none;
+  color: var(--ink); padding: 8px 10px; border: none; border-radius: 6px; margin: 0;
+}
+.site-nav .lang-list a:hover { background: var(--paper-warm); }
+.site-nav .lang-list a[aria-current="true"] { font-weight: 700; }
+.site-nav .lang-list a[aria-current="true"]::before { content: "✓"; order: 2; color: var(--accent); font-size: 0.8rem; }
+.site-nav .lang-list a::after { display: none; }
+.site-nav .lang-list a small { font-size: 0.7rem; color: var(--ink-soft); font-weight: 400; }
+.site-nav .lang-list a[lang="ar"] { font-family: "Tajawal", var(--font-sans); }
+html[dir="rtl"] .lang-list { right: auto; left: 0; }
+@media (max-width: 640px) {
+  .site-nav .lang-menu { position: absolute; top: 11px; right: 16px; }
+  html[dir="rtl"] .site-nav .lang-menu { right: auto; left: 16px; }
+}
+
+/* Chiński uproszczony: systemowe kroje CJK (bez pobierania fontów), Latin dalej Fraunces/Inter */
+html[lang|="zh"] {
+  --font-serif: "Fraunces", "Fraunces Fallback", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  --font-sans: "Inter", "Inter Fallback", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, sans-serif;
+  --font-mono: "Space Grotesk", "Space Grotesk Fallback", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", monospace;
+}
+html[lang|="zh"] h1, html[lang|="zh"] h2, html[lang|="zh"] h3 { letter-spacing: 0; font-weight: 600; }
+html[lang|="zh"] .prose p, html[lang|="zh"] .article-body p, html[lang|="zh"] .prose li { line-height: 1.85; }
+html[lang|="zh"] .site-nav a, html[lang|="zh"] .eyebrow, html[lang|="zh"] .pill { letter-spacing: 0.04em; }
+html[lang|="zh"] em { font-style: normal; font-weight: 600; }

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>克拉科夫美食地图：按街区找吃的 | BiteKrakow</title>
+  <meta name="description" content="克拉科夫互动地图，标出我们收录的每一家咖啡馆、餐厅和酒吧。放大可看到更多地点，点按图钉即可查看谷歌评分和一条顾客评价。">
+  <link rel="canonical" href="https://bitekrakow.com/zh/map/">
+  <link rel="alternate" hreflang="en" href="https://bitekrakow.com/map/">
+  <link rel="alternate" hreflang="pl" href="https://bitekrakow.com/pl/map/">
+  <link rel="alternate" hreflang="ar" href="https://bitekrakow.com/ar/map/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://bitekrakow.com/zh/map/">
+  <link rel="alternate" hreflang="x-default" href="https://bitekrakow.com/map/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:site_name" content="BiteKrakow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="克拉科夫美食地图：按街区找吃的">
+  <meta property="og:description" content="克拉科夫互动地图，标出我们收录的每一家咖啡馆、餐厅和酒吧。放大可看到更多地点，点按图钉即可查看谷歌评分和一条顾客评价。">
+  <meta property="og:url" content="https://bitekrakow.com/zh/map/">
+  <meta property="og:image" content="https://bitekrakow.com/img/og-default.jpg">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="克拉科夫美食地图：按街区找吃的">
+  <meta name="twitter:description" content="克拉科夫互动地图，标出我们收录的每一家咖啡馆、餐厅和酒吧。放大可看到更多地点，点按图钉即可查看谷歌评分和一条顾客评价。">
+  <meta name="twitter:image" content="https://bitekrakow.com/img/og-default.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+  <script>(function(){var u="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap",n=0;function f(){var l=document.createElement("link");l.rel="stylesheet";l.href=u;document.head.appendChild(l)}function w(){var p=performance.getEntriesByType&&performance.getEntriesByType("paint");if((p&&p.length)||n++>90)requestAnimationFrame(f);else requestAnimationFrame(w)}window.requestAnimationFrame?requestAnimationFrame(w):f()})();</script>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="/style.css?v=b90c2e8307">
+  <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
+  <script src="/map.js?v=05cf129502" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "克拉科夫美食地图：按街区找吃的",
+    "url": "https://bitekrakow.com/zh/map/",
+    "inLanguage": "zh-Hans",
+    "about": { "@type": "City", "name": "克拉科夫", "sameAs": "https://en.wikipedia.org/wiki/Krak%C3%B3w" },
+    "publisher": { "@type": "Organization", "name": "BiteKrakow", "url": "https://bitekrakow.com" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "克拉科夫的美食街区",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "老城 (Stare Miasto)", "url": "https://bitekrakow.com/zh/old-town-cafes/", "item": { "@type": "Place", "name": "Stare Miasto", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 2, "name": "卡齐米日 (Kazimierz)", "url": "https://bitekrakow.com/zh/kazimierz-guide/", "item": { "@type": "Place", "name": "Kazimierz", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 3, "name": "克莱帕日 (Kleparz)", "url": "https://bitekrakow.com/zh/kleparz-guide/", "item": { "@type": "Place", "name": "Kleparz", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 4, "name": "波德古热 (Podgórze)", "url": "https://bitekrakow.com/zh/podgorze-guide/", "item": { "@type": "Place", "name": "Podgórze", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 5, "name": "克罗沃扎 (Krowodrza)", "url": "https://bitekrakow.com/zh/krowodrza-guide/", "item": { "@type": "Place", "name": "Krowodrza", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 6, "name": "扎布沃切 (Zabłocie)", "url": "https://bitekrakow.com/restaurants/#zablocie", "item": { "@type": "Place", "name": "Zabłocie", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 7, "name": "Piasek", "url": "https://bitekrakow.com/restaurants/#piasek", "item": { "@type": "Place", "name": "Piasek", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 8, "name": "Wesoła", "url": "https://bitekrakow.com/restaurants/#wesola", "item": { "@type": "Place", "name": "Wesoła", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 9, "name": "Stradom", "url": "https://bitekrakow.com/zh/halal-krakow/", "item": { "@type": "Place", "name": "Stradom", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 10, "name": "Dębniki", "url": "https://bitekrakow.com/restaurants/#debniki", "item": { "@type": "Place", "name": "Dębniki", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 11, "name": "Grzegórzki", "url": "https://bitekrakow.com/restaurants/#grzegorzki", "item": { "@type": "Place", "name": "Grzegórzki", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 12, "name": "Salwator", "url": "https://bitekrakow.com/restaurants/", "item": { "@type": "Place", "name": "Salwator", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } },
+        { "@type": "ListItem", "position": 13, "name": "新胡塔 (Nowa Huta)", "url": "https://bitekrakow.com/restaurants/#nowa-huta", "item": { "@type": "Place", "name": "Nowa Huta", "containedInPlace": { "@type": "City", "name": "克拉科夫" } } }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "BiteKrakow", "item": "https://bitekrakow.com/zh/" },
+      { "@type": "ListItem", "position": 2, "name": "地图", "item": "https://bitekrakow.com/zh/map/" }
+    ]
+  }
+  </script>
+  <style>
+    .map-districts { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 24px; }
+    .md-card { display: block; padding: 18px 20px; border: 1px solid var(--line); border-radius: 16px; background: #fff; text-decoration: none; color: var(--ink); box-shadow: 0 1px 2px rgba(27,27,24,0.04); transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+    .md-card:hover { transform: translateY(-2px); border-color: var(--line-dark); box-shadow: 0 12px 26px -12px rgba(27,27,24,0.2); }
+    .md-card h3 { font-size: 1.2rem; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .md-card h3 small { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.04em; }
+    .md-card p { color: var(--ink-soft); font-size: 0.92rem; margin-top: 6px; line-height: 1.55; }
+    .md-card .md-top { margin-top: 8px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-deep); }
+    .md-group { margin-top: 44px; }
+    .md-group .eyebrow { display: block; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/zh/">Bite<span>Krakow</span></a>
+    <nav class="site-nav">
+      <a href="/zh/guides/">指南</a>
+      <a href="/zh/nightlife-krakow/">夜生活</a>
+      <a href="/events/">活动</a>
+      <a href="/zh/map/" aria-current="page">地图</a>
+      <a href="/restaurants/">店铺</a>
+      <a href="/zh/news/">资讯</a>
+      <!-- langs:start --><details class="lang-menu"><summary aria-label="语言"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg><span>中文</span></summary><div class="lang-list"><a href="/map/" hreflang="en" lang="en">English</a><a href="/pl/map/" hreflang="pl" lang="pl">Polski</a><a href="/ar/map/" hreflang="ar" lang="ar" dir="rtl">العربية</a><a href="/zh/map/" hreflang="zh-Hans" lang="zh-Hans" aria-current="true">中文</a></div></details><script>(function(){var m=document.currentScript.previousElementSibling;m.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-list a");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("hreflang"))}catch(_){}}});document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.open=false})})();</script><!-- langs:end -->
+    </nav>
+  </div>
+</header>
+
+<article>
+  <header class="article-header wrap-narrow">
+    <span class="pill">按街区</span>
+    <h1>克拉科夫美食地图：我们去哪儿吃，一个图钉一个图钉标出来</h1>
+    <p class="meta">我们收录的每一个地点，都标在一张真实的克拉科夫地图上。缩小时看到的是我们的首选；放大可看到其余地点，把鼠标移到图钉上或点按图钉，即可查看评分和一条顾客评价。</p>
+  </header>
+
+  <div class="article-body wrap">
+    <div class="bk-map-shell">
+      <div class="bk-map-bar">
+        <div class="bk-chips" role="group" aria-label="筛选地点">
+          <button type="button" class="on" data-f="all" aria-pressed="true">全部</button>
+          <button type="button" data-f="cafe" aria-pressed="false">咖啡与咖啡馆</button>
+          <button type="button" data-f="food" aria-pressed="false">餐厅</button>
+          <button type="button" data-f="bar" aria-pressed="false">酒吧与葡萄酒</button>
+          <button type="button" data-f="michelin" aria-pressed="false">米其林</button>
+        </div>
+        <span class="bk-count" id="bkCount" aria-live="polite"></span>
+      </div>
+      <div id="bkMap" class="bk-map" data-lang="zh" data-venues-v="3d0aed676f" role="region" aria-label="克拉科夫互动地图，标出 BiteKrakow 推荐的地点"></div>
+      <p class="bk-map-note">缩小时，地图显示我们的合作伙伴、米其林指南收录的每一家店、波兰经典老店，以及每种世界菜系各一家首选；放大可看到我们收录的全部地点。把鼠标移到图钉上或点按图钉，即可查看谷歌评分和一条顾客评价。</p>
+    </div>
+    <noscript><p>互动地图需要启用 JavaScript。你也可以<a href="/restaurants/">按街区浏览全部地点</a>。</p></noscript>
+
+    <div class="prose" style="margin-top:40px;">
+      <p>
+        克拉科夫小到可以步行逛完，又丰富到每个街区都有自己的吃法。老城 (Stare Miasto)
+        有经典的波兰饺子 (pierogi) 和高级餐厅；卡齐米日 (Kazimierz) 把它们变成了早午餐和鸡尾酒；克莱帕日 (Kleparz) 在离火车站五分钟的地方守着市场传统；而在河对岸，波德古热 (Podgórze)
+        和扎布沃切 (Zabłocie) 已经成了城里最有意思的厨房。下面是我们覆盖的每个街区，附评分最高的地点和完整指南的链接。
+      </p>
+    </div>
+
+<!-- picks:start -->
+    <section class="map-picks">
+      <span class="eyebrow">编辑精选</span>
+      <h2 class="deco">我们首先推荐的两个地方</h2>
+      <details class="pick-item">
+        <summary><span class="pk-badge">编辑首选</span> <b>Bruk Cafe</b> <span class="pk-line">在我们 11 篇指南中排名第一，从办公、学习咖啡馆到早餐</span></summary>
+        <p>位于 Krótka 街的精品咖啡馆，在巴比肯城堡 (Barbakan) 和老克莱帕日市场 (Stary Kleparz) 之间，距中央火车站步行五分钟。意式浓缩做得认真，抹茶单比大多数抹茶吧还长，早餐供应到13:00，巴斯克芝士蛋糕我们打9.5分（满分10分）。大多数座位旁都有插座，欢迎带狗，工作日8:00开门，周日上午也营业。</p>
+        <p><a href="/restaurant/bruk-cafe/">店铺详情 →</a> · <span dir="ltr">ul. Krótka 1</span></p>
+      </details>
+      <details class="pick-item">
+        <summary><span class="pk-badge">最佳抹茶</span> <b>Café Belmont</b> <span class="pk-line">我们抹茶指南的第一名，也是我们在卡齐米日评分最高的咖啡馆</span></summary>
+        <p>卡齐米日的一家咖啡馆，自己调配抹茶并以 Yume Matcha 品牌出售，点茶手法到位：颜色鲜绿，没有粉笔般的苦涩。有正经的精品咖啡和店内现做的饭团，地址 Berka Joselewicza 12，每天9:00至19:00营业。我们打9.5分（满分10分）。</p>
+        <p><a href="/restaurant/cafe-belmont/">店铺详情 →</a> · <span dir="ltr">ul. Berka Joselewicza 12</span></p>
+      </details>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"我们首先推荐的两个地方","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CafeOrCoffeeShop","name":"Bruk Cafe","url":"https://bitekrakow.com/restaurant/bruk-cafe/","description":"位于 Krótka 街的精品咖啡馆，在巴比肯城堡 (Barbakan) 和老克莱帕日市场 (Stary Kleparz) 之间，距中央火车站步行五分钟。意式浓缩做得认真，抹茶单比大多数抹茶吧还长，早餐供应到13:00，巴斯克芝士蛋糕我们打9.5分（满分10分）。大多数座位旁都有插座，欢迎带狗，工作日8:00开门，周日上午也营业。","award":"BiteKrakow: No. 1 in 11 of our guides, from work and study cafes to breakfast","address":{"@type":"PostalAddress","streetAddress":"ul. Krótka 1","addressLocality":"Kraków","addressCountry":"PL"},"geo":{"@type":"GeoCoordinates","latitude":50.0679221,"longitude":19.9398697}}},{"@type":"ListItem","position":2,"item":{"@type":"CafeOrCoffeeShop","name":"Café Belmont","url":"https://bitekrakow.com/restaurant/cafe-belmont/","description":"卡齐米日的一家咖啡馆，自己调配抹茶并以 Yume Matcha 品牌出售，点茶手法到位：颜色鲜绿，没有粉笔般的苦涩。有正经的精品咖啡和店内现做的饭团，地址 Berka Joselewicza 12，每天9:00至19:00营业。我们打9.5分（满分10分）。","award":"BiteKrakow: No. 1 in our matcha guide and our best cafe in Kazimierz","address":{"@type":"PostalAddress","streetAddress":"ul. Berka Joselewicza 12","addressLocality":"Kraków","addressCountry":"PL"},"geo":{"@type":"GeoCoordinates","latitude":50.0544581,"longitude":19.9460358}}}]}</script>
+    </section>
+    <!-- picks:end -->
+
+    <section class="md-group">
+      <span class="eyebrow">河北岸</span>
+      <h2 class="deco">市中心及周边</h2>
+      <div class="map-districts">
+        <a class="md-card" href="/zh/old-town-cafes/"><h3>老城 <small>35个地点 · 指南</small></h3><p>普兰蒂公园 (Planty) 环线以内：本地人真正常去的咖啡馆、中央集市广场 (Rynek Główny) 周边的经典波兰饺子馆，以及全城的高级餐厅。</p><div class="md-top">首选：Karma Coffee</div></a>
+        <a class="md-card" href="/zh/kazimierz-guide/"><h3>卡齐米日 <small>32个地点 · 指南</small></h3><p>昔日的犹太区，如今是酒吧和早午餐的中心：格鲁吉亚菜、鹰嘴豆泥、塔可、鸡尾酒和认真做的咖啡。</p><div class="md-top">首选：Hamsa</div></a>
+        <a class="md-card" href="/zh/kleparz-guide/"><h3>克莱帕日 <small>11个地点 · 指南</small></h3><p>克拉科夫最古老的市场和周边的精品咖啡，位于克拉科夫中央火车站 (Kraków Główny) 以北五分钟。</p><div class="md-top">首选：Bruk Cafe</div></a>
+        <a class="md-card" href="/zh/krowodrza-guide/"><h3>克罗沃扎 <small>8个地点 · 指南</small></h3><p>绿树成荫、生活气息浓，位于市中心西北，有联合办公空间、冰淇淋和安静的街坊咖啡馆。</p><div class="md-top">首选：Cluster Cowork</div></a>
+        <a class="md-card" href="/restaurants/#piasek"><h3>Piasek <small>3个地点</small></h3><p>就在老城西边，这里有 Tytano 庭院、N'Pizza，以及 Krupnicza 街上的叙利亚炸豆丸子 (falafel)。</p><div class="md-top">首选：Mazaya</div></a>
+        <a class="md-card" href="/restaurants/#wesola"><h3>Wesoła <small>3个地点</small></h3><p>在中央火车站后面，经济大学附近有几家早开门的精品咖啡馆。</p><div class="md-top">首选：Wesoła Cafe</div></a>
+        <a class="md-card" href="/zh/halal-krakow/"><h3>Stradom <small>指南</small></h3><p>夹在老城和卡齐米日之间的一小片区域，有全城最好的完全素食印度菜。</p><div class="md-top">首选：Bhajan Cafe</div></a>
+        <a class="md-card" href="/restaurants/#grzegorzki"><h3>Grzegórzki <small>地点</small></h3><p>沿河往东，Starowiślna 街上有一个传奇般的家庭冰淇淋窗口。</p><div class="md-top">首选：Lody na Starowiślnej</div></a>
+        <a class="md-card" href="/restaurants/"><h3>Salwator <small>河畔</small></h3><p>城西边缘，绿意盎然又安静，是步行登上科希丘什科土丘 (Kościuszko Mound) 的起点。</p></a>
+      </div>
+    </section>
+
+    <section class="md-group">
+      <span class="eyebrow">河南岸</span>
+      <h2 class="deco">维斯瓦河 (Wisła) 对岸</h2>
+      <div class="map-districts">
+        <a class="md-card" href="/zh/podgorze-guide/"><h3>波德古热 <small>10个地点 · 指南</small></h3><p>河对岸最有意思的一边：最好吃的塔可和 birria、辛德勒博物馆，还有河畔露台。</p><div class="md-top">首选：Tacoteka</div></a>
+        <a class="md-card" href="/restaurants/#zablocie"><h3>扎布沃切 <small>4个地点</small></h3><p>后工业风，正在崛起：入选米其林指南的韩国菜 Hankki、叙利亚炭烤，还有 MOCAK 当代艺术博物馆。</p><div class="md-top">首选：Del Jero</div></a>
+        <a class="md-card" href="/restaurants/#debniki"><h3>Dębniki <small>1个地点</small></h3><p>从瓦维尔城堡 (Wawel) 过人行桥往南，安静的街道间藏着一家完全纯素的酸面包烘焙坊。</p><div class="md-top">首选：Zaczyn</div></a>
+      </div>
+    </section>
+
+    <section class="md-group">
+      <span class="eyebrow">更远一点</span>
+      <h2 class="deco">值得坐电车去</h2>
+      <div class="map-districts">
+        <a class="md-card" href="/restaurants/#nowa-huta"><h3>新胡塔 (Nowa Huta) <small>2个地点</small></h3><p>远在东边、按规划建起的社会主义街区，有每天只卖一种口味的经典冰淇淋店，还有一座文艺复兴尺度的大广场。</p><div class="md-top">首选：Lody Włoskie Mona</div></a>
+      </div>
+      <p class="section-lead" style="margin-top:22px;">
+        更喜欢列表而不是地图？可以按街区浏览<a href="/restaurants/">我们收录的全部地点</a>，或者从<a href="/zh/guides/">指南</a>开始。
+      </p>
+    </section>
+  </div>
+</article>
+
+<footer class="site-footer" data-foot="2">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="/zh/">Bite<span>Krakow</span></a>
+        <p class="foot-tag">克拉科夫美食与咖啡的独立指南。由 <a href="/zh/about/">Cezary Musiał</a> 在克拉科夫撰写和编辑，每个地方都亲自去过。</p>
+        <a class="foot-mail" href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>
+      </div>
+      <nav class="foot-col" aria-label="吃喝">
+        <p class="foot-h">吃喝</p>
+        <ul>
+          <li><a href="/zh/polish-food-krakow/">波兰菜</a></li>
+          <li><a href="/zh/nightlife-krakow/">夜生活</a></li>
+          <li><a href="/zh/breakfast-krakow/">早餐</a></li>
+          <li><a href="/zh/specialty-coffee-krakow/">精品咖啡</a></li>
+          <li><a href="/zh/matcha-krakow/">抹茶</a></li>
+          <li><a href="/zh/where-to-work-krakow/">适合办公的咖啡馆</a></li>
+          <li><a href="/zh/pierogi-krakow/">波兰饺子</a></li>
+          <li><a href="/zh/halal-krakow/">清真美食</a></li>
+          <li><a href="/zh/cocktail-bars-krakow/">鸡尾酒吧</a></li>
+          <li><a href="/zh/wine-bars-krakow/">葡萄酒吧</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="街区">
+        <p class="foot-h">街区</p>
+        <ul>
+          <li><a href="/zh/kazimierz-guide/">卡齐米日</a></li>
+          <li><a href="/zh/old-town-cafes/">老城咖啡馆</a></li>
+          <li><a href="/zh/podgorze-guide/">波德古热</a></li>
+          <li><a href="/zh/kleparz-guide/">克莱帕日</a></li>
+          <li><a href="/zh/krowodrza-guide/">克罗沃扎</a></li>
+          <li><a href="/zh/coffee-near-krakow-main-station/">中央火车站附近</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="BiteKrakow">
+        <p class="foot-h">BiteKrakow</p>
+        <ul>
+          <li><a href="/zh/guides/">全部指南</a></li>
+          <li><a href="/restaurants/">全部店铺（英文）</a></li>
+          <li><a href="/events/">活动（英文）</a></li>
+          <li><a href="/zh/map/">地图</a></li>
+          <li><a href="/zh/news/">资讯</a></li>
+          <li><a href="/zh/how-we-test/">我们如何评测</a></li>
+          <li><a href="/zh/photo-credits/">图片版权</a></li>
+          <li><a href="/zh/about/">关于我们</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <p class="foot-src">地图上的评分和顾客评价来自谷歌。地图数据 &copy; OpenStreetMap 贡献者，地图瓦片由 OpenFreeMap 提供。</p>
+      <p class="foot-meta"><span>&copy; 2026 BiteKrakow</span> <a href="/" hreflang="en" lang="en">English</a> <a href="/pl/" hreflang="pl" lang="pl">Polski</a> <a href="/ar/" hreflang="ar" lang="ar">العربية</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

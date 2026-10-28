@@ -40,20 +40,38 @@
   var box = document.getElementById('stay');
   if (!box) { initRails(); return; }
 
-  var AR = box.getAttribute('data-lang') === 'ar';
-  var T = AR ? {
+  var LANG = box.getAttribute('data-lang') || 'en', AR = LANG === 'ar';
+  var TT = {
+    ar: {
     walk: function (m) { return m + ' د مشيًا'; }, you: 'موقعك', reviews: 'مراجعة', ours: 'تقييمنا',
     guide: 'في الدليل', profile: 'الملف', intro: function (n, a) { return n + ' أماكن ننصح بها على بعد مشي من ' + a; },
     locating: 'جارٍ تحديد موقعك…', denied: 'لم نتمكن من تحديد موقعك. اختر حي فندقك أعلاه.', map: 'كل الأماكن على الخريطة',
     far: 'يبدو أنك خارج كراكوف الآن. اختر حي فندقك أعلاه.', loading: 'جارٍ التحميل…', error: 'تعذّر تحميل القائمة. جرّب الخريطة.',
     type: { cafe: 'مقهى', food: 'مطعم', bar: 'بار' }, partner: 'شريك'
-  } : {
+  },
+    pl: {
+      walk: function (m) { return m + ' min pieszo'; }, you: 'Ty', reviews: 'opinii', ours: 'Nasza ocena',
+      guide: 'W przewodniku', profile: 'Profil', intro: function (n, a) { return n + ' polecanych miejsc w zasięgu spaceru: ' + a; },
+      locating: 'Ustalam lokalizację…', denied: 'Nie udało się ustalić lokalizacji. Wybierz okolicę hotelu powyżej.', map: 'Wszystko na mapie',
+      far: 'Wygląda na to, że jesteś teraz poza Krakowem. Wybierz okolicę hotelu powyżej.', loading: 'Ładowanie…', error: 'Nie udało się wczytać listy. Spróbuj mapy.',
+      type: { cafe: 'Kawiarnia', food: 'Restauracja', bar: 'Bar' }, partner: 'Partner'
+    },
+    zh: {
+      walk: function (m) { return '步行 ' + m + ' 分钟'; }, you: '你', reviews: '条评价', ours: '我们的评分',
+      guide: '收录于指南', profile: '详情', intro: function (n, a) { return a + ' 步行范围内我们推荐的 ' + n + ' 个地点'; },
+      locating: '正在定位…', denied: '无法获取你的位置。请在上方选择酒店所在的区域。', map: '在地图上查看全部',
+      far: '你现在似乎不在克拉科夫。请在上方选择酒店所在的区域。', loading: '加载中…', error: '列表加载失败，请改用地图。',
+      type: { cafe: '咖啡馆', food: '餐厅', bar: '酒吧' }, partner: '合作伙伴'
+    },
+    en: {
     walk: function (m) { return m + ' min walk'; }, you: 'you', reviews: 'reviews', ours: 'Our score',
     guide: 'In the guide', profile: 'Profile', intro: function (n, a) { return n + ' places we recommend within a walk of ' + a; },
     locating: 'Finding you…', denied: 'We could not get your location. Pick the area of your hotel above.', map: 'Everything on the map',
     far: 'You seem to be outside Krakow right now. Pick the area of your hotel above.', loading: 'Loading…', error: 'Could not load the list. Try the map instead.',
     type: { cafe: 'Cafe', food: 'Restaurant', bar: 'Bar' }, partner: 'Partner'
+  }
   };
+  var T = TT[LANG] || TT.en;
 
   var chips = box.querySelectorAll('.stay-chip[data-lat]');
   var geoBtn = box.querySelector('.stay-geo');
@@ -102,7 +120,7 @@
     var ours = v.sc ? '<span class="sc-ours">' + T.ours + ' <b>' + v.sc + '/10</b></span>' : '';
     return '<a class="rail-card stay-card' + (v.cl ? ' is-partner' : '') + '" href="/restaurant/' + esc(v.s) + '/">' +
       '<span class="rc-photo"><img src="' + esc(photo(v)) + '" alt="' + esc(v.pa ? v.palt || '' : '') + '" loading="lazy" decoding="async" width="480" height="320" onerror="this.parentNode.classList.add(\'noimg\')">' +
-      (v.pa ? '<span class="rc-credit">' + (AR ? 'الصورة: ' : 'Photo: ') + esc(v.pa) + ' / Google</span>' : '') + '</span>' +
+      (v.pa ? '<span class="rc-credit">' + ({ ar: 'الصورة: ', pl: 'Zdjęcie: ', zh: '照片：' }[LANG] || 'Photo: ') + esc(v.pa) + ' / Google</span>' : '') + '</span>' +
       '<span class="rc-body">' +
       '<span class="rc-kicker">' + esc(kicker) + '</span>' +
       '<span class="rc-title">' + esc(v.n.replace(/\s*\(.*?\)\s*/g, ' ').trim()) + '</span>' +
@@ -128,7 +146,7 @@
     var list = pick(lat, lng);
     if (railBox) railBox.hidden = false;
     track.innerHTML = list.map(card).join('') +
-      '<a class="rail-card stay-more" href="/map/"><span class="rc-body"><span class="rc-title">' + T.map + (AR ? ' ←' : ' →') + '</span></span></a>';
+      '<a class="rail-card stay-more" href="' + ({ ar: '/ar/map/', pl: '/pl/map/', zh: '/zh/map/' }[LANG] || '/map/') + '"><span class="rc-body"><span class="rc-title">' + T.map + (AR ? ' ←' : ' →') + '</span></span></a>';
     track.scrollTo({ left: 0 });
     if (lead) lead.textContent = T.intro(list.length, label);
     var rail = box.querySelector('.rail'); if (rail && rail._bkSync) setTimeout(function () { rail._bkSync(true); }, 60);

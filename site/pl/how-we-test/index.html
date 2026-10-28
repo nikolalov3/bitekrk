@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jak testujemy: metoda BiteKrakow</title>
+  <meta name="description" content="Jak działa BiteKrakow: każde miejsce odwiedzone osobiście i opłacone, bez sponsorowanych rankingów, nasza ocena oddzielona od ocen Google, każdy przewodnik z datą.">
+  <link rel="canonical" href="https://bitekrakow.com/pl/how-we-test/">
+  <link rel="alternate" hreflang="en" href="https://bitekrakow.com/how-we-test/">
+  <link rel="alternate" hreflang="pl" href="https://bitekrakow.com/pl/how-we-test/">
+  <link rel="alternate" hreflang="ar" href="https://bitekrakow.com/ar/how-we-test/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://bitekrakow.com/zh/how-we-test/">
+  <link rel="alternate" hreflang="x-default" href="https://bitekrakow.com/how-we-test/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:site_name" content="BiteKrakow">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Jak testujemy: metoda BiteKrakow">
+  <meta property="og:description" content="Każde miejsce odwiedzone osobiście i opłacone, bez sponsorowanych rankingów, nasza własna ocena oddzielona od ocen Google, a każdy przewodnik z datą i regularnie sprawdzany na nowo.">
+  <meta property="og:url" content="https://bitekrakow.com/pl/how-we-test/">
+  <meta property="og:image" content="https://bitekrakow.com/img/og-default.jpg">
+  <meta property="og:locale" content="pl_PL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jak testujemy: metoda BiteKrakow">
+  <meta name="twitter:description" content="Metoda stojąca za przewodnikami: odwiedzone osobiście, nikt nie płaci, oceny uczciwe i aktualne.">
+  <meta name="twitter:image" content="https://bitekrakow.com/img/og-default.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>(function(){var u="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap",n=0;function f(){var l=document.createElement("link");l.rel="stylesheet";l.href=u;document.head.appendChild(l)}function w(){var p=performance.getEntriesByType&&performance.getEntriesByType("paint");if((p&&p.length)||n++>90)requestAnimationFrame(f);else requestAnimationFrame(w)}window.requestAnimationFrame?requestAnimationFrame(w):f()})();</script>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="/style.css?v=b90c2e8307">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Jak testujemy: metoda BiteKrakow",
+    "url": "https://bitekrakow.com/pl/how-we-test/",
+    "inLanguage": "pl",
+    "description": "Metoda redakcyjna BiteKrakow: każde miejsce odwiedzone osobiście, bez sponsorowanych rankingów, nasza ocena oddzielona od ocen Google, każdy przewodnik z datą i regularnie sprawdzany na nowo.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "BiteKrakow",
+      "url": "https://bitekrakow.com",
+      "founder": { "@type": "Person", "name": "Cezary Musiał", "url": "https://bitekrakow.com/about/" }
+    },
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Cezary Musiał",
+      "jobTitle": "Redaktor",
+      "url": "https://bitekrakow.com/about/",
+      "knowsAbout": ["krakowskie restauracje", "krakowskie kawiarnie", "kuchnia polska", "kawa specialty"],
+      "knowsLanguage": ["polski", "angielski"]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "BiteKrakow", "item": "https://bitekrakow.com/pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Jak testujemy", "item": "https://bitekrakow.com/pl/how-we-test/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "pl",
+    "mainEntity": [
+      { "@type": "Question", "name": "Czy ktoś płaci za obecność na BiteKrakow?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nie. Nie ma sponsorowanych rankingów, płatnych miejsc ani miejsc afiliacyjnych, które decydowałyby o kolejności. Nikt nie może zapłacić za to, żeby się tu znaleźć, i nikt nie może zapłacić za usunięcie. Kiedy przewodnik układa miejsca w ranking, ta kolejność to nasz własny osąd po wielu wizytach." } },
+      { "@type": "Question", "name": "Skąd pochodzą oceny w gwiazdkach na BiteKrakow?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ocena w gwiazdkach i cytaty z opinii na karcie lokalu pochodzą z Google, są pobierane na bieżąco, oznaczone jako Google i odświeżane według harmonogramu. Nigdy ich nie edytujemy. Osobno podajemy naszą własną ocenę w skali do dziesięciu, która jest redakcyjna: to nasza opinia po wizycie. Nie piszemy, nie kupujemy i nie wymyślamy opinii, a opinii z Google nie zmieniamy." } },
+      { "@type": "Question", "name": "Jak często BiteKrakow aktualizuje przewodniki?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Adresy, godziny i ceny sprawdzamy przy publikacji przewodnika i ponownie przy każdej aktualizacji, a każdy przewodnik podaje datę ostatniej weryfikacji. Regularnie sprawdzamy też w Google, które miejsca zamknęły się na stałe, i usuwamy je." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/pl/">Bite<span>Krakow</span></a>
+    <nav class="site-nav">
+      <a href="/pl/guides/">Przewodniki</a>
+      <a href="/pl/nightlife-krakow/">Nocne życie</a>
+      <a href="/events/">Wydarzenia</a>
+      <a href="/pl/map/">Mapa</a>
+      <a href="/restaurants/">Lokale</a>
+      <a href="/pl/news/">Aktualności</a>
+      <!-- langs:start --><details class="lang-menu"><summary aria-label="Język"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg><span>PL</span></summary><div class="lang-list"><a href="/how-we-test/" hreflang="en" lang="en">English</a><a href="/pl/how-we-test/" hreflang="pl" lang="pl" aria-current="true">Polski</a><a href="/ar/how-we-test/" hreflang="ar" lang="ar" dir="rtl">العربية</a><a href="/zh/how-we-test/" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></details><script>(function(){var m=document.currentScript.previousElementSibling;m.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-list a");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("hreflang"))}catch(_){}}});document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.open=false})})();</script><!-- langs:end -->
+    </nav>
+  </div>
+</header>
+
+<article>
+  <header class="article-header wrap-narrow">
+    <span class="pill">Metoda</span>
+    <h1>Jak testujemy</h1>
+    <p class="meta">Zasady, na których opiera się każdy przewodnik na BiteKrakow. Pisze i redaguje <a href="/pl/about/">Cezary Musiał</a> w Krakowie.</p>
+  </header>
+
+  <div class="article-body wrap-narrow">
+    <p>
+      Większość anglojęzycznych przewodników po tym mieście pisze się zza biurka w innym
+      kraju, przepisuje jeden od drugiego, a ostatni raz sprawdza, kiedy złotówki miały
+      jeszcze inny kolor. BiteKrakow to coś odwrotnego: przewodnik pisany przez ludzi, którzy
+      stoją w tych kolejkach. Ta strona wyjaśnia, jak działa, żebyś mógł porównać to, co tu
+      czytasz, z tym, co zastaniesz na miejscu.
+    </p>
+
+    <h2 style="margin-top:36px;">Każde miejsce jest odwiedzone</h2>
+    <p>
+      Każdy lokal w przewodniku odwiedziliśmy osobiście, coś w nim zamówiliśmy i zapłaciliśmy
+      normalną cenę. Nie budujemy list z kart menu, informacji prasowych, materiałów
+      turystycznych ani cudzych rankingów. Jeśli nas tam nie było, miejsce nie trafia do
+      przewodnika. Kiedy polecamy sernik, to dlatego, że talerz nie przetrwał dziesięciu minut.
+    </p>
+
+    <h2 style="margin-top:36px;">Dwie oceny, trzymane osobno</h2>
+    <p>
+      Przy miejscu mogą pojawić się dwie różne liczby i celowo trzymamy je osobno. Nasza
+      własna ocena w skali do dziesięciu jest redakcyjna: to nasza opinia o jedzeniu albo
+      kawie po wielu wizytach. Ocena w gwiazdkach i cytaty z opinii na karcie lokalu pochodzą
+      z Google, są pobierane na bieżąco, oznaczone jako Google i odświeżane według
+      harmonogramu. Nigdy nie ruszamy liczb Google i nigdy nie piszemy, nie kupujemy ani nie
+      wymyślamy własnych opinii czy ocen. Kiedy przewodnik układa lokale w ranking, ta
+      kolejność to nasz osąd, a nie wskaźnik popularności i nie płatne miejsce.
+    </p>
+
+    <h2 style="margin-top:36px;">Nikt nie płaci</h2>
+    <p>
+      Nie ma sponsorowanych rankingów, płatnych miejsc ani układów, które kupują lepszą
+      pozycję. Nikt nie może zapłacić za to, żeby się tu znaleźć, i nikt nie może zapłacić za
+      usunięcie, choć jeden bar o to prosił. Przewodnik, który schlebia wszystkim, jest
+      reklamą, a reklam Kraków ma już dość. Jedyne, co przesuwa miejsce w górę listy, to
+      bycie lepszym.
+    </p>
+
+    <h2 style="margin-top:36px;">Na bieżąco</h2>
+    <p>
+      Adresy, godziny i ceny sprawdzamy, kiedy przewodnik trafia na stronę, i ponownie przy
+      każdej aktualizacji. Każdy przewodnik podaje datę ostatniej weryfikacji, więc zawsze
+      wiesz, jak świeże są informacje. Regularnie sprawdzamy też w Google, które miejsca
+      zamknęły się na stałe, i usuwamy je, zamiast wysyłać cię pod zamknięte drzwi. Kiedy
+      jakość miejsca spada, poprawiamy wpis albo go usuwamy.
+    </p>
+
+    <h2 style="margin-top:36px;">Poprawki</h2>
+    <p>
+      Jeśli coś tu się nie zgadza, adres się zmienił, miejsce zamknięto, cena podskoczyła,
+      napisz, a poprawimy. Podpowiedzi, poprawki i spory kieruj na
+      <a href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>. Poprawki wprowadzamy.
+      Na spory odpowiadamy, prędzej czy później. Więcej o tym, kto to pisze, na stronie
+      <a href="/pl/about/">O nas</a>, a czytanie możesz zacząć od
+      <a href="/pl/guides/">przewodników</a> albo od <a href="/pl/map/">mapy kulinarnej</a>.
+    </p>
+
+    <section class="faq">
+      <h2 class="deco">Najczęstsze pytania</h2>
+      <details>
+        <summary>Czy ktoś płaci za obecność na BiteKrakow?</summary>
+        <p>Nie. Nie ma sponsorowanych rankingów, płatnych miejsc ani miejsc afiliacyjnych, które decydowałyby o kolejności. Nikt nie może zapłacić za to, żeby się tu znaleźć, i nikt nie może zapłacić za usunięcie. Kiedy przewodnik układa miejsca w ranking, ta kolejność to nasz własny osąd po wielu wizytach.</p>
+      </details>
+      <details>
+        <summary>Skąd pochodzą oceny w gwiazdkach na BiteKrakow?</summary>
+        <p>Ocena w gwiazdkach i cytaty z opinii na karcie lokalu pochodzą z Google, są pobierane na bieżąco, oznaczone jako Google i odświeżane według harmonogramu. Nigdy ich nie edytujemy. Osobno podajemy naszą własną ocenę w skali do dziesięciu, która jest redakcyjna: to nasza opinia po wizycie. Nie piszemy, nie kupujemy i nie wymyślamy opinii, a opinii z Google nie zmieniamy.</p>
+      </details>
+      <details>
+        <summary>Jak często BiteKrakow aktualizuje przewodniki?</summary>
+        <p>Adresy, godziny i ceny sprawdzamy przy publikacji przewodnika i ponownie przy każdej aktualizacji, a każdy przewodnik podaje datę ostatniej weryfikacji. Regularnie sprawdzamy też w Google, które miejsca zamknęły się na stałe, i usuwamy je.</p>
+      </details>
+    </section>
+  </div>
+</article>
+
+<footer class="site-footer" data-foot="2">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="/pl/">Bite<span>Krakow</span></a>
+        <p class="foot-tag">Niezależne przewodniki po jedzeniu i kawie w Krakowie. Pisze i redaguje <a href="/pl/about/">Cezary Musiał</a> w Krakowie, każde miejsce odwiedzone osobiście.</p>
+        <a class="foot-mail" href="mailto:hello@bitekrakow.com">hello@bitekrakow.com</a>
+      </div>
+      <nav class="foot-col" aria-label="Jedzenie i picie">
+        <p class="foot-h">Jedzenie i picie</p>
+        <ul>
+          <li><a href="/pl/polish-food-krakow/">Polska kuchnia</a></li>
+          <li><a href="/pl/nightlife-krakow/">Nocne życie</a></li>
+          <li><a href="/pl/breakfast-krakow/">Śniadania</a></li>
+          <li><a href="/pl/specialty-coffee-krakow/">Kawa specialty</a></li>
+          <li><a href="/pl/matcha-krakow/">Matcha</a></li>
+          <li><a href="/pl/where-to-work-krakow/">Kawiarnie do pracy</a></li>
+          <li><a href="/pl/pierogi-krakow/">Pierogi</a></li>
+          <li><a href="/pl/halal-krakow/">Halal</a></li>
+          <li><a href="/pl/cocktail-bars-krakow/">Bary koktajlowe</a></li>
+          <li><a href="/pl/wine-bars-krakow/">Bary z winem</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Dzielnice">
+        <p class="foot-h">Dzielnice</p>
+        <ul>
+          <li><a href="/pl/kazimierz-guide/">Kazimierz</a></li>
+          <li><a href="/pl/old-town-cafes/">Kawiarnie na Starym Mieście</a></li>
+          <li><a href="/pl/podgorze-guide/">Podgórze</a></li>
+          <li><a href="/pl/kleparz-guide/">Kleparz</a></li>
+          <li><a href="/pl/krowodrza-guide/">Krowodrza</a></li>
+          <li><a href="/pl/coffee-near-krakow-main-station/">Przy dworcu głównym</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="BiteKrakow">
+        <p class="foot-h">BiteKrakow</p>
+        <ul>
+          <li><a href="/pl/guides/">Wszystkie przewodniki</a></li>
+          <li><a href="/restaurants/">Wszystkie lokale (EN)</a></li>
+          <li><a href="/events/">Wydarzenia (EN)</a></li>
+          <li><a href="/pl/map/">Mapa</a></li>
+          <li><a href="/pl/news/">Aktualności</a></li>
+          <li><a href="/pl/how-we-test/">Jak testujemy</a></li>
+          <li><a href="/pl/photo-credits/">Prawa do zdjęć</a></li>
+          <li><a href="/pl/about/">O nas</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <p class="foot-src">Oceny i cytaty z opinii na kartach lokali pochodzą z Google.</p>
+      <p class="foot-meta"><span>&copy; 2026 BiteKrakow</span> <a href="/" hreflang="en" lang="en">English</a> <a href="/ar/" hreflang="ar" lang="ar">العربية</a> <a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

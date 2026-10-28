@@ -11,7 +11,7 @@ const SITE = new URL('../site/', import.meta.url).pathname;
 function walk(dir, out = []) {
   for (const n of readdirSync(dir)) {
     const p = join(dir, n);
-    if (statSync(p).isDirectory()) { if (['api', 'img', 'restaurant'].includes(n) && dir === SITE) continue; walk(p, out); }
+    if (statSync(p).isDirectory()) { if (['api', 'img', 'restaurant', 'pl', 'ar', 'zh'].includes(n) && dir === SITE) continue; walk(p, out); } // kanal po angielsku, bez kopii tlumaczen
     else if (n === 'index.html') out.push(p);
   }
   return out;

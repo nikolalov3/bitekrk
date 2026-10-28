@@ -5,12 +5,15 @@
    - Lokale: element z data-hours='[[dzien,otwarcie,zamkniecie],...]' (dzien 0 = niedziela,
      minuty od polnocy, zamkniecie po polnocy = wiecej niz 1440) dostaje "Open now · until 02:00"
      albo "Opens 17:00". Przycisk [data-open-filter] chowa zamkniete wiersze.
-   Bez zaleznosci, odswieza sie co minute. Tekst plakietek: EN albo PL (lang dokumentu). */
+   Bez zaleznosci, odswieza sie co minute. Tekst plakietek wg lang dokumentu: EN, PL, ZH, AR. */
 (function () {
   'use strict';
-  var PL = (document.documentElement.lang || '').indexOf('pl') === 0;
-  var T = PL ? { live: 'Teraz', today: 'Dziś', tomorrow: 'Jutro', weekend: 'W ten weekend', open: 'Otwarte', until: 'do', opens: 'Otwarcie', tmr: 'jutro', closed: 'Zamknięte', days: ['nd', 'pn', 'wt', 'śr', 'czw', 'pt', 'sob'] }
-             : { live: 'Live now', today: 'Today', tomorrow: 'Tomorrow', weekend: 'This weekend', open: 'Open now', until: 'until', opens: 'Opens', tmr: 'tomorrow', closed: 'Closed', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] };
+  var LANG = (document.documentElement.lang || 'en').slice(0, 2);
+  var T = {
+    pl: { live: 'Teraz', today: 'Dziś', tomorrow: 'Jutro', weekend: 'W ten weekend', open: 'Otwarte', until: 'do', opens: 'Otwarcie', tmr: 'jutro', closed: 'Zamknięte', days: ['nd', 'pn', 'wt', 'śr', 'czw', 'pt', 'sob'] },
+    zh: { live: '进行中', today: '今天', tomorrow: '明天', weekend: '本周末', open: '营业中', until: '至', opens: '开门', tmr: '明天', closed: '已打烊', days: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'] },
+    ar: { live: 'الآن', today: 'اليوم', tomorrow: 'غداً', weekend: 'نهاية هذا الأسبوع', open: 'مفتوح الآن', until: 'حتى', opens: 'يفتح', tmr: 'غداً', closed: 'مغلق', days: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'] }
+  }[LANG] || { live: 'Live now', today: 'Today', tomorrow: 'Tomorrow', weekend: 'This weekend', open: 'Open now', until: 'until', opens: 'Opens', tmr: 'tomorrow', closed: 'Closed', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] };
 
   // Czas "teraz" w Krakowie jako: dzien tygodnia (0=nd), minuty od polnocy, data YYYY-MM-DD
   function nowWaw() {

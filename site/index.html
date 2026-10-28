@@ -3,28 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-  (function(){try{
-    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-switch");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("lang")||"x");}catch(_){}}},true);
-    var p=location.pathname;
-    if(p.indexOf("/ar/")===0||p.indexOf("/pl/")===0)return;
-    if(localStorage.getItem("bk-lang"))return;
-    var L=navigator.languages||[navigator.language||""];
-    var isAr=L.some(function(x){return /^ar/i.test(x);});
-    var isPl=!isAr&&L.some(function(x){return /^pl/i.test(x);});
-    var AR=["/","/guides/","/halal-krakow/","/italian-krakow/","/ramen-krakow/","/georgian-krakow/","/vietnamese-krakow/","/indian-krakow/","/pierogi-krakow/","/thai-krakow/","/mexican-krakow/","/kebab-krakow/","/korean-krakow/","/best-restaurants-krakow/","/map/","/matcha-krakow/","/breakfast-krakow/"];
-    var PL=["/matcha-krakow/","/kleparz-guide/","/specialty-coffee-krakow/","/cocktail-bars-krakow/","/krakow-restaurant-week/","/news/art-food-bazar-stary-kleparz/","/autumn-menu-krakow/","/news/mlaskoty-food-festival-krakow/"];
-    if(isAr&&AR.indexOf(p)!==-1)location.replace(p==="/"?"/ar/":"/ar"+p);
-    else if(isPl&&PL.indexOf(p)!==-1)location.replace("/pl"+p);
-  }catch(e){}})();
-  </script>
+  <!-- langredir:start --><script>(function(){try{if(localStorage.getItem("bk-lang"))return;var V={"pl":"/pl/","ar":"/ar/","zh":"/zh/"};var L=navigator.languages||[navigator.language||""];for(var i=0;i<L.length;i++){var k=String(L[i]).slice(0,2).toLowerCase();if(k==="en")return;if(V[k]){location.replace(V[k]);return}}}catch(e){}})();</script><!-- langredir:end -->
   <title>Krakow Food Guide: Where Locals Eat and Drink | BiteKrakow</title>
   <meta name="description" content="The independent Krakow food guide written by locals: cafes, restaurants and bars by cuisine and neighborhood, with real addresses, hours and honest picks.">
   <link rel="canonical" href="https://bitekrakow.com/">
-  <link rel="alternate" type="application/rss+xml" title="BiteKrakow" href="/feed.xml">
   <link rel="alternate" hreflang="en" href="https://bitekrakow.com/">
+  <link rel="alternate" hreflang="pl" href="https://bitekrakow.com/pl/">
   <link rel="alternate" hreflang="ar" href="https://bitekrakow.com/ar/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://bitekrakow.com/zh/">
   <link rel="alternate" hreflang="x-default" href="https://bitekrakow.com/">
+  <link rel="alternate" type="application/rss+xml" title="BiteKrakow" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:site_name" content="BiteKrakow">
   <meta property="og:type" content="website">
@@ -42,7 +30,7 @@
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
   <script>(function(){var u="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap",n=0;function f(){var l=document.createElement("link");l.rel="stylesheet";l.href=u;document.head.appendChild(l)}function w(){var p=performance.getEntriesByType&&performance.getEntriesByType("paint");if((p&&p.length)||n++>90)requestAnimationFrame(f);else requestAnimationFrame(w)}window.requestAnimationFrame?requestAnimationFrame(w):f()})();</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css?v=1c9e4bfc4f">
+  <link rel="stylesheet" href="/style.css?v=b90c2e8307">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -80,8 +68,7 @@
       <a href="/map/">Map</a>
       <a href="/restaurants/">Places</a>
       <a href="/news/">News</a>
-      <a href="/about/">About</a>
-      <a class="lang-switch" href="/ar/" lang="ar">العربية</a>
+      <!-- langs:start --><details class="lang-menu"><summary aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg><span>EN</span></summary><div class="lang-list"><a href="/" hreflang="en" lang="en" aria-current="true">English</a><a href="/pl/" hreflang="pl" lang="pl">Polski</a><a href="/ar/" hreflang="ar" lang="ar" dir="rtl">العربية</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></details><script>(function(){var m=document.currentScript.previousElementSibling;m.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-list a");if(a){try{localStorage.setItem("bk-lang",a.getAttribute("hreflang"))}catch(_){}}});document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.open=false})})();</script><!-- langs:end -->
     </nav>
   </div>
 </header>
@@ -250,7 +237,7 @@
 </section>
 <!-- whats-on:end -->
 
-<section class="wrap stay" id="stay" data-lang="en" data-venues-v="8e78d808b3">
+<section class="wrap stay" id="stay" data-lang="en" data-venues-v="3d0aed676f">
   <span class="eyebrow">By where you sleep</span>
   <h2 class="deco">Where are you staying?</h2>
   <p class="section-lead">Share your location and we list the places we recommend within a walk, with the Google rating and our own score. Your location stays in your browser.</p>
@@ -328,7 +315,7 @@
       </a>
       <a class="rail-card" href="/coffee-near-krakow-main-station/">
         <span class="rc-photo"><img src="/api/photo?slug=bruk-cafe&amp;p=0&amp;w=480" alt="Bruk Cafe interior with rugs, plants and tall windows, ul. Krótka 1" loading="lazy" decoding="async" width="480" height="320" onerror="this.parentNode.classList.add('noimg')"><span class="rc-credit">Photo: Marta Synowiec / Google</span></span>
-        <span class="rc-body"><span class="rc-kicker">Station</span><span class="rc-title">Coffee Near the Main Station</span><span class="rc-dek">Five independent cafes within ten minutes of the platforms, timed with a suitcase.</span></span>
+        <span class="rc-body"><span class="rc-kicker">Station</span><span class="rc-title">Coffee Near the Main Station</span><span class="rc-dek">Two independent cafes within ten minutes of the platforms, timed with a suitcase.</span></span>
       </a>
       <a class="rail-card" href="/breakfast-krakow/">
         <span class="rc-photo"><img src="/img/bruk-breakfast-600.webp" alt="" loading="lazy" decoding="async" width="480" height="320" style="object-position:50% 40%" onerror="this.parentNode.classList.add('noimg')"></span>
@@ -408,7 +395,7 @@
       </a>
       <a class="rail-card" href="/news/mlaskoty-food-festival-krakow/">
         <span class="rc-photo"><img src="/api/photo?slug=zaczyn&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
-        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Mlaskoty food festival, Plac Na Stawach, 25 October</span><span class="rc-dek">Krakow\'s free local food festival returns to Zwierzyniec: Sunday 25 October, 11:00 to 17:00, about thirty small kitchens.</span></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Mlaskoty food festival, Plac Na Stawach, 25 October</span><span class="rc-dek">Krakow's free local food festival returns to Zwierzyniec: Sunday 25 October, 11:00 to 17:00, about thirty small kitchens.</span></span>
       </a>
       <a class="rail-card" href="/news/art-food-bazar-stary-kleparz/">
         <span class="rc-photo"><img src="/img/autumn/art-food-bazar-2026.webp" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
@@ -424,7 +411,7 @@
       </a>
       <a class="rail-card" href="/krakow-restaurant-week/">
         <span class="rc-photo"><img src="/api/photo?slug=puente&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
-        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Krakow Restaurant Week 2026: how to book</span><span class="rc-dek">6 October 2026 · Three courses and a cocktail for 70 zl at 50-plus restaurants, 7 October to 25 November. Dates, prices, steps.</span></span>
+        <span class="rc-body"><span class="rc-kicker">News</span><span class="rc-title">Krakow Restaurant Week 2026: how to book</span><span class="rc-dek">6 October 2026 · Three courses and a cocktail from 69.99 zl at 54 restaurants, 7 October to 25 November. Dates, prices, steps.</span></span>
       </a>
       <a class="rail-card" href="/news/coppa-specialty-coffee-opens/">
         <span class="rc-photo"><img src="/api/photo?slug=coppa&amp;w=480" alt="" loading="lazy" decoding="async" width="480" height="320"  onerror="this.parentNode.classList.add('noimg')"></span>
@@ -563,7 +550,7 @@
     </div>
     <div class="foot-bottom">
       <p class="foot-src">Ratings and review quotes shown on venue cards come from Google.</p>
-      <p class="foot-meta"><span>&copy; 2026 BiteKrakow</span> <a href="/ar/" hreflang="ar" lang="ar">العربية</a></p>
+      <p class="foot-meta"><span>&copy; 2026 BiteKrakow</span> <a href="/pl/" hreflang="pl" lang="pl">Polski</a> <a href="/ar/" hreflang="ar" lang="ar">العربية</a> <a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></p>
     </div>
   </div>
 </footer>
@@ -606,7 +593,7 @@
     mark();
   })();
 </script>
-<script src="/live.js?v=6d85eb51b6" defer></script>
-<script src="/home.js?v=ec475ce395" defer></script>
+<script src="/live.js?v=083ff083b7" defer></script>
+<script src="/home.js?v=b6cac51c4c" defer></script>
 </body>
 </html>

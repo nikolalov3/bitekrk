@@ -7,6 +7,12 @@
 (async function () {
   const cards = document.querySelectorAll('[data-venue-slug]');
   if (!cards.length) return;
+  const T = {
+    pl: { reviews: 'opinii w Google', src: 'Opinie z Google', outOf: n => `${n} na 5 w Google` },
+    zh: { reviews: '条谷歌评价', src: '来自谷歌的评价', outOf: n => `谷歌评分 ${n} / 5` },
+    ar: { reviews: 'مراجعة على جوجل', src: 'مراجعات من جوجل', outOf: n => `${n} من 5 على جوجل` }
+  }[(document.documentElement.lang || 'en').slice(0, 2)] ||
+    { reviews: 'Google reviews', src: 'Reviews from Google', outOf: n => `${n} out of 5 on Google` };
 
   let cfg;
   try {
@@ -43,7 +49,7 @@
           `<span class="stars-fill" style="width:${pct}%">★★★★★</span>` +
         `</span>` +
         `<span>${v.rating.toFixed(1)}</span>` +
-        `<span class="count">(${v.reviews_count ?? 0} Google reviews)</span>`;
+        `<span class="count">(${v.reviews_count ?? 0} ${T.reviews})</span>`;
     }
 
     if (v.maps_url) {
@@ -59,11 +65,11 @@
         return '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full);
       };
       reviewsEl.innerHTML =
-        `<div class="src">Reviews from Google</div>` +
+        `<div class="src">${T.src}</div>` +
         `<div class="review-track">` +
         reviews.slice(0, 3).map(r =>
           `<figure class="review">` +
-            `<div class="review-stars" aria-label="${r.rating} out of 5 on Google">${stars(r.rating)}</div>` +
+            `<div class="review-stars" aria-label="${T.outOf(r.rating)}">${stars(r.rating)}</div>` +
             `<blockquote>${esc(r.text)}</blockquote>` +
             `<figcaption>${esc(r.author)}</figcaption>` +
           `</figure>`

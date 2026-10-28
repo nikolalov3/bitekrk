@@ -22,7 +22,7 @@ const FRESH = new Set(['polish-food-krakow', 'nightlife-krakow']);
 function pages(dir, prefix = '') {
   const out = [];
   for (const d of readdirSync(dir, { withFileTypes: true })) {
-    if (!d.isDirectory() || d.name.startsWith('_') || ['api', 'img', 'data', 'ar', 'pl', 'restaurant', 'admin'].includes(d.name)) continue;
+    if (!d.isDirectory() || d.name.startsWith('_') || ['api', 'img', 'data', 'ar', 'pl', 'zh', 'restaurant', 'admin'].includes(d.name)) continue;
     const rel = prefix ? `${prefix}/${d.name}` : d.name;
     if (existsSync(join(dir, d.name, 'index.html'))) out.push(rel);
     out.push(...pages(join(dir, d.name), rel));
